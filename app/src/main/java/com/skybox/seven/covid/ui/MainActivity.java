@@ -1,8 +1,10 @@
-package com.skybox.seven.covid;
+package com.skybox.seven.covid.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.skybox.seven.covid.R;
 
 public class MainActivity extends AppCompatActivity {
 
