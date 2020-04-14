@@ -10,6 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <receiver android:name=".location.LocationReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="io.radar.sdk.RECEIVED" />
+            </intent-filter>
+        </receiver>
         <activity android:name=".ui.RadarTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
