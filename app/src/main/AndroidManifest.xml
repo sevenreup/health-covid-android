@@ -17,18 +17,27 @@
                 <action android:name="io.radar.sdk.RECEIVED" />
             </intent-filter>
         </receiver>
-        <activity android:name=".ui.RadarTestActivity">
+        <activity android:name=".ui.RadarTestActivity" />
+        <activity android:name=".ui.UiTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+            </intent-filter>
+        </activity>
+
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
     </application>
