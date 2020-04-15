@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="16dp"
+    android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/userName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingHorizontal="8dp"
+        android:background="@drawable/edittext_bg"
+        android:layout_marginTop="16dp"
+        android:maxLines="1"
+        android:hint="@string/name"/>
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/phoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingHorizontal="8dp"
+        android:background="@drawable/edittext_bg"
+        android:layout_marginTop="8dp"
+        android:maxLines="1"
+        android:inputType="phone"
+        android:hint="Phone Number"/>
+
+    <Button
+        android:id="@+id/saveMember"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="center_horizontal"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:text="Save"
+        android:background="@drawable/button_rectangle_pink"/>
+
+</LinearLayout>
