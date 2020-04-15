@@ -1,5 +1,6 @@
 package com.skybox.seven.covid.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,7 @@ public class ContactActivity extends AppCompatActivity {
 
         membersView = findViewById(R.id.membersParent);
         RelativeLayout addPersonView = findViewById(R.id.addPerson);
+        RelativeLayout addLocView = findViewById(R.id.addLocation);
         inflater = LayoutInflater.from(this);
 
         addPersonView.setOnClickListener(v -> {
@@ -47,6 +49,11 @@ public class ContactActivity extends AppCompatActivity {
 
             bottomDialog.setContentView(view);
             bottomDialog.show();
+        });
+
+        addLocView.setOnClickListener(v -> {
+            Intent intent = new Intent(this,Location.class);
+            startActivity(intent);
         });
 
         FamMember member = new FamMember("Mijiga", "0998530227");
