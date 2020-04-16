@@ -14,9 +14,6 @@
             android:id="@+id/action_homeFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_contactTraceFragment"
-            app:destination="@id/contactTraceFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_qanAFragment"
             app:destination="@id/qanAFragment" />
         <action
@@ -31,6 +28,9 @@
         <action
             android:id="@+id/action_homeFragment_to_casesFragment"
             app:destination="@id/casesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_contactTraceFragment2"
+            app:destination="@id/contactTraceFragment2" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"

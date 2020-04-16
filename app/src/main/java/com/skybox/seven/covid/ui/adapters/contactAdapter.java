@@ -1,6 +1,7 @@
 package com.skybox.seven.covid.ui.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +14,11 @@ import com.skybox.seven.covid.R;
 import java.util.ArrayList;
 
 public class contactAdapter extends RecyclerView.Adapter<ContactHolder> {
-    Context context;
     ArrayList<ContactModel> models;
 
-    public contactAdapter(Context context, ArrayList<ContactModel> models) {
-        this.context = context;
+    public contactAdapter(ArrayList<ContactModel> models) {
         this.models = models;
+        Log.e("err", models.toString());
     }
 
     @NonNull
@@ -32,7 +32,8 @@ public class contactAdapter extends RecyclerView.Adapter<ContactHolder> {
     @Override
     public void onBindViewHolder(@NonNull ContactHolder holder, int position) {
         holder.contName.setText(models.get(position).getName());
-        holder.contNumber.setText(models.get(position).getName());
+        holder.contNumber.setText(models.get(position).getPhone());
+        Log.e("Big error", "Should not be here");
     }
 
 

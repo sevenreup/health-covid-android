@@ -22,8 +22,8 @@ import java.util.ArrayList;
  */
 public class ContactTraceFragment extends Fragment {
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter ContactAdapter;
-    private RecyclerView.LayoutManager layoutManager;
+    private contactAdapter ContactAdapter;
+    private LinearLayoutManager layoutManager;
 
     public ContactTraceFragment() {
         // Required empty public constructor
@@ -36,9 +36,9 @@ public class ContactTraceFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_contact_trace2, container, false);
         recyclerView = v.findViewById(R.id.contactRecyclerView);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(getContext());
-        ContactAdapter = new contactAdapter(getContext(), getMyContacts());
+        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        ContactAdapter = new contactAdapter(getMyContacts());
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(ContactAdapter);
 
    return v; }
@@ -52,42 +52,42 @@ public class ContactTraceFragment extends Fragment {
         models.add(m);
 
         m = new ContactModel();
-        m.setName("Chisomo Kasenda");
+        m.setName("Madalitso Nyemba");
         m.setPhone("0994479371");
         models.add(m);
 
         m = new ContactModel();
-        m.setName("Chisomo Kasenda");
+        m.setName("Christopher Phiri");
         m.setPhone("0994479371");
         models.add(m);
 
         m = new ContactModel();
-        m.setName("Chisomo Kasenda");
+        m.setName("Nhlanhla Dhaka");
         m.setPhone("0994479371");
         models.add(m);
 
         m = new ContactModel();
-        m.setName("Chisomo Kasenda");
+        m.setName("Kelvin Chidothi");
         m.setPhone("0994479371");
         models.add(m);
 
         m = new ContactModel();
-        m.setName("Chisomo Kasenda");
+        m.setName("Benjamin Ngwenya");
         m.setPhone("0994479371");
         models.add(m);
 
         m = new ContactModel();
-        m.setName("Chisomo Kasenda");
+        m.setName("Steve Chikwiri");
         m.setPhone("0994479371");
         models.add(m);
 
         m = new ContactModel();
-        m.setName("Chisomo Kasenda");
+        m.setName("Yankho Mijiga");
         m.setPhone("0994479371");
         models.add(m);
 
         m = new ContactModel();
-        m.setName("Chisomo Kasenda");
+        m.setName("Bryan Malunje");
         m.setPhone("0994479371");
         models.add(m);
 
