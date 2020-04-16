@@ -39,9 +39,13 @@
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/contactTraceFragment"
-        android:name="com.skybox.seven.covid.ui.fragment.main.ContactTraceFragment"
+        android:name="com.skybox.seven.covid.ui.fragment.main.ContactCreateFragment"
         android:label="fragment_contact_trace"
-        tools:layout="@layout/fragment_contact_trace" />
+        tools:layout="@layout/fragment_contact_trace" >
+        <action
+            android:id="@+id/action_contactTraceFragment_to_contactTraceFragment2"
+            app:destination="@id/contactTraceFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/healthFragment"
         android:name="com.skybox.seven.covid.ui.fragment.main.HealthFragment"
@@ -67,4 +71,9 @@
         android:name="com.skybox.seven.covid.ui.fragment.main.CasesFragment"
         android:label="fragment_cases"
         tools:layout="@layout/fragment_cases" />
+    <fragment
+        android:id="@+id/contactTraceFragment2"
+        android:name="com.skybox.seven.covid.ui.fragment.main.ContactTraceFragment"
+        android:label="fragment_contact_trace2"
+        tools:layout="@layout/fragment_contact_trace2" />
 </navigation>

@@ -1,23 +1,16 @@
 package com.skybox.seven.covid.ui.fragment.main;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.network.responses.LoginResponse;
-import com.skybox.seven.covid.ui.ContactActivity;
-import com.skybox.seven.covid.ui.HomeActivity;
-import com.skybox.seven.covid.util.BaseModelFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 

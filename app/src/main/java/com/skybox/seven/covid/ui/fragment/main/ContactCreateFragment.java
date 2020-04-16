@@ -1,9 +1,13 @@
-package com.skybox.seven.covid.ui;
+package com.skybox.seven.covid.ui.fragment.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -13,29 +17,36 @@ import android.widget.TextView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.FamMember;
+import com.skybox.seven.covid.ui.Location;
 
 import java.util.ArrayList;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class ContactActivity extends AppCompatActivity {
-
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class ContactCreateFragment extends Fragment {
     LayoutInflater inflater;
     LinearLayout membersView;
     ArrayList<FamMember> members = new ArrayList<>();
 
+    public ContactCreateFragment() {
+        // Required empty public constructor
+    }
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View v = inflater.inflate(R.layout.fragment_contact_trace, container, false);
+        membersView = v.findViewById(R.id.membersParent);
+        RelativeLayout addPersonView = v.findViewById(R.id.addPerson);
+        RelativeLayout addLocView = v.findViewById(R.id.addLocation);
 
-        membersView = findViewById(R.id.membersParent);
-        RelativeLayout addPersonView = findViewById(R.id.addPerson);
-        RelativeLayout addLocView = findViewById(R.id.addLocation);
-        inflater = LayoutInflater.from(this);
+        this.inflater = inflater;
 
-        addPersonView.setOnClickListener(v -> {
-            BottomSheetDialog bottomDialog = new BottomSheetDialog(this);
+        addPersonView.setOnClickListener(v1 -> {
+            BottomSheetDialog bottomDialog = new BottomSheetDialog(getContext());
             View view = inflater.inflate(R.layout.person_dialog,null);
 
             ((Button)view.findViewById(R.id.saveMember)).setOnClickListener(vw->{
@@ -51,8 +62,8 @@ public class ContactActivity extends AppCompatActivity {
             bottomDialog.show();
         });
 
-        addLocView.setOnClickListener(v -> {
-            Intent intent = new Intent(this,Location.class);
+        addLocView.setOnClickListener(v1 -> {
+            Intent intent = new Intent(getActivity(), Location.class);
             startActivity(intent);
         });
 
@@ -60,6 +71,8 @@ public class ContactActivity extends AppCompatActivity {
         members.add(member);
 
         setupFamily();
+
+    return v;
     }
 
     public void setupFamily() {

@@ -39,6 +39,8 @@ public class RegisterFragment extends Fragment {
 
                 getActivity().startActivity(intent);
                 startActivity(intent);
+
+
             }
         });
     return v;
