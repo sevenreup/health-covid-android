@@ -177,14 +177,16 @@
 
 
            </com.google.android.material.card.MaterialCardView>
-           <androidx.cardview.widget.CardView
+           <com.google.android.material.card.MaterialCardView
                android:layout_width="0dp"
 
                android:layout_height="0dp"
                android:layout_rowWeight="1"
                android:layout_columnWeight="1"
                app:cardCornerRadius="10dp"
-               android:elevation="8dp">
+               android:elevation="8dp"
+               android:clickable="true"
+               android:focusable="true">
 
                <LinearLayout
                    android:layout_width="wrap_content"
@@ -211,14 +213,16 @@
 
 
 
-           </androidx.cardview.widget.CardView>
-           <androidx.cardview.widget.CardView
+           </com.google.android.material.card.MaterialCardView>
+           <com.google.android.material.card.MaterialCardView
                android:layout_width="0dp"
                android:layout_height="0dp"
                android:layout_rowWeight="1"
                android:layout_columnWeight="1"
                app:cardCornerRadius="10dp"
-               android:elevation="8dp">
+               android:elevation="8dp"
+               android:clickable="true"
+               android:focusable="true">
 
                <LinearLayout
                    android:layout_width="wrap_content"
@@ -244,15 +248,17 @@
 
 
 
-           </androidx.cardview.widget.CardView>
-           <androidx.cardview.widget.CardView
+           </com.google.android.material.card.MaterialCardView>
+           <com.google.android.material.card.MaterialCardView
                android:layout_width="0dp"
                android:layout_height="0dp"
                android:layout_rowWeight="1"
                android:id="@+id/contactCard"
                android:layout_columnWeight="1"
                app:cardCornerRadius="10dp"
-               android:elevation="8dp">
+               android:elevation="8dp"
+               android:clickable="true"
+               android:focusable="true">
 
                <LinearLayout
                    android:layout_width="wrap_content"
@@ -278,14 +284,16 @@
 
 
 
-           </androidx.cardview.widget.CardView>
-           <androidx.cardview.widget.CardView
+           </com.google.android.material.card.MaterialCardView>
+           <com.google.android.material.card.MaterialCardView
                android:layout_width="0dp"
                android:layout_height="0dp"
                android:layout_rowWeight="1"
                android:layout_columnWeight="1"
                app:cardCornerRadius="10dp"
-               android:elevation="8dp">
+               android:elevation="8dp"
+               android:clickable="true"
+               android:focusable="true">
 
                <LinearLayout
                    android:layout_width="wrap_content"
@@ -312,14 +320,16 @@
 
 
 
-           </androidx.cardview.widget.CardView>
-           <androidx.cardview.widget.CardView
+           </com.google.android.material.card.MaterialCardView>
+           <com.google.android.material.card.MaterialCardView
                android:layout_width="0dp"
                android:layout_height="0dp"
                android:layout_rowWeight="1"
                android:layout_columnWeight="1"
                app:cardCornerRadius="10dp"
-               android:elevation="8dp">
+               android:elevation="8dp"
+               android:clickable="true"
+               android:focusable="true">
 
                <LinearLayout
                    android:layout_width="wrap_content"
@@ -345,7 +355,7 @@
 
 
 
-           </androidx.cardview.widget.CardView>
+           </com.google.android.material.card.MaterialCardView>
 
 
        </GridLayout>
