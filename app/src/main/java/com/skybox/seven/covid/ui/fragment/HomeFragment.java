@@ -1,6 +1,7 @@
 package com.skybox.seven.covid.ui.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.skybox.seven.covid.R;
+import com.skybox.seven.covid.ui.ContactActivity;
+import com.skybox.seven.covid.ui.HomeActivity;
 
 
 /**
@@ -42,6 +45,20 @@ public class HomeFragment extends Fragment {
         number = bundle.getString("number");
         userNumber.setText(number);
         userName.setText(user);
+
+        contactCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), ContactActivity.class);
+
+                getActivity().startActivity(intent);
+                startActivity(intent);
+            }
+        });
+
+
         return v;
 
 
