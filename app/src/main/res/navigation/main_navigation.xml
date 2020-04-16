@@ -20,9 +20,6 @@
             android:id="@+id/action_homeFragment_to_newFragment"
             app:destination="@id/newFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_mythBusterFragment"
-            app:destination="@id/mythBusterFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_healthFragment"
             app:destination="@id/healthFragment" />
         <action
@@ -52,11 +49,6 @@
         android:label="fragment_health"
         tools:layout="@layout/fragment_health" />
     <fragment
-        android:id="@+id/mythBusterFragment"
-        android:name="com.skybox.seven.covid.ui.fragment.main.MythBusterFragment"
-        android:label="fragment_myth_buster"
-        tools:layout="@layout/fragment_myth_buster" />
-    <fragment
         android:id="@+id/newFragment"
         android:name="com.skybox.seven.covid.ui.fragment.main.NewFragment"
         android:label="fragment_new"
@@ -84,5 +76,14 @@
         <action
             android:id="@+id/action_selfTestFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mythBusterFragment2"
+        android:name="com.skybox.seven.covid.ui.fragment.main.MythBusterFragment"
+        android:label="fragment_myth_buster"
+        tools:layout="@layout/fragment_myth_buster" >
+        <action
+            android:id="@+id/action_mythBusterFragment2_to_contactTraceFragment2"
+            app:destination="@id/contactTraceFragment2" />
     </fragment>
 </navigation>
