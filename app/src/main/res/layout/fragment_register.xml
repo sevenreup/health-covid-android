@@ -3,87 +3,138 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_dark"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.RegisterFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/firstname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="First Name"
-         />
-
-    <EditText
-        android:id="@+id/firstName"
-        android:drawableLeft="@drawable/usericon"
-        android:layout_width="200dp"
-        android:layout_height="40sp"
-        android:layout_below="@+id/firstname"
-        android:background="#11000000"
-        />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/bigHeader"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:elevation="5dp"/>
 
     <TextView
-        android:id="@+id/lastName"
+        android:id="@+id/welcome"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/icons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/firstName"
-        android:layout_marginTop="65dp"
-        android:text="Last Name" />
-
-    <EditText
-        android:id="@+id/lastname"
-        android:layout_width="200dp"
-        android:layout_height="40sp"
-        android:layout_below="@+id/lastName"
-        android:layout_marginTop="53dp"
-        android:background="#11000000"
-        android:drawableLeft="@drawable/usericon"
-        android:ems="10"
-        android:paddingLeft="5dp" />
+        android:text="Welcome to Covid-19 App"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:elevation="5dp"/>
 
     <TextView
-        android:id="@+id/contactNumber"
+        android:layout_below="@+id/welcome"
+        android:id="@+id/register"
+        android:textColor="@color/icons"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:elevation="5dp"
+        android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/contactgender"
-        android:layout_marginTop="53dp"
-        android:text="Phone number" />
+        android:text="Register below"
+        android:layout_centerHorizontal="true"/>
 
-    <EditText
-        android:id="@+id/contactnumber"
-        android:layout_width="200dp"
-        android:layout_height="35sp"
-        android:layout_below="@+id/contactNumber"
-        android:layout_marginTop="57dp"
-        android:background="#11000000"
-        android:drawableLeft="@drawable/phoneicon"
-        android:inputType="phone"
-        android:paddingLeft="5dp" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_below="@+id/bigHeader"
+        app:cardCornerRadius="10dp"
+        android:elevation="5dp"
+        android:layout_margin="20dp">
 
-    <TextView
-        android:id="@+id/contactGender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lastname"
-        android:layout_marginTop="100dp"
-        android:text="Genderr" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="50dp">
 
-    <EditText
-        android:id="@+id/contactgender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/contactGender"
-        android:layout_marginTop="36dp"
-        android:background="#11000000"
-        android:ems="10"
-        android:inputType="text" />
+            <TextView
+                android:layout_below="@+id/register"
+                android:id="@+id/firstname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="First Name"
+                />
 
-    <Button
-        android:id="@+id/submitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        android:layout_below="@+id/contactnumber"/>
+            <EditText
+                android:id="@+id/firstName"
+                android:drawableLeft="@drawable/usericon"
+                android:layout_width="214dp"
+                android:layout_height="40sp"
+                android:layout_below="@+id/firstname"
+                android:background="#11000000"
+                />
+
+            <TextView
+                android:id="@+id/lastName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/firstName"
+                android:layout_marginTop="20dp"
+                android:text="Last Name" />
+
+            <EditText
+                android:id="@+id/lastname"
+                android:layout_width="214dp"
+                android:layout_height="40sp"
+                android:layout_below="@+id/lastName"
+                android:background="#11000000"
+                android:drawableLeft="@drawable/usericon"
+                android:ems="10"
+                android:paddingLeft="5dp" />
+
+            <TextView
+                android:id="@+id/contactNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/contactgender"
+                android:layout_marginTop="20dp"
+                android:text="Phone number" />
+
+            <EditText
+                android:id="@+id/contactnumber"
+                android:layout_width="214dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/contactNumber"
+                android:background="#11000000"
+                android:ems="10"
+                android:drawableLeft="@drawable/phoneicon"
+                android:inputType="phone"
+                android:paddingLeft="5dp" />
+
+            <TextView
+                android:id="@+id/contactGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lastname"
+                android:layout_marginTop="20dp"
+                android:text="Gender" />
+
+            <EditText
+                android:id="@+id/contactgender"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/contactGender"
+                android:background="#11000000"
+                android:ems="10"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/submitButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/contactnumber"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
 
 
 </RelativeLayout>
