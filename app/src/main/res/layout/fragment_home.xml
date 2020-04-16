@@ -3,35 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_dark"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        android:orientation="vertical"
        android:weightSum="15">
 
-       <RelativeLayout
-           android:padding="10dp"
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="5">
-
-          <androidx.cardview.widget.CardView
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              app:cardCornerRadius="10dp"
-              android:elevation="8dp"
-              android:layout_marginTop="10dp"
-              android:layout_marginLeft="10dp"
-              android:layout_marginRight="10dp">
-
               <RelativeLayout
                   android:layout_width="match_parent"
-                  android:layout_height="match_parent"
+                  android:layout_height="wrap_content"
                   android:padding="15dp">
 
 
@@ -144,119 +127,85 @@
                       android:text="Toll Free:"
                       android:textSize="16sp" />
 
-
-              </RelativeLayout>
-
-          </androidx.cardview.widget.CardView>
-
-
-
-       </RelativeLayout>
-       <RelativeLayout
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:layout_weight="1"
-           android:paddingLeft="10dp"
-           android:paddingRight="10dp">
-
-           <TextView
-               android:paddingLeft="10dp"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Services"
-               android:textSize="15sp"
-               android:layout_alignParentBottom="true"/>
-           <TextView
-               android:paddingLeft="10dp"
-               android:paddingRight="10dp"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="More Options"
-               android:textSize="15sp"
-               android:layout_alignParentBottom="true"
-               android:layout_alignParentEnd="true"
-               android:layout_alignParentRight="true" />
-
        </RelativeLayout>
        <GridLayout
            android:layout_width="match_parent"
            android:layout_height="0dp"
            android:layout_weight="9"
            android:rowCount="2"
-           android:columnCount="3"
+           android:columnCount="2"
            android:padding="10dp"
            android:columnOrderPreserved="false"
-           android:alignmentMode="alignMargins">
+           android:alignmentMode="alignMargins"
+           android:useDefaultMargins="true"
+           >
 
-           <androidx.cardview.widget.CardView
+           <com.google.android.material.card.MaterialCardView
                android:layout_width="0dp"
                android:layout_height="0dp"
                android:layout_rowWeight="1"
-               android:layout_marginBottom="10dp"
-               android:layout_marginLeft="10dp"
                android:layout_columnWeight="1"
                app:cardCornerRadius="10dp"
-               android:elevation="8dp">
+               android:elevation="8dp"
+               android:clickable="true"
+               android:focusable="true">
 
                <LinearLayout
                    android:layout_width="wrap_content"
-                   android:layout_height="115dp"
+                   android:layout_height="@dimen/menu_card_height"
                    android:layout_gravity="center_horizontal|center_vertical"
-                   android:layout_margin="10dp"
+                   android:layout_margin="@dimen/menu_card_margin"
+                   android:gravity="center"
                    android:orientation="vertical">
 
                    <ImageView
                        android:layout_width="wrap_content"
-                       android:layout_height="100dp"
-                       android:layout_gravity="center_horizontal"
+                       android:layout_height="@dimen/menu_card_image_height"
+                       android:layout_marginBottom="@dimen/menu_card_image_mBottom"
                        android:src="@drawable/ic_user" />
 
                    <TextView
-                       android:layout_width="96dp"
+                       android:layout_width="match_parent"
                        android:layout_height="wrap_content"
                        android:layout_gravity="center_horizontal"
-                       android:text="User Info"
+                       android:text="@string/menu_health_tips"
                        android:textAlignment="center"
-                       android:textColor="#000000"
                        android:textSize="15sp" />
 
                </LinearLayout>
 
 
 
-           </androidx.cardview.widget.CardView>
+           </com.google.android.material.card.MaterialCardView>
            <androidx.cardview.widget.CardView
                android:layout_width="0dp"
 
                android:layout_height="0dp"
                android:layout_rowWeight="1"
-             android:layout_marginBottom="10dp"
-               android:layout_marginLeft="10dp"
                android:layout_columnWeight="1"
                app:cardCornerRadius="10dp"
                android:elevation="8dp">
 
                <LinearLayout
                    android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:orientation="vertical"
-                   android:layout_margin="10dp"
-                   android:layout_gravity="center_horizontal|center_vertical">
+                   android:layout_height="@dimen/menu_card_height"
+                   android:layout_gravity="center_horizontal|center_vertical"
+                   android:layout_margin="@dimen/menu_card_margin"
+                   android:gravity="center"
+                   android:orientation="vertical">
 
                    <ImageView
                        android:layout_width="wrap_content"
-                       android:layout_height="100dp"
-                       android:layout_gravity="center_horizontal"
-                       android:src="@drawable/ic_worlds"/>
-                   <TextView
-                       android:layout_width="96dp"
-                       android:layout_height="wrap_content"
-                       android:textAlignment="center"
-                       android:textSize="15sp"
+                       android:layout_height="@dimen/menu_card_image_height"
+                       android:layout_marginBottom="@dimen/menu_card_image_mBottom"
+                       android:src="@drawable/ic_worlds" />
 
-                       android:text="Location"
-                       android:textColor="#000000"
-                       android:layout_gravity="center_horizontal" />
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center_horizontal"
+                       android:text="@string/menu_mythbusters"
+                       android:textAlignment="center" />
 
                </LinearLayout>
 
@@ -267,32 +216,28 @@
                android:layout_width="0dp"
                android:layout_height="0dp"
                android:layout_rowWeight="1"
-               android:layout_marginBottom="10dp"
-               android:layout_marginRight="10dp"
-               android:layout_marginLeft="10dp"
                android:layout_columnWeight="1"
                app:cardCornerRadius="10dp"
                android:elevation="8dp">
 
                <LinearLayout
                    android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:orientation="vertical"
-                   android:layout_margin="10dp"
-                   android:layout_gravity="center_horizontal|center_vertical">
+                   android:layout_height="@dimen/menu_card_height"
+                   android:layout_gravity="center_horizontal|center_vertical"
+                   android:layout_margin="@dimen/menu_card_margin"
+                   android:gravity="center"
+                   android:orientation="vertical">
 
                    <ImageView
                        android:layout_width="wrap_content"
-                       android:layout_height="100dp"
-                       android:layout_gravity="center_horizontal"
+                       android:layout_height="@dimen/menu_card_image_height"
+                       android:layout_marginBottom="@dimen/menu_card_image_mBottom"
                        android:src="@drawable/ic_test"/>
                    <TextView
                        android:layout_width="96dp"
                        android:layout_height="wrap_content"
                        android:textAlignment="center"
-                       android:textSize="15sp"
-                       android:text="Self Test"
-                       android:textColor="#000000"
+                       android:text="@string/menu_self_test"
                        android:layout_gravity="center_horizontal" />
 
                </LinearLayout>
@@ -304,9 +249,6 @@
                android:layout_width="0dp"
                android:layout_height="0dp"
                android:layout_rowWeight="1"
-               android:layout_marginTop="10dp"
-               android:layout_marginLeft="10dp"
-               android:layout_marginBottom="10dp"
                android:id="@+id/contactCard"
                android:layout_columnWeight="1"
                app:cardCornerRadius="10dp"
@@ -314,23 +256,22 @@
 
                <LinearLayout
                    android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:orientation="vertical"
-                   android:layout_margin="10dp"
-                   android:layout_gravity="center_horizontal|center_vertical">
+                   android:layout_height="@dimen/menu_card_height"
+                   android:layout_gravity="center_horizontal|center_vertical"
+                   android:layout_margin="@dimen/menu_card_margin"
+                   android:gravity="center"
+                   android:orientation="vertical">
 
                    <ImageView
                        android:layout_width="wrap_content"
-                       android:layout_height="100dp"
-                       android:layout_gravity="center_horizontal"
+                       android:layout_height="@dimen/menu_card_image_height"
+                       android:layout_marginBottom="@dimen/menu_card_image_mBottom"
                        android:src="@drawable/ic_team"/>
                    <TextView
                        android:layout_width="96dp"
                        android:layout_height="wrap_content"
                        android:textAlignment="center"
-                       android:textSize="15sp"
-                       android:text="Contacts"
-                       android:textColor="#000000"
+                       android:text="@string/menu_news"
                        android:layout_gravity="center_horizontal" />
 
                </LinearLayout>
@@ -342,34 +283,30 @@
                android:layout_width="0dp"
                android:layout_height="0dp"
                android:layout_rowWeight="1"
-               android:layout_marginTop="10dp"
-               android:layout_marginLeft="10dp"
-               android:layout_marginBottom="10dp"
                android:layout_columnWeight="1"
                app:cardCornerRadius="10dp"
                android:elevation="8dp">
 
                <LinearLayout
                    android:layout_width="wrap_content"
-                   android:layout_height="129dp"
+                   android:layout_height="@dimen/menu_card_height"
                    android:layout_gravity="center_horizontal|center_vertical"
-                   android:layout_margin="10dp"
+                   android:layout_margin="@dimen/menu_card_margin"
+                   android:gravity="center"
                    android:orientation="vertical">
 
                    <ImageView
                        android:layout_width="wrap_content"
-                       android:layout_height="100dp"
-                       android:layout_gravity="center_horizontal"
+                       android:layout_height="@dimen/menu_card_image_height"
+                       android:layout_marginBottom="@dimen/menu_card_image_mBottom"
                        android:src="@drawable/ic_history" />
 
                    <TextView
-                       android:layout_width="96dp"
+                       android:layout_width="match_parent"
                        android:layout_height="wrap_content"
                        android:layout_gravity="center_horizontal"
-                       android:text="History"
-                       android:textAlignment="center"
-                       android:textColor="#000000"
-                       android:textSize="15sp" />
+                       android:text="@string/menu_qna"
+                       android:textAlignment="center"/>
 
                </LinearLayout>
 
@@ -380,33 +317,28 @@
                android:layout_width="0dp"
                android:layout_height="0dp"
                android:layout_rowWeight="1"
-               android:layout_marginTop="10dp"
-               android:layout_marginLeft="10dp"
-               android:layout_marginRight="10dp"
-               android:layout_marginBottom="10dp"
                android:layout_columnWeight="1"
                app:cardCornerRadius="10dp"
                android:elevation="8dp">
 
                <LinearLayout
                    android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:orientation="vertical"
-                   android:layout_margin="10dp"
-                   android:layout_gravity="center_horizontal|center_vertical">
+                   android:layout_height="@dimen/menu_card_height"
+                   android:layout_gravity="center_horizontal|center_vertical"
+                   android:layout_margin="@dimen/menu_card_margin"
+                   android:gravity="center"
+                   android:orientation="vertical">
 
                    <ImageView
                        android:layout_width="wrap_content"
-                       android:layout_height="100dp"
-                       android:layout_gravity="center_horizontal"
+                       android:layout_height="@dimen/menu_card_image_height"
+                       android:layout_marginBottom="@dimen/menu_card_image_mBottom"
                        android:src="@drawable/ic_newspaper"/>
                    <TextView
-                       android:layout_width="96dp"
+                       android:layout_width="match_parent"
                        android:layout_height="wrap_content"
                        android:textAlignment="center"
-                       android:textSize="15sp"
-                       android:text="News"
-                       android:textColor="#000000"
+                       android:text="@string/menu_contacts"
                        android:layout_gravity="center_horizontal" />
 
                </LinearLayout>

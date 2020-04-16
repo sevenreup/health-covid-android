@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="menu_card_height">180dp</dimen>
+    <dimen name="menu_card_margin">15dp</dimen>
+    <dimen name="menu_card_image_height">50dp</dimen>
+    <dimen name="menu_card_image_mBottom">10dp</dimen>
+</resources>
