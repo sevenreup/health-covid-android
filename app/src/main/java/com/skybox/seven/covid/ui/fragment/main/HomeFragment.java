@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.fragment;
+package com.skybox.seven.covid.ui.fragment.main;
 
 
 import android.content.Intent;
@@ -10,10 +10,15 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.skybox.seven.covid.R;
+import com.skybox.seven.covid.network.responses.LoginResponse;
 import com.skybox.seven.covid.ui.ContactActivity;
 import com.skybox.seven.covid.ui.HomeActivity;
+import com.skybox.seven.covid.util.BaseModelFactory;
+import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 
 /**
@@ -22,10 +27,9 @@ import com.skybox.seven.covid.ui.HomeActivity;
 public class HomeFragment extends Fragment {
 
 
-    TextView userName;
-    TextView userNumber;
-    String user, number;
-    CardView contactCard;
+    private TextView userName;
+    private TextView userNumber;
+    private MainViewModel viewModel;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -39,29 +43,14 @@ public class HomeFragment extends Fragment {
 
         userName = v.findViewById(R.id.userName);
         userNumber = v.findViewById(R.id.userNumber);
-        contactCard = v.findViewById(R.id.contactCard);
-        Bundle bundle = getArguments();
-        user = bundle.getString("username");
-        number = bundle.getString("number");
-        userNumber.setText(number);
-        userName.setText(user);
+        viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
 
-        contactCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent();
-                intent.setClass(getActivity(), ContactActivity.class);
-
-                getActivity().startActivity(intent);
-                startActivity(intent);
-            }
+        viewModel.credentials.observe(getActivity(), loginResponse -> {
+            userNumber.setText(loginResponse.getPhone());
+            userName.setText(loginResponse.getName());
         });
 
-
         return v;
-
-
     }
 
 }

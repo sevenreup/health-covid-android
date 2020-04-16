@@ -6,59 +6,37 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.ui.fragment.HomeFragment;
+import com.skybox.seven.covid.ui.fragment.main.HomeFragment;
 import com.skybox.seven.covid.ui.fragment.SettingsFragment;
+import com.skybox.seven.covid.util.BaseModelFactory;
+import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 public class HomeActivity extends AppCompatActivity {
 
     public static final String NAME_MESSAGE = "userName";
     public static final String PHONE_MESSAGE = "userNumber";
-    private static FragmentManager fragmentManager;
     BottomNavigationView navigationView;
+    MainViewModel viewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        fragmentManager = getSupportFragmentManager();
+
+        viewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(MainViewModel.class);
 
         Intent intent = getIntent();
-
         String userNameM = intent.getStringExtra(NAME_MESSAGE);
         String userNumberM =intent.getStringExtra(PHONE_MESSAGE);
-
-
+        viewModel.setCredentials(userNameM, userNumberM);
         navigationView= findViewById(R.id.navbar);
-        navigationView.setOnNavigationItemSelectedListener(menuItem -> {
-        switch (menuItem.getItemId()){
-            case R.id.home:
-
-                Toast.makeText(HomeActivity.this,"Home Fragment", Toast.LENGTH_LONG).show();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, setUpHome(userNameM, userNumberM)).commit();
-                break;
-
-            case R.id.settings:
-                Toast.makeText(HomeActivity.this, "Settings Fragment", Toast.LENGTH_LONG).show();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, new SettingsFragment()).commit();
-                break;
-
-        }
-        return false;
-        });
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, setUpHome(userNameM, userNumberM)).commit();
+        NavigationUI.setupWithNavController(navigationView, Navigation.findNavController(findViewById(R.id.container)));
     }
 
-    private HomeFragment setUpHome(String userNameM, String userNumberM) {
-        HomeFragment home = new HomeFragment();
-        Bundle homeB = new Bundle();
-        homeB.putString("username", userNameM);
-        homeB.putString("number", userNumberM);
-        home.setArguments(homeB);
-        return home;
-    }
 }

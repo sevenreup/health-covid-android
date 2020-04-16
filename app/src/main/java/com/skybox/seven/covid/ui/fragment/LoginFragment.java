@@ -53,7 +53,7 @@ public class LoginFragment extends Fragment {
         loginButton = v.findViewById(R.id.loginButton);
         registerView = v.findViewById(R.id.registerView);
 
-        viewModel.credentials.observe(this, loginResponse -> {
+        viewModel.credentials.observe(getActivity(), loginResponse -> {
             Intent intent = new Intent();
             intent.setClass(getActivity(),HomeActivity.class);
             intent.putExtra(HomeActivity.NAME_MESSAGE,loginResponse.getName());

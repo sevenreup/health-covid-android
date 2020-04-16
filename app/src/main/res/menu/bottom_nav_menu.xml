@@ -3,12 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/homeicon"
         android:title="Home"
         android:visible="true" />
     <item
-        android:id="@+id/settings"
+        android:id="@+id/casesFragment"
+        android:icon="@drawable/ic_group"
+        android:title="Cases" />
+    <item
+        android:id="@+id/settingsFragment"
         android:icon="@drawable/settingsicon"
         android:title="Settings"
         android:visible="true" />

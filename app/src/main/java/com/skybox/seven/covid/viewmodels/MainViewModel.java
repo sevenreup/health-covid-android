@@ -14,7 +14,9 @@ import retrofit2.Retrofit;
 
 public class MainViewModel extends ViewModel {
     public MutableLiveData<LoginResponse> credentials = new MutableLiveData<>();
-    Retrofit retrofit = RetrofitFactory.getRetrofit();
+    public MutableLiveData<LoginResponse> temp = new MutableLiveData<>();
+
+    private Retrofit retrofit = RetrofitFactory.getRetrofit();
 
     public void login(String phone, String password) {
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
@@ -36,5 +38,13 @@ public class MainViewModel extends ViewModel {
                 credentials.setValue(user);
             }
         });
+    }
+
+    public void setCredentials(String username, String phone) {
+        LoginResponse response = new LoginResponse();
+        response.setPhone(phone);
+        response.setName(username);
+
+        temp.setValue(response);
     }
 }
