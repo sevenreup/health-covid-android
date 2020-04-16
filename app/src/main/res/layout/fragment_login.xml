@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.UiTestActivity">
+
+    <ImageView
+        android:id="@+id/userAv"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/masterninb"/>
+
+    <EditText
+        android:id="@+id/userName"
+        android:paddingLeft="5dp"
+        android:drawableLeft="@drawable/usericon"
+        android:layout_width="200dp"
+        android:layout_height="40sp"
+        android:layout_below="@+id/userAv"
+        android:background="#11000000"
+        android:layout_marginTop="80dp"
+        android:ems="10"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/userNumber"
+        android:paddingLeft="5dp"
+        android:drawableLeft="@drawable/phoneicon"
+        android:layout_width="200dp"
+        android:background="#11000000"
+        android:layout_height="35sp"
+        android:layout_below="@+id/userName"
+        android:layout_alignStart="@+id/userName"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:layout_alignLeft="@+id/userName" />
+    <Button
+        android:id="@+id/loginButton"
+        android:textColor="#ffffff"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:elevation="10dp"
+        android:layout_below="@id/userNumber"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:textSize="20sp"
+        android:text="Login"
+        android:background="@drawable/button_rectangle_pink"/>
+
+    <TextView
+        android:id="@+id/registerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register me"
+        android:layout_below="@+id/loginButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register Me"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/loginButton"
+        android:layout_marginTop="90dp"
+        android:textSize="15sp"/>
+
+
+</RelativeLayout>

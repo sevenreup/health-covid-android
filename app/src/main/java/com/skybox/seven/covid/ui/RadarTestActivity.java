@@ -9,17 +9,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.location.LocationFactory;
 import com.skybox.seven.covid.location.LocationReceiver;
 import com.skybox.seven.covid.location.LocationRepository;
 import com.skybox.seven.covid.location.LocationViewModel;
-import com.skybox.seven.covid.model.UserLocation;
+import com.skybox.seven.covid.util.BaseModelFactory;
 
 public class RadarTestActivity extends AppCompatActivity {
     private LocationReceiver locationReceiver;
@@ -46,7 +44,7 @@ public class RadarTestActivity extends AppCompatActivity {
         geofenceStatus = findViewById(R.id.geofence);
         checkPlayServices();
         locationReceiver = new LocationReceiver();
-        locationViewModel = new ViewModelProvider(this, new LocationFactory()).get(LocationViewModel.class);
+        locationViewModel = new ViewModelProvider(this, new BaseModelFactory()).get(LocationViewModel.class);
         locationViewModel.getData().observe(this, userLocation -> geofenceStatus.setText("changed"));
     }
 
