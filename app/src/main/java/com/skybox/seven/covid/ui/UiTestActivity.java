@@ -31,6 +31,5 @@ public class UiTestActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
 
         fm.beginTransaction().add(R.id.mainlayout, loginFragment).commit();
-
     }
 }

@@ -10,7 +10,7 @@ public class RetrofitFactory {
 
     public static Retrofit getRetrofit() {
         if (retrofit==null) {
-            retrofit = new Retrofit.Builder().baseUrl("").addConverterFactory(GsonConverterFactory.create()).build();
+            retrofit = new Retrofit.Builder().baseUrl("https://rocky-forest-46591.herokuapp.com/api").addConverterFactory(GsonConverterFactory.create()).build();
         }
         return retrofit;
     }
