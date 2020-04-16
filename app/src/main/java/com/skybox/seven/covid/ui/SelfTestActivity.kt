@@ -1,32 +1,17 @@
 package com.skybox.seven.covid.ui
 
 import android.app.DatePickerDialog
-import android.app.Dialog
 import android.app.SearchManager
 import android.content.Context
-import android.graphics.Color
-import android.graphics.Color.TRANSPARENT
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.View
-import android.view.ViewTreeObserver
-import android.widget.Toast
-import android.widget.Button
-import android.widget.Spinner
-import android.widget.ArrayAdapter
-import android.widget.ProgressBar
-import androidx.appcompat.widget.SearchView
-import android.widget.AdapterView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import com.skydoves.powerspinner.SpinnerAnimation
-import com.skydoves.powerspinner.SpinnerGravity
-import com.skydoves.powerspinner.createPowerSpinnerView
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.appcompat.widget.SearchView
+import com.skybox.seven.covid.R
+import kotlinx.android.synthetic.main.selftest.*
 import java.util.*
 
 
@@ -37,7 +22,7 @@ class SelfTestActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.selftest)
 
 
         widgetBinders()
@@ -58,7 +43,6 @@ class SelfTestActivity : AppCompatActivity() {
             val dpd = DatePickerDialog(
                 this,
                 DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-
                     date.setText("" + dayOfMonth + " " + month + ", " + year)
                 },
                 year,
