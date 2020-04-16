@@ -17,7 +17,6 @@ import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.MainController;
 import com.skybox.seven.covid.model.MenuItem;
 import com.skybox.seven.covid.network.responses.LoginResponse;
-import com.skybox.seven.covid.ui.ContactActivity;
 import com.skybox.seven.covid.ui.HomeActivity;
 import com.skybox.seven.covid.util.BaseModelFactory;
 import com.skybox.seven.covid.util.GridItemDecoration;

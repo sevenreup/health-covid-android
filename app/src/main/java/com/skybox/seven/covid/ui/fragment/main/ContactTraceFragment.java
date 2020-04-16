@@ -93,5 +93,5 @@ public class ContactTraceFragment extends Fragment {
 
         return models;
     }
-    
+
 }
