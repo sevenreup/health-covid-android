@@ -52,14 +52,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/register"
                 android:text="First Name" />
 
             <EditText
                 android:id="@+id/firstName"
                 android:layout_width="214dp"
                 android:layout_height="40sp"
-                android:layout_below="@+id/firstname"
                 android:background="#11000000"
                 android:drawableLeft="@drawable/usericon" />
 
@@ -71,10 +69,9 @@
                 android:text="Last Name" />
 
             <EditText
-                android:id="@+id/lastname"
+                android:id="@+id/lastName"
                 android:layout_width="214dp"
                 android:layout_height="40sp"
-                android:layout_below="@+id/lastName"
                 android:background="#11000000"
                 android:drawableLeft="@drawable/usericon"
                 android:ems="10"
@@ -83,15 +80,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/contactgender"
                 android:layout_marginTop="20dp"
                 android:text="Phone number" />
 
             <EditText
-                android:id="@+id/contactnumber"
+                android:id="@+id/contactNumber"
                 android:layout_width="214dp"
                 android:layout_height="40dp"
-                android:layout_below="@+id/contactNumber"
                 android:background="#11000000"
                 android:drawableLeft="@drawable/phoneicon"
                 android:ems="10"
@@ -101,7 +96,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lastname"
                 android:layout_marginTop="20dp"
                 android:text="Gender" />
 
@@ -109,7 +103,6 @@
                 android:id="@+id/contactgender"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_below="@+id/contactGender"
                 android:background="#11000000"
                 android:ems="10"
                 android:inputType="text" />
@@ -118,7 +111,6 @@
                 android:id="@+id/submitButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/contactnumber"
                 android:layout_marginTop="30dp"
                 android:text="Submit" />
 
