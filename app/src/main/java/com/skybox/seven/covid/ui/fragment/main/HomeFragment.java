@@ -64,8 +64,8 @@ public class HomeFragment extends Fragment {
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(new MenuItem(R.drawable.ic_user, R.string.menu_health_tips, R.id.healthFragment));
         menuItems.add(new MenuItem(R.drawable.ic_worlds, R.string.menu_mythbusters, R.id.healthFragment));
-        menuItems.add(new MenuItem(R.drawable.ic_test, R.string.menu_self_test, R.id.healthFragment));
-        menuItems.add(new MenuItem(R.drawable.ic_newspaper, R.string.menu_news, R.id.healthFragment));
+        menuItems.add(new MenuItem(R.drawable.ic_test, R.string.menu_self_test, R.id.selfTestFragment));
+        menuItems.add(new MenuItem(R.drawable.ic_team, R.string.menu_news, R.id.healthFragment));
         menuItems.add(new MenuItem(R.drawable.ic_history, R.string.menu_qna, R.id.healthFragment));
         menuItems.add(new MenuItem(R.drawable.ic_team, R.string.menu_contacts, R.id.contactTraceFragment2));
         return menuItems;
