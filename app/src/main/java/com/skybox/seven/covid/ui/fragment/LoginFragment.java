@@ -14,19 +14,25 @@ import android.widget.TextView;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.skybox.seven.covid.R;
+import com.skybox.seven.covid.network.responses.LoginResponse;
 import com.skybox.seven.covid.ui.HomeActivity;
 import com.skybox.seven.covid.ui.UiTestActivity;
+import com.skybox.seven.covid.util.BaseModelFactory;
+import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class LoginFragment extends Fragment {
-    EditText userName;
-    EditText userNumber;
-    Button loginButton;
-    TextView registerView;
+    private MainViewModel viewModel;
+    private EditText userName;
+    private EditText userNumber;
+    private Button loginButton;
+    private TextView registerView;
     private static FragmentManager fragmentManager;
 
     public LoginFragment() {
@@ -40,34 +46,36 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_login, container, false);
 
+        viewModel = new ViewModelProvider(getActivity(), new BaseModelFactory()).get(MainViewModel.class);
+
         userName = v.findViewById(R.id.userName);
         userNumber = v.findViewById(R.id.userNumber);
         loginButton = v.findViewById(R.id.loginButton);
         registerView = v.findViewById(R.id.registerView);
 
-       loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String userNameM = userName.getText().toString();
-                String userNumberM = userNumber.getText().toString();
-                Intent intent = new Intent();
-                intent.setClass(getActivity(),HomeActivity.class);
-                intent.putExtra(HomeActivity.NAME_MESSAGE,userNameM);
-                intent.putExtra(HomeActivity.PHONE_MESSAGE, userNumberM);
-                getActivity().startActivity(intent);
-                startActivity(intent);
-            }
-    });
+        viewModel.credentials.observe(this, loginResponse -> {
+            Intent intent = new Intent();
+            intent.setClass(getActivity(),HomeActivity.class);
+            intent.putExtra(HomeActivity.NAME_MESSAGE,loginResponse.getName());
+            intent.putExtra(HomeActivity.PHONE_MESSAGE, loginResponse.getPhone());
 
-      registerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    RegisterFragment registerFragment = new RegisterFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainlayout, registerFragment);
-                transaction.commit();
-            }
+            getActivity().startActivity(intent);
+            startActivity(intent);
         });
+
+       loginButton.setOnClickListener(v1 -> {
+           String userNameM = userName.getText().toString();
+           String userNumberM = userNumber.getText().toString();
+           viewModel.login(userNameM, userNumberM);
+
+       });
+
+      registerView.setOnClickListener(v12 -> {
+              RegisterFragment registerFragment = new RegisterFragment();
+          FragmentTransaction transaction = getFragmentManager().beginTransaction();
+          transaction.replace(R.id.mainlayout, registerFragment);
+          transaction.commit();
+      });
 
     return v;
     }
