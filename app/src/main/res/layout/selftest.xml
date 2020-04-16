@@ -129,31 +129,16 @@
                         android:textColor="#fff"
                         android:textAlignment="center"
                         android:layout_marginStart="4dp"/>
-                    <com.skydoves.powerspinner.PowerSpinnerView
+                    <Spinner
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginTop="0dp"
                         android:layout_marginStart="4dp"
                         android:layout_marginEnd="4dp"
-                        android:id="@+id/mySpinnerView"
+                        android:id="@+id/spinner"
                         android:background="@drawable/bg"
                         android:gravity="center"
-                        android:hint="Degree of severity"
-                        android:padding="10dp"
-                        android:textColor="#001"
-                        android:textColorHint="#fef"
-                        android:textSize="14.5sp"
-                        app:spinner_arrow_gravity="end"
-                        app:spinner_arrow_padding="8dp"
-                        app:spinner_divider_color="#fef"
-                        app:spinner_divider_show="true"
-                        app:spinner_divider_size="0.4dp"
-                        app:spinner_arrow_animate="true"
-                        app:spinner_arrow_show="true"
-                        app:spinner_item_array="@array/suggestions"
-                        app:spinner_popup_animation="dropdown"
-                        app:spinner_popup_background="#00838F"
-                        app:spinner_popup_elevation="14dp" />
+                         />
 
                 </LinearLayout>
                 <RelativeLayout

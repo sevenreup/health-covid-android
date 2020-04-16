@@ -90,6 +90,15 @@ class SelfTestActivity : AppCompatActivity() {
         }
 
     }
+    private fun operations(){
+        val items = arrayOf("Mild condition","Severe condition","I am not sure")
+        val spinner: Spinner = findViewById(R.id.spinner)
+
+        spinner.adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,items)
+
+
+
+        }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
