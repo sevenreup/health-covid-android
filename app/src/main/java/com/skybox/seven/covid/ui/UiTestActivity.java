@@ -32,7 +32,5 @@ public class UiTestActivity extends AppCompatActivity {
 
         fm.beginTransaction().add(R.id.mainlayout, loginFragment).commit();
 
-
-
     }
 }
