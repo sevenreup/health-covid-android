@@ -26,7 +26,7 @@ import androidx.core.content.ContextCompat
 import com.skydoves.powerspinner.SpinnerAnimation
 import com.skydoves.powerspinner.SpinnerGravity
 import com.skydoves.powerspinner.createPowerSpinnerView
-import kotlinx.android.synthetic.main.selftest.*
+import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 
@@ -37,7 +37,7 @@ class SelfTestActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.selftest)
+        setContentView(R.layout.activity_main)
 
 
         widgetBinders()
@@ -70,18 +70,12 @@ class SelfTestActivity : AppCompatActivity() {
                 val progress: ProgressBar = findViewById(R.id.progress)
                 progress.visibility = View.GONE
                 if (date.text.toString() != "Choose todays date") {
-                    val dialog = Dialog(this)
-                    val view = layoutInflater.inflate(R.layout.message_fragment, null)
-                    dialog.setContentView(view)
-                    dialog.window?.setBackgroundDrawable(ColorDrawable(TRANSPARENT))
 
-                    val inserter: TextView = view.findViewById(R.id.results)
-                    inserter.text = "Odds for COVID19 = 40%"
 
                     progress.visibility = View.VISIBLE
                     submission.visibility = View.GONE
                     Handler().postDelayed({
-                        dialog.show()
+                        Toast.makeText(this@SelfTestActivity, "Odds for COVID19: 0.07%", Toast.LENGTH_SHORT).show()
                         submission.visibility = View.VISIBLE
                         progress.visibility = View.GONE
                     },5000)
