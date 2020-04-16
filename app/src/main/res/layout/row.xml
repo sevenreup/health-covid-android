@@ -24,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/nam"
+            android:drawableEnd="@drawable/ic_link"
             android:text="sadvlhchnk" />
 
         <TextView
@@ -41,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/ContName"
             android:layout_toRightOf="@+id/num"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="12dp"
             android:text="acndkanjbdjkvnsdk" />
 
     </RelativeLayout>
