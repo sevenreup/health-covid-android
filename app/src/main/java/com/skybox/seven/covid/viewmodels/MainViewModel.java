@@ -1,8 +1,13 @@
 package com.skybox.seven.covid.viewmodels;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.skybox.seven.covid.network.RetrofitFactory;
 import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.network.responses.LoginResponse;
@@ -17,6 +22,12 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<LoginResponse> temp = new MutableLiveData<>();
 
     private Retrofit retrofit = RetrofitFactory.getRetrofit();
+    private FirebaseAuth auth;
+
+    public MainViewModel() {
+        super();
+        auth = FirebaseAuth.getInstance();
+    }
 
     public void login(String phone, String password) {
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
@@ -26,7 +37,14 @@ public class MainViewModel extends ViewModel {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 LoginResponse user = response.body();
                 if (user != null) {
-                    credentials.setValue(user);
+
+                    auth.signInWithCustomToken(user.getType() + " " + user.getToken()).addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            credentials.setValue(user);
+                        } else {
+                            task.getException().printStackTrace();
+                        }
+                    });
                 }
             }
             @Override
@@ -46,5 +64,9 @@ public class MainViewModel extends ViewModel {
         response.setName(username);
 
         temp.setValue(response);
+    }
+
+    public void register(String fname, String lname, String number, String gender) {
+        
     }
 }
