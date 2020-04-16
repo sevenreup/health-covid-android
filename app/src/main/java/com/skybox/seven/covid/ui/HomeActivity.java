@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.skybox.seven.covid.R;
+import com.skybox.seven.covid.ui.fragment.HomeFragment;
+import com.skybox.seven.covid.ui.fragment.SettingsFragment;
 
 public class HomeActivity extends AppCompatActivity {
 

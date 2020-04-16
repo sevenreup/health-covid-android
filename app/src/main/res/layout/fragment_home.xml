@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/primary_dark"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="ui.HomeFragment">
+    tools:context=".ui.fragment.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
    <LinearLayout
@@ -307,6 +307,7 @@
                android:layout_marginTop="10dp"
                android:layout_marginLeft="10dp"
                android:layout_marginBottom="10dp"
+               android:id="@+id/contactCard"
                android:layout_columnWeight="1"
                app:cardCornerRadius="10dp"
                android:elevation="8dp">

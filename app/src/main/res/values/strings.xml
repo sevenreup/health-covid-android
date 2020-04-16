@@ -7,4 +7,7 @@
     <string name="add_a_description_i_e_house_color">Add a description i.e house #, color...</string>
     <string name="title_activity_maps">Map</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

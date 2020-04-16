@@ -7,34 +7,32 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import androidx.fragment.app.FragmentManager;
+import android.widget.Toast;
 
 import com.skybox.seven.covid.R;
+import com.skybox.seven.covid.ui.fragment.LoginFragment;
+import com.skybox.seven.covid.ui.fragment.RegisterFragment;
+
 
 
 public class UiTestActivity extends AppCompatActivity {
-    EditText userName;
-    EditText userNumber;
-    Button loginButton;
+
+    public static FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        userName = findViewById(R.id.userName);
-        userNumber = findViewById(R.id.userNumber);
-        loginButton = findViewById(R.id.loginButton);
+        LoginFragment loginFragment = new LoginFragment();
+        FragmentManager fm = getSupportFragmentManager();
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String userNameM = userName.getText().toString();
-                String userNumberM = userNumber.getText().toString();
-                Intent intent = new Intent(UiTestActivity.this, HomeActivity.class);
-                intent.putExtra(HomeActivity.NAME_MESSAGE,userNameM);
-                intent.putExtra(HomeActivity.PHONE_MESSAGE, userNumberM);
-                startActivity(intent);
-            }
-        });
+        fm.beginTransaction().add(R.id.mainlayout, loginFragment).commit();
+
+
+
     }
 }

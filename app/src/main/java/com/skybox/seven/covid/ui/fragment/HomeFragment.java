@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui;
+package com.skybox.seven.covid.ui.fragment;
 
 
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.skybox.seven.covid.R;
@@ -21,7 +22,7 @@ public class HomeFragment extends Fragment {
     TextView userName;
     TextView userNumber;
     String user, number;
-
+    CardView contactCard;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -35,12 +36,15 @@ public class HomeFragment extends Fragment {
 
         userName = v.findViewById(R.id.userName);
         userNumber = v.findViewById(R.id.userNumber);
+        contactCard = v.findViewById(R.id.contactCard);
         Bundle bundle = getArguments();
         user = bundle.getString("username");
         number = bundle.getString("number");
         userNumber.setText(number);
         userName.setText(user);
         return v;
+
+
     }
 
 }
