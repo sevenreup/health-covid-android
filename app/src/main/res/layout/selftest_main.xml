@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="@android:color/holo_orange_light"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="3dp">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollview"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+                <Button
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="Choose todays date"
+                    android:textAlignment="center"
+                    android:background="@drawable/bg"
+                    />
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="Experiencing shortness of breath?"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:buttonTint="#fff"
+                    />
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="Experiencing sore throat?"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:buttonTint="#fff"
+                    />
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="Experiencing fever?"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:buttonTint="#fff"
+                    />
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="Experiencing dry cough?"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:buttonTint="#fff"
+                    />
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="Experiencing aches and pains?"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:buttonTint="#fff"
+                    />
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="Experiencing nasal congestion, runny nose?"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:buttonTint="#fff"
+                    />
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="Experiencing diarrhea?"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:buttonTint="#fff"
+                    />
+                <LinearLayout
+                    android:layout_height="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="4dp"
+                    >
+                    <TextView
+                        android:layout_marginTop="23dp"
+                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:text="Choose degree:"
+                        android:textColor="#fff"
+                        android:textAlignment="center"
+                        android:layout_marginStart="4dp"/>
+                    <Spinner
+                        style="@style/Widget.AppCompat.Spinner.Underlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:id="@+id/spinner"
+                        android:textAlignment="center"
+
+
+                        />
+                </LinearLayout>
+                <Button
+                    android:id="@+id/submission"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:text="Submit"
+                    android:textColor="#fff"
+                    android:background="@drawable/button"
+                    android:textAlignment="center"
+                    />
+                <TextView
+                    android:layout_marginTop="23dp"
+                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:text="Couldn't find what you are looking for?"
+                    android:textColor="#001"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="4dp"/>
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</FrameLayout>
