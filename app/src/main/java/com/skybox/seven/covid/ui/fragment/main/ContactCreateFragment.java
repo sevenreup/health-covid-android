@@ -2,9 +2,6 @@ package com.skybox.seven.covid.ui.fragment.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +11,21 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.FamMember;
+import com.skybox.seven.covid.network.RetrofitFactory;
+import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.ui.Location;
 
 import java.util.ArrayList;
+
+import androidx.fragment.app.Fragment;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +34,8 @@ public class ContactCreateFragment extends Fragment {
     LayoutInflater inflater;
     LinearLayout membersView;
     ArrayList<FamMember> members = new ArrayList<>();
+
+    LatLng userLocation;
 
     public ContactCreateFragment() {
         // Required empty public constructor
@@ -42,6 +50,7 @@ public class ContactCreateFragment extends Fragment {
         membersView = v.findViewById(R.id.membersParent);
         RelativeLayout addPersonView = v.findViewById(R.id.addPerson);
         RelativeLayout addLocView = v.findViewById(R.id.addLocation);
+        Button saveButton = v.findViewById(R.id.saveChanges);
 
         this.inflater = inflater;
 
@@ -67,15 +76,32 @@ public class ContactCreateFragment extends Fragment {
             startActivity(intent);
         });
 
-        FamMember member = new FamMember("Mijiga", "0998530227");
-        members.add(member);
+        saveButton.setOnClickListener(v1 -> {
+            Retrofit retrofit = RetrofitFactory.getRetrofit();
+            RetrofitService service = retrofit.create(RetrofitService.class);
+            service.saveContacts(members,userLocation).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    System.out.println(response+"wellooooo");
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    System.out.println(call+"well damn");
+                }
+            });
+        });
+
+
+        //FamMember member = new FamMember("Mijiga", "0998530227");
+        //members.add(member);
 
         setupFamily();
 
     return v;
     }
 
-    public void setupFamily() {
+    private void setupFamily() {
         membersView.removeAllViews();
         for (FamMember member : members) {
             View view = inflater.inflate(R.layout.member_item,null);
