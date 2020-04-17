@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="10dp"
@@ -44,13 +43,9 @@
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
-                    android:text="Experiencing shortness of breath?"
-                    
                     android:textSize="16sp"
                     android:buttonTint="#fff"
-                    android:text="Experiencing shortness of breath?"
-                    
-                    android:textSize="16sp" />
+                    android:text="Experiencing shortness of breath?" />
 
                 <CheckBox
                     android:layout_width="match_parent"
@@ -58,12 +53,8 @@
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
-                    android:text="Experiencing sore throat?"
-                    
-                    android:textSize="16sp"
                     android:buttonTint="#fff"
                     android:text="Experiencing sore throat?"
-                    
                     android:textSize="16sp" />
 
                 <CheckBox
@@ -72,12 +63,8 @@
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
-                    android:text="Experiencing fever?"
-                    
-                    android:textSize="16sp"
                     android:buttonTint="#fff"
                     android:text="Experiencing fever?"
-                    
                     android:textSize="16sp" />
 
                 <CheckBox
@@ -86,12 +73,8 @@
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
-                    android:text="Experiencing dry cough?"
-                    
-                    android:textSize="16sp"
                     android:buttonTint="#fff"
                     android:text="Experiencing dry cough?"
-                    
                     android:textSize="16sp" />
 
                 <CheckBox
@@ -101,8 +84,6 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
                     android:buttonTint="#fff"
-                    android:text="Experiencing aches and pains?"
-                    
                     android:textSize="16sp" />
 
                 <CheckBox
@@ -111,12 +92,8 @@
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
-                    android:text="Experiencing nasal congestion, runny nose?"
-                    
-                    android:textSize="16sp"
                     android:buttonTint="#fff"
                     android:text="Experiencing nasal congestion, runny nose?"
-                    
                     android:textSize="16sp" />
 
                 <CheckBox
@@ -125,12 +102,8 @@
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
-                    android:text="Experiencing diarrhea?"
-                    
-                    android:textSize="16sp"
                     android:buttonTint="#fff"
                     android:text="Experiencing diarrhea?"
-                    
                     android:textSize="16sp" />
 
                 <LinearLayout
