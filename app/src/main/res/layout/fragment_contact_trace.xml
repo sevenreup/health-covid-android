@@ -10,15 +10,22 @@
     <RelativeLayout
         android:id="@+id/addLocation"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:paddingHorizontal="8dp"
-        android:layout_marginBottom="8dp">
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/edittext_bg">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:textSize="16sp"
             android:text="@string/add_location"/>
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_map_pin"/>
     </RelativeLayout>
 
     <TextView
@@ -43,13 +50,20 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/edittext_bg">
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="Add Person"
+            android:text="Tap to add"
             android:textSize="16sp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp" />
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_add"/>
     </RelativeLayout>
 
     <Button

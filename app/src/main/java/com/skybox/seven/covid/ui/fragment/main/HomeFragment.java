@@ -5,25 +5,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.MainController;
 import com.skybox.seven.covid.model.MenuItem;
-import com.skybox.seven.covid.network.responses.LoginResponse;
-import com.skybox.seven.covid.ui.HomeActivity;
-import com.skybox.seven.covid.util.BaseModelFactory;
 import com.skybox.seven.covid.util.GridItemDecoration;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 
 /**
@@ -67,7 +63,7 @@ public class HomeFragment extends Fragment {
         menuItems.add(new MenuItem(R.drawable.ic_test, R.string.menu_self_test, R.id.selfTestFragment));
         menuItems.add(new MenuItem(R.drawable.ic_newspaper, R.string.menu_news, R.id.newsFragment));
         menuItems.add(new MenuItem(R.drawable.ic_history, R.string.menu_qna, R.id.qanAFragment));
-        menuItems.add(new MenuItem(R.drawable.ic_team, R.string.menu_contacts, R.id.contactTraceFragment2));
+        menuItems.add(new MenuItem(R.drawable.ic_team, R.string.menu_contacts, R.id.contactTraceFragment));
         return menuItems;
     }
 
