@@ -5,6 +5,7 @@ import com.skybox.seven.covid.network.responses.LoginResponse;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface RetrofitService {
@@ -14,7 +15,8 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("updateFirebaseToken")
     Call<String> pushToken(@Field("token") String token);
+    @Headers("Content-Type: application/json")
     @FormUrlEncoded
     @POST("auth/register")
-    Call<String> register(@Field("name")String fname, @Field("last_name")String lname, @Field("phone")String number, @Field("gender")String gender);
+    Call<String> register(@Field("name")String fname, @Field("last_name")String lname, @Field("phone")String number, @Field("password")String gender);
 }
