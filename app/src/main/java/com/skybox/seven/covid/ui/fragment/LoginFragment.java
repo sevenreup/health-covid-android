@@ -72,7 +72,7 @@ public class LoginFragment extends Fragment {
 
       registerView.setOnClickListener(v12 -> {
               RegisterFragment registerFragment = new RegisterFragment();
-          FragmentTransaction transaction = getFragmentManager().beginTransaction();
+          FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
           transaction.replace(R.id.mainlayout, registerFragment);
           transaction.commit();
       });

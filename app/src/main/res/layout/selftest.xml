@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".SelfTestActivity">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <androidx.cardview.widget.CardView
@@ -15,73 +13,39 @@
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="10dp"
-        app:cardBackgroundColor="#00BCD4"
         app:cardCornerRadius="15dp"
         app:cardElevation="3dp">
+
         <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:id="@+id/scrollview"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical" >
+                android:orientation="vertical">
+
                 <Button
                     android:id="@+id/date"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="4dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
-                    android:text="Choose todays date"
-                    android:textAlignment="center"
                     android:background="@drawable/bg"
-                    />
+                    android:text="Choose todays date"
+                    android:textAlignment="center" />
+
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="4dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
-                    android:text="Experiencing shortness of breath?"
-                    android:textColor="#fff"
                     android:textSize="16sp"
                     android:buttonTint="#fff"
-                    />
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="Experiencing sore throat?"
-                    android:textColor="#fff"
-                    android:textSize="16sp"
-                    android:buttonTint="#fff"
-                    />
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="Experiencing fever?"
-                    android:textColor="#fff"
-                    android:textSize="16sp"
-                    android:buttonTint="#fff"
-                    />
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="Experiencing dry cough?"
-                    android:textColor="#fff"
-                    android:textSize="16sp"
-                    android:buttonTint="#fff"
-                    />
+                    android:text="Experiencing shortness of breath?" />
 
                 <CheckBox
                     android:layout_width="match_parent"
@@ -90,81 +54,108 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
                     android:buttonTint="#fff"
-                    android:text="Experiencing aches and pains?"
-                    android:textColor="#fff"
+                    android:text="Experiencing sore throat?"
                     android:textSize="16sp" />
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="4dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
-                    android:text="Experiencing nasal congestion, runny nose?"
-                    android:textColor="#fff"
-                    android:textSize="16sp"
                     android:buttonTint="#fff"
-                    />
+                    android:text="Experiencing fever?"
+                    android:textSize="16sp" />
+
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginStart="4dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginStart="4dp"
                     android:layout_marginEnd="4dp"
-                    android:text="Experiencing diarrhea?"
-                    android:textColor="#fff"
-                    android:textSize="16sp"
                     android:buttonTint="#fff"
-                    />
-                <LinearLayout
-                    android:layout_height="50dp"
+                    android:text="Experiencing dry cough?"
+                    android:textSize="16sp" />
+
+                <CheckBox
                     android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:layout_marginStart="4dp"
-                    >
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="4dp"
+                    android:buttonTint="#fff"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="4dp"
+                    android:buttonTint="#fff"
+                    android:text="Experiencing nasal congestion, runny nose?"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="4dp"
+                    android:buttonTint="#fff"
+                    android:text="Experiencing diarrhea?"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="4dp">
+
                     <TextView
-                        android:layout_marginTop="23dp"
-                        android:layout_height="match_parent"
                         android:layout_width="wrap_content"
-                        android:text="Choose degree:"
-                        android:textColor="#fff"
-                        android:textAlignment="center"
-                        android:layout_marginStart="4dp"/>
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="0dp"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="4dp"
-                        android:layout_marginEnd="4dp"
-                        android:id="@+id/spinner"
-                        android:background="@drawable/bg"
-                        android:gravity="center"
+                        android:layout_marginTop="23dp"
+                        android:text="Choose degree:"
+                        
+                        android:textAlignment="center"
                          />
 
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/bg"
+                        android:gravity="center" />
+
                 </LinearLayout>
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="80dp"
-                    android:layout_marginTop="10dp"
                     android:layout_gravity="center"
-                    >
-                <com.ncorti.slidetoact.SlideToActView
-                    android:id="@+id/submission"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="center"
-                    android:elevation="3dp"
-                    app:animation_duration="250"
-                    app:outer_color="#373C3C"
-                    app:inner_color="#005B67"
-                    app:border_radius="35dp"
-                    app:text="Slide to verify"
-                    app:text_size="16sp"
-                    app:text_color="#fff"
-                    app:text_style="bold"
-                    app:slider_height="70dp"
-                    app:slider_locked="false"
-                    />
+                    android:layout_marginTop="10dp">
+
+                    <com.ncorti.slidetoact.SlideToActView
+                        android:id="@+id/submission"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:elevation="3dp"
+                        app:animation_duration="250"
+                        app:border_radius="35dp"
+                        app:inner_color="#005B67"
+                        app:outer_color="#373C3C"
+                        app:slider_height="70dp"
+                        app:slider_locked="false"
+                        app:text="Slide to verify"
+                        app:text_color="#fff"
+                        app:text_size="16sp"
+                        app:text_style="bold" />
 
                     <ProgressBar
                         android:id="@+id/progress"
@@ -176,16 +167,17 @@
 
                         />
                 </RelativeLayout>
+
                 <TextView
-                    android:layout_marginTop="23dp"
-                    android:layout_height="match_parent"
                     android:layout_width="wrap_content"
-                    android:text="Couldn't find what you are looking for?"
-                    android:textColor="#fff"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginStart="4dp"/>
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="23dp"
+                    android:text="Couldn't find what you are looking for?"
+                    
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </ScrollView>

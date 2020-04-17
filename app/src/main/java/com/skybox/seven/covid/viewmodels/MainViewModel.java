@@ -1,5 +1,7 @@
 package com.skybox.seven.covid.viewmodels;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -20,6 +22,7 @@ import retrofit2.Retrofit;
 public class MainViewModel extends ViewModel {
     public MutableLiveData<LoginResponse> credentials = new MutableLiveData<>();
     public MutableLiveData<LoginResponse> temp = new MutableLiveData<>();
+    public MutableLiveData<Boolean> isRegistered = new MutableLiveData<>();
 
     private Retrofit retrofit = RetrofitFactory.getRetrofit();
     private FirebaseAuth auth;
@@ -67,6 +70,24 @@ public class MainViewModel extends ViewModel {
     }
 
     public void register(String fname, String lname, String number, String gender) {
-        
+        RetrofitService retrofitService = retrofit.create(RetrofitService.class);
+        Call<String> call = retrofitService.register(fname, lname, number, gender);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.e("TAG", "onResponse: " + response);
+                if (response.isSuccessful()) {
+                    isRegistered.setValue(true);
+                } else {
+                    isRegistered.setValue(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                t.printStackTrace();
+                isRegistered.setValue(false);
+            }
+        });
     }
 }

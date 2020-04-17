@@ -16,12 +16,9 @@ public interface RetrofitService {
     @POST("auth/login")
     Call<LoginResponse> loginUser(@Field("phone") String phone, @Field("password") String password);
     @FormUrlEncoded
-    @POST("")
+    @POST("updateFirebaseToken")
     Call<String> pushToken(@Field("token") String token);
     @FormUrlEncoded
-    @POST("")
-    Call<String> register();
-    @FormUrlEncoded
-    @POST("contact/add")
-    Call<String> saveContacts(@Field("contacts") ArrayList<FamMember> contacts, @Field("location") LatLng latLng);
+    @POST("auth/register")
+    Call<String> register(@Field("name")String fname, @Field("last_name")String lname, @Field("phone")String number, @Field("gender")String gender);
 }
