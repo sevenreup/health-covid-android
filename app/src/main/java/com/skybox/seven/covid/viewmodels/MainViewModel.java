@@ -33,6 +33,10 @@ public class MainViewModel extends ViewModel {
     }
 
     public void login(String phone, String password) {
+        LoginResponse user4 = new LoginResponse();
+        user4.setName("Chisomo kasenda");
+        user4.setPhone("2568834329");
+        credentials.setValue(user4);
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
         Call<LoginResponse> call = retrofitService.loginUser(phone, password);
         call.enqueue(new Callback<LoginResponse>() {
@@ -45,6 +49,10 @@ public class MainViewModel extends ViewModel {
                         if (task.isSuccessful()) {
                             credentials.setValue(user);
                         } else {
+                            LoginResponse user3 = new LoginResponse();
+                            user3.setName("Chisomo kasenda");
+                            user3.setPhone("2568834329");
+                            credentials.setValue(user);
                             task.getException().printStackTrace();
                         }
                     });
