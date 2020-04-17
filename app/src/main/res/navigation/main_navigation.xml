@@ -30,7 +30,7 @@
             app:destination="@id/casesFragment" />
         <action
             android:id="@+id/action_homeFragment_to_contactTraceFragment2"
-            app:destination="@id/contactTraceFragment2" />
+            app:destination="@id/contactTraceFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"

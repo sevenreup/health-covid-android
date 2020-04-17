@@ -2,9 +2,6 @@ package com.skybox.seven.covid.ui.fragment.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +17,8 @@ import com.skybox.seven.covid.model.FamMember;
 import com.skybox.seven.covid.ui.Location;
 
 import java.util.ArrayList;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,7 +74,7 @@ public class ContactCreateFragment extends Fragment {
     return v;
     }
 
-    public void setupFamily() {
+    private void setupFamily() {
         membersView.removeAllViews();
         for (FamMember member : members) {
             View view = inflater.inflate(R.layout.member_item,null);

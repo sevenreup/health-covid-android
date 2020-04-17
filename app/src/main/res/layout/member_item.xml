@@ -7,12 +7,12 @@
     <RelativeLayout
         android:id="@+id/addPerson"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/edittext_bg">
         <TextView
             android:id="@+id/name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             tools:text="John Doe"
@@ -20,6 +20,16 @@
             android:textSize="16sp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp" />
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_delete"/>
     </RelativeLayout>
 
 </LinearLayout>

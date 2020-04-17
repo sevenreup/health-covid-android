@@ -39,7 +39,7 @@
     <RelativeLayout
         android:id="@+id/addPerson"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/edittext_bg">
         <TextView
@@ -52,5 +52,17 @@
             android:layout_marginStart="8dp" />
     </RelativeLayout>
 
+    <Button
+        android:id="@+id/saveChanges"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="center_horizontal"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:text="Save Changes"
+        android:background="@drawable/button_rectangle_pink"/>
 
 </LinearLayout>
