@@ -16,37 +16,38 @@
         android:src="@drawable/masterninb"/>
 
     <EditText
-        android:id="@+id/userName"
+        android:id="@+id/userNumber"
         android:paddingLeft="5dp"
-        android:drawableLeft="@drawable/usericon"
+        android:drawableLeft="@drawable/phoneicon"
         android:layout_width="200dp"
         android:layout_height="40sp"
         android:layout_below="@+id/userAv"
         android:background="#11000000"
         android:layout_marginTop="80dp"
         android:ems="10"
+        android:inputType="phone"
         android:layout_centerHorizontal="true" />
 
     <EditText
-        android:id="@+id/userNumber"
+        android:id="@+id/userPassword"
         android:paddingLeft="5dp"
-        android:drawableLeft="@drawable/phoneicon"
+        android:drawableLeft="@drawable/ic_security"
         android:layout_width="200dp"
         android:background="#11000000"
         android:layout_height="35sp"
-        android:layout_below="@+id/userName"
-        android:layout_alignStart="@+id/userName"
+        android:layout_below="@+id/userNumber"
+        android:layout_alignStart="@+id/userNumber"
         android:layout_marginTop="30dp"
         android:ems="10"
-        android:inputType="phone"
+        android:inputType="textPassword"
         android:layout_alignLeft="@+id/userName" />
     <Button
         android:id="@+id/loginButton"
         android:textColor="#ffffff"
         android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:elevation="10dp"
-        android:layout_below="@id/userNumber"
+        android:layout_below="@id/userPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:textSize="20sp"

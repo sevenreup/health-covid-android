@@ -1,6 +1,10 @@
 package com.skybox.seven.covid.network;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.skybox.seven.covid.model.FamMember;
 import com.skybox.seven.covid.network.responses.LoginResponse;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -12,6 +16,12 @@ public interface RetrofitService {
     @POST("auth/login")
     Call<LoginResponse> loginUser(@Field("phone") String phone, @Field("password") String password);
     @FormUrlEncoded
-    @POST("")
+    @POST("updateFirebaseToken")
     Call<String> pushToken(@Field("token") String token);
+    @FormUrlEncoded
+    @POST("auth/register")
+    Call<String> register(@Field("name")String fname, @Field("last_name")String lname, @Field("phone")String number, @Field("gender")String gender);
+    @FormUrlEncoded
+    @POST("contact/add")
+    Call<String> saveContacts(@Field("contacts") ArrayList<FamMember> contacts, @Field("location") LatLng latLng);
 }
