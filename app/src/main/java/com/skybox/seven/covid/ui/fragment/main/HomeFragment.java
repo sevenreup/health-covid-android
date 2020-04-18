@@ -38,16 +38,12 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
         MainController controller = new MainController(Navigation.findNavController(getActivity(), R.id.container));
         recyclerView = v.findViewById(R.id.home_frag_recycler);
 
         recyclerView.setController(controller);
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(new GridItemDecoration(getContext(), R.dimen.menu_card_margin));
         controller.setData(createMenuItems());
 
         viewModel.credentials.observe(getActivity(), loginResponse -> {

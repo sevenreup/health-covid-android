@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.HomeActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:minHeight="?attr/actionBarSize" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
     <fragment
         android:id="@+id/container"
         android:name="androidx.navigation.fragment.NavHostFragment"
