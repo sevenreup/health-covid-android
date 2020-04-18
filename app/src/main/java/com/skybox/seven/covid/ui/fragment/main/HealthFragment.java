@@ -1,16 +1,13 @@
 package com.skybox.seven.covid.ui.fragment.main;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.DividerItemDecoration;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.google.android.material.chip.ChipGroup;
@@ -51,7 +48,7 @@ public class HealthFragment extends Fragment {
         recyclerView = v.findViewById(R.id.health_recycler);
         currentGroup = v.findViewById(R.id.chip_group);
 
-        HealthController controller = new HealthController();
+        HealthController controller = new HealthController(getActivity());
         recyclerView.addItemDecoration(new SpaceItemDecorator(50, true, false));
         recyclerView.setController(controller);
 
@@ -77,7 +74,6 @@ public class HealthFragment extends Fragment {
         currentGroup.check(R.id.advice_chip);
 
         viewModel.adviceList.observe(getViewLifecycleOwner(), list -> {
-            Log.e("TAG", "onCreateView: " + list );
             adviceList = list;
             controller.setData(currentChip, adviceList, infoGraphics);
         });
