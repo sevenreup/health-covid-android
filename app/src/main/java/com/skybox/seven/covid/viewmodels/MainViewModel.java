@@ -2,17 +2,18 @@ package com.skybox.seven.covid.viewmodels;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.skybox.seven.covid.model.Advice;
+import com.skybox.seven.covid.model.InfoGraphic;
 import com.skybox.seven.covid.network.RetrofitFactory;
 import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.network.responses.LoginResponse;
+import com.skybox.seven.covid.repository.HealthRepository;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,9 +21,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class MainViewModel extends ViewModel {
+    private HealthRepository healthRepository = new HealthRepository();
+
     public MutableLiveData<LoginResponse> credentials = new MutableLiveData<>();
     public MutableLiveData<LoginResponse> temp = new MutableLiveData<>();
     public MutableLiveData<Boolean> isRegistered = new MutableLiveData<>();
+
+    public MutableLiveData<List<Advice>> adviceList = new MutableLiveData<>();
+    public MutableLiveData<List<InfoGraphic>> infoGraphicList = new MutableLiveData<>();
 
     private Retrofit retrofit = RetrofitFactory.getRetrofit();
     private FirebaseAuth auth;
@@ -97,5 +103,10 @@ public class MainViewModel extends ViewModel {
                 isRegistered.setValue(false);
             }
         });
+    }
+
+    public void getAdviceList() {
+        infoGraphicList.setValue(healthRepository.getInfoGraphicList());
+        adviceList.setValue(healthRepository.getAdviceList());
     }
 }

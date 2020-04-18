@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,9 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentTop="true"/>
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chip_group"
@@ -22,7 +20,7 @@
         app:chipSpacingHorizontal="25dp"
         app:singleLine="true"
         app:singleSelection="true"
-        app:layout_constraintTop_toBottomOf="@id/page_title">
+        android:layout_below="@id/page_title">
 
 
         <com.google.android.material.chip.Chip android:id="@+id/advice_chip"
@@ -40,32 +38,13 @@
 
     </com.google.android.material.chip.ChipGroup>
 
-<!--    <net.cachapa.expandablelayout.ExpandableLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        app:el_duration="500"-->
-<!--        app:el_expanded="false"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/chip_group">-->
-
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:background="#009900"-->
-<!--            android:clipToPadding="false"-->
-<!--            android:elevation="4dp"-->
-<!--            android:gravity="center"-->
-<!--            android:text="Fixed height" />-->
-<!--    </net.cachapa.expandablelayout.ExpandableLayout>-->
-
-    <com.airbnb.epoxy.EpoxyRecyclerView android:id="@+id/health_recycler"
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/health_recycler"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/chip_group"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chip_group" />
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

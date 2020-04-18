@@ -3,6 +3,9 @@ package com.skybox.seven.covid.ui.fragment.main;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +18,8 @@ import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.HealthController;
 import com.skybox.seven.covid.model.Advice;
 import com.skybox.seven.covid.model.InfoGraphic;
+import com.skybox.seven.covid.util.SpaceItemDecorator;
+import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +34,7 @@ public class HealthFragment extends Fragment {
     private Advice.CurrentChip currentChip = Advice.CurrentChip.advice;
     private List<Advice> adviceList = new ArrayList<>();
     private List<InfoGraphic> infoGraphics = new ArrayList<>();
+    MainViewModel viewModel;
 
     public HealthFragment() {
         // Required empty public constructor
@@ -40,11 +46,13 @@ public class HealthFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_health, container, false);
+        viewModel = new ViewModelProvider(getViewModelStore(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
 
         recyclerView = v.findViewById(R.id.health_recycler);
         currentGroup = v.findViewById(R.id.chip_group);
 
         HealthController controller = new HealthController();
+        recyclerView.addItemDecoration(new SpaceItemDecorator(50, true, false));
         recyclerView.setController(controller);
 
         currentGroup.setOnCheckedChangeListener((group, checkedId) -> {
@@ -58,6 +66,7 @@ public class HealthFragment extends Fragment {
                 case R.id.info_chip:
                     lastChecked = checkedId;
                     currentChip = Advice.CurrentChip.infographic;
+                    controller.setData(currentChip, adviceList, infoGraphics);
                     break;
                 default:
                     group.check(lastChecked);
@@ -67,6 +76,14 @@ public class HealthFragment extends Fragment {
 
         currentGroup.check(R.id.advice_chip);
 
+        viewModel.adviceList.observe(getViewLifecycleOwner(), list -> {
+            Log.e("TAG", "onCreateView: " + list );
+            adviceList = list;
+            controller.setData(currentChip, adviceList, infoGraphics);
+        });
+        viewModel.infoGraphicList.observe(getViewLifecycleOwner(), list -> infoGraphics = list);
+
+        viewModel.getAdviceList();
         controller.setData(currentChip, adviceList, infoGraphics);
         return v;
     }
