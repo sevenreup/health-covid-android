@@ -3,12 +3,10 @@ package com.skybox.seven.covid.ui.fragment.main;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.service.autofill.Dataset;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +15,6 @@ import android.widget.Button;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.ui.adapters.ContactModel;
 import com.skybox.seven.covid.ui.adapters.contactAdapter;
-import com.skybox.seven.covid.ui.fragment.RegisterFragment;
 
 import java.util.ArrayList;
 
@@ -54,7 +51,8 @@ public class ContactTraceFragment extends Fragment {
         addContButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Navigation.findNavController(getActivity(), R.id.container).navigate(R.id.contactTraceFragment2);}
+                    Navigation.findNavController(getActivity(), R.id.container).navigate(R.id.createContacts);
+            }
             //ContactCreateFragment contactCreateFragment = new ContactCreateFragment();
             // FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
             //transaction.replace(R.id.container, contactCreateFragment);
