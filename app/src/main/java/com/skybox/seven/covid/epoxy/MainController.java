@@ -1,16 +1,10 @@
 package com.skybox.seven.covid.epoxy;
 
-import android.view.View;
-
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import com.airbnb.epoxy.AutoModel;
-import com.airbnb.epoxy.CarouselModel_;
-import com.airbnb.epoxy.OnModelClickListener;
 import com.airbnb.epoxy.TypedEpoxyController;
 import com.skybox.seven.covid.epoxy.model.HomeCarouselModelModel_;
-import com.skybox.seven.covid.epoxy.model.MainMenuItem;
 import com.skybox.seven.covid.epoxy.model.MainMenuItem_;
 import com.skybox.seven.covid.epoxy.model.PersonalCardModel_;
 import com.skybox.seven.covid.model.MenuItem;
