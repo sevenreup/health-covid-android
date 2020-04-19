@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.adapters;
+/*package com.skybox.seven.covid.ui.adapters;
 
 public class MythModel {
     public String title;
@@ -39,3 +39,4 @@ public class MythModel {
         this.paragraph = paragraph;
     }
 }
+*/

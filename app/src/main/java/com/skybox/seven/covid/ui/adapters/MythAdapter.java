@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.skybox.seven.covid.R;
+/*import com.skybox.seven.covid.R;
 
 import java.util.ArrayList;
 
@@ -67,3 +67,4 @@ public class MythAdapter extends RecyclerView.Adapter<MythAdapter.MythHolderVH> 
     }
     
 }
+*/

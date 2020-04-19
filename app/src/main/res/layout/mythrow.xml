@@ -1,41 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/myth_holder"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="3dp"
-    android:elevation="3dp"
-    app:cardUseCompatPadding="true">
+    app:cardCornerRadius="10dp"
+    android:elevation="3dp">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:layout_margin="@dimen/menu_card_margin">
 
      <TextView
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:id="@+id/mythTitle"
          app:layout_constraintEnd_toEndOf="parent"
+         android:textSize="18sp"
+         android:textStyle="bold"
          android:text="Title"/>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-             android:layout_width="0dp"
-             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/mythTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="6dp"
-             android:id="@+id/expandableLayout">
 
             <TextView
                 android:id="@+id/mythPara"
                 android:layout_width="match_parent"
+                android:layout_marginTop="8dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/mythTitle"
+                android:layout_below="@+id/title"
                 android:text="This is the para"
-                android:visibility="visible" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mythTitle"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -8,10 +8,13 @@ import androidx.lifecycle.ViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.skybox.seven.covid.model.Advice;
 import com.skybox.seven.covid.model.InfoGraphic;
+import com.skybox.seven.covid.model.Myth;
+import com.skybox.seven.covid.model.MythGraphicInfo;
 import com.skybox.seven.covid.network.RetrofitFactory;
 import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.network.responses.LoginResponse;
 import com.skybox.seven.covid.repository.HealthRepository;
+import com.skybox.seven.covid.repository.MythRepository;
 
 import java.util.List;
 
@@ -22,6 +25,7 @@ import retrofit2.Retrofit;
 
 public class MainViewModel extends ViewModel {
     private HealthRepository healthRepository = new HealthRepository();
+    private MythRepository mythRepository = new MythRepository();
 
     public MutableLiveData<LoginResponse> credentials = new MutableLiveData<>();
     public MutableLiveData<LoginResponse> temp = new MutableLiveData<>();
@@ -29,6 +33,9 @@ public class MainViewModel extends ViewModel {
 
     public MutableLiveData<List<Advice>> adviceList = new MutableLiveData<>();
     public MutableLiveData<List<InfoGraphic>> infoGraphicList = new MutableLiveData<>();
+
+    public MutableLiveData<List<Myth>> mythList = new MutableLiveData<>();
+    public MutableLiveData<List<MythGraphicInfo>> mythGraphicInfoList = new MutableLiveData<>();
 
     private Retrofit retrofit = RetrofitFactory.getRetrofit();
     private FirebaseAuth auth;
@@ -108,5 +115,10 @@ public class MainViewModel extends ViewModel {
     public void getAdviceList() {
         infoGraphicList.setValue(healthRepository.getInfoGraphicList());
         adviceList.setValue(healthRepository.getAdviceList());
+    }
+
+    public void getMythList(){
+        mythGraphicInfoList.setValue(mythRepository.getMythGraphicInfoList());
+        mythList.setValue(mythRepository.getMythList());
     }
 }
