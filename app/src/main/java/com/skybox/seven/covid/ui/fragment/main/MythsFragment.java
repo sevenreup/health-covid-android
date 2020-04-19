@@ -59,7 +59,7 @@ public class MythsFragment extends Fragment {
                     controller.setData(currentChip, mythList, mythGraphicInfoList);
 
                     break;
-                case R.id.info_chip:
+                case R.id.myth_info_chip:
                     lastChecked = checkedId;
                     currentChip = Myth.CurrentChip.mythgraphicinfo;
                     controller.setData(currentChip, mythList, mythGraphicInfoList);
