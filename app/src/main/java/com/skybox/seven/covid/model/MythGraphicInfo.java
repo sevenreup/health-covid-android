@@ -2,11 +2,11 @@ package com.skybox.seven.covid.model;
 
 import java.util.List;
 
-public class InfoGraphic {
+public class MythGraphicInfo {
     private String title;
     private List<String> images;
 
-    public InfoGraphic(String title, List<String> images) {
+    public MythGraphicInfo(String title, List<String> images) {
         this.title = title;
         this.images = images;
     }

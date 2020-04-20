@@ -17,7 +17,6 @@ import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.location.LocationReceiver;
 import com.skybox.seven.covid.location.LocationRepository;
 import com.skybox.seven.covid.location.LocationViewModel;
-import com.skybox.seven.covid.util.BaseModelFactory;
 
 public class RadarTestActivity extends AppCompatActivity {
     private LocationReceiver locationReceiver;
@@ -44,7 +43,7 @@ public class RadarTestActivity extends AppCompatActivity {
         geofenceStatus = findViewById(R.id.geofence);
         checkPlayServices();
         locationReceiver = new LocationReceiver();
-        locationViewModel = new ViewModelProvider(this, new BaseModelFactory()).get(LocationViewModel.class);
+        locationViewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(LocationViewModel.class);
         locationViewModel.getData().observe(this, userLocation -> geofenceStatus.setText("changed"));
     }
 

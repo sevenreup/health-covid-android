@@ -53,9 +53,9 @@
         tools:layout="@layout/fragment_health" />
     <fragment
         android:id="@+id/mythBusterFragment"
-        android:name="com.skybox.seven.covid.ui.fragment.main.MythBusterFragment"
+        android:name="com.skybox.seven.covid.ui.fragment.main.QnAFragment"
         android:label="fragment_myth_buster"
-        tools:layout="@layout/fragment_myth_buster" />
+        tools:layout="@layout/fragment_qna" />
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.skybox.seven.covid.ui.fragment.main.NewsFragment"
@@ -63,9 +63,9 @@
         tools:layout="@layout/fragment_news" />
     <fragment
         android:id="@+id/qanAFragment"
-        android:name="com.skybox.seven.covid.ui.fragment.main.QanAFragment"
+        android:name="com.skybox.seven.covid.ui.fragment.main.MythsFragment"
         android:label="fragment_qan_a"
-        tools:layout="@layout/fragment_qan_a" />
+        tools:layout="@layout/fragment_myths" />
     <fragment
         android:id="@+id/casesFragment"
         android:name="com.skybox.seven.covid.ui.fragment.main.CasesFragment"
