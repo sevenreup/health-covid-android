@@ -1,18 +1,14 @@
 package com.skybox.seven.covid.epoxy;
 
-import android.view.View;
-
 import com.airbnb.epoxy.AutoModel;
 import com.airbnb.epoxy.EpoxyController;
-import com.airbnb.epoxy.OnModelClickListener;
 import com.skybox.seven.covid.epoxy.model.SettingsHeaderModel_;
-import com.skybox.seven.covid.epoxy.model.SettingsItemModel;
 import com.skybox.seven.covid.epoxy.model.SettingsItemModel_;
 
 public class SettingsController extends EpoxyController {
     @AutoModel
     SettingsHeaderModel_ headerModel_;
-    SettingsCallback callback;
+    private SettingsCallback callback;
 
     public SettingsController(SettingsCallback callback) {
         this.callback = callback;
@@ -41,6 +37,11 @@ public class SettingsController extends EpoxyController {
                 .value("")
                 .listener((model, parentView, clickedView, position) -> callback.onHelpClick())
                 .addTo(this);
+        new SettingsItemModel_().id("logout")
+                .title("Logout")
+                .value("")
+                .listener((model, parentView, clickedView, position) -> callback.onLogoutClick())
+                .addTo(this);
     }
 
     public interface SettingsCallback {
@@ -48,5 +49,6 @@ public class SettingsController extends EpoxyController {
         void onNotificationClick();
         void onLanguageClick();
         void onHelpClick();
+        void onLogoutClick();
     }
 }

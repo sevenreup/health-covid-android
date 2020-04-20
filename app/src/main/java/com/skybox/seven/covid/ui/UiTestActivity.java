@@ -12,8 +12,6 @@ import com.skybox.seven.covid.ui.fragment.LoginFragment;
 
 public class UiTestActivity extends AppCompatActivity {
 
-    public static FragmentManager fragmentManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

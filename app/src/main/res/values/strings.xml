@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Covid</string>
+    <string name="app_name">Malawi Health</string>
     <string name="add_location">Add Location</string>
     <string name="name">Name</string>
     <string name="search_location">Search location</string>

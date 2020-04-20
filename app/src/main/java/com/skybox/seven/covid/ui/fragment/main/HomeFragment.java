@@ -59,7 +59,11 @@ public class HomeFragment extends Fragment {
         menuItems.add(new MenuItem(R.drawable.ic_test, R.string.menu_self_test, R.id.selfTestFragment));
         menuItems.add(new MenuItem(R.drawable.ic_newspaper, R.string.menu_news, R.id.newsFragment));
         menuItems.add(new MenuItem(R.drawable.ic_history, R.string.menu_qna, R.id.mythBusterFragment));
-        menuItems.add(new MenuItem(R.drawable.ic_team, R.string.menu_contacts, R.id.allconacts));
+
+        if (viewModel.isLoggedIn()){
+            menuItems.add(new MenuItem(R.drawable.ic_team, R.string.menu_contacts, R.id.allconacts));
+        }
+
         return menuItems;
     }
 

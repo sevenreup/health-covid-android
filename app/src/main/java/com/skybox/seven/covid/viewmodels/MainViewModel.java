@@ -26,6 +26,7 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<LoginResponse> credentials = new MutableLiveData<>();
     public MutableLiveData<LoginResponse> temp = new MutableLiveData<>();
     public MutableLiveData<Boolean> isRegistered = new MutableLiveData<>();
+//    public MutableLiveData
 
     public MutableLiveData<List<Advice>> adviceList = new MutableLiveData<>();
     public MutableLiveData<List<InfoGraphic>> infoGraphicList = new MutableLiveData<>();
@@ -108,5 +109,9 @@ public class MainViewModel extends ViewModel {
     public void getAdviceList() {
         infoGraphicList.setValue(healthRepository.getInfoGraphicList());
         adviceList.setValue(healthRepository.getAdviceList());
+    }
+
+    public boolean isLoggedIn() {
+        return auth.getCurrentUser() != null;
     }
 }
