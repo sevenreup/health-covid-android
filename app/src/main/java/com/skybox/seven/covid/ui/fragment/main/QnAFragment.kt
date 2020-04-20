@@ -18,31 +18,37 @@ class QnAFragment: Fragment() {
 
         val arrayList = ArrayList<QnaModel>()
 
-        arrayList.add(QnaModel("1","What is Corona Virus?"))
-        arrayList.add(QnaModel("2","What is COVID-19"))
-        arrayList.add(QnaModel("3","What are the symptoms of COVID-19?"))
-        arrayList.add(QnaModel("4","How does COVID-19 spread?"))
-        arrayList.add(QnaModel("5","How do l protect myself and prevent the spread of COVID-19?"))
-        arrayList.add(QnaModel("6","How likely l am to catch COVID-19?"))
-        arrayList.add(QnaModel("7","Should l worry about COVID19?"))
-        arrayList.add(QnaModel("8","Who is at risk of developing severe illness?"))
-        arrayList.add(QnaModel("9","Are antibiotics effective in treating or preventing COVID19?"))
-        arrayList.add(QnaModel("10","Are there therapies or medicines that can prevent or cure COVID-19?"))
+        arrayList.add(QnaModel(getString(R.string.one),getString(R.string.q1)))
+        arrayList.add(QnaModel(getString(R.string.two),getString(R.string.q2)))
+        arrayList.add(QnaModel(getString(R.string.three),getString(R.string.q3)))
+        arrayList.add(QnaModel(getString(R.string.four),getString(R.string.q4)))
+        arrayList.add(QnaModel(getString(R.string.five),getString(R.string.q5)))
+        arrayList.add(QnaModel(getString(R.string.six),getString(R.string.q6)))
+        arrayList.add(QnaModel(getString(R.string.seven),getString(R.string.q7)))
+        arrayList.add(QnaModel(getString(R.string.eight),getString(R.string.q8)))
+        arrayList.add(QnaModel(getString(R.string.nine),getString(R.string.q9)))
+        arrayList.add(QnaModel(getString(R.string.ten),getString(R.string.q10)))
+        arrayList.add(QnaModel(getString(R.string.eleven),getString(R.string.q11)))
+        arrayList.add(QnaModel(getString(R.string.twelve),getString(R.string.q12)))
+        arrayList.add(QnaModel(getString(R.string.thirteen),getString(R.string.q13)))
+        arrayList.add(QnaModel(getString(R.string.fourteen),getString(R.string.q14)))
+        arrayList.add(QnaModel(getString(R.string.fifteen),getString(R.string.q15)))
+        arrayList.add(QnaModel(getString(R.string.sixteen),getString(R.string.q16)))
+        arrayList.add(QnaModel(getString(R.string.seventeen),getString(R.string.q17)))
+        arrayList.add(QnaModel(getString(R.string.eighteen),getString(R.string.q18)))
+        arrayList.add(QnaModel(getString(R.string.nineteen),getString(R.string.q19)))
+        arrayList.add(QnaModel(getString(R.string.twenty),getString(R.string.q20)))
+        arrayList.add(QnaModel(getString(R.string.twenty_one),getString(R.string.q21)))
+        arrayList.add(QnaModel(getString(R.string.twenty_two),getString(R.string.q22)))
+        arrayList.add(QnaModel(getString(R.string.twenty_three),getString(R.string.q23)))
 
-        arrayList.add(QnaModel("11","Is there a vaccine, drug or treatment for COVID19?"))
-        arrayList.add(QnaModel("12","Is COVID-19 the same as SARS?"))
-        arrayList.add(QnaModel("13","Should l wear a mask to protect myself?"))
-        arrayList.add(QnaModel("14","How to put on, use, take off and dispose of a mask?"))
-        arrayList.add(QnaModel("15","How long is the incubation period of COVID19?"))
-        arrayList.add(QnaModel("16","Can humans be infected with the COVID-19 from animal an source?"))
 
-        arrayList.add(QnaModel("17","Can l catch COVID19 from my pets?"))
-        arrayList.add(QnaModel("18","How long does the virus survive on surfaces?"))
-        arrayList.add(QnaModel("19","Is it safe to receive a package from an area where COVID19 has been reported?"))
-        arrayList.add(QnaModel("20","Is there anything l should not do?"))
-        arrayList.add(QnaModel("21","Is the source of coronavirus causing COVID19 known?"))
-        arrayList.add(QnaModel("22","How did the first human SARS-CoV-2 infections occur?"))
-        arrayList.add(QnaModel("23","Is COVID-19 airborne?"))
+
+
+
+
+
+
 
 
 

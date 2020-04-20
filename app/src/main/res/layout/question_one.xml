@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="400dp"
     android:orientation="vertical"
     >
     <RelativeLayout
@@ -14,8 +14,11 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
+            android:linksClickable="true"
+            android:autoLink="all"
             android:layout_gravity="center"
             android:layout_marginStart="158dp"
+            android:inputType="textMultiLine"
             android:layout_marginLeft="158dp"
             android:layout_marginTop="1dp"
             android:gravity="center"
@@ -47,14 +50,27 @@
             <ScrollView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
+                <RelativeLayout
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="10dp"
+                    >
+
                 <TextView
+                    android:lineSpacingMultiplier="1.5"
+                    android:scrollHorizontally="true"
                     android:layout_marginTop="10dp"
                     android:id="@+id/displayer_"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textAlignment="center"
+                    android:linksClickable="true"
+                    android:autoLink="all"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="textMultiLine"
                     android:text="@string/question_one"
                     android:gravity="center"/>
+                </RelativeLayout>
             </ScrollView>
 
         </RelativeLayout>

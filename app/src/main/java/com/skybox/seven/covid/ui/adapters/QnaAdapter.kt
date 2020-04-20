@@ -46,7 +46,7 @@ class QnaAdapter(val arrayList: ArrayList<QnaModel>, val context: QnAFragment): 
                     close.setOnClickListener{
                         dialog.dismiss()
                     }
-                    Toast.makeText(context.activity, "What is COVID19?", Toast.LENGTH_LONG ).show()
+
                 }
                 1 -> {
                     val dialog = BottomSheetDialog(context.activity!!)
@@ -180,6 +180,139 @@ class QnaAdapter(val arrayList: ArrayList<QnaModel>, val context: QnAFragment): 
                         dialog.dismiss()
                     }
                 }
+                12 ->{
+                    val dialog = BottomSheetDialog(context.activity!!)
+                    val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
+                    val close = view.findViewById<TextView>(R.id.close)
+                    val display = view.findViewById<TextView>(R.id.displayer_)
+                    display.setText (R.string.question_thirteen)
+                    dialog.setContentView(view)
+                    dialog.show()
+                    close.setOnClickListener{
+                        dialog.dismiss()
+                    }
+                }
+                13 ->{
+                    val dialog = BottomSheetDialog(context.activity!!)
+                    val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
+                    val close = view.findViewById<TextView>(R.id.close)
+                    val display = view.findViewById<TextView>(R.id.displayer_)
+                    display.setText(R.string.question_fourteen)
+                    dialog.setContentView(view)
+                    dialog.show()
+                    close.setOnClickListener{
+                        dialog.dismiss()
+                    }
+                }
+                14 ->{
+                    val dialog = BottomSheetDialog(context.activity!!)
+                    val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
+                    val close = view.findViewById<TextView>(R.id.close)
+                    val display = view.findViewById<TextView>(R.id.displayer_)
+                    display.setText(R.string.question_fifteen)
+                    dialog.setContentView(view)
+                    dialog.show()
+                    close.setOnClickListener{
+                        dialog.dismiss()
+                    }
+                }
+                15 ->{
+                    val dialog = BottomSheetDialog(context.activity!!)
+                    val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
+                    val close = view.findViewById<TextView>(R.id.close)
+                    val display = view.findViewById<TextView>(R.id.displayer_)
+                    display.setText(R.string.question_sixteen)
+                    dialog.setContentView(view)
+                    dialog.show()
+                    close.setOnClickListener{
+                        dialog.dismiss()
+                    }
+                }
+                16 ->{
+                    val dialog = BottomSheetDialog(context.activity!!)
+                    val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
+                    val close = view.findViewById<TextView>(R.id.close)
+                    val display = view.findViewById<TextView>(R.id.displayer_)
+                    display.setText(R.string.question_seventeen)
+                    dialog.setContentView(view)
+                    dialog.show()
+                    close.setOnClickListener{
+                        dialog.dismiss()
+                    }
+                }
+                17 ->{
+                    val dialog = BottomSheetDialog(context.activity!!)
+                    val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
+                    val close = view.findViewById<TextView>(R.id.close)
+                    val display = view.findViewById<TextView>(R.id.displayer_)
+                    display.setText(R.string.question_eighteen)
+                    dialog.setContentView(view)
+                    dialog.show()
+                    close.setOnClickListener{
+                        dialog.dismiss()
+                    }
+                }
+                18 -> {
+                    val dialog = BottomSheetDialog(context.activity!!)
+                    val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
+                    val close = view.findViewById<TextView>(R.id.close)
+                    val display = view.findViewById<TextView>(R.id.displayer_)
+                    display.setText(R.string.question_nineteen)
+                    dialog.setContentView(view)
+                    dialog.show()
+                    close.setOnClickListener{
+                        dialog.dismiss()
+                    }
+                }
+                19 -> {
+                    val dialog = BottomSheetDialog(context.activity!!)
+                    val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
+                    val close = view.findViewById<TextView>(R.id.close)
+                    val display = view.findViewById<TextView>(R.id.displayer_)
+                    display.setText(R.string.question_twenty)
+                    dialog.setContentView(view)
+                    dialog.show()
+                    close.setOnClickListener{
+                        dialog.dismiss()
+                    }
+                }
+                20 ->{
+                    val dialog = BottomSheetDialog(context.activity!!)
+                    val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
+                    val close = view.findViewById<TextView>(R.id.close)
+                    val display = view.findViewById<TextView>(R.id.displayer_)
+                    display.setText(R.string.question_twenty_one)
+                    dialog.setContentView(view)
+                    dialog.show()
+                    close.setOnClickListener{
+                        dialog.dismiss()
+                    }
+                }
+                21 ->{
+                    val dialog = BottomSheetDialog(context.activity!!)
+                    val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
+                    val close = view.findViewById<TextView>(R.id.close)
+                    val display = view.findViewById<TextView>(R.id.displayer_)
+                    display.setText(R.string.question_twenty_two)
+                    dialog.setContentView(view)
+                    dialog.show()
+                    close.setOnClickListener{
+                        dialog.dismiss()
+                    }
+                }
+                22 ->{
+                    val dialog = BottomSheetDialog(context.activity!!)
+                    val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
+                    val close = view.findViewById<TextView>(R.id.close)
+                    val display = view.findViewById<TextView>(R.id.displayer_)
+                    display.setText(R.string.question_twenty_three)
+                    dialog.setContentView(view)
+                    dialog.show()
+                    close.setOnClickListener{
+                        dialog.dismiss()
+                    }
+                }
+
             }
 
         }
