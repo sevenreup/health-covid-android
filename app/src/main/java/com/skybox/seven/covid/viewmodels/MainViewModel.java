@@ -26,7 +26,7 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<LoginResponse> credentials = new MutableLiveData<>();
     public MutableLiveData<LoginResponse> temp = new MutableLiveData<>();
     public MutableLiveData<Boolean> isRegistered = new MutableLiveData<>();
-//    public MutableLiveData
+    public MutableLiveData<Boolean> showLoginNotification = new MutableLiveData<>(true);
 
     public MutableLiveData<List<Advice>> adviceList = new MutableLiveData<>();
     public MutableLiveData<List<InfoGraphic>> infoGraphicList = new MutableLiveData<>();
