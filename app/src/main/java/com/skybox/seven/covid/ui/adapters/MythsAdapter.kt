@@ -3,6 +3,7 @@ package com.skybox.seven.covid.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -53,8 +54,7 @@ class MythsAdapter(val arrayList: ArrayList<MythsModel>, val context: MythBuster
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    val Text = R.string.question_two
-                    display.text = Text.toString()
+                    display.setText(R.string.question_two)
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
@@ -66,8 +66,7 @@ class MythsAdapter(val arrayList: ArrayList<MythsModel>, val context: MythBuster
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    val Text = R.string.question_three
-                    display.text = Text.toString()
+                    display.setText(R.string.question_three)
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
@@ -79,8 +78,7 @@ class MythsAdapter(val arrayList: ArrayList<MythsModel>, val context: MythBuster
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    val Text = R.string.question_four
-                    display.text = Text.toString()
+                    display.setText (R.string.question_four)
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
@@ -92,8 +90,7 @@ class MythsAdapter(val arrayList: ArrayList<MythsModel>, val context: MythBuster
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    val Text = R.string.question_five
-                    display.text = Text.toString()
+                    display.setText(R.string.question_five)
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
@@ -105,8 +102,7 @@ class MythsAdapter(val arrayList: ArrayList<MythsModel>, val context: MythBuster
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    val Text = R.string.question_six
-                    display.text = Text.toString()
+                    display.setText(R.string.question_six)
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
@@ -118,8 +114,7 @@ class MythsAdapter(val arrayList: ArrayList<MythsModel>, val context: MythBuster
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    val Text = R.string.question_seven
-                    display.text = Text.toString()
+                    display.setText(R.string.question_seven)
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
@@ -131,8 +126,7 @@ class MythsAdapter(val arrayList: ArrayList<MythsModel>, val context: MythBuster
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    val Text = R.string.question_eight
-                    display.text = Text.toString()
+                    display.setText(R.string.question_eight)
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
@@ -144,8 +138,7 @@ class MythsAdapter(val arrayList: ArrayList<MythsModel>, val context: MythBuster
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    val Text = R.string.question_nine
-                    display.text = Text.toString()
+                    display.setText(R.string.question_nine)
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
@@ -157,8 +150,7 @@ class MythsAdapter(val arrayList: ArrayList<MythsModel>, val context: MythBuster
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    val Text = R.string.question_ten
-                    display.text = Text.toString()
+                    display.setText(R.string.question_ten)
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
@@ -170,8 +162,7 @@ class MythsAdapter(val arrayList: ArrayList<MythsModel>, val context: MythBuster
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    val Text = R.string.question_eleven
-                    display.text = Text.toString()
+                    display.setText(R.string.question_eleven)
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
@@ -183,8 +174,7 @@ class MythsAdapter(val arrayList: ArrayList<MythsModel>, val context: MythBuster
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    val Text = R.string.question_twelve
-                    display.text = Text.toString()
+                    display.setText(R.string.question_twelve)
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{

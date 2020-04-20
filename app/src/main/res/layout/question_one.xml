@@ -44,13 +44,19 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <EditText
-                android:id="@+id/displayer_"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAlignment="center"
-                android:text="@string/question_one"
-                android:gravity="center"/>
+            <ScrollView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/displayer_"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center"
+                    android:text="@string/question_one"
+                    android:gravity="center"/>
+            </ScrollView>
+
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
