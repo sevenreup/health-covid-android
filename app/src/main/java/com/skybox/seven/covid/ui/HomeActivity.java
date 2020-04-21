@@ -16,6 +16,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.skybox.seven.covid.R;
+import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 public class HomeActivity extends AppCompatActivity {
@@ -36,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-        viewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(this, new CovidFactory(getApplication())).get(MainViewModel.class);
 
 
         Intent intent = getIntent();

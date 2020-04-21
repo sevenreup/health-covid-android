@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.skybox.seven.covid.R;
+import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 /**
@@ -31,7 +32,7 @@ public class RegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_register, container, false);
-        viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(getActivity(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
 
         firstnameInput = v.findViewById(R.id.firstName);
         lastnameInput = v.findViewById(R.id.lastName);

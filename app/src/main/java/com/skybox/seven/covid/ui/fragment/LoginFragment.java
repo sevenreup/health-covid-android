@@ -22,6 +22,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.textfield.TextInputLayout;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.ui.HomeActivity;
+import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.lang.ref.WeakReference;
@@ -45,7 +46,7 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_login, container, false);
 
-        viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(getActivity(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
 
         phoneTextField = v.findViewById(R.id.phone_number);
         passwordTextField = v.findViewById(R.id.userPassword);

@@ -16,6 +16,7 @@ import com.skybox.seven.covid.epoxy.MythController;
 import com.skybox.seven.covid.model.Myth;
 import com.skybox.seven.covid.model.MythGraphicInfo;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
+import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
@@ -42,7 +43,7 @@ public class MythsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_myths, container, false);
-        viewModel = new ViewModelProvider(getViewModelStore(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(getViewModelStore(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
 
         mythRecycler = v.findViewById(R.id.mythRecycler);
         currentGroup = v.findViewById(R.id.myth_chip_group);

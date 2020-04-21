@@ -16,6 +16,7 @@ import com.skybox.seven.covid.epoxy.HealthController;
 import com.skybox.seven.covid.model.Advice;
 import com.skybox.seven.covid.model.InfoGraphic;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
+import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class HealthFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_health, container, false);
-        viewModel = new ViewModelProvider(getViewModelStore(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(getViewModelStore(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
 
         recyclerView = v.findViewById(R.id.health_recycler);
         currentGroup = v.findViewById(R.id.chip_group);

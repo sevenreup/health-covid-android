@@ -1,11 +1,15 @@
 package com.skybox.seven.covid.viewmodels;
 
+import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.Advice;
 import com.skybox.seven.covid.model.InfoGraphic;
 import com.skybox.seven.covid.model.Myth;
@@ -24,6 +28,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class MainViewModel extends ViewModel {
+    private SharedPreferences preferences;
     private HealthRepository healthRepository = new HealthRepository();
     private MythRepository mythRepository = new MythRepository();
 
@@ -41,9 +46,10 @@ public class MainViewModel extends ViewModel {
     private Retrofit retrofit = RetrofitFactory.getRetrofit();
     private FirebaseAuth auth;
 
-    public MainViewModel() {
+    public MainViewModel(Application application) {
         super();
         auth = FirebaseAuth.getInstance();
+        preferences = application.getSharedPreferences(application.getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
     }
 
     public void login(String phone, String password) {
