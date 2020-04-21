@@ -22,7 +22,7 @@ public interface RetrofitService {
     @Headers("Content-Type: application/json")
     @FormUrlEncoded
     @POST("auth/register")
-    Call<String> register(@Field("name")String fname, @Field("last_name")String lname, @Field("phone")String number, @Field("gender")String gender);
+    Call<String> register(@Field("name")String fname, @Field("last_name")String lname, @Field("phone")String number, @Field("password")String gender);
     @FormUrlEncoded
     @POST("contact/add")
     Call<String> saveContacts(@Field("contacts") ArrayList<FamMember> contacts, @Field("location") LatLng latLng);

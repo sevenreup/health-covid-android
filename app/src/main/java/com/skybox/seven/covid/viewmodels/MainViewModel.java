@@ -62,6 +62,7 @@ public class MainViewModel extends ViewModel {
                     auth.signInWithCustomToken(user.getType() + " " + user.getToken()).addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             credentials.setValue(user);
+                            Log.d("Login", "Login Successful");
                         } else {
                             LoginResponse user3 = new LoginResponse();
                             user3.setName("Chisomo kasenda");
