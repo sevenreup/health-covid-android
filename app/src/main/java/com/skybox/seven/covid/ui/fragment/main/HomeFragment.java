@@ -1,14 +1,13 @@
 package com.skybox.seven.covid.ui.fragment.main;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
@@ -16,6 +15,7 @@ import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.MainController;
 import com.skybox.seven.covid.model.MenuItem;
+import com.skybox.seven.covid.ui.AuthActivity;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
@@ -28,9 +28,9 @@ import java.util.List;
 public class HomeFragment extends Fragment implements MainController.MainControllerCallback {
 
     private MainViewModel viewModel;
-    EpoxyRecyclerView recyclerView;
-    MainController controller;
-    List<MenuItem> menuItems = new ArrayList<>();
+    private EpoxyRecyclerView recyclerView;
+    private MainController controller;
+    private List<MenuItem> menuItems = new ArrayList<>();
 
     public HomeFragment() {
         // Required empty public constructor
@@ -73,11 +73,16 @@ public class HomeFragment extends Fragment implements MainController.MainControl
 
     @Override
     public void OnRegisterClick() {
-
+        Intent intent = new Intent(getContext(), AuthActivity.class);
+        intent.putExtra("register", true);
+        startActivity(intent);
     }
 
     @Override
     public void OnLoginClick() {
+        Intent intent = new Intent(getContext(), AuthActivity.class);
+        intent.putExtra("register", false);
+        startActivity(intent);
     }
 
     @Override
