@@ -16,6 +16,7 @@ public class SharedPreferenceRepository {
     public void setToken(AccessToken response) {
         editor.putString("token", response.getToken());
         editor.putString("token_type", response.getType());
+        editor.apply();
     }
 
     public AccessToken getToken() {

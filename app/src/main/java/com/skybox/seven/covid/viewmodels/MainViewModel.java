@@ -68,6 +68,7 @@ public class MainViewModel extends ViewModel {
                 AccessToken user = response.body();
                 if (user != null) {
                     credentials.setValue(user);
+                    Log.e(TAG, "onResponse: " + user);
                     preferenceRepository.setToken(user);
                 }
             }
@@ -120,6 +121,7 @@ public class MainViewModel extends ViewModel {
 
     public boolean isLoggedIn() {
         AccessToken accessToken = preferenceRepository.getToken();
+        Log.e(TAG, "isLoggedIn: " + accessToken.toString());
         return accessToken.getToken() != null;
         }
 
