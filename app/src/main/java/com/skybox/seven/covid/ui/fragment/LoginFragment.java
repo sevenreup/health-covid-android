@@ -51,7 +51,7 @@ public class LoginFragment extends Fragment {
         phoneTextField = v.findViewById(R.id.phone_number);
         passwordTextField = v.findViewById(R.id.userPassword);
 
-        phoneTextField.getEditText().addTextChangedListener(new PhoneNumberFormattingTextWatcher());
+//        phoneTextField.getEditText().addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
         viewModel.credentials.observe(getActivity(), loginResponse -> {
             Intent intent = new Intent();

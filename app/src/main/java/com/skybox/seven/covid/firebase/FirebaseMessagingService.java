@@ -1,17 +1,28 @@
 package com.skybox.seven.covid.firebase;
 
+import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import com.google.firebase.messaging.RemoteMessage;
+import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.network.RetrofitFactory;
 import com.skybox.seven.covid.network.RetrofitService;
+import com.skybox.seven.covid.network.responses.AccessToken;
+import com.skybox.seven.covid.repository.SharedPreferenceRepository;
 
 import retrofit2.Retrofit;
 
 public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
+
     private static final String TAG = "CovidFirebaseMsgService";
+    private SharedPreferenceRepository repository;
+
+    public FirebaseMessagingService() {
+        super();
+        repository = new SharedPreferenceRepository(getSharedPreferences(getApplication().getString(R.string.shared_preference_key), Context.MODE_PRIVATE));
+    }
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
@@ -35,12 +46,16 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
     private void registerToServer(String message) {
         Log.d(TAG, "registerToServer: " + message);
-        Retrofit retrofit = RetrofitFactory.getRetrofit();
+        Retrofit retrofit = RetrofitFactory.getRetrofit(repository);
         RetrofitService service = retrofit.create(RetrofitService.class);
-        service.pushToken(message);
+        AccessToken token = repository.getToken();
+
+        if (token.getToken() != null) {
+            service.pushToken(token.getType() + " " + token.getToken(), message);
+        }
+
     }
 
     private void sendNotification(String message) {
-
     }
 }

@@ -2,24 +2,26 @@ package com.skybox.seven.covid.viewmodels;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.android.gms.maps.model.LatLng;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.Advice;
+import com.skybox.seven.covid.model.FamMember;
 import com.skybox.seven.covid.model.InfoGraphic;
 import com.skybox.seven.covid.model.Myth;
 import com.skybox.seven.covid.model.MythGraphicInfo;
 import com.skybox.seven.covid.network.RetrofitFactory;
 import com.skybox.seven.covid.network.RetrofitService;
-import com.skybox.seven.covid.network.responses.LoginResponse;
+import com.skybox.seven.covid.network.responses.AccessToken;
 import com.skybox.seven.covid.repository.HealthRepository;
 import com.skybox.seven.covid.repository.MythRepository;
+import com.skybox.seven.covid.repository.SharedPreferenceRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -28,12 +30,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class MainViewModel extends ViewModel {
-    private SharedPreferences preferences;
+    private String TAG = "MAINVIEWMODEL";
+    private SharedPreferenceRepository preferenceRepository;
     private HealthRepository healthRepository = new HealthRepository();
     private MythRepository mythRepository = new MythRepository();
 
-    public MutableLiveData<LoginResponse> credentials = new MutableLiveData<>();
-    public MutableLiveData<LoginResponse> temp = new MutableLiveData<>();
+    public MutableLiveData<AccessToken> credentials = new MutableLiveData<>();
+    public MutableLiveData<AccessToken> temp = new MutableLiveData<>();
     public MutableLiveData<Boolean> isRegistered = new MutableLiveData<>();
     public MutableLiveData<Boolean> showLoginNotification = new MutableLiveData<>(true);
 
@@ -43,55 +46,45 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<List<Myth>> mythList = new MutableLiveData<>();
     public MutableLiveData<List<MythGraphicInfo>> mythGraphicInfoList = new MutableLiveData<>();
 
-    private Retrofit retrofit = RetrofitFactory.getRetrofit();
-    private FirebaseAuth auth;
+    private Retrofit retrofit;
 
     public MainViewModel(Application application) {
         super();
-        auth = FirebaseAuth.getInstance();
-        preferences = application.getSharedPreferences(application.getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
+        preferenceRepository = new SharedPreferenceRepository(application.getSharedPreferences(application.getString(R.string.shared_preference_key), Context.MODE_PRIVATE));
+        retrofit = RetrofitFactory.getRetrofit(preferenceRepository);
     }
 
     public void login(String phone, String password) {
-        LoginResponse user4 = new LoginResponse();
-        user4.setName("Chisomo kasenda");
-        user4.setPhone("2568834329");
-        credentials.setValue(user4);
+//        AccessToken user4 = new AccessToken();
+//        user4.setName("Chisomo kasenda");
+//        user4.setPhone("2568834329");
+//        credentials.setValue(user4);
+        Log.e(TAG, "login: started");
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
-        Call<LoginResponse> call = retrofitService.loginUser(phone, password);
-        call.enqueue(new Callback<LoginResponse>() {
+        Call<AccessToken> call = retrofitService.loginUser(phone, password);
+        call.enqueue(new Callback<AccessToken>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                LoginResponse user = response.body();
+            public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
+                AccessToken user = response.body();
                 if (user != null) {
-
-                    auth.signInWithCustomToken(user.getType() + " " + user.getToken()).addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            credentials.setValue(user);
-                            Log.d("Login", "Login Successful");
-                        } else {
-                            LoginResponse user3 = new LoginResponse();
-                            user3.setName("Chisomo kasenda");
-                            user3.setPhone("2568834329");
-                            credentials.setValue(user);
-                            task.getException().printStackTrace();
-                        }
-                    });
+                    credentials.setValue(user);
+                    preferenceRepository.setToken(user);
                 }
             }
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
+            public void onFailure(Call<AccessToken> call, Throwable t) {
                 t.printStackTrace();
-                LoginResponse user = new LoginResponse();
-                user.setName("Chisomo kasenda");
-                user.setPhone("2568834329");
-                credentials.setValue(user);
+//                AccessToken user = new AccessToken();
+//                user.setName("Chisomo kasenda");
+//                user.setPhone("2568834329");
+//                credentials.setValue(user);
+                Log.e(TAG, "onFailure: failed to log in");
             }
         });
     }
 
     public void setCredentials(String username, String phone) {
-        LoginResponse response = new LoginResponse();
+        AccessToken response = new AccessToken();
         response.setPhone(phone);
         response.setName(username);
 
@@ -126,10 +119,36 @@ public class MainViewModel extends ViewModel {
     }
 
     public boolean isLoggedIn() {
-        return auth.getCurrentUser() != null;
+        AccessToken accessToken = preferenceRepository.getToken();
+        return accessToken.getToken() != null;
         }
+
     public void getMythList(){
         mythGraphicInfoList.setValue(mythRepository.getMythGraphicInfoList());
         mythList.setValue(mythRepository.getMythList());
+    }
+
+    public void saveContacts(ArrayList<FamMember> members, LatLng userLocation) {
+        RetrofitService service = retrofit.create(RetrofitService.class);
+        service.saveContacts(getToken() , members,userLocation).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                // TODO: Get some actual response sent to the UI
+                System.out.println(response+"wellooooo");
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                System.out.println(call+"well damn");
+            }
+        });
+    }
+
+    public String getToken() {
+        AccessToken token = preferenceRepository.getToken();
+        if (token.getToken() != null) {
+            return token.getType() + " " + token.getToken();
+        }
+        return "";
     }
 }
