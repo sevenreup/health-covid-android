@@ -27,4 +27,13 @@ public class SharedPreferenceRepository {
 
         return accessToken;
     }
+
+    public void setFirebaseMessagingToken(String s) {
+        editor.putString("firebase_message", s);
+        editor.apply();
+    }
+
+    public String getFirebaseToken() {
+        return sharedPreferences.getString("firebase_message", null);
+    }
 }

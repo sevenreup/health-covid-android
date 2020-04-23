@@ -39,12 +39,6 @@ public class HomeActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this, new CovidFactory(getApplication())).get(MainViewModel.class);
 
-
-        Intent intent = getIntent();
-        String userNameM = intent.getStringExtra(NAME_MESSAGE);
-        String userNumberM =intent.getStringExtra(PHONE_MESSAGE);
-        viewModel.setCredentials(userNameM, userNumberM);
-
         navigationView= findViewById(R.id.navbar);
         NavController navController = Navigation.findNavController(this, R.id.container);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.homeFragment, R.id.casesFragment, R.id.settingsFragment).build();

@@ -10,18 +10,20 @@ import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.network.RetrofitFactory;
 import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.network.responses.AccessToken;
+import com.skybox.seven.covid.network.responses.GenericResponse;
 import com.skybox.seven.covid.repository.SharedPreferenceRepository;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
+public class HealthFireMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
 
     private static final String TAG = "CovidFirebaseMsgService";
-    private SharedPreferenceRepository repository;
 
-    public FirebaseMessagingService() {
+    public HealthFireMessagingService() {
         super();
-        repository = new SharedPreferenceRepository(getSharedPreferences(getApplication().getString(R.string.shared_preference_key), Context.MODE_PRIVATE));
     }
 
     @Override
@@ -45,15 +47,28 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
     }
 
     private void registerToServer(String message) {
+
         Log.d(TAG, "registerToServer: " + message);
-        Retrofit retrofit = RetrofitFactory.getRetrofit(repository);
-        RetrofitService service = retrofit.create(RetrofitService.class);
+        SharedPreferenceRepository repository = new SharedPreferenceRepository(getSharedPreferences(getApplication().getString(R.string.shared_preference_key), Context.MODE_PRIVATE));
+        repository.setFirebaseMessagingToken(message);
         AccessToken token = repository.getToken();
-
         if (token.getToken() != null) {
-            service.pushToken(token.getType() + " " + token.getToken(), message);
-        }
+            Retrofit retrofit = RetrofitFactory.getRetrofit(repository);
+            RetrofitService service = retrofit.create(RetrofitService.class);
+            Call<GenericResponse> call = service.pushToken(token.getType() + " " + token.getToken(), message);
+            call.enqueue(new Callback<GenericResponse>() {
+                @Override
+                public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
+                    Log.e(TAG, "onResponse: succeful updated firebase token");
+                }
 
+                @Override
+                public void onFailure(Call<GenericResponse> call, Throwable t) {
+                    Log.e(TAG, "onFailure: failled to update firebase");
+                }
+            });
+
+        }
     }
 
     private void sendNotification(String message) {

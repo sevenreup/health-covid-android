@@ -4,11 +4,18 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.skybox.seven.covid.R;
+import com.skybox.seven.covid.firebase.HealthFireMessagingService;
 import com.skybox.seven.covid.model.Advice;
 import com.skybox.seven.covid.model.FamMember;
 import com.skybox.seven.covid.model.InfoGraphic;
@@ -17,6 +24,7 @@ import com.skybox.seven.covid.model.MythGraphicInfo;
 import com.skybox.seven.covid.network.RetrofitFactory;
 import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.network.responses.AccessToken;
+import com.skybox.seven.covid.network.responses.GenericResponse;
 import com.skybox.seven.covid.repository.HealthRepository;
 import com.skybox.seven.covid.repository.MythRepository;
 import com.skybox.seven.covid.repository.SharedPreferenceRepository;
@@ -36,7 +44,6 @@ public class MainViewModel extends ViewModel {
     private MythRepository mythRepository = new MythRepository();
 
     public MutableLiveData<AccessToken> credentials = new MutableLiveData<>();
-    public MutableLiveData<AccessToken> temp = new MutableLiveData<>();
     public MutableLiveData<Boolean> isRegistered = new MutableLiveData<>();
     public MutableLiveData<Boolean> showLoginNotification = new MutableLiveData<>(true);
 
@@ -55,10 +62,6 @@ public class MainViewModel extends ViewModel {
     }
 
     public void login(String phone, String password) {
-//        AccessToken user4 = new AccessToken();
-//        user4.setName("Chisomo kasenda");
-//        user4.setPhone("2568834329");
-//        credentials.setValue(user4);
         Log.e(TAG, "login: started");
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
         Call<AccessToken> call = retrofitService.loginUser(phone, password);
@@ -70,26 +73,48 @@ public class MainViewModel extends ViewModel {
                     credentials.setValue(user);
                     Log.e(TAG, "onResponse: " + user);
                     preferenceRepository.setToken(user);
+                    String fireToken = preferenceRepository.getFirebaseToken();
+                    if (fireToken != null) {
+                        Call<GenericResponse> fToken = retrofitService.pushToken(user.getType() + " " + user.getToken(), fireToken);
+                        fToken.enqueue(new Callback<GenericResponse>() {
+                            @Override
+                            public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
+                                Log.e(TAG, "onResponse: succeful updated firebase token");
+                            }
+
+                            @Override
+                            public void onFailure(Call<GenericResponse> call, Throwable t) {
+                                Log.e(TAG, "onFailure: failled to update firebase");
+                            }
+                        });
+                    } else {
+                        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                String newToken = task.getResult().getToken();
+                                preferenceRepository.setFirebaseMessagingToken(newToken);
+                                Call<GenericResponse> fToken = retrofitService.pushToken(user.getType() + " " + user.getToken(), newToken);
+                                fToken.enqueue(new Callback<GenericResponse>() {
+                                    @Override
+                                    public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
+                                        Log.e(TAG, "onResponse: succeful updated firebase token");
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<GenericResponse> call, Throwable t) {
+                                        Log.e(TAG, "onFailure: failled to update firebase");
+                                    }
+                                });
+                            }
+                        });
+                    }
                 }
             }
             @Override
             public void onFailure(Call<AccessToken> call, Throwable t) {
                 t.printStackTrace();
-//                AccessToken user = new AccessToken();
-//                user.setName("Chisomo kasenda");
-//                user.setPhone("2568834329");
-//                credentials.setValue(user);
                 Log.e(TAG, "onFailure: failed to log in");
             }
         });
-    }
-
-    public void setCredentials(String username, String phone) {
-        AccessToken response = new AccessToken();
-        response.setPhone(phone);
-        response.setName(username);
-
-        temp.setValue(response);
     }
 
     public void register(String fname, String lname, String number, String gender) {

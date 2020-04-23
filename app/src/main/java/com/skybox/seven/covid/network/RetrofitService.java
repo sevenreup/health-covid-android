@@ -3,6 +3,7 @@ package com.skybox.seven.covid.network;
 import com.google.android.gms.maps.model.LatLng;
 import com.skybox.seven.covid.model.FamMember;
 import com.skybox.seven.covid.network.responses.AccessToken;
+import com.skybox.seven.covid.network.responses.GenericResponse;
 
 import java.util.ArrayList;
 
@@ -20,14 +21,17 @@ public interface RetrofitService {
     @POST("auth/login")
     Call<AccessToken> loginUser(@Field("phone") String phone, @Field("password") String password);
 
+    @Headers({"Accept: application/json"})
     @FormUrlEncoded
     @POST("updateFirebaseToken")
-    Call<String> pushToken(@Header("Authorization") String Authtoken, @Field("token") String token);
+    Call<GenericResponse> pushToken(@Header("Authorization") String Authtoken, @Field("firebase_token") String token);
 
+    @Headers({"Accept: application/json"})
     @FormUrlEncoded
     @POST("auth/register")
     Call<String> register(@Field("name")String fname, @Field("last_name")String lname, @Field("phone")String number, @Field("password")String gender);
 
+    @Headers({"Accept: application/json"})
     @FormUrlEncoded
     @POST("contact/add")
     Call<String> saveContacts(@Header("Authorization") String Authtoken, @Field("contacts") ArrayList<FamMember> contacts, @Field("location") LatLng latLng);
