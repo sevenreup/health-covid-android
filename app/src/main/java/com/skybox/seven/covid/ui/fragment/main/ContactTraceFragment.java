@@ -26,6 +26,7 @@ public class ContactTraceFragment extends Fragment {
     private contactAdapter ContactAdapter;
     private LinearLayoutManager layoutManager;
     Button addContButton;
+    Button contRequestsButton;
 
     public ContactTraceFragment() {
         // Required empty public constructor
@@ -39,6 +40,7 @@ public class ContactTraceFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_contact_trace2, container, false);
         recyclerView = v.findViewById(R.id.contactRecyclerView);
         addContButton = v.findViewById(R.id.addContButton);
+        contRequestsButton = v.findViewById(R.id.contRequestsButton);
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         ContactAdapter = new contactAdapter(getMyContacts());
         recyclerView.setLayoutManager(layoutManager);
@@ -59,6 +61,12 @@ public class ContactTraceFragment extends Fragment {
             //transaction.commit();
             });
 
+            contRequestsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Navigation.findNavController(getActivity(), R.id.container).navigate(R.id.contactRequestFragment);
+                }
+            });
 
    return v; }
 
