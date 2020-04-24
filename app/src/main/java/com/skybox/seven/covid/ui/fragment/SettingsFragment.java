@@ -1,6 +1,7 @@
 package com.skybox.seven.covid.ui.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.airbnb.epoxy.EpoxyRecyclerView;
@@ -16,6 +19,9 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.SettingsController;
+import com.skybox.seven.covid.ui.AuthActivity;
+import com.skybox.seven.covid.viewmodels.CovidFactory;
+import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 
 /**
@@ -23,6 +29,7 @@ import com.skybox.seven.covid.epoxy.SettingsController;
  */
 public class SettingsFragment extends Fragment implements SettingsController.SettingsCallback {
     private EpoxyRecyclerView recyclerView;
+    private MainViewModel viewModel;
     BottomSheetDialog dialog;
     View dialogView;
 
@@ -36,12 +43,18 @@ public class SettingsFragment extends Fragment implements SettingsController.Set
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_settings, container, false);
+
+        viewModel = new ViewModelProvider(getViewModelStore(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
+
         recyclerView = v.findViewById(R.id.settings_recycler);
         setupDialog();
 
         SettingsController controller = new SettingsController(this);
         recyclerView.setController(controller);
-        controller.requestModelBuild();
+
+        controller.setData(viewModel.isLoggedIn(), viewModel.showLoginNotification.getValue());
+        viewModel.showLoginNotification.observe(getViewLifecycleOwner(), aBoolean -> controller.setData(viewModel.isLoggedIn(), aBoolean));
+
         return v;
     }
 
@@ -77,6 +90,25 @@ public class SettingsFragment extends Fragment implements SettingsController.Set
 
     @Override
     public void onLogoutClick() {
+        viewModel.logout();
+    }
 
+    @Override
+    public void onLoginClick() {
+        Intent intent = new Intent(getContext(), AuthActivity.class);
+        intent.putExtra("register", false);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onRegisterClick() {
+        Intent intent = new Intent(getContext(), AuthActivity.class);
+        intent.putExtra("register", true);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onLogNotClose() {
+        viewModel.showLoginNotification.setValue(false);
     }
 }

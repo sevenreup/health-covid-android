@@ -2,20 +2,15 @@ package com.skybox.seven.covid.viewmodels;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.firebase.HealthFireMessagingService;
 import com.skybox.seven.covid.model.Advice;
 import com.skybox.seven.covid.model.FamMember;
 import com.skybox.seven.covid.model.InfoGraphic;
@@ -109,6 +104,7 @@ public class MainViewModel extends ViewModel {
                     }
                 }
             }
+
             @Override
             public void onFailure(Call<AccessToken> call, Throwable t) {
                 t.printStackTrace();
@@ -139,6 +135,10 @@ public class MainViewModel extends ViewModel {
         });
     }
 
+    public void logout() {
+        preferenceRepository.deleteToken();
+    }
+
     public void getAdviceList() {
         infoGraphicList.setValue(healthRepository.getInfoGraphicList());
         adviceList.setValue(healthRepository.getAdviceList());
@@ -148,25 +148,25 @@ public class MainViewModel extends ViewModel {
         AccessToken accessToken = preferenceRepository.getToken();
         Log.e(TAG, "isLoggedIn: " + accessToken.toString());
         return accessToken.getToken() != null;
-        }
+    }
 
-    public void getMythList(){
+    public void getMythList() {
         mythGraphicInfoList.setValue(mythRepository.getMythGraphicInfoList());
         mythList.setValue(mythRepository.getMythList());
     }
 
     public void saveContacts(ArrayList<FamMember> members, LatLng userLocation) {
         RetrofitService service = retrofit.create(RetrofitService.class);
-        service.saveContacts(getToken() , members,userLocation).enqueue(new Callback<String>() {
+        service.saveContacts(getToken(), members, userLocation).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 // TODO: Get some actual response sent to the UI
-                System.out.println(response+"wellooooo");
+                System.out.println(response + "wellooooo");
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                System.out.println(call+"well damn");
+                System.out.println(call + "well damn");
             }
         });
     }
@@ -177,5 +177,13 @@ public class MainViewModel extends ViewModel {
             return token.getType() + " " + token.getToken();
         }
         return "";
+    }
+
+    public void registerPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener listener) {
+        preferenceRepository.registerOnChangeListener(listener);
+    }
+
+    public void  removePreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener listener) {
+        preferenceRepository.unRegisterOnChangeListener(listener);
     }
 }

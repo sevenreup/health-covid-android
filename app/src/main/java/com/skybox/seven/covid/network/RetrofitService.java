@@ -38,4 +38,7 @@ public interface RetrofitService {
 
     @GET("")
     Call<String> getAllContacts(@Header("Authorization") String Authtoken);
+
+    @GET("")
+    Call<String> getPendingContacts(@Header("Authorization") String Authtoken);
 }

@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import com.skybox.seven.covid.network.responses.AccessToken;
 
 public class SharedPreferenceRepository {
+    public static String TOKEN = "token", TOKEN_TYPE = "token_type", FIREBASE_MESSAGING = "firebase_message";
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
@@ -14,26 +15,40 @@ public class SharedPreferenceRepository {
     }
 
     public void setToken(AccessToken response) {
-        editor.putString("token", response.getToken());
-        editor.putString("token_type", response.getType());
+        editor.putString(TOKEN, response.getToken());
+        editor.putString(TOKEN_TYPE, response.getType());
         editor.apply();
     }
 
     public AccessToken getToken() {
         AccessToken accessToken = new AccessToken();
 
-        accessToken.setToken(sharedPreferences.getString("token", null));
-        accessToken.setType(sharedPreferences.getString("token_type", null));
+        accessToken.setToken(sharedPreferences.getString(TOKEN, null));
+        accessToken.setType(sharedPreferences.getString(TOKEN_TYPE, null));
 
         return accessToken;
     }
 
+    public void deleteToken() {
+        editor.remove(TOKEN);
+        editor.remove(TOKEN_TYPE);
+        editor.apply();
+    }
+
     public void setFirebaseMessagingToken(String s) {
-        editor.putString("firebase_message", s);
+        editor.putString(FIREBASE_MESSAGING, s);
         editor.apply();
     }
 
     public String getFirebaseToken() {
-        return sharedPreferences.getString("firebase_message", null);
+        return sharedPreferences.getString(FIREBASE_MESSAGING, null);
+    }
+
+    public void registerOnChangeListener(SharedPreferences.OnSharedPreferenceChangeListener listener) {
+        sharedPreferences.registerOnSharedPreferenceChangeListener(listener);
+    }
+
+    public void unRegisterOnChangeListener(SharedPreferences.OnSharedPreferenceChangeListener listener) {
+        sharedPreferences.unregisterOnSharedPreferenceChangeListener(listener);
     }
 }

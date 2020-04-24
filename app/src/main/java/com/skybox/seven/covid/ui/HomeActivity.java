@@ -1,6 +1,7 @@
 package com.skybox.seven.covid.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.skybox.seven.covid.R;
+import com.skybox.seven.covid.repository.SharedPreferenceRepository;
 import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
@@ -26,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
     BottomNavigationView navigationView;
     MainViewModel viewModel;
     MaterialToolbar toolbar;
+    SharedPreferences.OnSharedPreferenceChangeListener changeListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,5 +66,20 @@ public class HomeActivity extends AppCompatActivity {
                     break;
             }
         });
+
+        changeListener = (sharedPreferences, key) -> {
+            if (key.equals(SharedPreferenceRepository.TOKEN)) {
+                if (sharedPreferences.getString(SharedPreferenceRepository.TOKEN, null) == null) {
+                    recreate();
+                }
+            }
+        };
+        viewModel.registerPreferenceChangeListener(changeListener);
+    }
+
+    @Override
+    protected void onDestroy() {
+        viewModel.removePreferenceChangeListener(changeListener);
+        super.onDestroy();
     }
 }

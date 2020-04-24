@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment implements MainController.MainControl
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-        viewModel = new ViewModelProvider(getActivity(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(getViewModelStore(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
 
         controller = new MainController(this);
         recyclerView = v.findViewById(R.id.home_frag_recycler);
