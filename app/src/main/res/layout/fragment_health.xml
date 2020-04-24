@@ -6,21 +6,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.main.HealthFragment">
 
-    <TextView
-        android:id="@+id/page_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_alignParentTop="true"/>
-
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chip_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:chipSpacingHorizontal="25dp"
         app:singleLine="true"
-        app:singleSelection="true"
-        android:layout_below="@id/page_title">
+        app:singleSelection="true">
 
 
         <com.google.android.material.chip.Chip android:id="@+id/advice_chip"

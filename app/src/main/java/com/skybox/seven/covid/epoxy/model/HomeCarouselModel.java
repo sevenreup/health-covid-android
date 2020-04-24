@@ -21,7 +21,7 @@ public class HomeCarouselModel extends Carousel {
     @NotNull
     @Override
     protected LayoutManager createLayoutManager() {
-        addItemDecoration(new GridItemDecoration(getContext(), R.dimen.menu_card_margin));
+        addItemDecoration(new GridItemDecoration(2,getContext().getResources().getDimensionPixelSize(R.dimen.menu_card_margin), true));
         return new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
     }
 
