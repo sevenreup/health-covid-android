@@ -44,7 +44,7 @@ public class SettingsFragment extends Fragment implements SettingsController.Set
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        viewModel = new ViewModelProvider(getViewModelStore(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(getActivity(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
 
         recyclerView = v.findViewById(R.id.settings_recycler);
         setupDialog();

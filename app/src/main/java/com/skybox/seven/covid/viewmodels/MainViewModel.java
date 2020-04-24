@@ -115,10 +115,10 @@ public class MainViewModel extends ViewModel {
 
     public void register(String fname, String lname, String number, String gender) {
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
-        Call<String> call = retrofitService.register(fname, lname, number, gender);
-        call.enqueue(new Callback<String>() {
+        Call<GenericResponse> call = retrofitService.register(fname, lname, number, gender);
+        call.enqueue(new Callback<GenericResponse>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
                 Log.e("TAG", "onResponse: " + response);
                 if (response.isSuccessful()) {
                     isRegistered.setValue(true);
@@ -128,7 +128,7 @@ public class MainViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<GenericResponse> call, Throwable t) {
                 t.printStackTrace();
                 isRegistered.setValue(false);
             }

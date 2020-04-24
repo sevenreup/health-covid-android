@@ -29,7 +29,7 @@ public interface RetrofitService {
     @Headers({"Accept: application/json"})
     @FormUrlEncoded
     @POST("auth/register")
-    Call<String> register(@Field("name")String fname, @Field("last_name")String lname, @Field("phone")String number, @Field("password")String gender);
+    Call<GenericResponse> register(@Field("first_name")String fname, @Field("last_name")String lname, @Field("phone")String number, @Field("password")String gender);
 
     @Headers({"Accept: application/json"})
     @FormUrlEncoded
