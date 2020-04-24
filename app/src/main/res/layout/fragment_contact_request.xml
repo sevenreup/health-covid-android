@@ -6,43 +6,11 @@
     android:layout_height="match_parent"
     >
 
-    <TextView
-        android:id="@+id/t2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contact Requests"
-        android:textSize="40sp"
-        android:layout_centerHorizontal="true"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/t2"
-        android:id="@+id/ContButtons"
-        android:paddingLeft="50dp"
-        android:paddingRight="30dp">
-
-        <Button
-            android:id="@+id/contactsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Contacts"
-            android:layout_marginRight="35dp"/>
-
-        <Button
-            android:id="@+id/addContsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Contact"
-            android:layout_toEndOf="@+id/contactsButton"
-            />
-    </RelativeLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/contactRequestRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/ContButtons" />
+        />
 
 
 </RelativeLayout>

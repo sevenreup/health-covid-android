@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_homeFragment_to_contactTraceFragment22"
             app:destination="@id/allconacts" />
+        <action
+            android:id="@+id/action_homeFragment_to_contactsFragment"
+            app:destination="@id/contactsFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -94,4 +97,8 @@
         android:name="com.skybox.seven.covid.ui.fragment.main.ContactRequestFragment"
         android:label="fragment_contact_request"
         tools:layout="@layout/fragment_contact_request" />
+    <fragment
+        android:id="@+id/contactsFragment"
+        android:name="com.skybox.seven.covid.ui.fragment.main.ContactsFragment"
+        android:label="ContactsFragment" />
 </navigation>

@@ -3,6 +3,7 @@ package com.skybox.seven.covid.ui.fragment.main;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,8 +29,6 @@ public class ContactRequestFragment extends Fragment {
     private RecyclerView recyclerView;
     private ContactRequestAdapter contactRequestAdapter;
     private LinearLayoutManager layoutManager;
-    Button addContsButton;
-    Button contactsButton;
     public ContactRequestFragment() {
         // Required empty public constructor
     }
@@ -42,12 +41,11 @@ public class ContactRequestFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_contact_request, container, false);
 
         recyclerView = v.findViewById(R.id.contactRequestRecyclerView);
-        addContsButton = v.findViewById(R.id.addContsButton);
-        contactsButton = v.findViewById(R.id.contactsButton);
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         contactRequestAdapter = new ContactRequestAdapter(getMyContactRequests());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(contactRequestAdapter);
+
    return v; }
 
     private ArrayList<ContactRequestModel> getMyContactRequests() {
