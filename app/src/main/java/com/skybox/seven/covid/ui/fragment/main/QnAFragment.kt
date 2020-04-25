@@ -17,35 +17,32 @@ class QnAFragment: Fragment() {
 
 
         val arrayList = ArrayList<QnaModel>()
-
-        arrayList.add(QnaModel(getString(R.string.one),getString(R.string.q1)))
-        arrayList.add(QnaModel(getString(R.string.two),getString(R.string.q2)))
-        arrayList.add(QnaModel(getString(R.string.three),getString(R.string.q3)))
-        arrayList.add(QnaModel(getString(R.string.four),getString(R.string.q4)))
-        arrayList.add(QnaModel(getString(R.string.five),getString(R.string.q5)))
-        arrayList.add(QnaModel(getString(R.string.six),getString(R.string.q6)))
-        arrayList.add(QnaModel(getString(R.string.seven),getString(R.string.q7)))
-        arrayList.add(QnaModel(getString(R.string.eight),getString(R.string.q8)))
-        arrayList.add(QnaModel(getString(R.string.nine),getString(R.string.q9)))
-        arrayList.add(QnaModel(getString(R.string.ten),getString(R.string.q10)))
-        arrayList.add(QnaModel(getString(R.string.eleven),getString(R.string.q11)))
-        arrayList.add(QnaModel(getString(R.string.twelve),getString(R.string.q12)))
-        arrayList.add(QnaModel(getString(R.string.thirteen),getString(R.string.q13)))
-        arrayList.add(QnaModel(getString(R.string.fourteen),getString(R.string.q14)))
-        arrayList.add(QnaModel(getString(R.string.fifteen),getString(R.string.q15)))
-        arrayList.add(QnaModel(getString(R.string.sixteen),getString(R.string.q16)))
-        arrayList.add(QnaModel(getString(R.string.seventeen),getString(R.string.q17)))
-        arrayList.add(QnaModel(getString(R.string.eighteen),getString(R.string.q18)))
-        arrayList.add(QnaModel(getString(R.string.nineteen),getString(R.string.q19)))
-        arrayList.add(QnaModel(getString(R.string.twenty),getString(R.string.q20)))
-        arrayList.add(QnaModel(getString(R.string.twenty_one),getString(R.string.q21)))
-        arrayList.add(QnaModel(getString(R.string.twenty_two),getString(R.string.q22)))
-        arrayList.add(QnaModel(getString(R.string.twenty_three),getString(R.string.q23)))
+        val res = resources
+        val items = res.getStringArray(R.array.questions)
 
 
-
-
-
+        arrayList.add(QnaModel(getString(R.string.one),items[0]))
+        arrayList.add(QnaModel(getString(R.string.two),items[1]))
+        arrayList.add(QnaModel(getString(R.string.three),items[2]))
+        arrayList.add(QnaModel(getString(R.string.four),items[3]))
+        arrayList.add(QnaModel(getString(R.string.five),items[4]))
+        arrayList.add(QnaModel(getString(R.string.six),items[5]))
+        arrayList.add(QnaModel(getString(R.string.seven),items[6]))
+        arrayList.add(QnaModel(getString(R.string.eight),items[7]))
+        arrayList.add(QnaModel(getString(R.string.nine),items[8]))
+        arrayList.add(QnaModel(getString(R.string.ten),items[9]))
+        arrayList.add(QnaModel(getString(R.string.eleven),items[10]))
+        arrayList.add(QnaModel(getString(R.string.twelve),items[11]))
+        arrayList.add(QnaModel(getString(R.string.thirteen),items[12]))
+        arrayList.add(QnaModel(getString(R.string.fourteen),items[13]))
+        arrayList.add(QnaModel(getString(R.string.fifteen),items[14]))
+        arrayList.add(QnaModel(getString(R.string.sixteen),items[15]))
+        arrayList.add(QnaModel(getString(R.string.seventeen),items[16]))
+        arrayList.add(QnaModel(getString(R.string.eighteen),items[17]))
+        arrayList.add(QnaModel(getString(R.string.nineteen),items[18]))
+        arrayList.add(QnaModel(getString(R.string.twenty),items[19]))
+        arrayList.add(QnaModel(getString(R.string.twenty_one),items[20]))
+        arrayList.add(QnaModel(getString(R.string.twenty_two),items[21]))
 
 
 

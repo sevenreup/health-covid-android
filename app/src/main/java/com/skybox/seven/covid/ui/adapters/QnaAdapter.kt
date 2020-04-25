@@ -35,6 +35,9 @@ class QnaAdapter(val arrayList: ArrayList<QnaModel>, val context: QnAFragment): 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItems(arrayList[position])
 
+        val res = this.context!!.resources
+        val items = res.getStringArray(R.array.answers)
+
         holder.itemView.setOnClickListener {
             when(position){
                 0 -> {
@@ -42,6 +45,8 @@ class QnaAdapter(val arrayList: ArrayList<QnaModel>, val context: QnAFragment): 
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     dialog.setContentView(view)
+                    val display = view.findViewById<TextView>(R.id.displayer_)
+                    display.setText(items[0])
                     dialog.show()
                     close.setOnClickListener{
                         dialog.dismiss()
@@ -53,7 +58,7 @@ class QnaAdapter(val arrayList: ArrayList<QnaModel>, val context: QnAFragment): 
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_two)
+                    display.setText(items[1])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
@@ -65,79 +70,79 @@ class QnaAdapter(val arrayList: ArrayList<QnaModel>, val context: QnAFragment): 
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_three)
+                    display.setText(items[2])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
                         dialog.dismiss()
                     }
                 }
-                3 ->{
+                3 -> {
                     val dialog = BottomSheetDialog(context.activity!!)
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText (R.string.question_four)
+                    display.setText(items[3])
+                    dialog.setContentView(view)
+                    dialog.show()
+                    close.setOnClickListener{
+                        dialog.dismiss()
+                    }
+
+                }
+                4 -> {
+                    val dialog = BottomSheetDialog(context.activity!!)
+                    val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
+                    val close = view.findViewById<TextView>(R.id.close)
+                    val display = view.findViewById<TextView>(R.id.displayer_)
+                    display.setText(items[4])
+                    dialog.setContentView(view)
+                    dialog.show()
+                    close.setOnClickListener{
+                        dialog.dismiss()
+                    }}
+                5 -> {
+                    val dialog = BottomSheetDialog(context.activity!!)
+                    val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
+                    val close = view.findViewById<TextView>(R.id.close)
+                    val display = view.findViewById<TextView>(R.id.displayer_)
+                    display.setText(items[5])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
                         dialog.dismiss()
                     }
                 }
-                4 ->{
+                6 -> {
                     val dialog = BottomSheetDialog(context.activity!!)
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_five)
+                    display.setText(items[6])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
                         dialog.dismiss()
                     }
                 }
-                5 ->{
+                7 -> {
                     val dialog = BottomSheetDialog(context.activity!!)
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_six)
+                    display.setText(items[7])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
                         dialog.dismiss()
                     }
                 }
-                6 ->{
+                8 -> {
                     val dialog = BottomSheetDialog(context.activity!!)
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_seven)
-                    dialog.setContentView(view)
-                    dialog.show()
-                    close.setOnClickListener{
-                        dialog.dismiss()
-                    }
-                }
-                7 ->{
-                    val dialog = BottomSheetDialog(context.activity!!)
-                    val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
-                    val close = view.findViewById<TextView>(R.id.close)
-                    val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_eight)
-                    dialog.setContentView(view)
-                    dialog.show()
-                    close.setOnClickListener{
-                        dialog.dismiss()
-                    }
-                }
-                8 ->{
-                    val dialog = BottomSheetDialog(context.activity!!)
-                    val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
-                    val close = view.findViewById<TextView>(R.id.close)
-                    val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_nine)
+                    display.setText(items[8])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
@@ -149,7 +154,7 @@ class QnaAdapter(val arrayList: ArrayList<QnaModel>, val context: QnAFragment): 
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_ten)
+                    display.setText(items[9])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
@@ -161,91 +166,91 @@ class QnaAdapter(val arrayList: ArrayList<QnaModel>, val context: QnAFragment): 
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_eleven)
+                    display.setText(items[10])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
                         dialog.dismiss()
                     }
                 }
-                11 ->{
+                11 -> {
                     val dialog = BottomSheetDialog(context.activity!!)
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_twelve)
+                    display.setText(items[11])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
                         dialog.dismiss()
                     }
                 }
-                12 ->{
+                12 -> {
                     val dialog = BottomSheetDialog(context.activity!!)
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText (R.string.question_thirteen)
+                    display.setText(items[12])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
                         dialog.dismiss()
                     }
                 }
-                13 ->{
+                13 -> {
                     val dialog = BottomSheetDialog(context.activity!!)
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_fourteen)
+                    display.setText(items[13])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
                         dialog.dismiss()
                     }
                 }
-                14 ->{
+                14 -> {
                     val dialog = BottomSheetDialog(context.activity!!)
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_fifteen)
+                    display.setText(items[14])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
                         dialog.dismiss()
                     }
                 }
-                15 ->{
+                15 -> {
                     val dialog = BottomSheetDialog(context.activity!!)
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_sixteen)
+                    display.setText(items[15])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
                         dialog.dismiss()
                     }
                 }
-                16 ->{
+                16 -> {
                     val dialog = BottomSheetDialog(context.activity!!)
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_seventeen)
+                    display.setText(items[16])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
                         dialog.dismiss()
                     }
                 }
-                17 ->{
+                17 -> {
                     val dialog = BottomSheetDialog(context.activity!!)
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_eighteen)
+                    display.setText(items[17])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
@@ -257,7 +262,7 @@ class QnaAdapter(val arrayList: ArrayList<QnaModel>, val context: QnAFragment): 
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_nineteen)
+                    display.setText(items[18])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
@@ -269,49 +274,50 @@ class QnaAdapter(val arrayList: ArrayList<QnaModel>, val context: QnAFragment): 
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_twenty)
+                    display.setText(items[19])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
                         dialog.dismiss()
                     }
                 }
-                20 ->{
+                20 -> {
                     val dialog = BottomSheetDialog(context.activity!!)
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_twenty_one)
+                    display.setText(items[20])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
                         dialog.dismiss()
                     }
                 }
-                21 ->{
+                21 -> {
                     val dialog = BottomSheetDialog(context.activity!!)
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_twenty_two)
+                    display.setText(items[21])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
                         dialog.dismiss()
                     }
                 }
-                22 ->{
+                22 -> {
                     val dialog = BottomSheetDialog(context.activity!!)
                     val view = dialog.layoutInflater.inflate(R.layout.question_one, null)
                     val close = view.findViewById<TextView>(R.id.close)
                     val display = view.findViewById<TextView>(R.id.displayer_)
-                    display.setText(R.string.question_twenty_three)
+                    display.setText(items[22])
                     dialog.setContentView(view)
                     dialog.show()
                     close.setOnClickListener{
                         dialog.dismiss()
                     }
                 }
+
 
             }
 
