@@ -85,4 +85,13 @@
             android:id="@+id/action_selfTestFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/emergencyContactsFragment"
+        android:name="com.skybox.seven.covid.ui.fragment.main.EmergencyContactsFragment"
+        android:label="fragment_emergency_contacts"
+        tools:layout="@layout/fragment_emergency_contacts" >
+        <action
+            android:id="@+id/action_emergencyContactsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

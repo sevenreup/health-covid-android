@@ -10,6 +10,8 @@ import com.airbnb.epoxy.OnModelClickListener;
 import com.airbnb.epoxy.Typed2EpoxyController;
 import com.airbnb.epoxy.Typed3EpoxyController;
 import com.airbnb.epoxy.TypedEpoxyController;
+import com.skybox.seven.covid.epoxy.model.EmergencyContanctsCardModel;
+import com.skybox.seven.covid.epoxy.model.EmergencyContanctsCardModel_;
 import com.skybox.seven.covid.epoxy.model.HomeCarouselModelModel_;
 import com.skybox.seven.covid.epoxy.model.MainMenuItem_;
 import com.skybox.seven.covid.epoxy.model.MainNotLogged;
@@ -23,6 +25,7 @@ import java.util.List;
 public class MainController extends Typed3EpoxyController<Boolean, Boolean,List<MenuItem>> {
     @AutoModel PersonalCardModel_ header;
     @AutoModel MainNotLogged_ notLogged_;
+    @AutoModel EmergencyContanctsCardModel_ emergencyContancts_;
     private MainControllerCallback callback;
 
     public MainController(MainControllerCallback callback) {
@@ -41,7 +44,10 @@ public class MainController extends Typed3EpoxyController<Boolean, Boolean,List<
                         .registerClick((model, parentView, clickedView, position) -> callback.OnRegisterClick())
                         .addIf(showLogin,this);
         }
-
+        emergencyContancts_
+                .emergencyContactslistener((model, parentView, clickedView, position) -> callback.OnEmergencyContactsClick())
+                .selfTestContactslistener((model, parentView, clickedView, position) -> callback.OnSelfTestClick())
+                .addTo(this);
         List<MainMenuItem_> mainMenuItem_s = new ArrayList<>();
 
         for (int i = 0; i < data.size(); i++) {
@@ -60,5 +66,7 @@ public class MainController extends Typed3EpoxyController<Boolean, Boolean,List<
         void OnLoginClick();
         void OnCloseLogNotification();
         void NavigateToPage(int dest);
+        void OnSelfTestClick();
+        void OnEmergencyContactsClick();
     }
 }

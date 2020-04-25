@@ -1,71 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:layout_marginBottom="20dp">
-
-    <TextView
-        android:id="@+id/greatings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/menu_card_margin"
-        android:text="Good \nMorning"
-        android:textAppearance="?textAppearanceHeadline1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RelativeLayout
-        android:id="@+id/location_holder"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="135dp"
-        android:layout_marginRight="135dp"
-        app:layout_constraintEnd_toStartOf="@+id/relativeLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/greatings">
-
-        <ImageView
-            android:id="@+id/location_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            app:srcCompat="@drawable/ic_location_on" />
-
-        <TextView
-            android:id="@+id/location_info"
-            android:layout_marginStart="10dp"
-            android:layout_width="wrap_content"
+    android:layout_margin="@dimen/menu_card_margin">
+        <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/personal_holder"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/location_icon"
-            android:text="Location On" />
+            android:padding="@dimen/menu_card_margin">
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/greatings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/menu_card_margin"
+                android:text="Good Morning"
+                android:textAppearance="?textAppearanceHeadline5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/location_holder"
-        app:layout_constraintTop_toBottomOf="@id/greatings">
+            <RelativeLayout
+                android:id="@+id/location_holder"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="135dp"
+                android:layout_marginRight="135dp"
+                app:layout_constraintEnd_toStartOf="@+id/relativeLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/greatings">
 
-        <ImageView
-            android:id="@+id/contacts_icon"
-            android:layout_width="24dp"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_people" />
+                <ImageView
+                    android:id="@+id/location_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    app:srcCompat="@drawable/ic_location_on" />
 
-        <TextView
-            android:id="@+id/contacts_info"
-            android:layout_marginStart="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/contacts_icon"
-            android:text="2 Contacts" />
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/location_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/location_icon"
+                    android:text="Location On" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/location_holder"
+                app:layout_constraintTop_toBottomOf="@id/greatings">
+
+                <ImageView
+                    android:id="@+id/contacts_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_people" />
+
+                <TextView
+                    android:id="@+id/contacts_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/contacts_icon"
+                    android:text="2 Contacts" />
+            </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
