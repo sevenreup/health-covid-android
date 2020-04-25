@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/menu_card_margin">
+    android:layout_margin="@dimen/menu_card_margin"
+    android:id="@+id/personal_card_holder"
+    android:clickable="true"
+    android:focusable="true">
         <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/personal_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

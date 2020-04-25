@@ -16,6 +16,7 @@ import com.skybox.seven.covid.epoxy.model.HomeCarouselModelModel_;
 import com.skybox.seven.covid.epoxy.model.MainMenuItem_;
 import com.skybox.seven.covid.epoxy.model.MainNotLogged;
 import com.skybox.seven.covid.epoxy.model.MainNotLogged_;
+import com.skybox.seven.covid.epoxy.model.PersonalCardModel;
 import com.skybox.seven.covid.epoxy.model.PersonalCardModel_;
 import com.skybox.seven.covid.model.MenuItem;
 
@@ -37,7 +38,7 @@ public class MainController extends Typed3EpoxyController<Boolean, Boolean,List<
     protected void buildModels(Boolean isLogged, Boolean showLogin, List<MenuItem> data) {
         Log.e("TAG", "buildModels: " + data.size());
         if (isLogged) {
-            new PersonalCardModel_().id("personal card").addTo(this);
+            new PersonalCardModel_().listener((model, parentView, clickedView, position) -> callback.OnPersonalCardClick()).id("personal card").addTo(this);
         } else {
                 new MainNotLogged_().id("not logged").closeClick((model, parentView, clickedView, position) -> callback.OnCloseLogNotification())
                         .loginClick((model, parentView, clickedView, position) -> callback.OnLoginClick())
@@ -67,6 +68,7 @@ public class MainController extends Typed3EpoxyController<Boolean, Boolean,List<
         void OnCloseLogNotification();
         void NavigateToPage(int dest);
         void OnSelfTestClick();
+        void OnPersonalCardClick();
         void OnEmergencyContactsClick();
     }
 }

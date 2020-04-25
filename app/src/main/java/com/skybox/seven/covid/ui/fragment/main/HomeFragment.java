@@ -101,6 +101,11 @@ public class HomeFragment extends Fragment implements MainController.MainControl
     }
 
     @Override
+    public void OnPersonalCardClick() {
+        Navigation.findNavController(getActivity(), R.id.container).navigate(R.id.personalFragment);
+    }
+
+    @Override
     public void OnEmergencyContactsClick() {
         Navigation.findNavController(getActivity(), R.id.container).navigate(R.id.emergencyContactsFragment);
     }
