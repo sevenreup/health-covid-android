@@ -1,8 +1,12 @@
 package com.skybox.seven.covid.ui;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,6 +39,22 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Create   channel to show notifications.
+            String channelId  = getString(R.string.default_notification_channel_name);
+            String channelName = getString(R.string.default_notification_channel_name);
+            NotificationManager notificationManager =
+                    getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(new NotificationChannel(channelId,
+                    channelName, NotificationManager.IMPORTANCE_HIGH));
+        }
+
+        if (getIntent().getExtras() != null) {
+            for (String key : getIntent().getExtras().keySet()) {
+                Object value = getIntent().getExtras().get(key);
+                Log.d("Notification", "Key: " + key + " Value: " + value);
+            }
+        }
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
