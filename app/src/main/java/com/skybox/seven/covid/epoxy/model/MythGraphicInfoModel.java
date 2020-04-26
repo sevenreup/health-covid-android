@@ -45,7 +45,6 @@ public class MythGraphicInfoModel extends EpoxyModelWithHolder<MythGraphicInfoMo
 
         @Override
         protected void bindView(@NonNull View itemView) {
-            ImageView image;
             image = itemView.findViewById(R.id.myth_info_image);
         }
     }

@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   >
+    >
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/contactRecyclerView"
+        android:id="@+id/contactRequestRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        />
 
 
 </RelativeLayout>

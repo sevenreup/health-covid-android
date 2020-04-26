@@ -66,7 +66,7 @@ public class HomeFragment extends Fragment implements MainController.MainControl
         menuItems.add(new MenuItem(R.drawable.ic_history, R.string.menu_qna, R.id.mythBusterFragment, 4));
 
         if (viewModel.isLoggedIn()){
-            menuItems.add(new MenuItem(R.drawable.ic_team, R.string.menu_contacts, R.id.allconacts, 5));
+            menuItems.add(new MenuItem(R.drawable.ic_team, R.string.menu_contacts, R.id.contactsFragment, 5));
         }
         this.menuItems = menuItems;
     }
