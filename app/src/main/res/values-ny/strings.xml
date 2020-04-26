@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Umoyo pa Malawi</string>
     <string name="add_location">Wonjezera Maro</string>
     <string name="name">Dzina</string>
     <string name="search_location">Yangana Maro</string>
@@ -9,7 +10,7 @@
     <string name="menu_health_tips">Zaumoyo</string>
     <string name="menu_self_test">Kauniuni</string>
     <string name="menu_contacts">Azanu</string>
-    <string name="menu_mythbusters">Kuswanya</string>
+    <string name="menu_mythbusters">Kuswanya Mabodza</string>
     <string name="menu_news">Nkhani</string>
-    <string name="menu_qna">Questions and Answers</string>
+    <string name="menu_qna">Manfunso ndi Mayanko</string>
 </resources>

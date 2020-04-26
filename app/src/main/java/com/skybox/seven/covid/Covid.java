@@ -7,7 +7,6 @@ import android.content.res.Configuration;
 import androidx.annotation.NonNull;
 
 import com.akexorcist.localizationactivity.core.LocalizationApplicationDelegate;
-import com.yariksoffice.lingver.Lingver;
 
 import java.util.Arrays;
 import java.util.List;
