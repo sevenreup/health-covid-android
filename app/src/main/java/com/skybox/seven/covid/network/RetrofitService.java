@@ -4,6 +4,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.skybox.seven.covid.model.FamMember;
 import com.skybox.seven.covid.network.responses.AccessToken;
 import com.skybox.seven.covid.network.responses.GenericResponse;
+import com.skybox.seven.covid.ui.adapters.ContactModel;
 
 import java.util.ArrayList;
 
@@ -38,8 +39,8 @@ public interface RetrofitService {
     Call<String> saveContacts(@Header("Authorization") String Authtoken, @Field("contacts") ArrayList<FamMember> contacts, @Field("location") LatLng latLng);
 
     @Headers({"Accept: application/json"})
-    @GET("users/{userId}/contacts")
-    Call<String> getAllContacts(@Header("Authorization") String Authtoken, @Path("userId") String userID);
+    @GET("users/contacts")
+    Call<ArrayList<ContactModel>> getAllContacts(@Header("Authorization") String Authtoken);
 
     @Headers({"Accept: application/json"})
     @GET("users/{userId}/contacts/rejected")
