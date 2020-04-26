@@ -26,6 +26,7 @@ import com.skybox.seven.covid.repository.SharedPreferenceRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,6 +48,8 @@ public class MainViewModel extends ViewModel {
 
     public MutableLiveData<List<Myth>> mythList = new MutableLiveData<>();
     public MutableLiveData<List<MythGraphicInfo>> mythGraphicInfoList = new MutableLiveData<>();
+
+    public MutableLiveData<Locale> changeLanguage = new MutableLiveData<>();
 
     private Retrofit retrofit;
 

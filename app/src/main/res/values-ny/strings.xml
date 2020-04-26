@@ -5,4 +5,11 @@
     <string name="search_location">Yangana Maro</string>
     <string name="done">Malizani</string>
     <string name="title_activity_maps">Maeo</string>
+
+    <string name="menu_health_tips">Zaumoyo</string>
+    <string name="menu_self_test">Kauniuni</string>
+    <string name="menu_contacts">Azanu</string>
+    <string name="menu_mythbusters">Kuswanya</string>
+    <string name="menu_news">Nkhani</string>
+    <string name="menu_qna">Questions and Answers</string>
 </resources>

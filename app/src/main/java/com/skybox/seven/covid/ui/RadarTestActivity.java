@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.akexorcist.localizationactivity.ui.LocalizationActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.skybox.seven.covid.R;
@@ -18,7 +19,7 @@ import com.skybox.seven.covid.location.LocationReceiver;
 import com.skybox.seven.covid.location.LocationRepository;
 import com.skybox.seven.covid.viewmodels.LocationViewModel;
 
-public class RadarTestActivity extends AppCompatActivity {
+public class RadarTestActivity extends LocalizationActivity {
     private LocationReceiver locationReceiver;
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     TextView playservicesStatus, locationStatus, geofenceStatus;

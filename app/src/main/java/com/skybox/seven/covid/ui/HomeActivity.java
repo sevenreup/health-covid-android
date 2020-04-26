@@ -11,6 +11,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
@@ -18,6 +19,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.akexorcist.localizationactivity.ui.LocalizationActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.skybox.seven.covid.R;
@@ -25,7 +27,9 @@ import com.skybox.seven.covid.repository.SharedPreferenceRepository;
 import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
-public class HomeActivity extends AppCompatActivity {
+import java.util.Locale;
+
+public class HomeActivity extends LocalizationActivity {
 
     public static final String NAME_MESSAGE = "userName";
     public static final String PHONE_MESSAGE = "userNumber";
@@ -95,6 +99,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         };
         viewModel.registerPreferenceChangeListener(changeListener);
+        viewModel.changeLanguage.observe(this, new Observer<Locale>() {
+            @Override
+            public void onChanged(Locale locale) {
+                Log.e("h", "onChanged: stuff is happening" + locale);
+                setLanguage(locale);
+            }
+        });
     }
 
     @Override

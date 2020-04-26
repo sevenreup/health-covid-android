@@ -5,12 +5,13 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import com.akexorcist.localizationactivity.ui.LocalizationActivity;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.ui.fragment.LoginFragment;
 import com.skybox.seven.covid.ui.fragment.RegisterFragment;
 
 
-public class AuthActivity extends AppCompatActivity {
+public class AuthActivity extends LocalizationActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

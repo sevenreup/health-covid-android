@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -17,11 +20,16 @@ import androidx.navigation.Navigation;
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.button.MaterialButton;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.SettingsController;
 import com.skybox.seven.covid.ui.AuthActivity;
 import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
+
+import java.util.Locale;
+
+import static com.skybox.seven.covid.Covid.SUPPORTED_LOCALES;
 
 
 /**
@@ -62,8 +70,13 @@ public class SettingsFragment extends Fragment implements SettingsController.Set
 
         dialog = new BottomSheetDialog(getContext());
         dialogView = dialog.getLayoutInflater().inflate(R.layout.bottom_settings_sheet, null);
+        Spinner spinner = dialogView.findViewById(R.id.language_spinner);
+        MaterialButton button = dialogView.findViewById(R.id.save_locale);
+        ArrayAdapter<Locale> arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, SUPPORTED_LOCALES);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+        button.setOnClickListener(v -> viewModel.changeLanguage.setValue((Locale) spinner.getSelectedItem()));
         dialog.setContentView(dialogView);
-
     }
     @Override
     public void onContactsClick() {
@@ -110,5 +123,17 @@ public class SettingsFragment extends Fragment implements SettingsController.Set
     @Override
     public void onLogNotClose() {
         viewModel.showLoginNotification.setValue(false);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dialog.dismiss();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        dialog.dismiss();
     }
 }
