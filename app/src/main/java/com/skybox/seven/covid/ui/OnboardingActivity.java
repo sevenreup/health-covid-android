@@ -1,7 +1,5 @@
 package com.skybox.seven.covid.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 import com.akexorcist.localizationactivity.ui.LocalizationActivity;
