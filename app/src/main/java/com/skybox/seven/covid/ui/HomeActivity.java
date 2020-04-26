@@ -2,19 +2,14 @@ package com.skybox.seven.covid.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.ui.fragment.main.HomeFragment;
-import com.skybox.seven.covid.ui.fragment.SettingsFragment;
-import com.skybox.seven.covid.util.BaseModelFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 public class HomeActivity extends AppCompatActivity {

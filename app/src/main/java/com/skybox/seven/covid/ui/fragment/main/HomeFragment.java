@@ -38,16 +38,12 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
         MainController controller = new MainController(Navigation.findNavController(getActivity(), R.id.container));
         recyclerView = v.findViewById(R.id.home_frag_recycler);
 
         recyclerView.setController(controller);
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(new GridItemDecoration(getContext(), R.dimen.menu_card_margin));
         controller.setData(createMenuItems());
 
         viewModel.credentials.observe(getActivity(), loginResponse -> {
@@ -59,11 +55,11 @@ public class HomeFragment extends Fragment {
     private List<MenuItem> createMenuItems() {
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(new MenuItem(R.drawable.ic_user, R.string.menu_health_tips, R.id.healthFragment));
-        menuItems.add(new MenuItem(R.drawable.ic_worlds, R.string.menu_mythbusters, R.id.mythBusterFragment));
+        menuItems.add(new MenuItem(R.drawable.ic_worlds, R.string.menu_mythbusters, R.id.qanAFragment));
         menuItems.add(new MenuItem(R.drawable.ic_test, R.string.menu_self_test, R.id.selfTestFragment));
         menuItems.add(new MenuItem(R.drawable.ic_newspaper, R.string.menu_news, R.id.newsFragment));
-        menuItems.add(new MenuItem(R.drawable.ic_history, R.string.menu_qna, R.id.qanAFragment));
-        menuItems.add(new MenuItem(R.drawable.ic_team, R.string.menu_contacts, R.id.contactTraceFragment));
+        menuItems.add(new MenuItem(R.drawable.ic_history, R.string.menu_qna, R.id.mythBusterFragment));
+        menuItems.add(new MenuItem(R.drawable.ic_team, R.string.menu_contacts, R.id.allconacts));
         return menuItems;
     }
 

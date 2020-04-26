@@ -34,7 +34,7 @@ public class contactAdapter extends RecyclerView.Adapter<ContactHolder> {
     public void onBindViewHolder(@NonNull ContactHolder holder, int position) {
         holder.contName.setText(models.get(position).getName());
         holder.contNumber.setText(models.get(position).getPhone());
-        Log.e("Big error", "Should not be here");
+
     }
 
 

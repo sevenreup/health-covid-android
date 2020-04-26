@@ -14,14 +14,10 @@ import android.widget.TextView;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.network.responses.LoginResponse;
 import com.skybox.seven.covid.ui.HomeActivity;
-import com.skybox.seven.covid.ui.UiTestActivity;
-import com.skybox.seven.covid.util.BaseModelFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 /**
@@ -46,7 +42,7 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_login, container, false);
 
-        viewModel = new ViewModelProvider(getActivity(), new BaseModelFactory()).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
 
         userName = v.findViewById(R.id.userName);
         userNumber = v.findViewById(R.id.userNumber);
@@ -72,9 +68,9 @@ public class LoginFragment extends Fragment {
 
       registerView.setOnClickListener(v12 -> {
               RegisterFragment registerFragment = new RegisterFragment();
-          FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-          transaction.replace(R.id.mainlayout, registerFragment);
-          transaction.commit();
+              FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+              transaction.replace(R.id.mainlayout, registerFragment);
+              transaction.commit();
       });
 
     return v;
