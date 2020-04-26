@@ -14,6 +14,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface RetrofitService {
     @Headers({"Accept: application/json"})
@@ -36,9 +37,11 @@ public interface RetrofitService {
     @POST("contact/add")
     Call<String> saveContacts(@Header("Authorization") String Authtoken, @Field("contacts") ArrayList<FamMember> contacts, @Field("location") LatLng latLng);
 
-    @GET("")
-    Call<String> getAllContacts(@Header("Authorization") String Authtoken);
+    @Headers({"Accept: application/json"})
+    @GET("users/{userId}/contacts")
+    Call<String> getAllContacts(@Header("Authorization") String Authtoken, @Path("userId") String userID);
 
-    @GET("")
-    Call<String> getPendingContacts(@Header("Authorization") String Authtoken);
+    @Headers({"Accept: application/json"})
+    @GET("users/{userId}/contacts/rejected")
+    Call<String> getPendingContacts(@Header("Authorization") String Authtoken, @Path("userId") String userID);
 }

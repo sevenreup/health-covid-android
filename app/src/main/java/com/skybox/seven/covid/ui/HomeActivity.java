@@ -62,8 +62,6 @@ public class HomeActivity extends LocalizationActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
         viewModel = new ViewModelProvider(this, new CovidFactory(getApplication())).get(MainViewModel.class);
 
         navigationView= findViewById(R.id.navbar);
@@ -99,13 +97,7 @@ public class HomeActivity extends LocalizationActivity {
             }
         };
         viewModel.registerPreferenceChangeListener(changeListener);
-        viewModel.changeLanguage.observe(this, new Observer<Locale>() {
-            @Override
-            public void onChanged(Locale locale) {
-                Log.e("h", "onChanged: stuff is happening" + locale);
-                setLanguage(locale);
-            }
-        });
+        viewModel.changeLanguage.observe(this, this::setLanguage);
     }
 
     @Override
