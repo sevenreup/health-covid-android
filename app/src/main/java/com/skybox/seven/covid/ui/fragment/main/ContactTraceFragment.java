@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +20,8 @@ import com.skybox.seven.covid.network.ContactClientInstance;
 import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.ui.adapters.ContactModel;
 import com.skybox.seven.covid.ui.adapters.contactAdapter;
+import com.skybox.seven.covid.viewmodels.CovidFactory;
+import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
 
@@ -35,6 +38,7 @@ public class ContactTraceFragment extends Fragment {
     private contactAdapter ContactAdapter;
     private LinearLayoutManager layoutManager;
     ProgressDialog progressDialog;
+    MainViewModel viewModel;
 
     public ContactTraceFragment() {
         // Required empty public constructor
@@ -46,14 +50,14 @@ public class ContactTraceFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_contact_trace2, container, false);
-
+        viewModel = new ViewModelProvider(getActivity(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
 
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Loading....");
         progressDialog.show();
 
         RetrofitService service = ContactClientInstance.getRetrofitInstance().create(RetrofitService.class);
-        Call<ArrayList<ContactModel>> call = service.getAllContacts(getToken());
+        Call<ArrayList<ContactModel>> call = service.getAllContacts(viewModel.getToken());
 
         call.enqueue(new Callback<ArrayList<ContactModel>>() {
             @Override
