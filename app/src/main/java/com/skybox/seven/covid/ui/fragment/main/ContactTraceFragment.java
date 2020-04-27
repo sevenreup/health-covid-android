@@ -67,9 +67,10 @@ public class ContactTraceFragment extends Fragment {
             public void onResponse(Call<ArrayList<ContactModel.ContactUsersContacts>> call, Response<ArrayList<ContactModel.ContactUsersContacts>> response)
             {
                // progressDialog.dismiss();
+                Log.e("TAG", "onResponse: " + response);
                 for (ContactModel.ContactUsersContacts errorcheck:response.body()
                      ) {
-                    Log.e("err", errorcheck.toString());
+                    Log.e("err", errorcheck.getUser().getFName());
                 }
 
                 //generateContactList(response.body());
