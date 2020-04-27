@@ -4,12 +4,15 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="3dp"
-    android:elevation="3dp"
+    android:elevation="10dp"
+    android:layout_margin="15dp"
     app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:padding="10dp">
 
         <TextView
@@ -43,6 +46,7 @@
             android:layout_below="@+id/ContName"
             android:layout_toRightOf="@+id/num"
             android:layout_marginTop="12dp"
+            android:drawableEnd="@drawable/phoneicon"
             android:text="acndkanjbdjkvnsdk" />
 
     </RelativeLayout>

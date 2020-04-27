@@ -1,34 +1,74 @@
 package com.skybox.seven.covid.epoxy;
 
+import android.util.Log;
+import android.view.View;
+
 import androidx.navigation.NavController;
 
 import com.airbnb.epoxy.AutoModel;
+import com.airbnb.epoxy.OnModelClickListener;
+import com.airbnb.epoxy.Typed2EpoxyController;
+import com.airbnb.epoxy.Typed3EpoxyController;
 import com.airbnb.epoxy.TypedEpoxyController;
+import com.skybox.seven.covid.epoxy.model.EmergencyContanctsCardModel;
+import com.skybox.seven.covid.epoxy.model.EmergencyContanctsCardModel_;
 import com.skybox.seven.covid.epoxy.model.HomeCarouselModelModel_;
 import com.skybox.seven.covid.epoxy.model.MainMenuItem_;
+import com.skybox.seven.covid.epoxy.model.MainNotLogged;
+import com.skybox.seven.covid.epoxy.model.MainNotLogged_;
+import com.skybox.seven.covid.epoxy.model.PersonalCardModel;
 import com.skybox.seven.covid.epoxy.model.PersonalCardModel_;
 import com.skybox.seven.covid.model.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainController extends TypedEpoxyController<List<MenuItem>> {
+public class MainController extends Typed3EpoxyController<Boolean, Boolean,List<MenuItem>> {
     @AutoModel PersonalCardModel_ header;
-    private NavController controller;
-    public MainController(NavController controller) {
+    @AutoModel MainNotLogged_ notLogged_;
+    @AutoModel EmergencyContanctsCardModel_ emergencyContancts_;
+    private MainControllerCallback callback;
+
+    public MainController(MainControllerCallback callback) {
         super();
-        this.controller = controller;
+        this.callback = callback;
     }
 
     @Override
-    protected void buildModels(List<MenuItem> data) {
-        header.addTo(this);
+    protected void buildModels(Boolean isLogged, Boolean showLogin, List<MenuItem> data) {
+        Log.e("TAG", "buildModels: " + data.size());
+        if (isLogged) {
+            new PersonalCardModel_().listener((model, parentView, clickedView, position) -> callback.OnPersonalCardClick()).id("personal card").addTo(this);
+        } else {
+                new MainNotLogged_().id("not logged").closeClick((model, parentView, clickedView, position) -> callback.OnCloseLogNotification())
+                        .loginClick((model, parentView, clickedView, position) -> callback.OnLoginClick())
+                        .registerClick((model, parentView, clickedView, position) -> callback.OnRegisterClick())
+                        .addIf(showLogin,this);
+        }
+        emergencyContancts_
+                .emergencyContactslistener((model, parentView, clickedView, position) -> callback.OnEmergencyContactsClick())
+                .selfTestContactslistener((model, parentView, clickedView, position) -> callback.OnSelfTestClick())
+                .addTo(this);
         List<MainMenuItem_> mainMenuItem_s = new ArrayList<>();
-        for (MenuItem menu:
-             data) {
-            MainMenuItem_ item = new MainMenuItem_().id(menu.getImage()).image(menu.getImage()).text(menu.getTitle()).listener((model, parentView, clickedView, position) -> controller.navigate(menu.getLocation()));
+
+        for (int i = 0; i < data.size(); i++) {
+            MenuItem menu = data.get(i);
+            MainMenuItem_ item = new MainMenuItem_()
+                    .id(i).image(menu.getImage())
+                    .text(menu.getTitle())
+                    .listener((model, parentView, clickedView, position) -> callback.NavigateToPage(menu.getLocation()));
             mainMenuItem_s.add(item);
         }
-        new HomeCarouselModelModel_().id("carousel").models(mainMenuItem_s).addTo(this);
+        new HomeCarouselModelModel_().id("carousel").hasFixedSize(true).models(mainMenuItem_s).addTo(this);
+    }
+
+    public interface MainControllerCallback {
+        void OnRegisterClick();
+        void OnLoginClick();
+        void OnCloseLogNotification();
+        void NavigateToPage(int dest);
+        void OnSelfTestClick();
+        void OnPersonalCardClick();
+        void OnEmergencyContactsClick();
     }
 }

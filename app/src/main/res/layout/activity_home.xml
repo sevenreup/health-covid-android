@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".ui.HomeActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_scrollFlags="scroll|enterAlways|snap"
+        android:elevation="0dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <fragment
         android:id="@+id/container"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -13,13 +27,13 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="50dp"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/main_navigation"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:navGraph="@navigation/main_navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navbar"
-        android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/bottom_nav_menu"/>
+        android:layout_gravity="bottom"
+        app:menu="@menu/bottom_nav_menu" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

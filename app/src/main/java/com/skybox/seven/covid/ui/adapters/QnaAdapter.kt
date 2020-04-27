@@ -8,14 +8,13 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.skybox.seven.covid.R
-import com.skybox.seven.covid.ui.adapters.MythsModel
-import com.skybox.seven.covid.ui.fragment.main.MythBusterFragment
+import com.skybox.seven.covid.ui.fragment.main.QnAFragment
 import kotlinx.android.synthetic.main.list_myths.view.*
 
-class MythsAdapter(val arrayList: ArrayList<MythsModel>, val context: MythBusterFragment): RecyclerView.Adapter<MythsAdapter.ViewHolder>(){
+class QnaAdapter(val arrayList: ArrayList<QnaModel>, val context: QnAFragment): RecyclerView.Adapter<QnaAdapter.ViewHolder>(){
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        fun bindItems(model: MythsModel){
+        fun bindItems(model: QnaModel){
 
             itemView.id_.text = model.title
             itemView.tag_.text = model.desc

@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.skybox.seven.covid.ui.fragment.main.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_homeFragment_to_contactTraceFragment22"
             app:destination="@id/allconacts" />
+        <action
+            android:id="@+id/action_homeFragment_to_contactsFragment"
+            app:destination="@id/contactsFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -41,7 +44,7 @@
         android:id="@+id/createContacts"
         android:name="com.skybox.seven.covid.ui.fragment.main.ContactCreateFragment"
         android:label="fragment_contact_trace"
-        tools:layout="@layout/fragment_contact_trace" >
+        tools:layout="@layout/fragment_contact_create">
         <action
             android:id="@+id/action_contactTraceFragment_to_contactTraceFragment2"
             app:destination="@id/allconacts" />
@@ -53,9 +56,9 @@
         tools:layout="@layout/fragment_health" />
     <fragment
         android:id="@+id/mythBusterFragment"
-        android:name="com.skybox.seven.covid.ui.fragment.main.MythBusterFragment"
+        android:name="com.skybox.seven.covid.ui.fragment.main.QnAFragment"
         android:label="fragment_myth_buster"
-        tools:layout="@layout/fragment_myth_buster" />
+        tools:layout="@layout/fragment_qna" />
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.skybox.seven.covid.ui.fragment.main.NewsFragment"
@@ -63,9 +66,9 @@
         tools:layout="@layout/fragment_news" />
     <fragment
         android:id="@+id/qanAFragment"
-        android:name="com.skybox.seven.covid.ui.fragment.main.QanAFragment"
+        android:name="com.skybox.seven.covid.ui.fragment.main.MythsFragment"
         android:label="fragment_qan_a"
-        tools:layout="@layout/fragment_qan_a" />
+        tools:layout="@layout/fragment_myths" />
     <fragment
         android:id="@+id/casesFragment"
         android:name="com.skybox.seven.covid.ui.fragment.main.CasesFragment"
@@ -75,14 +78,45 @@
         android:id="@+id/allconacts"
         android:name="com.skybox.seven.covid.ui.fragment.main.ContactTraceFragment"
         android:label="fragment_contact_trace2"
-        tools:layout="@layout/fragment_contact_trace2" />
+        tools:layout="@layout/fragment_contact_trace2">
+        <action
+            android:id="@+id/action_allconacts_to_contactRequestFragment"
+            app:destination="@id/contactRequestFragment" />
+    </fragment>
     <fragment
         android:id="@+id/selfTestFragment"
         android:name="com.skybox.seven.covid.ui.fragment.main.SelfTestFragment"
         android:label="fragment_self_test"
-        tools:layout="@layout/fragment_self_test" >
+        tools:layout="@layout/fragment_self_test">
         <action
             android:id="@+id/action_selfTestFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/emergencyContactsFragment"
+        android:name="com.skybox.seven.covid.ui.fragment.main.EmergencyContactsFragment"
+        android:label="fragment_emergency_contacts"
+        tools:layout="@layout/fragment_emergency_contacts">
+        <action
+            android:id="@+id/action_emergencyContactsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalFragment"
+        android:name="com.skybox.seven.covid.ui.fragment.main.PersonalFragment"
+        android:label="fragment_personal"
+        tools:layout="@layout/fragment_personal">
+        <action
+            android:id="@+id/action_personalFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactRequestFragment"
+        android:name="com.skybox.seven.covid.ui.fragment.main.ContactRequestFragment"
+        android:label="fragment_contact_request"
+        tools:layout="@layout/fragment_contact_request" />
+    <fragment
+        android:id="@+id/contactsFragment"
+        android:name="com.skybox.seven.covid.ui.fragment.main.ContactsFragment"
+        android:label="ContactsFragment" />
 </navigation>

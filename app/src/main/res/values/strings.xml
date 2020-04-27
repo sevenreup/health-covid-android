@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">Covid</string>
+    <string name="shared_preference_key">com.skybox.seven.covid.shared.preference.random</string>
+    <string name="app_name">Malawi Health</string>
     <string name="add_location">Add Location</string>
     <string name="name">Name</string>
     <string name="search_location">Search location</string>
@@ -18,6 +19,7 @@
     <string name="menu_mythbusters">Myth Busters</string>
     <string name="menu_news">News</string>
     <string name="menu_qna">Questions and Answers</string>
+    <string name="default_notification_channel_name" translatable="true">Health</string>
 
 
     <string name="question_one"> Coronaviruses are a large family of viruses which may cause illness in animals or humans.  In humans, several coronaviruses are known to cause respiratory infections ranging from the common cold to more severe diseases such as Middle East Respiratory Syndrome (MERS) and Severe Acute Respiratory Syndrome (SARS). The most recently discovered coronavirus causes coronavirus disease COVID-19.</string>

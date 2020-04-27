@@ -15,17 +15,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.FamMember;
-import com.skybox.seven.covid.network.RetrofitFactory;
-import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.ui.Location;
+import com.skybox.seven.covid.viewmodels.CovidFactory;
+import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
 
 import androidx.fragment.app.Fragment;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
+import androidx.lifecycle.ViewModelProvider;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,7 +31,7 @@ public class ContactCreateFragment extends Fragment {
     LayoutInflater inflater;
     LinearLayout membersView;
     ArrayList<FamMember> members = new ArrayList<>();
-
+    MainViewModel viewModel;
     LatLng userLocation;
 
     public ContactCreateFragment() {
@@ -46,7 +43,8 @@ public class ContactCreateFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_contact_trace, container, false);
+        View v = inflater.inflate(R.layout.fragment_contact_create, container, false);
+        viewModel = new ViewModelProvider(getViewModelStore(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
         membersView = v.findViewById(R.id.membersParent);
         RelativeLayout addPersonView = v.findViewById(R.id.addPerson);
         RelativeLayout addLocView = v.findViewById(R.id.addLocation);
@@ -77,19 +75,7 @@ public class ContactCreateFragment extends Fragment {
         });
 
         saveButton.setOnClickListener(v1 -> {
-            Retrofit retrofit = RetrofitFactory.getRetrofit();
-            RetrofitService service = retrofit.create(RetrofitService.class);
-            service.saveContacts(members,userLocation).enqueue(new Callback<String>() {
-                @Override
-                public void onResponse(Call<String> call, Response<String> response) {
-                    System.out.println(response+"wellooooo");
-                }
-
-                @Override
-                public void onFailure(Call<String> call, Throwable t) {
-                    System.out.println(call+"well damn");
-                }
-            });
+            viewModel.saveContacts(members, userLocation);
         });
 
 

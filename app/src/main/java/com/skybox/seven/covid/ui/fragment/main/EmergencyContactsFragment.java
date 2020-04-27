@@ -13,9 +13,9 @@ import com.skybox.seven.covid.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class QanAFragment extends Fragment {
+public class EmergencyContactsFragment extends Fragment {
 
-    public QanAFragment() {
+    public EmergencyContactsFragment() {
         // Required empty public constructor
     }
 
@@ -24,6 +24,6 @@ public class QanAFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_qan_a, container, false);
+        return inflater.inflate(R.layout.fragment_emergency_contacts, container, false);
     }
 }

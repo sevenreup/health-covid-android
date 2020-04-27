@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.akexorcist.localizationactivity.ui.LocalizationActivity;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.LocationRequest;
@@ -42,7 +43,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-public class Location extends AppCompatActivity implements OnMapReadyCallback {
+public class Location extends LocalizationActivity implements OnMapReadyCallback {
 
     GoogleMap mMap;
     View mMapView;
