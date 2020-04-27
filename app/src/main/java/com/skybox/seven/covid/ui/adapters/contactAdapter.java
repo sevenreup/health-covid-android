@@ -16,10 +16,10 @@ import com.skybox.seven.covid.R;
 import java.util.ArrayList;
 
 public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ContactHolder> {
-     ArrayList<ContactModel> models;
+     ArrayList<ContactModel.ContactUsersContacts> models;
     private Context context;
 
-    public contactAdapter(Context context, ArrayList<ContactModel> models) {
+    public contactAdapter(Context context, ArrayList<ContactModel.ContactUsersContacts> models) {
         this.models = models;
         this.context = context;
         Log.e("err", models.toString());
@@ -35,9 +35,9 @@ public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ContactH
 
     @Override
     public void onBindViewHolder(@NonNull ContactHolder holder, int position) {
-        holder.contName.setText(models.get(position).getFName());
-        holder.lContName.setText(models.get(position).getLName());
-        holder.contNumber.setText(models.get(position).getPhone());
+        holder.contName.setText(models.get(position).getUser().getFName());
+        holder.lContName.setText(models.get(position).getUser().getLName());
+        holder.contNumber.setText(models.get(position).getUser().getPhone());
 
     }
 

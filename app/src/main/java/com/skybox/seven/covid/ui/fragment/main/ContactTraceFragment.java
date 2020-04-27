@@ -66,14 +66,14 @@ public class ContactTraceFragment extends Fragment {
             @Override
             public void onResponse(Call<ArrayList<ContactModel.ContactUsersContacts>> call, Response<ArrayList<ContactModel.ContactUsersContacts>> response)
             {
-               // progressDialog.dismiss();
-                Log.e("TAG", "onResponse: " + response);
+               progressDialog.dismiss();
+               /* Log.e("TAG", "onResponse: " + response);
                 for (ContactModel.ContactUsersContacts errorcheck:response.body()
                      ) {
                     Log.e("err", errorcheck.getUser().getFName());
-                }
+                }*/
 
-                //generateContactList(response.body());
+                generateContactList(response.body());
             }
 
             @Override
@@ -86,7 +86,7 @@ public class ContactTraceFragment extends Fragment {
 
    return v; }
 
-    private void generateContactList(ArrayList<ContactModel>models){
+    private void generateContactList(ArrayList<ContactModel.ContactUsersContacts>models){
 
         ContactAdapter = new contactAdapter(getContext(),models);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
