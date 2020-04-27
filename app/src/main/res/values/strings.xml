@@ -48,6 +48,7 @@
     <string name="question_seven">Experiencing diarrhea?</string>
     <string name="find">Couldn\'t find what you are looking for?</string>
     <string name="verify">Slide to verify</string>
+    <string name="question_null">Feeling dizziness?</string>
     <string name="degree">Choose degree:</string>
 
 </resources>
