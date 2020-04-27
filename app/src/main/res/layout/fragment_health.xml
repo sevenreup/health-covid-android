@@ -19,13 +19,13 @@
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="advice" />
+            android:text="@string/health_advice" />
 
         <com.google.android.material.chip.Chip android:id="@+id/info_chip"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="info graphic"
+            android:text="@string/health_info_graphic"
             />
 
     </com.google.android.material.chip.ChipGroup>

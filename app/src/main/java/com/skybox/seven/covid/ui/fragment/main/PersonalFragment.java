@@ -43,4 +43,15 @@ public class PersonalFragment extends Fragment {
 
         return v;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
 }
