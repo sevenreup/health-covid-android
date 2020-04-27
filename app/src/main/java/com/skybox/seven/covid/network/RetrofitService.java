@@ -5,6 +5,7 @@ import com.skybox.seven.covid.model.FamMember;
 import com.skybox.seven.covid.network.responses.AccessToken;
 import com.skybox.seven.covid.network.responses.GenericResponse;
 import com.skybox.seven.covid.ui.adapters.ContactModel;
+import com.skybox.seven.covid.ui.adapters.ContactRequestModel;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,11 @@ public interface RetrofitService {
     Call<ArrayList<ContactModel.ContactUsersContacts>> getAllContacts(@Header("Authorization") String Authtoken);
 
     @Headers({"Accept: application/json"})
-    @GET("users/{userId}/contacts/rejected")
-    Call<String> getPendingContacts(@Header("Authorization") String Authtoken, @Path("userId") String userID);
+    @GET("users/contacts/pending")
+    Call<ArrayList<ContactRequestModel.PendingContacts>> getPendingContacts(@Header("Authorization") String Authtoken);
+
+    @Headers({"Accept: application/json"})
+    @FormUrlEncoded
+    @POST("contact/verify/user")
+    Call<GenericResponse> verifyContact(@Header("Authorization") String Authtoken, @Field("id") int id, @Field("status") String status);
 }

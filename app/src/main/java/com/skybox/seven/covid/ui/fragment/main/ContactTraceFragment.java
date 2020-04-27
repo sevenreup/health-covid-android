@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,6 +26,7 @@ import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,11 +37,14 @@ import retrofit2.Retrofit;
  * A simple {@link Fragment} subclass.
  */
 public class ContactTraceFragment extends Fragment {
+
     private RecyclerView recyclerView;
     private contactAdapter ContactAdapter;
     private LinearLayoutManager layoutManager;
     ProgressDialog progressDialog;
     MainViewModel viewModel;
+    RetrofitService service;
+    ArrayList<ContactModel.ContactUsersContacts>contactsList = new ArrayList<>();
 
     public ContactTraceFragment() {
         // Required empty public constructor
@@ -50,6 +55,7 @@ public class ContactTraceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
         View v = inflater.inflate(R.layout.fragment_contact_trace2, container, false);
         recyclerView = v.findViewById(R.id.contactRecyclerView);
 
@@ -59,21 +65,36 @@ public class ContactTraceFragment extends Fragment {
         progressDialog.setMessage("Loading....");
         progressDialog.show();
 
-        RetrofitService service = ContactClientInstance.getRetrofitInstance().create(RetrofitService.class);
+        viewModel.contactsRefresh.observe(getActivity(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                generateContactList();
+            }
+
+        });
+
+
+        ContactAdapter = new contactAdapter(getContext(),contactsList);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(ContactAdapter);
+
+        service = ContactClientInstance.getRetrofitInstance().create(RetrofitService.class);
+        generateContactList();
+
+   return v; }
+
+
+    private void generateContactList(){
         Call<ArrayList<ContactModel.ContactUsersContacts>> call = service.getAllContacts(viewModel.getToken());
 
         call.enqueue(new Callback<ArrayList<ContactModel.ContactUsersContacts>>() {
             @Override
             public void onResponse(Call<ArrayList<ContactModel.ContactUsersContacts>> call, Response<ArrayList<ContactModel.ContactUsersContacts>> response)
             {
-               progressDialog.dismiss();
-               /* Log.e("TAG", "onResponse: " + response);
-                for (ContactModel.ContactUsersContacts errorcheck:response.body()
-                     ) {
-                    Log.e("err", errorcheck.getUser().getFName());
-                }*/
-
-                generateContactList(response.body());
+                progressDialog.dismiss();
+                contactsList=response.body();
+                ContactAdapter.setData(contactsList);
             }
 
             @Override
@@ -83,37 +104,5 @@ public class ContactTraceFragment extends Fragment {
             }
         });
 
-
-   return v; }
-
-    private void generateContactList(ArrayList<ContactModel.ContactUsersContacts>models){
-
-        ContactAdapter = new contactAdapter(getContext(),models);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(ContactAdapter);
     }
-
-
-   /* private ArrayList<ContactModel> getMyContacts() {
-        ArrayList<ContactModel> models = new ArrayList<>();
-
-        ContactModel m = new ContactModel();
-        m.setName("Chisomo Kasenda");
-        m.setPhone("0994479371");
-        models.add(m);
-
-        m = new ContactModel();
-        m.setName("Madalitso Nyemba");
-        m.setPhone("0994479371");
-        models.add(m);
-
-        m = new ContactModel();
-        m.setName("Christopher Phiri");
-        m.setPhone("0994479371");
-        models.add(m);
-
-
-    }   */
-
 }

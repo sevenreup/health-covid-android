@@ -50,6 +50,7 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<List<MythGraphicInfo>> mythGraphicInfoList = new MutableLiveData<>();
 
     public MutableLiveData<Locale> changeLanguage = new MutableLiveData<>();
+    public MutableLiveData<Boolean> contactsRefresh = new MutableLiveData<>();
 
     private Retrofit retrofit;
 

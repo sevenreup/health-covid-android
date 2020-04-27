@@ -88,5 +88,7 @@
     <string name="seventeen">17 </string><string name="nineteen">19 </string><string name="twenty">20 </string>
     <string name="eighteen">18 </string>
 
+    <string name="reject">Reject</string>
+    <string name="accept">Accept</string>
 
 </resources>
