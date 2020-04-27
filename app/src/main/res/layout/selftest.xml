@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -34,7 +33,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
                     android:background="@drawable/bg"
-                    android:text="Choose todays date"
+                    android:text="@string/date"
                     android:textAlignment="center" />
 
                 <CheckBox
@@ -44,7 +43,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
                     android:textSize="16sp"
-                    android:text="Experiencing shortness of breath?" />
+                    android:text="@string/question_one" />
 
                 <CheckBox
                     android:layout_width="match_parent"
@@ -52,7 +51,7 @@
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
-                    android:text="Experiencing sore throat?"
+                    android:text="@string/question_two"
                     android:textSize="16sp" />
 
                 <CheckBox
@@ -61,7 +60,7 @@
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
-                    android:text="Experiencing fever?"
+                    android:text="@string/question_three"
                     android:textSize="16sp" />
 
                 <CheckBox
@@ -70,7 +69,7 @@
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
-                    android:text="Experiencing dry cough?"
+                    android:text="@string/question_four"
                     android:textSize="16sp" />
 
                 <CheckBox
@@ -80,7 +79,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
                     android:textSize="16sp"
-                    android:text="You forgot a question"/>
+                    android:text="@string/question_five"/>
 
                 <CheckBox
                     android:layout_width="match_parent"
@@ -88,7 +87,7 @@
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
-                    android:text="Experiencing nasal congestion, runny nose?"
+                    android:text="@string/question_six"
                     android:textSize="16sp" />
 
                 <CheckBox
@@ -97,7 +96,7 @@
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="4dp"
-                    android:text="Experiencing diarrhea?"
+                    android:text="@string/question_seven"
                     android:textSize="16sp" />
 
                 <LinearLayout
@@ -109,7 +108,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Choose degree:"
+                        android:text="@string/degree"
                         android:textAlignment="center"
                         android:layout_gravity="center"
                          />
@@ -142,7 +141,7 @@
                         app:border_radius="35dp"
                         app:slider_height="70dp"
                         app:slider_locked="false"
-                        app:text="Slide to verify"
+                        app:text="@string/verify"
                         app:text_color="#fff"
                         app:text_size="16sp"
                         app:text_style="bold" />
@@ -164,7 +163,7 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="23dp"
-                    android:text="Couldn't find what you are looking for?"
+                    android:text="@string/find"
                     
                     android:textSize="16sp"
                     android:textStyle="bold" />
