@@ -40,7 +40,7 @@ public interface RetrofitService {
 
     @Headers({"Accept: application/json"})
     @GET("users/contacts")
-    Call<ArrayList<ContactModel>> getAllContacts(@Header("Authorization") String Authtoken);
+    Call<ArrayList<ContactModel.ContactUsersContacts>> getAllContacts(@Header("Authorization") String Authtoken);
 
     @Headers({"Accept: application/json"})
     @GET("users/{userId}/contacts/rejected")

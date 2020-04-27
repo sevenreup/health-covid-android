@@ -9,6 +9,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,8 @@ public class ContactTraceFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_contact_trace2, container, false);
+        recyclerView = v.findViewById(R.id.contactRecyclerView);
+
         viewModel = new ViewModelProvider(getActivity(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
 
         progressDialog = new ProgressDialog(getActivity());
@@ -57,17 +60,23 @@ public class ContactTraceFragment extends Fragment {
         progressDialog.show();
 
         RetrofitService service = ContactClientInstance.getRetrofitInstance().create(RetrofitService.class);
-        Call<ArrayList<ContactModel>> call = service.getAllContacts(viewModel.getToken());
+        Call<ArrayList<ContactModel.ContactUsersContacts>> call = service.getAllContacts(viewModel.getToken());
 
-        call.enqueue(new Callback<ArrayList<ContactModel>>() {
+        call.enqueue(new Callback<ArrayList<ContactModel.ContactUsersContacts>>() {
             @Override
-            public void onResponse(Call<ArrayList<ContactModel>> call, Response<ArrayList<ContactModel>> response) {
-                progressDialog.dismiss();
-                generateContactList(response.body());
+            public void onResponse(Call<ArrayList<ContactModel.ContactUsersContacts>> call, Response<ArrayList<ContactModel.ContactUsersContacts>> response)
+            {
+               // progressDialog.dismiss();
+                for (ContactModel.ContactUsersContacts errorcheck:response.body()
+                     ) {
+                    Log.e("err", errorcheck.toString());
+                }
+
+                //generateContactList(response.body());
             }
 
             @Override
-            public void onFailure(Call<ArrayList<ContactModel>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<ContactModel.ContactUsersContacts>> call, Throwable t) {
                 progressDialog.dismiss();
                 Toast.makeText(getActivity(), "Something is wrong", Toast.LENGTH_SHORT).show();
             }
@@ -77,7 +86,7 @@ public class ContactTraceFragment extends Fragment {
    return v; }
 
     private void generateContactList(ArrayList<ContactModel>models){
-        recyclerView = recyclerView.findViewById(R.id.contactRecyclerView);
+
         ContactAdapter = new contactAdapter(getContext(),models);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
@@ -103,37 +112,7 @@ public class ContactTraceFragment extends Fragment {
         m.setPhone("0994479371");
         models.add(m);
 
-        m = new ContactModel();
-        m.setName("Nhlanhla Dhaka");
-        m.setPhone("0994479371");
-        models.add(m);
 
-        m = new ContactModel();
-        m.setName("Kelvin Chidothi");
-        m.setPhone("0994479371");
-        models.add(m);
-
-        m = new ContactModel();
-        m.setName("Benjamin Ngwenya");
-        m.setPhone("0994479371");
-        models.add(m);
-
-        m = new ContactModel();
-        m.setName("Steve Chikwiri");
-        m.setPhone("0994479371");
-        models.add(m);
-
-        m = new ContactModel();
-        m.setName("Yankho Mijiga");
-        m.setPhone("0994479371");
-        models.add(m);
-
-        m = new ContactModel();
-        m.setName("Bryan Malunje");
-        m.setPhone("0994479371");
-        models.add(m);
-
-        return models;
     }   */
 
 }
