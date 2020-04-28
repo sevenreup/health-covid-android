@@ -17,32 +17,35 @@ class QnAFragment: Fragment() {
 
 
         val arrayList = ArrayList<QnaModel>()
+        val res = resources
+        val items = res.getStringArray(R.array.questions)
 
-        arrayList.add(QnaModel("1","What is Corona Virus?"))
-        arrayList.add(QnaModel("2","What is COVID-19"))
-        arrayList.add(QnaModel("3","What are the symptoms of COVID-19?"))
-        arrayList.add(QnaModel("4","How does COVID-19 spread?"))
-        arrayList.add(QnaModel("5","How do l protect myself and prevent the spread of COVID-19?"))
-        arrayList.add(QnaModel("6","How likely l am to catch COVID-19?"))
-        arrayList.add(QnaModel("7","Should l worry about COVID19?"))
-        arrayList.add(QnaModel("8","Who is at risk of developing severe illness?"))
-        arrayList.add(QnaModel("9","Are antibiotics effective in treating or preventing COVID19?"))
-        arrayList.add(QnaModel("10","Are there therapies or medicines that can prevent or cure COVID-19?"))
 
-        arrayList.add(QnaModel("11","Is there a vaccine, drug or treatment for COVID19?"))
-        arrayList.add(QnaModel("12","Is COVID-19 the same as SARS?"))
-        arrayList.add(QnaModel("13","Should l wear a mask to protect myself?"))
-        arrayList.add(QnaModel("14","How to put on, use, take off and dispose of a mask?"))
-        arrayList.add(QnaModel("15","How long is the incubation period of COVID19?"))
-        arrayList.add(QnaModel("16","Can humans be infected with the COVID-19 from animal an source?"))
+        arrayList.add(QnaModel(getString(R.string.one),items[0]))
+        arrayList.add(QnaModel(getString(R.string.two),items[1]))
+        arrayList.add(QnaModel(getString(R.string.three),items[2]))
+        arrayList.add(QnaModel(getString(R.string.four),items[3]))
+        arrayList.add(QnaModel(getString(R.string.five),items[4]))
+        arrayList.add(QnaModel(getString(R.string.six),items[5]))
+        arrayList.add(QnaModel(getString(R.string.seven),items[6]))
+        arrayList.add(QnaModel(getString(R.string.eight),items[7]))
+        arrayList.add(QnaModel(getString(R.string.nine),items[8]))
+        arrayList.add(QnaModel(getString(R.string.ten),items[9]))
+        arrayList.add(QnaModel(getString(R.string.eleven),items[10]))
+        arrayList.add(QnaModel(getString(R.string.twelve),items[11]))
+        arrayList.add(QnaModel(getString(R.string.thirteen),items[12]))
+        arrayList.add(QnaModel(getString(R.string.fourteen),items[13]))
+        arrayList.add(QnaModel(getString(R.string.fifteen),items[14]))
+        arrayList.add(QnaModel(getString(R.string.sixteen),items[15]))
+        arrayList.add(QnaModel(getString(R.string.seventeen),items[16]))
+        arrayList.add(QnaModel(getString(R.string.eighteen),items[17]))
+        arrayList.add(QnaModel(getString(R.string.nineteen),items[18]))
+        arrayList.add(QnaModel(getString(R.string.twenty),items[19]))
+        arrayList.add(QnaModel(getString(R.string.twenty_one),items[20]))
+        arrayList.add(QnaModel(getString(R.string.twenty_two),items[21]))
 
-        arrayList.add(QnaModel("17","Can l catch COVID19 from my pets?"))
-        arrayList.add(QnaModel("18","How long does the virus survive on surfaces?"))
-        arrayList.add(QnaModel("19","Is it safe to receive a package from an area where COVID19 has been reported?"))
-        arrayList.add(QnaModel("20","Is there anything l should not do?"))
-        arrayList.add(QnaModel("21","Is the source of coronavirus causing COVID19 known?"))
-        arrayList.add(QnaModel("22","How did the first human SARS-CoV-2 infections occur?"))
-        arrayList.add(QnaModel("23","Is COVID-19 airborne?"))
+
+
 
 
 

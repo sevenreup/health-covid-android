@@ -6,22 +6,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.NewsArticle;
 
 import java.util.ArrayList;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ContactHolder> {
+     ArrayList<ContactModel.ContactUsersContacts> models;
+    private Context context;
 
-public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ViewHolder> {
-    ArrayList models;
-    public static int CONTACT_LIST = 0, NEWS_LIST = 1;
-    int listType = CONTACT_LIST;
-
-    public contactAdapter(ArrayList models, int listType) {
+    public contactAdapter(Context context, ArrayList<ContactModel.ContactUsersContacts> models) {
         this.models = models;
-        this.listType = listType;
+        this.context = context;
         Log.e("err", models.toString());
     }
 
@@ -37,18 +37,10 @@ public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-        if(listType == CONTACT_LIST){
-            ContactModel model = (ContactModel) models.get(position);
-            holder.titleView.setText(model.getName());
-            holder.descrView.setText(model.getPhone());
-        }else{
-            NewsArticle article = (NewsArticle) models.get(position);
-            holder.titleView.setText(article.getTitle());
-            holder.descrView.setText(article.getDescription());
-        }
-    }
+    public void onBindViewHolder(@NonNull ContactHolder holder, int position) {
+        holder.contName.setText(models.get(position).getUser().getFName());
+        holder.lContName.setText(models.get(position).getUser().getLName());
+        holder.contNumber.setText(models.get(position).getUser().getPhone());
 
     class ViewHolder extends RecyclerView.ViewHolder{
         TextView titleView;
@@ -70,4 +62,25 @@ public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ViewHold
     public int getItemCount() {
         return models.size();
     }
+
+
+    public class ContactHolder extends RecyclerView.ViewHolder {
+        public final View mView;
+
+        public TextView contName;
+        public TextView contNumber;
+        public TextView lContName;
+
+        public ContactHolder(@NonNull View itemView) {
+            super(itemView);
+            mView =itemView;
+
+            this.lContName = itemView.findViewById(R.id.nam);
+            this.contName = itemView.findViewById(R.id.ContName);
+            this.contNumber = itemView.findViewById(R.id.ContNumber);
+        }
+    }
+
+
+
 }

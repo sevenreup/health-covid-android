@@ -72,22 +72,22 @@ public class HomeActivity extends LocalizationActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
         NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
 
-        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-            switch (destination.getId()) {
-                case R.id.homeFragment:
-                    toolbar.setTitle(R.string.app_name);
-                    break;
-                case R.id.settingsFragment:
-                    toolbar.setTitle("Settings");
-                    break;
-                case R.id.casesFragment:
-                    toolbar.setTitle("Covid-19 Stats");
-                    break;
-                default:
-                    toolbar.setTitle("");
-                    break;
-            }
-        });
+//        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+//            switch (destination.getId()) {
+//                case R.id.homeFragment:
+//                    toolbar.setTitle(R.string.app_name);
+//                    break;
+//                case R.id.settingsFragment:
+//                    toolbar.setTitle("Settings");
+//                    break;
+//                case R.id.casesFragment:
+//                    toolbar.setTitle("Covid-19 Stats");
+//                    break;
+//                default:
+//                    toolbar.setTitle("");
+//                    break;
+//            }
+//        });
 
         changeListener = (sharedPreferences, key) -> {
             if (key.equals(SharedPreferenceRepository.TOKEN)) {

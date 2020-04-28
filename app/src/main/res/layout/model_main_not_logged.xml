@@ -23,7 +23,7 @@
             android:id="@+id/greating"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="It appears you are not Logged in\nTo do your part please\nlogin or register"
+            android:text="@string/model_not_logged_prompt"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Login"
+            android:text="@string/button_login"
             app:layout_constraintEnd_toStartOf="@+id/model_register"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/greating" />
@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Register"
+            android:text="@string/button_register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/model_login"
             app:layout_constraintTop_toBottomOf="@id/greating" />

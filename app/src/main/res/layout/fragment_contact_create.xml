@@ -34,7 +34,7 @@
         android:layout_marginTop="8dp"
         android:textSize="16sp"
         android:textColor="@color/primary_text"
-        android:text="Friends and Family"/>
+        android:text="@string/contacts_friends_family"/>
 
     <LinearLayout
         android:id="@+id/membersParent"
@@ -53,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="Tap to add"
+            android:text="@string/contacts_tap_add"
             android:textSize="16sp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp" />
@@ -76,7 +76,7 @@
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
-        android:text="Save Changes"
+        android:text="@string/button_save_changes"
         android:background="@drawable/button_rectangle_pink"/>
 
 </LinearLayout>

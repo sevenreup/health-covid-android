@@ -60,13 +60,13 @@ public class HomeFragment extends Fragment implements MainController.MainControl
 
     private void createMenuItems() {
         List<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(new MenuItem(R.drawable.ic_user, R.string.menu_health_tips, R.id.healthFragment, 0));
-        menuItems.add(new MenuItem(R.drawable.ic_worlds, R.string.menu_mythbusters, R.id.qanAFragment, 1));
-        menuItems.add(new MenuItem(R.drawable.ic_newspaper, R.string.menu_news, R.id.newsFragment, 3));
-        menuItems.add(new MenuItem(R.drawable.ic_history, R.string.menu_qna, R.id.mythBusterFragment, 4));
+        menuItems.add(new MenuItem(R.drawable.ic_user, R.string.title_health_tips, R.id.healthFragment, 0));
+        menuItems.add(new MenuItem(R.drawable.ic_worlds, R.string.title_mythbusters, R.id.qanAFragment, 1));
+        menuItems.add(new MenuItem(R.drawable.ic_newspaper, R.string.title_news, R.id.newsFragment, 3));
+        menuItems.add(new MenuItem(R.drawable.ic_history, R.string.title_qna, R.id.mythBusterFragment, 4));
 
         if (viewModel.isLoggedIn()){
-            menuItems.add(new MenuItem(R.drawable.ic_team, R.string.menu_contacts, R.id.contactsFragment, 5));
+            menuItems.add(new MenuItem(R.drawable.ic_team, R.string.title_contacts, R.id.contactsFragment, 5));
         }
         this.menuItems = menuItems;
     }
