@@ -1,19 +1,18 @@
 package com.skybox.seven.covid.ui.adapters;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.model.NewsArticle;
 
 import java.util.ArrayList;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ContactHolder> {
      ArrayList<ContactModel.ContactUsersContacts> models;
@@ -27,13 +26,10 @@ public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ContactH
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ContactHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row, null);
-        if(listType == NEWS_LIST){
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_card, null);
-        }
-        return new ViewHolder(view);
+        return new ContactHolder(view);
     }
 
     @Override
@@ -42,25 +38,18 @@ public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ContactH
         holder.lContName.setText(models.get(position).getUser().getLName());
         holder.contNumber.setText(models.get(position).getUser().getPhone());
 
-    class ViewHolder extends RecyclerView.ViewHolder{
-        TextView titleView;
-        TextView descrView;
-        ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            if(listType == CONTACT_LIST){
-                this.titleView = itemView.findViewById(R.id.ContName);
-                this.descrView = itemView.findViewById(R.id.ContNumber);
-            }else{
-                this.titleView = itemView.findViewById(R.id.title);
-                this.descrView = itemView.findViewById(R.id.content);
-            }
-        }
     }
 
 
     @Override
     public int getItemCount() {
         return models.size();
+    }
+
+    public void setData(ArrayList<ContactModel.ContactUsersContacts> models){
+        this.models = models;
+        notifyDataSetChanged();
+
     }
 
 
