@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ViewHolder> {
+public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ContactHolder> {
      ArrayList<ContactModel.ContactUsersContacts> models;
     private Context context;
-    
+
 
     public contactAdapter(Context context, ArrayList<ContactModel.ContactUsersContacts> models) {
         this.models = models;
@@ -27,13 +27,10 @@ public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ViewHold
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ContactHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row, null);
-        if(listType == NEWS_LIST){
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_card, null);
-        }
-        return new ViewHolder(view);
+        return new ContactHolder(view);
     }
 
     @Override
@@ -42,25 +39,18 @@ public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ViewHold
         holder.lContName.setText(models.get(position).getUser().getLName());
         holder.contNumber.setText(models.get(position).getUser().getPhone());
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView titleView;
-        TextView descrView;
-        ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            if(listType == CONTACT_LIST){
-                this.titleView = itemView.findViewById(R.id.ContName);
-                this.descrView = itemView.findViewById(R.id.ContNumber);
-            }else{
-                this.titleView = itemView.findViewById(R.id.title);
-                this.descrView = itemView.findViewById(R.id.content);
-            }
-        }
     }
 
 
     @Override
     public int getItemCount() {
         return models.size();
+    }
+
+    public void setData(ArrayList<ContactModel.ContactUsersContacts> models){
+        this.models = models;
+        notifyDataSetChanged();
+
     }
 
 
