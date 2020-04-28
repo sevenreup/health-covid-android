@@ -60,7 +60,7 @@ public class NewsFragment extends Fragment {
         protected String doInBackground(String... strings) {
 
             try {
-                response = Unirest.get("http://newsapi.org/v2/top-headlines?country=us&apiKey=b3d54181b14e4d9faaa3be9909a1953f").asString();
+                response = Unirest.get("https://newsapi.org/v2/everything?q=covid&qInTitle=covid&pageSize=10&from=2020-04-24&to=2020-05-27&sortBy=popularity&apiKey=b3d54181b14e4d9faaa3be9909a1953f").asString();
             } catch (UnirestException e) {
                 e.printStackTrace();
             }
