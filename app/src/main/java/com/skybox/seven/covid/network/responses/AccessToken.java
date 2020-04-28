@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import com.google.gson.annotations.SerializedName;
 
 public class AccessToken {
+    @SerializedName("id") private String id;
     @SerializedName("access_token") private String token;
     @SerializedName("token_type") private String type;
     private String name;
@@ -42,9 +43,18 @@ public class AccessToken {
         this.phone = phone;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @NonNull
     @Override
     public String toString() {
         return getName() + " " + getPhone();
     }
+
 }
