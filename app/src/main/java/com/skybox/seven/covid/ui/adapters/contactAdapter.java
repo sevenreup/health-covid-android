@@ -63,6 +63,12 @@ public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ViewHold
         return models.size();
     }
 
+    public void setData(ArrayList<ContactModel.ContactUsersContacts> models){
+        this.models = models;
+        notifyDataSetChanged();
+
+    }
+
 
     public class ContactHolder extends RecyclerView.ViewHolder {
         public final View mView;
