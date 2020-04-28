@@ -49,8 +49,8 @@ public class ContactsFragment extends Fragment {
         });
 
         pagerAdapter = new ContactsPageAdapter(getChildFragmentManager());
-        pagerAdapter.addFragment(new ContactTraceFragment(), getString(R.string.contacts_title));
-        pagerAdapter.addFragment(new ContactRequestFragment(), getString(R.string.contacts_request_title));
+        pagerAdapter.addFragment(new ContactTraceFragment(), "Contacts");
+        pagerAdapter.addFragment(new ContactRequestFragment(), "Contact Requests");
 
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);

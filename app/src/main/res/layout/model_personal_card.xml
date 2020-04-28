@@ -17,7 +17,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/menu_card_margin"
-                android:text="@string/greeting"
+                android:text="Good Morning"
                 android:textAppearance="?textAppearanceHeadline5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_toEndOf="@id/location_icon"
-                    android:text="@string/text_location" />
+                    android:text="Location On" />
 
             </RelativeLayout>
 
@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_toEndOf="@id/contacts_icon"
-                    android:text="@string/text_contacts" />
+                    android:text="2 Contacts" />
             </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

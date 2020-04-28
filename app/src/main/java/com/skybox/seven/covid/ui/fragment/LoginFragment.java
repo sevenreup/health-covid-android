@@ -27,8 +27,6 @@ import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.lang.ref.WeakReference;
 
-import io.radar.sdk.Radar;
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -60,7 +58,7 @@ public class LoginFragment extends Fragment {
             intent.setClass(getActivity(),HomeActivity.class);
             intent.putExtra(HomeActivity.NAME_MESSAGE,loginResponse.getName());
             intent.putExtra(HomeActivity.PHONE_MESSAGE, loginResponse.getPhone());
-            Radar.setUserId(loginResponse.getId());
+
             getActivity().startActivity(intent);
             startActivity(intent);
         });

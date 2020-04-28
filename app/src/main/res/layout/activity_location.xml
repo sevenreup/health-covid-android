@@ -47,7 +47,7 @@
                 android:textSize="16sp"
                 android:visibility="gone"
                 android:text="Location1"
-                android:hint="@string/location_set_hint"/>
+                android:hint="Set name for Location"/>
             <LinearLayout
                 android:id="@+id/locaNameParent"
                 android:layout_width="match_parent"
@@ -73,7 +73,7 @@
                 android:id="@+id/saveLocation"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="@string/location_save_button"
+                android:text="Save Location"
                 android:textAllCaps="true"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"

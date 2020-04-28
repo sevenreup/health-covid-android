@@ -19,10 +19,8 @@ import io.radar.sdk.model.RadarGeofence;
 
 public class LocationViewModel extends ViewModel {
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-    LocationRepository repository;
 
     public MutableLiveData<String> currentGeofence = new MutableLiveData<>();
-
     public LocationViewModel() {
         super();
         configRadar();
@@ -37,6 +35,16 @@ public class LocationViewModel extends ViewModel {
         RadarTrackingOptions options = RadarTrackingOptions.EFFICIENT;
         options.setSync(RadarTrackingOptions.RadarTrackingOptionsSync.ALL);
         Radar.startTracking(options);
+        Radar.setUserId("emulator");
+        Radar.trackOnce((radarStatus, location, radarEvents, radarUser) -> {
+            StringBuilder ev = new StringBuilder();
+            if (radarEvents != null)
+                for ( RadarEvent event : radarEvents) {
+                    ev.append("{ " + event.toJson().toString() + "}");
+                }
+
+            Log.v("Trackonce", "Track once: status = " + radarStatus + "; location = "+ location +" events = "+ ev.toString()+"; user = " + radarUser);
+        });;
     }
 
     public void getCurrentGeofence() {
@@ -53,18 +61,6 @@ public class LocationViewModel extends ViewModel {
 
             currentGeofence.setValue(fence.toString());
         }));
-    }
-
-    public void startManualTrack() {
-        Radar.trackOnce((radarStatus, location, radarEvents, radarUser) -> {
-            StringBuilder ev = new StringBuilder();
-            if (radarEvents != null)
-                for ( RadarEvent event : radarEvents) {
-                    ev.append("{ " + event.toJson().toString() + "}");
-                }
-
-            Log.v("Trackonce", "Track once: status = " + radarStatus + "; location = "+ location +" events = "+ ev.toString()+"; user = " + radarUser);
-        });
     }
 
 }

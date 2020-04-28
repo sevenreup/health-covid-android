@@ -4,14 +4,13 @@
     <string name="add_location">Wonjezera Maro</string>
     <string name="name">Dzina</string>
     <string name="search_location">Yangana Maro</string>
-    <string name="done">Maliza</string>
-    <string name="add_description_i_e_house_color">Wonjezerani zinthu i.e nyumba #, color...</string>
-    <string name="title_activity_maps">Maro</string>
+    <string name="done">Malizani</string>
+    <string name="title_activity_maps">Maeo</string>
 
-    <string name="title_health_tips">Zaumoyo</string>
-    <string name="title_self_test">Kauniuni</string>
-    <string name="title_contacts">Azanu</string>
-    <string name="title_mythbusters">Kuswanya Mabodza</string>
-    <string name="title_news">Nkhani</string>
-    <string name="title_qna">Manfunso ndi Mayanko</string>
+    <string name="menu_health_tips">Zaumoyo</string>
+    <string name="menu_self_test">Kauniuni</string>
+    <string name="menu_contacts">Azanu</string>
+    <string name="menu_mythbusters">Kuswanya Mabodza</string>
+    <string name="menu_news">Nkhani</string>
+    <string name="menu_qna">Manfunso ndi Mayanko</string>
 </resources>

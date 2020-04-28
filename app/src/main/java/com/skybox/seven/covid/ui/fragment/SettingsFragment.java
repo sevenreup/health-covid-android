@@ -85,13 +85,13 @@ public class SettingsFragment extends Fragment implements SettingsController.Set
 
     @Override
     public void onNotificationClick() {
-        ((TextView)dialogView.findViewById(R.id.btn_title)).setText(R.string.settings_notification);
+        ((TextView)dialogView.findViewById(R.id.btn_title)).setText("Change notifications");
         dialog.show();
     }
 
     @Override
     public void onLanguageClick() {
-        ((TextView)dialogView.findViewById(R.id.btn_title)).setText(R.string.settings_language);
+        ((TextView)dialogView.findViewById(R.id.btn_title)).setText("Set the Current Language");
         dialogView.findViewById(R.id.btn_lan_hd).setVisibility(View.VISIBLE);
         dialog.show();
     }
