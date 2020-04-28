@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -100,6 +101,8 @@ public class ContactTraceFragment extends Fragment {
 
         ContactAdapter = new contactAdapter(getContext(),models);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        ContactAdapter = new contactAdapter(getMyContacts());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(ContactAdapter);
     }

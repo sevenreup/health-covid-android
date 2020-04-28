@@ -1,23 +1,23 @@
 package com.skybox.seven.covid.ui.adapters;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.model.NewsArticle;
 
 import java.util.ArrayList;
 
-public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ContactHolder> {
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ViewHolder> {
      ArrayList<ContactModel.ContactUsersContacts> models;
     private Context context;
+    
 
     public contactAdapter(Context context, ArrayList<ContactModel.ContactUsersContacts> models) {
         this.models = models;
@@ -42,7 +42,7 @@ public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ContactH
         holder.lContName.setText(models.get(position).getUser().getLName());
         holder.contNumber.setText(models.get(position).getUser().getPhone());
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder{
         TextView titleView;
         TextView descrView;
         ViewHolder(@NonNull View itemView) {

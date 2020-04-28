@@ -2,12 +2,12 @@ package com.skybox.seven.covid.epoxy.model;
 
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import com.airbnb.epoxy.EpoxyHolder;
 import com.airbnb.epoxy.EpoxyModelClass;
 import com.airbnb.epoxy.EpoxyModelWithHolder;
 import com.skybox.seven.covid.R;
-
-import androidx.annotation.NonNull;
 
 @EpoxyModelClass(layout = R.layout.model_settings_header)
 public class SettingsHeaderModel extends EpoxyModelWithHolder<SettingsHeaderModel.SettingsHeaderHolder> {
