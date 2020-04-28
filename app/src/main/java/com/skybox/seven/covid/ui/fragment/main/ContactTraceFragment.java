@@ -25,6 +25,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.skybox.seven.covid.ui.adapters.contactAdapter.CONTACT_LIST;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -81,8 +83,7 @@ public class ContactTraceFragment extends Fragment {
    return v; }
 
     private void generateContactList(ArrayList<ContactModel.ContactUsersContacts>models){
-
-        ContactAdapter = new contactAdapter(getContext(),models);
+        ContactAdapter = new contactAdapter(getContext(),models,CONTACT_LIST);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(ContactAdapter);
@@ -109,5 +110,5 @@ public class ContactTraceFragment extends Fragment {
 
 
     }   */
-
+   
 }

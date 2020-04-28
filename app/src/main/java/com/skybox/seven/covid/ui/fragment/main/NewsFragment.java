@@ -89,7 +89,7 @@ public class NewsFragment extends Fragment {
                     System.out.println(article.getAuthor());
                 }
 
-                contactAdapter adapter = new contactAdapter(list,NEWS_LIST);
+                contactAdapter adapter = new contactAdapter(getContext(),list,NEWS_LIST);
                 recyclerView.setAdapter(adapter);
             } catch (JSONException e) {
                 e.printStackTrace();
