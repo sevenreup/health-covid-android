@@ -15,7 +15,9 @@ import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.HealthController;
 import com.skybox.seven.covid.model.Advice;
 import com.skybox.seven.covid.model.InfoGraphic;
+import com.skybox.seven.covid.ui.bottomsheets.AdviceBottomSheetFragment;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
+import com.skybox.seven.covid.viewmodels.AdviceViewModel;
 import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
@@ -33,6 +35,8 @@ public class HealthFragment extends Fragment {
     private List<Advice> adviceList = new ArrayList<>();
     private List<InfoGraphic> infoGraphics = new ArrayList<>();
     MainViewModel viewModel;
+    AdviceViewModel adviceViewModel;
+    AdviceBottomSheetFragment adviceBottomSheetFragment;
 
     public HealthFragment() {
         // Required empty public constructor
@@ -46,10 +50,24 @@ public class HealthFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_health, container, false);
         viewModel = new ViewModelProvider(getViewModelStore(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
 
+        adviceViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(AdviceViewModel.class);
+
         recyclerView = v.findViewById(R.id.health_recycler);
         currentGroup = v.findViewById(R.id.chip_group);
+        adviceBottomSheetFragment = new AdviceBottomSheetFragment();
 
-        HealthController controller = new HealthController(getActivity());
+        HealthController controller = new HealthController(getActivity(), new HealthController.HealthTipsCallback() {
+            @Override
+            public void onAdviceClick(Advice advice) {
+                adviceViewModel.activeAdvice.setValue(advice);
+                adviceBottomSheetFragment.show(getChildFragmentManager(), null);
+            }
+
+            @Override
+            public void onInfoGraphicClick(InfoGraphic graphic) {
+
+            }
+        });
         recyclerView.addItemDecoration(new SpaceItemDecorator(50, true, false));
         recyclerView.setController(controller);
 

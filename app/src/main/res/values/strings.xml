@@ -68,7 +68,7 @@
     <string name="button_contact">Contact</string>
 
     <string name="default_notification_channel_name" translatable="true">Health</string>
-    
+
     <string name="one">1 </string>
     <string name="two">2 </string>
     <string name="three">3 </string>
@@ -78,14 +78,19 @@
     <string name="seven">7 </string>
     <string name="eight">8 </string>
     <string name="nine">9 </string>
-    <string name="ten">10 </string><string name="twenty_three">23 </string>
+    <string name="ten">10 </string>
+    <string name="twenty_three">23 </string>
     <string name="eleven">11 </string>
     <string name="twelve">12 </string>
     <string name="thirteen">13 </string>
     <string name="fourteen">14 </string>
-    <string name="fifteen">15 </string><string name="twenty_one">21 </string><string name="twenty_two">22 </string>
+    <string name="fifteen">15 </string>
+    <string name="twenty_one">21 </string>
+    <string name="twenty_two">22 </string>
     <string name="sixteen">16 </string>
-    <string name="seventeen">17 </string><string name="nineteen">19 </string><string name="twenty">20 </string>
+    <string name="seventeen">17 </string>
+    <string name="nineteen">19 </string>
+    <string name="twenty">20 </string>
     <string name="eighteen">18 </string>
 
 
