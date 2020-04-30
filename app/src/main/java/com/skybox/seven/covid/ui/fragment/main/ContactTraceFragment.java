@@ -2,18 +2,9 @@ package com.skybox.seven.covid.ui.fragment.main;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.skybox.seven.covid.R;
@@ -26,10 +17,15 @@ import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
 
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
+
+import static com.skybox.seven.covid.ui.adapters.contactAdapter.CONTACT_LIST;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -87,8 +83,7 @@ public class ContactTraceFragment extends Fragment {
    return v; }
 
     private void generateContactList(ArrayList<ContactModel.ContactUsersContacts>models){
-
-        ContactAdapter = new contactAdapter(getContext(),models);
+        ContactAdapter = new contactAdapter(getContext(),models,CONTACT_LIST);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(ContactAdapter);
@@ -115,5 +110,5 @@ public class ContactTraceFragment extends Fragment {
 
 
     }   */
-
+   
 }
