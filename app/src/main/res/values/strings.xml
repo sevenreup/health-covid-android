@@ -93,5 +93,17 @@
     <string name="twenty">20 </string>
     <string name="eighteen">18 </string>
 
+    <string name="date">Choose todays date</string>
+    <string name="question_one">Experiencing shortness of breath?</string>
+    <string name="question_two">Experiencing sore throat?</string>
+    <string name="question_three">Experiencing fever?</string>
+    <string name="question_four">Experiencing dry cough?</string>
+    <string name="question_five">You forgot a question</string>
+    <string name="question_six">Experiencing nasal congestion, runny nose?</string>
+    <string name="question_seven">Experiencing diarrhea?</string>
+    <string name="find">Couldn\'t find what you are looking for?</string>
+    <string name="verify">Slide to verify</string>
+    <string name="question_null">Feeling dizziness?</string>
+    <string name="degree">Choose degree:</string>
 
 </resources>
