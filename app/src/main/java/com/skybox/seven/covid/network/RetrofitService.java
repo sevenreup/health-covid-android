@@ -37,7 +37,7 @@ public interface RetrofitService {
     @Headers({"Accept: application/json"})
     @FormUrlEncoded
     @POST("contact/add")
-    Call<String> saveContacts(@Header("Authorization") String Authtoken, @Field("contacts") ArrayList<FamMember> contacts, @Field("location") LatLng latLng);
+    Call<ArrayList<FamMember>> saveContacts(@Header("Authorization") String Authtoken, @Field("contacts") ArrayList<FamMember> members, @Field("location") LatLng latLng);
 
     @Headers({"Accept: application/json"})
     @GET("users/contacts")
