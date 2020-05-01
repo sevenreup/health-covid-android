@@ -151,17 +151,18 @@ public class MainViewModel extends ViewModel {
 
     public void saveContacts(ArrayList<FamMember> members, LatLng userLocation) {
         RetrofitService service = retrofit.create(RetrofitService.class);
-        service.saveContacts(getToken(), members, userLocation).enqueue(new Callback<String>() {
+        service.saveContacts(getToken(), members, userLocation).enqueue(new Callback<GenericResponse>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
                 // TODO: Get some actual response sent to the UI
                 System.out.println(response + "wellooooo");
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<GenericResponse> call, Throwable t) {
                 System.out.println(call + "well damn");
             }
+
         });
     }
 

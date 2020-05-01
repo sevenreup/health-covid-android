@@ -33,7 +33,7 @@ public class ContactCreateFragment extends Fragment {
     ArrayList<FamMember> members = new ArrayList<>();
     MainViewModel viewModel;
     LatLng userLocation;
-
+    Button saveButton;
     public ContactCreateFragment() {
         // Required empty public constructor
     }
@@ -48,7 +48,7 @@ public class ContactCreateFragment extends Fragment {
         membersView = v.findViewById(R.id.membersParent);
         RelativeLayout addPersonView = v.findViewById(R.id.addPerson);
         RelativeLayout addLocView = v.findViewById(R.id.addLocation);
-        Button saveButton = v.findViewById(R.id.saveChanges);
+        saveButton = v.findViewById(R.id.saveChanges);
 
         this.inflater = inflater;
 
