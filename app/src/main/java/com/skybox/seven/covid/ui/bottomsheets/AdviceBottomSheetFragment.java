@@ -42,7 +42,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class AdviceBottomSheetFragment extends BottomSheetDialogFragment {
-    Bitmap currentImage;
     public AdviceBottomSheetFragment() {
         // Required empty public constructor
     }
@@ -56,50 +55,61 @@ public class AdviceBottomSheetFragment extends BottomSheetDialogFragment {
         AdviceViewModel viewModel = new ViewModelProvider(getParentFragment().getViewModelStore(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(AdviceViewModel.class);
 
         viewModel.activeAdvice.observe(getViewLifecycleOwner(), advice -> {
-            (v.findViewById(R.id.advice_container)).setVisibility(View.VISIBLE);
-            (v.findViewById(R.id.info_graphic)).setVisibility(View.GONE);
-            ((TextView) v.findViewById(R.id.bt_title)).setText(advice.getTitle());
-            ((TextView) v.findViewById(R.id.bt_answer)).setText(advice.getAdvice());
+            Advice.CurrentChip chip = viewModel.activeChip.getValue();
+            if (chip == Advice.CurrentChip.advice) {
+                (v.findViewById(R.id.advice_container)).setVisibility(View.VISIBLE);
+                (v.findViewById(R.id.info_image)).setVisibility(View.GONE);
+                (v.findViewById(R.id.info_graphic)).setVisibility(View.GONE);
+
+                ((TextView) v.findViewById(R.id.bt_title)).setText(advice.getTitle());
+                ((TextView) v.findViewById(R.id.bt_answer)).setText(advice.getAdvice());
+            } else {
+                (v.findViewById(R.id.advice_container)).setVisibility(View.GONE);
+                (v.findViewById(R.id.info_graphic)).setVisibility(View.VISIBLE);
+            }
+
         });
 
         viewModel.activeInfoGraphic.observe(getViewLifecycleOwner(), s -> {
-            (v.findViewById(R.id.advice_container)).setVisibility(View.GONE);
-            (v.findViewById(R.id.info_graphic)).setVisibility(View.VISIBLE);
-            GlideApp.with(getContext())
-                    .asBitmap()
-                    .load(s)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .error(R.drawable.ic_error)
-                    .into(new BitmapImageViewTarget( (ImageView) v.findViewById(R.id.info_image)) {
-                        @Override
-                        protected void setResource(Bitmap resource) {
-                            ((ImageView) v.findViewById(R.id.info_image)).setImageBitmap(resource);
-                            currentImage = resource;
-                        }
-                    });
+            Advice.CurrentChip chip = viewModel.activeChip.getValue();
+            if (chip == Advice.CurrentChip.infographic) {
+                (v.findViewById(R.id.advice_container)).setVisibility(View.GONE);
+                (v.findViewById(R.id.info_graphic)).setVisibility(View.VISIBLE);
+
+                GlideApp.with(getContext())
+                        .load(s)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .error(R.drawable.ic_error)
+                        .into((ImageView) v.findViewById(R.id.info_image));
+            } else {
+                (v.findViewById(R.id.advice_container)).setVisibility(View.VISIBLE);
+                (v.findViewById(R.id.info_image)).setVisibility(View.GONE);
+                (v.findViewById(R.id.info_graphic)).setVisibility(View.GONE);
+            }
+
         });
 
         v.findViewById(R.id.share_tip).setOnClickListener(v12 -> {
-           Advice.CurrentChip chip = viewModel.activeChip.getValue();
-           if (chip == Advice.CurrentChip.advice) {
-               Intent sendIntent = new Intent();
-               sendIntent.setAction(Intent.ACTION_SEND);
-               sendIntent.putExtra(Intent.EXTRA_TEXT, buildSharableString(viewModel.activeAdvice.getValue()));
-               sendIntent.setType("text/plain");
+            Advice.CurrentChip chip = viewModel.activeChip.getValue();
+            if (chip == Advice.CurrentChip.advice) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, buildSharableString(viewModel.activeAdvice.getValue()));
+                sendIntent.setType("text/plain");
 
-               Intent shareIntent = Intent.createChooser(sendIntent, null);
-               startActivity(shareIntent);
-           } else {
-               Uri uri = getLocalBitmapUri(((ImageView) v.findViewById(R.id.info_image)));
-               Log.e("TAG", "onCreateView: " + uri );
-               Intent sendIntent = new Intent();
-               sendIntent.setAction(Intent.ACTION_SEND);
-               sendIntent.putExtra(Intent.EXTRA_STREAM, uri);
-               sendIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-               sendIntent.setType("image/jpeg");
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
+            } else {
+                Uri uri = getLocalBitmapUri(((ImageView) v.findViewById(R.id.info_image)));
+                Log.e("TAG", "onCreateView: " + uri);
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_STREAM, uri);
+                sendIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                sendIntent.setType("image/jpeg");
 
-               startActivity(Intent.createChooser(sendIntent, "Health tip Image"));
-           }
+                startActivity(Intent.createChooser(sendIntent, "Health tip Image"));
+            }
 
         });
         v.findViewById(R.id.close_tip).setOnClickListener(v1 -> dismiss());
@@ -119,7 +129,7 @@ public class AdviceBottomSheetFragment extends BottomSheetDialogFragment {
         // Extract Bitmap from ImageView drawable
         Drawable drawable = imageView.getDrawable();
         Bitmap bmp = null;
-        if (drawable instanceof BitmapDrawable){
+        if (drawable instanceof BitmapDrawable) {
             bmp = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
         } else {
             return null;
@@ -130,7 +140,7 @@ public class AdviceBottomSheetFragment extends BottomSheetDialogFragment {
             // Use methods on Context to access package-specific directories on external storage.
             // This way, you don't need to request external read/write permission.
             // See https://youtu.be/5xVh-7ywKpE?t=25m25s
-            File file =  new File(getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_image_" + System.currentTimeMillis() + ".png");
+            File file = new File(getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_image_" + System.currentTimeMillis() + ".png");
             FileOutputStream out = new FileOutputStream(file);
             bmp.compress(Bitmap.CompressFormat.PNG, 90, out);
             out.close();
