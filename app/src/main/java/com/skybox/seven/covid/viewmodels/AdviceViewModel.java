@@ -11,10 +11,13 @@ import java.util.List;
 
 public class AdviceViewModel extends ViewModel {
     public MutableLiveData<Advice> activeAdvice = new MutableLiveData<>();
+    public MutableLiveData<String> activeInfoGraphic = new MutableLiveData<>();
+    public MutableLiveData<Advice.CurrentChip> activeChip = new MutableLiveData<>(Advice.CurrentChip.advice);
+
     public MutableLiveData<List<Advice>> adviceList = new MutableLiveData<>();
     public MutableLiveData<List<InfoGraphic>> infoGraphicList = new MutableLiveData<>();
+
     private HealthRepository healthRepository = new HealthRepository();
-    public MutableLiveData<Advice.CurrentChip> currentChip = new MutableLiveData<>(Advice.CurrentChip.advice);
 
     public void getAdviceList() {
         infoGraphicList.setValue(healthRepository.getInfoGraphicList());

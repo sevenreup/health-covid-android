@@ -1,7 +1,6 @@
 package com.skybox.seven.covid.ui.fragment.main;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +17,6 @@ import com.skybox.seven.covid.model.InfoGraphic;
 import com.skybox.seven.covid.ui.bottomsheets.AdviceBottomSheetFragment;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
 import com.skybox.seven.covid.viewmodels.AdviceViewModel;
-import com.skybox.seven.covid.viewmodels.CovidFactory;
-import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,8 +58,9 @@ public class HealthFragment extends Fragment {
             }
 
             @Override
-            public void onInfoGraphicClick(InfoGraphic graphic) {
-
+            public void onInfoGraphicClick(String graphic) {
+                adviceViewModel.activeInfoGraphic.setValue(graphic);
+                adviceBottomSheetFragment.show(getChildFragmentManager(), null);
             }
         });
         recyclerView.addItemDecoration(new SpaceItemDecorator(50, true, false));
@@ -72,14 +70,14 @@ public class HealthFragment extends Fragment {
             switch (checkedId) {
                 case R.id.advice_chip:
                     lastChecked = checkedId;
-                    adviceViewModel.currentChip.setValue(Advice.CurrentChip.advice);
-                    controller.setData(adviceViewModel.currentChip.getValue(), adviceList, infoGraphics);
+                    adviceViewModel.activeChip.setValue(Advice.CurrentChip.advice);
+                    controller.setData(adviceViewModel.activeChip.getValue(), adviceList, infoGraphics);
 
                     break;
                 case R.id.info_chip:
                     lastChecked = checkedId;
-                    adviceViewModel.currentChip.setValue(Advice.CurrentChip.infographic);
-                    controller.setData(adviceViewModel.currentChip.getValue(), adviceList, infoGraphics);
+                    adviceViewModel.activeChip.setValue(Advice.CurrentChip.infographic);
+                    controller.setData(adviceViewModel.activeChip.getValue(), adviceList, infoGraphics);
                     break;
                 default:
                     group.check(lastChecked);
@@ -91,12 +89,12 @@ public class HealthFragment extends Fragment {
 
         adviceViewModel.adviceList.observe(getViewLifecycleOwner(), list -> {
             adviceList = list;
-            controller.setData(adviceViewModel.currentChip.getValue(), adviceList, infoGraphics);
+            controller.setData(adviceViewModel.activeChip.getValue(), adviceList, infoGraphics);
         });
         adviceViewModel.infoGraphicList.observe(getViewLifecycleOwner(), list -> infoGraphics = list);
 
         adviceViewModel.getAdviceList();
-        controller.setData(adviceViewModel.currentChip.getValue(), adviceList, infoGraphics);
+        controller.setData(adviceViewModel.activeChip.getValue(), adviceList, infoGraphics);
         return v;
     }
 }

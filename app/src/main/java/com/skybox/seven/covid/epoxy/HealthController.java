@@ -8,6 +8,7 @@ import com.airbnb.epoxy.OnModelClickListener;
 import com.airbnb.epoxy.Typed3EpoxyController;
 import com.skybox.seven.covid.epoxy.model.AdviceMainModel;
 import com.skybox.seven.covid.epoxy.model.AdviceMainModel_;
+import com.skybox.seven.covid.epoxy.model.InfoGraphicModel;
 import com.skybox.seven.covid.epoxy.model.InfoGraphicModel_;
 import com.skybox.seven.covid.model.Advice;
 import com.skybox.seven.covid.model.InfoGraphic;
@@ -37,7 +38,7 @@ public class HealthController extends Typed3EpoxyController<Advice.CurrentChip, 
                      infoGraphicList) {
                     for (String image:
                          graphics.getImages()) {
-                        new InfoGraphicModel_().id(image).context(context).url(image).addTo(this);
+                        new InfoGraphicModel_().id(image).context(context).listener((model, parentView, clickedView, position) -> callback.onInfoGraphicClick(image)).url(image).addTo(this);
                     }
                 }
                 break;
@@ -48,6 +49,6 @@ public class HealthController extends Typed3EpoxyController<Advice.CurrentChip, 
 
     public interface HealthTipsCallback {
         void onAdviceClick(Advice advice);
-        void onInfoGraphicClick(InfoGraphic graphic);
+        void onInfoGraphicClick(String graphic);
     }
 }
