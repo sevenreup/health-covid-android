@@ -4,16 +4,14 @@ public class Advice {
     private String shortTitle;
     private String title;
     private String advice;
-    private String answer;
     private String video;
     private int image;
     private boolean hasVideo;
 
-    public Advice(String shortTitle, String title, String advice, String answer, int image) {
+    public Advice(String shortTitle, String title, String advice, int image) {
         this.shortTitle = shortTitle;
         this.title = title;
         this.advice = advice;
-        this.answer = answer;
         this.video = null;
         this.hasVideo = false;
         this.image = image;
@@ -49,14 +47,6 @@ public class Advice {
 
     public void setAdvice(String advice) {
         this.advice = advice;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
     }
 
     public String getVideo() {

@@ -1,5 +1,6 @@
 package com.skybox.seven.covid.ui.bottomsheets;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -36,12 +37,27 @@ public class AdviceBottomSheetFragment extends BottomSheetDialogFragment {
         viewModel.activeAdvice.observe(getViewLifecycleOwner(), advice -> {
             ((TextView) v.findViewById(R.id.bt_title)).setText(advice.getTitle());
             ((TextView) v.findViewById(R.id.bt_answer)).setText(advice.getAdvice());
-            ((TextView) v.findViewById(R.id.bt_reason)).setText(advice.getAnswer());
         });
-        v.findViewById(R.id.share_tip).setOnClickListener(v12 -> {
 
+        v.findViewById(R.id.share_tip).setOnClickListener(v12 -> {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, buildSharableString(viewModel.activeAdvice.getValue()));
+            sendIntent.setType("text/plain");
+
+            Intent shareIntent = Intent.createChooser(sendIntent, null);
+            startActivity(shareIntent);
         });
         v.findViewById(R.id.close_tip).setOnClickListener(v1 -> dismiss());
         return v;
+    }
+
+    private String buildSharableString(Advice advice) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Health Tip: \n\n");
+        builder.append(advice.getTitle());
+        builder.append("\n\nWhy: \n\n");
+        builder.append(advice.getAdvice());
+        return builder.toString();
     }
 }
