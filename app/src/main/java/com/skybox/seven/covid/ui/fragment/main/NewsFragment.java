@@ -19,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,6 +33,7 @@ import static com.skybox.seven.covid.ui.adapters.contactAdapter.NEWS_LIST;
 public class NewsFragment extends Fragment {
 
     RecyclerView recyclerView;
+    contactAdapter adapter;
 
     public NewsFragment() {
         // Required empty public constructor
@@ -46,7 +48,8 @@ public class NewsFragment extends Fragment {
 
         recyclerView = rootView.findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        adapter = new contactAdapter(getContext(),new ArrayList(),NEWS_LIST);
+        recyclerView.setAdapter(adapter);
         new newsColl().execute();
 
         return rootView;
@@ -72,7 +75,7 @@ public class NewsFragment extends Fragment {
         protected void onPostExecute(String response) {
             super.onPostExecute(response);
 
-            ArrayList list = new ArrayList();
+            ArrayList<NewsArticle> list = new ArrayList();
             Gson gson = new Gson();
 
             try {
@@ -85,8 +88,7 @@ public class NewsFragment extends Fragment {
                     System.out.println(article.getAuthor());
                 }
 
-                contactAdapter adapter = new contactAdapter(getContext(),list,NEWS_LIST);
-                recyclerView.setAdapter(adapter);
+                adapter.setNews(list);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

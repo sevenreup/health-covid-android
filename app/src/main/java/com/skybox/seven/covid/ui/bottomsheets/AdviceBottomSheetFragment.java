@@ -50,7 +50,6 @@ public class AdviceBottomSheetFragment extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_advice_bottom_sheet, container, false);
         AdviceViewModel viewModel = new ViewModelProvider(getParentFragment().getViewModelStore(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(AdviceViewModel.class);
 
@@ -125,7 +124,7 @@ public class AdviceBottomSheetFragment extends BottomSheetDialogFragment {
         return builder.toString();
     }
 
-    public Uri getLocalBitmapUri(ImageView imageView) {
+    private Uri getLocalBitmapUri(ImageView imageView) {
         // Extract Bitmap from ImageView drawable
         Drawable drawable = imageView.getDrawable();
         Bitmap bmp = null;

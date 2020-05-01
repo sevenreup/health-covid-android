@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ContactHolder> {
-     ArrayList models;
+     private ArrayList models;
     private Context context;
 
     public static int CONTACT_LIST = 0, NEWS_LIST = 1;
@@ -61,6 +61,12 @@ public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ContactH
     }
 
     public void setData(ArrayList<ContactModel.ContactUsersContacts> models){
+        this.models = models;
+        notifyDataSetChanged();
+
+    }
+
+    public void setNews(ArrayList<NewsArticle> models){
         this.models = models;
         notifyDataSetChanged();
 
