@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -88,7 +90,7 @@ public class AdviceBottomSheetFragment extends BottomSheetDialogFragment {
                Intent shareIntent = Intent.createChooser(sendIntent, null);
                startActivity(shareIntent);
            } else {
-               Uri uri = getLocalBitmapUri(currentImage);
+               Uri uri = getLocalBitmapUri(((ImageView) v.findViewById(R.id.info_image)));
                Log.e("TAG", "onCreateView: " + uri );
                Intent sendIntent = new Intent();
                sendIntent.setAction(Intent.ACTION_SEND);
@@ -113,20 +115,29 @@ public class AdviceBottomSheetFragment extends BottomSheetDialogFragment {
         return builder.toString();
     }
 
-    private Uri getLocalBitmapUri(Bitmap bmp) {
+    public Uri getLocalBitmapUri(ImageView imageView) {
+        // Extract Bitmap from ImageView drawable
+        Drawable drawable = imageView.getDrawable();
+        Bitmap bmp = null;
+        if (drawable instanceof BitmapDrawable){
+            bmp = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+        } else {
+            return null;
+        }
+        // Store image to default external storage directory
         Uri bmpUri = null;
-        File file = new File(getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_image_" + System.currentTimeMillis() + ".png");
-        FileOutputStream out = null;
         try {
-            out = new FileOutputStream(file);
+            // Use methods on Context to access package-specific directories on external storage.
+            // This way, you don't need to request external read/write permission.
+            // See https://youtu.be/5xVh-7ywKpE?t=25m25s
+            File file =  new File(getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_image_" + System.currentTimeMillis() + ".png");
+            FileOutputStream out = new FileOutputStream(file);
             bmp.compress(Bitmap.CompressFormat.PNG, 90, out);
-            try {
-                out.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            bmpUri = Uri.fromFile(file);
-        } catch (FileNotFoundException e) {
+            out.close();
+            // **Warning:** This will fail for API >= 24, use a FileProvider as shown below instead.
+//            bmpUri = Uri.fromFile(file);
+            bmpUri = FileProvider.getUriForFile(getContext(), getContext().getApplicationContext().getOpPackageName() + ".provider", file);
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return bmpUri;
