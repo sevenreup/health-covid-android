@@ -36,15 +36,11 @@ import retrofit2.Retrofit;
 public class MainViewModel extends ViewModel {
     private String TAG = "MAINVIEWMODEL";
     private SharedPreferenceRepository preferenceRepository;
-    private HealthRepository healthRepository = new HealthRepository();
     private MythRepository mythRepository = new MythRepository();
 
     public MutableLiveData<AccessToken> credentials = new MutableLiveData<>();
     public MutableLiveData<Boolean> isRegistered = new MutableLiveData<>();
     public MutableLiveData<Boolean> showLoginNotification = new MutableLiveData<>(true);
-
-    public MutableLiveData<List<Advice>> adviceList = new MutableLiveData<>();
-    public MutableLiveData<List<InfoGraphic>> infoGraphicList = new MutableLiveData<>();
 
     public MutableLiveData<List<Myth>> mythList = new MutableLiveData<>();
     public MutableLiveData<List<MythGraphicInfo>> mythGraphicInfoList = new MutableLiveData<>();
@@ -140,11 +136,6 @@ public class MainViewModel extends ViewModel {
 
     public void logout() {
         preferenceRepository.deleteToken();
-    }
-
-    public void getAdviceList() {
-        infoGraphicList.setValue(healthRepository.getInfoGraphicList());
-        adviceList.setValue(healthRepository.getAdviceList());
     }
 
     public boolean isLoggedIn() {
