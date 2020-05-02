@@ -118,4 +118,7 @@
     <string name="selftest_heading">Test for COVID19 against your symptoms</string>
     <string name="button_start_test">Start a test</string>
     <string name="previous">Previous tests</string>
+    <string name="reject">Reject</string>
+    <string name="accept">Accept</string>
+
 </resources>
