@@ -159,9 +159,9 @@ public class MainViewModel extends ViewModel {
         mythList.setValue(mythRepository.getMythList());
     }
 
-    public void saveContacts(ArrayList<FamMember> members, LatLng userLocation) {
+    public void saveContacts(ArrayList<FamMember> contacts, LatLng userLocation) {
         RetrofitService service = retrofit.create(RetrofitService.class);
-        service.saveContacts(getToken(), members, userLocation).enqueue(new Callback<GenericResponse>() {
+        service.saveContacts(getToken(), contacts, userLocation).enqueue(new Callback<GenericResponse>() {
             @Override
             public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
                 // TODO: Get some actual response sent to the UI
