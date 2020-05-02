@@ -44,6 +44,6 @@ public interface RetrofitService {
     Call<ArrayList<ContactModel.ContactUsersContacts>> getAllContacts(@Header("Authorization") String Authtoken);
 
     @Headers({"Accept: application/json"})
-    @GET("users/{userId}/contacts/rejected")
-    Call<String> getPendingContacts(@Header("Authorization") String Authtoken, @Path("userId") String userID);
+    @GET("users/contacts/rejected")
+    Call<String> getPendingContacts(@Header("Authorization") String Authtoken);
 }
