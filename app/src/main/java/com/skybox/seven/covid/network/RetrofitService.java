@@ -3,6 +3,7 @@ package com.skybox.seven.covid.network;
 import com.google.android.gms.maps.model.LatLng;
 import com.skybox.seven.covid.model.FamMember;
 import com.skybox.seven.covid.network.responses.AccessToken;
+import com.skybox.seven.covid.network.responses.ContactRequest;
 import com.skybox.seven.covid.network.responses.GenericResponse;
 import com.skybox.seven.covid.ui.adapters.ContactModel;
 import com.skybox.seven.covid.ui.adapters.ContactRequestModel;
@@ -10,6 +11,7 @@ import com.skybox.seven.covid.ui.adapters.ContactRequestModel;
 import java.util.ArrayList;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -35,9 +37,8 @@ public interface RetrofitService {
     Call<GenericResponse> register(@Field("first_name")String fname, @Field("last_name")String lname, @Field("phone")String number, @Field("password")String gender);
 
     @Headers({"Accept: application/json"})
-    @FormUrlEncoded
     @POST("contact/add")
-    Call<GenericResponse> saveContacts(@Header("Authorization") String Authtoken, @Field("contacts") ArrayList<FamMember> members, @Field("location") LatLng userLocation);
+    Call<GenericResponse> saveContacts(@Header("Authorization") String Authtoken, @Body ArrayList<ContactRequest> members);
 
     @Headers({"Accept: application/json"})
     @GET("users/contacts")

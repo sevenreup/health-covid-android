@@ -19,6 +19,7 @@ import com.skybox.seven.covid.model.MythGraphicInfo;
 import com.skybox.seven.covid.network.RetrofitFactory;
 import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.network.responses.AccessToken;
+import com.skybox.seven.covid.network.responses.ContactRequest;
 import com.skybox.seven.covid.network.responses.GenericResponse;
 import com.skybox.seven.covid.repository.HealthRepository;
 import com.skybox.seven.covid.repository.MythRepository;
@@ -159,9 +160,9 @@ public class MainViewModel extends ViewModel {
         mythList.setValue(mythRepository.getMythList());
     }
 
-    public void saveContacts(ArrayList<FamMember> members, LatLng userLocation) {
+    public void saveContacts(ArrayList<ContactRequest> members, LatLng userLocation) {
         RetrofitService service = retrofit.create(RetrofitService.class);
-        service.saveContacts(getToken(), members, userLocation).enqueue(new Callback<GenericResponse>() {
+        service.saveContacts(getToken(), members).enqueue(new Callback<GenericResponse>() {
             @Override
             public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
                 // TODO: Get some actual response sent to the UI
