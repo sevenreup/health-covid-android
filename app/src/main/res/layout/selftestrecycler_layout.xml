@@ -25,7 +25,9 @@
               android:layout_marginLeft="5dp"
               android:layout_marginTop="96dp"
               android:text="1/5/2020"
+
               android:textColor="@color/primary"
+
               android:textStyle="bold" />
 
           <ImageView
@@ -52,8 +54,9 @@
               android:layout_marginRight="3dp"
               android:layout_marginBottom="8dp"
               android:text="11:20 AM"
+
               android:textColor="@color/primary"
-              android:textStyle="bold" />
+             android:textStyle="bold" />
 
           <TextView
               android:id="@+id/response"

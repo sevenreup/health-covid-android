@@ -16,13 +16,16 @@ import kotlinx.android.synthetic.main.selftestrecycler_layout.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
+
 class selftestAdapter(val arrayList: ArrayList<dbModel>, val context: SelfTestFragment): RecyclerView.Adapter<selftestAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
           val response = itemView.response
           val status = itemView.actual_status
+
           val date = itemView.test_date
           val time = itemView.test_time
+
 
           val modifications = itemView.menu_more
     }
@@ -40,6 +43,7 @@ class selftestAdapter(val arrayList: ArrayList<dbModel>, val context: SelfTestFr
         val values: dbModel = arrayList[p1]
         p0.response.text = values.Reply
         p0.status.text = values.Status
+
         val c = Calendar.getInstance()
         val day = c.get(Calendar.DAY_OF_MONTH).toString()
         val month = c.get(Calendar.MONTH).toString()

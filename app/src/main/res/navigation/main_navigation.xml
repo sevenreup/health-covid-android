@@ -88,7 +88,9 @@
             android:id="@+id/action_selfTestFragment_to_actulTest_Fragment"
             app:destination="@id/actulTest_Fragment" />
     </fragment>
-    <fragment
+
+
+<fragment
         android:id="@+id/actulTest_Fragment"
         android:name="com.skybox.seven.covid.ui.fragment.main.actulTest_Fragment"
         android:label="fragment_actul_test_"
@@ -97,5 +99,4 @@
             android:id="@+id/action_actulTest_Fragment_to_selfTestFragment"
             app:destination="@id/selfTestFragment" />
     </fragment>
-
 </navigation>
