@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+  <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="120dp"
+      android:layout_margin="10dp"
+      app:cardCornerRadius="7dp"
+      >
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+          <TextView
+              android:id="@+id/test_date"
+              style="@style/Widget.MaterialComponents.MaterialCalendar.DayTextView"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentStart="true"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentTop="true"
+              android:layout_marginStart="5dp"
+              android:layout_marginLeft="5dp"
+              android:layout_marginTop="96dp"
+              android:text="1/5/2020"
+              android:textColor="@color/primary"
+              android:textStyle="bold" />
+
+          <ImageView
+              android:id="@+id/menu_more"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_alignParentEnd="true"
+              android:layout_alignParentRight="true"
+              android:layout_marginTop="4dp"
+              android:layout_marginEnd="3dp"
+              android:layout_marginRight="3dp"
+              app:srcCompat="@drawable/ic_more_horiz" />
+
+          <TextView
+              android:id="@+id/test_time"
+              style="@style/Widget.MaterialComponents.MaterialCalendar.DayTextView"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentEnd="true"
+              android:layout_alignParentRight="true"
+              android:layout_alignParentBottom="true"
+              android:layout_marginEnd="3dp"
+              android:layout_marginRight="3dp"
+              android:layout_marginBottom="8dp"
+              android:text="11:20 AM"
+              android:textColor="@color/primary"
+              android:textStyle="bold" />
+
+          <TextView
+              android:id="@+id/response"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentStart="true"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentTop="true"
+              android:layout_marginStart="9dp"
+              android:layout_marginLeft="9dp"
+              android:layout_marginTop="26dp"
+              android:text="You have conducted a self test successfully!"
+              android:textSize="17sp" />
+
+          <TextView
+              android:id="@+id/status"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentStart="true"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentTop="true"
+              android:layout_marginStart="9dp"
+              android:layout_marginLeft="9dp"
+              android:layout_marginTop="62dp"
+              android:text="Response status:" />
+
+          <TextView
+              android:id="@+id/actual_status"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentStart="true"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentTop="true"
+              android:layout_marginStart="121dp"
+              android:layout_marginLeft="121dp"
+              android:layout_marginTop="62dp"
+              android:text="Pending" />
+      </RelativeLayout>
+  </androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="3dp"
+    android:elevation="10dp"
+    android:layout_margin="15dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nam"
+            android:text="Name"
+            android:layout_marginRight="5dp"/>
+
+        <TextView
+            android:id="@+id/ContName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/nam"
+            android:drawableEnd="@drawable/ic_link"
+            android:text="sadvlhchnk" />
+
+        <TextView
+            android:id="@+id/num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nam"
+            android:layout_marginTop="18dp"
+            android:layout_marginRight="5dp"
+            android:text="Number:" />
+
+        <TextView
+            android:id="@+id/ContNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ContName"
+            android:layout_toRightOf="@+id/num"
+            android:layout_marginTop="12dp"
+            android:drawableEnd="@drawable/phoneicon"
+            android:text="acndkanjbdjkvnsdk" />
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

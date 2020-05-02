@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add_location">Wonjezera Maro</string>
+    <string name="name">Dzina</string>
+    <string name="search_location">Yangana Maro</string>
+    <string name="done">Malizani</string>
+    <string name="title_activity_maps">Maeo</string>
+</resources>

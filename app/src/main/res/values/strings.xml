@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">Covid</string>
+    <string name="add_location">Add Location</string>
+    <string name="name">Name</string>
+    <string name="search_location">Search location</string>
+    <string name="done">Done</string>
+    <string name="add_description_i_e_house_color">Add description i.e house #, color...</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cases_disclamer">This page will hold case data. \n Coming soon..</string>
+
+
+    <string name="menu_health_tips">Health Tips</string>
+    <string name="menu_self_test">Self Test</string>
+    <string name="menu_contacts">Contacts</string>
+    <string name="menu_mythbusters">Myth Busters</string>
+    <string name="menu_news">News</string>
+    <string name="menu_qna">Questions and Answers</string>
+
+
+    <string name="default_notification_channel_name" translatable="true">Health</string>
+
+
+    <string name="one">1 </string>
+    <string name="two">2 </string>
+    <string name="three">3 </string>
+    <string name="four">4 </string>
+    <string name="five">5 </string>
+    <string name="six">6 </string>
+    <string name="seven">7 </string>
+    <string name="eight">8 </string>
+    <string name="nine">9 </string>
+    <string name="ten">10 </string>
+    <string name="twenty_three">23 </string>
+    <string name="eleven">11 </string>
+    <string name="twelve">12 </string>
+    <string name="thirteen">13 </string>
+    <string name="fourteen">14 </string>
+    <string name="fifteen">15 </string>
+    <string name="twenty_one">21 </string>
+    <string name="twenty_two">22 </string>
+    <string name="sixteen">16 </string>
+    <string name="seventeen">17 </string>
+    <string name="nineteen">19 </string>
+    <string name="twenty">20 </string>
+    <string name="eighteen">18 </string>
+
+    <string name="date">Choose todays date</string>
+    <string name="question_one">Experiencing shortness of breath?</string>
+    <string name="question_two">Experiencing sore throat?</string>
+    <string name="question_three">Experiencing fever?</string>
+    <string name="question_four">Experiencing dry cough?</string>
+    <string name="question_five">You forgot a question</string>
+    <string name="question_six">Experiencing nasal congestion, runny nose?</string>
+    <string name="question_seven">Experiencing diarrhea?</string>
+    <string name="find">Couldn\'t find what you are looking for?</string>
+    <string name="verify">Slide to verify</string>
+    <string name="question_null">Feeling dizziness?</string>
+    <string name="degree">Choose degree:</string>
+
+</resources>
