@@ -94,6 +94,7 @@
     <string name="twenty">20 </string>
     <string name="eighteen">18 </string>
 
+<<<<<<< HEAD
     <string name="response">You have successfully performed a self test!</string>
     <string name="status">Pending</string>
     <string name="tracked">I would like to be tracked to help with analytics</string>
@@ -118,4 +119,9 @@
     <string name="selftest_heading">Test for COVID19 against your symptoms</string>
     <string name="button_start_test">Start a test</string>
     <string name="previous">Previous tests</string>
+=======
+    <string name="reject">Reject</string>
+    <string name="accept">Accept</string>
+
+>>>>>>> parent of a4dcd25... Revert "Merge branch 'personalcovid'"
 </resources>
