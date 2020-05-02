@@ -6,31 +6,37 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="10dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/menu_card_margin">
 
+        <ImageView
+            android:id="@+id/advice_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/ic_wash_hands"
+            android:layout_centerVertical="true"/>
+
         <TextView
             android:id="@+id/advice_title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Stay home if you feel unwell. If you have a fever, cough and difficulty breathing, seek medical attention and call in advance. Follow the directions of your local health authority."
+            android:text="Wash Hands"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:layout_toEndOf="@id/advice_icon"
+            />
 
         <TextView
             android:id="@+id/advice_content"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/advice_title"
-            android:layout_marginTop="8dp"
-            android:text="National and local authorities will have the most up to date information on the situation in your area. Calling in advance will allow your health care provider to quickly direct you to the right health facility. This will also protect you and help prevent spread of viruses and other infections."
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/advice_title" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_marginTop="16dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash them with soap and water."
+            android:layout_toEndOf="@id/advice_icon"
+            android:layout_below="@id/advice_title"/>
+    </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>

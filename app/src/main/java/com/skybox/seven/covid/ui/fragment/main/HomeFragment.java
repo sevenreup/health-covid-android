@@ -51,8 +51,6 @@ public class HomeFragment extends Fragment implements MainController.MainControl
         createMenuItems();
         controller.setData(viewModel.isLoggedIn(),viewModel.showLoginNotification.getValue() ,menuItems);
 
-        viewModel.credentials.observe(getActivity(), loginResponse -> {
-        });
         viewModel.showLoginNotification.observe(getViewLifecycleOwner(), show -> controller.setData(viewModel.isLoggedIn(),show ,menuItems));
 
         return v;

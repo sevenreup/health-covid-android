@@ -21,6 +21,7 @@ import com.skybox.seven.covid.R;
 public class InfoGraphicModel extends EpoxyModelWithHolder<InfoGraphicModel.InfoGModelHolder> {
     @EpoxyAttribute String url;
     @EpoxyAttribute Context context;
+    @EpoxyAttribute View.OnClickListener listener;
     @Override
     protected InfoGModelHolder createNewHolder() {
         return new InfoGModelHolder();
@@ -34,6 +35,7 @@ public class InfoGraphicModel extends EpoxyModelWithHolder<InfoGraphicModel.Info
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .error(R.drawable.ic_error)
                 .into(holder.image);
+        holder.image.setOnClickListener(listener);
     }
 
     @Override

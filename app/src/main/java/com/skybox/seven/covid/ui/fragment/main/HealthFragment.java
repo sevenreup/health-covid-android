@@ -1,7 +1,6 @@
 package com.skybox.seven.covid.ui.fragment.main;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +14,9 @@ import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.HealthController;
 import com.skybox.seven.covid.model.Advice;
 import com.skybox.seven.covid.model.InfoGraphic;
+import com.skybox.seven.covid.ui.bottomsheets.AdviceBottomSheetFragment;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
-import com.skybox.seven.covid.viewmodels.CovidFactory;
-import com.skybox.seven.covid.viewmodels.MainViewModel;
+import com.skybox.seven.covid.viewmodels.AdviceViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +28,10 @@ public class HealthFragment extends Fragment {
     private EpoxyRecyclerView recyclerView;
     private ChipGroup currentGroup;
     private int lastChecked;
-    private Advice.CurrentChip currentChip = Advice.CurrentChip.advice;
     private List<Advice> adviceList = new ArrayList<>();
     private List<InfoGraphic> infoGraphics = new ArrayList<>();
-    MainViewModel viewModel;
+    private AdviceViewModel adviceViewModel;
+    private AdviceBottomSheetFragment adviceBottomSheetFragment;
 
     public HealthFragment() {
         // Required empty public constructor
@@ -44,12 +43,26 @@ public class HealthFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_health, container, false);
-        viewModel = new ViewModelProvider(getViewModelStore(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
+
+        adviceViewModel = new ViewModelProvider(getViewModelStore(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(AdviceViewModel.class);
 
         recyclerView = v.findViewById(R.id.health_recycler);
         currentGroup = v.findViewById(R.id.chip_group);
+        adviceBottomSheetFragment = new AdviceBottomSheetFragment();
 
-        HealthController controller = new HealthController(getActivity());
+        HealthController controller = new HealthController(getActivity(), new HealthController.HealthTipsCallback() {
+            @Override
+            public void onAdviceClick(Advice advice) {
+                adviceViewModel.activeAdvice.setValue(advice);
+                adviceBottomSheetFragment.show(getChildFragmentManager(), null);
+            }
+
+            @Override
+            public void onInfoGraphicClick(String graphic) {
+                adviceViewModel.activeInfoGraphic.setValue(graphic);
+                adviceBottomSheetFragment.show(getChildFragmentManager(), null);
+            }
+        });
         recyclerView.addItemDecoration(new SpaceItemDecorator(50, true, false));
         recyclerView.setController(controller);
 
@@ -57,14 +70,14 @@ public class HealthFragment extends Fragment {
             switch (checkedId) {
                 case R.id.advice_chip:
                     lastChecked = checkedId;
-                    currentChip = Advice.CurrentChip.advice;
-                    controller.setData(currentChip, adviceList, infoGraphics);
+                    adviceViewModel.activeChip.setValue(Advice.CurrentChip.advice);
+                    controller.setData(adviceViewModel.activeChip.getValue(), adviceList, infoGraphics);
 
                     break;
                 case R.id.info_chip:
                     lastChecked = checkedId;
-                    currentChip = Advice.CurrentChip.infographic;
-                    controller.setData(currentChip, adviceList, infoGraphics);
+                    adviceViewModel.activeChip.setValue(Advice.CurrentChip.infographic);
+                    controller.setData(adviceViewModel.activeChip.getValue(), adviceList, infoGraphics);
                     break;
                 default:
                     group.check(lastChecked);
@@ -74,14 +87,14 @@ public class HealthFragment extends Fragment {
 
         currentGroup.check(R.id.advice_chip);
 
-        viewModel.adviceList.observe(getViewLifecycleOwner(), list -> {
+        adviceViewModel.adviceList.observe(getViewLifecycleOwner(), list -> {
             adviceList = list;
-            controller.setData(currentChip, adviceList, infoGraphics);
+            controller.setData(adviceViewModel.activeChip.getValue(), adviceList, infoGraphics);
         });
-        viewModel.infoGraphicList.observe(getViewLifecycleOwner(), list -> infoGraphics = list);
+        adviceViewModel.infoGraphicList.observe(getViewLifecycleOwner(), list -> infoGraphics = list);
 
-        viewModel.getAdviceList();
-        controller.setData(currentChip, adviceList, infoGraphics);
+        adviceViewModel.getAdviceList();
+        controller.setData(adviceViewModel.activeChip.getValue(), adviceList, infoGraphics);
         return v;
     }
 }

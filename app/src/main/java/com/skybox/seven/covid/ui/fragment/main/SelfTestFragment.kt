@@ -1,80 +1,70 @@
 package com.skybox.seven.covid.ui.fragment.main
 
-import android.app.DatePickerDialog
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.skybox.seven.covid.R
-import java.util.*
+import com.skybox.seven.covid.data.databaseHandler2
+import com.skybox.seven.covid.ui.adapters.selftestAdapter
 import kotlinx.android.synthetic.main.selftest.*
 
 class SelfTestFragment: Fragment() {
+
+    companion object{
+        lateinit var dbHandler2: databaseHandler2
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.selftest, container, false)
+
+
+
         return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        widgetBinders()
-        operations()
-    }
-    private fun widgetBinders() {
+        dbHandler2 = databaseHandler2(this.context!!, null, null ,1 )
 
-        date.setOnClickListener {
+        val testLists = dbHandler2.getCurrentTest(this.context!!)
+        val adapter = selftestAdapter(testLists, this)
 
-            val c = Calendar.getInstance()
-            val year = c.get(Calendar.YEAR)
-            val month = c.get(Calendar.MONTH)
-            val day = c.get(Calendar.DAY_OF_MONTH)
+        val recycler: RecyclerView = view!!.findViewById(R.id.recyclerSelfTest)
+        recycler.layoutManager = LinearLayoutManager(this.context!!, LinearLayout.VERTICAL, false)
+        recycler.adapter = adapter
 
-            val dpd = DatePickerDialog(
-                    activity!!,
-                    DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-
-                        date.setText("" + dayOfMonth + " " + month + ", " + year)
-                    },
-                    year,
-                    month,
-                    day
-            )
-            dpd.show()
-            submission.setOnClickListener {
-
-                progress.visibility = View.GONE
-                if (date.text.toString() != "Choose todays date") {
-
-
-                    progress.visibility = View.VISIBLE
-                    submission.visibility = View.GONE
-                    Handler().postDelayed({
-                        Toast.makeText(activity!!, "Odds for COVID19: 0.07%", Toast.LENGTH_SHORT).show()
-                        submission.visibility = View.VISIBLE
-                        progress.visibility = View.GONE
-                    },5000)
-                } else {
-                    Toast.makeText(activity!!, "Specify today's date and degree...", Toast.LENGTH_LONG)
-                            .show()
-                }
-
-
-            }
-
+        selftest.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_selfTestFragment_to_actulTest_Fragment)
         }
+    }
+
+    override fun onResume() {
+        val testLists = dbHandler2.getCurrentTest(this.context!!)
+        val adapter = selftestAdapter(testLists, this)
+
+        val recycler: RecyclerView = view!!.findViewById(R.id.recyclerSelfTest)
+        recycler.layoutManager = LinearLayoutManager(this.context!!, LinearLayout.VERTICAL, false)
+        recycler.adapter = adapter
+        super.onResume()
 
     }
-    private fun operations(){
-        val items = arrayOf("Mild condition","Severe condition","I am not sure")
+   //damn!
+    //override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+      //  super.onViewCreated(view, savedInstanceState)
+//
+  //      view.findViewById<Button>(R.id.selftest).setOnClickListener {
+    //        findNavController(it).navigate(R.id.action_selfTestFragment_to_actulTest_Fragment)
+      //  }
+    //}
 
-        spinner.adapter = ArrayAdapter<String>(activity!!,android.R.layout.simple_list_item_1,items)
 
 
-
-    }
 
 }

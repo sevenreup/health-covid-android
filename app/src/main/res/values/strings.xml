@@ -16,6 +16,7 @@
     <string name="title_emergency">Emergency Contacts</string>
     <string name="title_personal">Profile</string>
     <string name="title_contact_request">Contact Requests</string>
+    <string name="title_testing_panel">Testing panel</string>
 
     <string name="add_location">Add Location</string>
     <string name="name">Name</string>
@@ -68,7 +69,7 @@
     <string name="button_contact">Contact</string>
 
     <string name="default_notification_channel_name" translatable="true">Health</string>
-    
+
     <string name="one">1 </string>
     <string name="two">2 </string>
     <string name="three">3 </string>
@@ -78,17 +79,43 @@
     <string name="seven">7 </string>
     <string name="eight">8 </string>
     <string name="nine">9 </string>
-    <string name="ten">10 </string><string name="twenty_three">23 </string>
+    <string name="ten">10 </string>
+    <string name="twenty_three">23 </string>
     <string name="eleven">11 </string>
     <string name="twelve">12 </string>
     <string name="thirteen">13 </string>
     <string name="fourteen">14 </string>
-    <string name="fifteen">15 </string><string name="twenty_one">21 </string><string name="twenty_two">22 </string>
+    <string name="fifteen">15 </string>
+    <string name="twenty_one">21 </string>
+    <string name="twenty_two">22 </string>
     <string name="sixteen">16 </string>
-    <string name="seventeen">17 </string><string name="nineteen">19 </string><string name="twenty">20 </string>
+    <string name="seventeen">17 </string>
+    <string name="nineteen">19 </string>
+    <string name="twenty">20 </string>
     <string name="eighteen">18 </string>
 
-    <string name="reject">Reject</string>
-    <string name="accept">Accept</string>
+    <string name="response">You have successfully performed a self test!</string>
+    <string name="status">Pending</string>
+    <string name="tracked">I would like to be tracked to help with analytics</string>
+    <string name="heading1">Your health background questionare</string>
+    <string name="question_one">I have hypersensitivity reactions i.e allegies</string>
+    <string name="question_two">I was once diagonised with respiratory diseases i.e Asthma, Tuberculosis, Bronchitis</string>
+    <string name="heading2">COVID19 Symptoms questionare</string>
+    <string name="disclaimer1">Tick below against the symptoms you are experiencing</string>
+    <string name="symptom1">Dizziness</string>
+    <string name="symptom2">Diarrhea</string>
+    <string name="symptom3">Sore throat</string>
+    <string name="symptom4">nasal congestion</string>
+    <string name="symptom5">Aches and pains</string>
+    <string name="symptom6">Tiredness</string>
+   <string name="heading3">Description</string>
+    <string name="option">Please provide a brief description of how you feel in your own words (optional)</string>
+    <string name="disclaimer2">Please agree to our terms and condtions \n 1. Any form of misleading...</string>
+    <string name="agreement">I agree to the terms and conditions applied by the authorities</string>
+    <string name="sbt">Submit</string>
+    <string name="clc">Cancel</string>
 
+    <string name="selftest_heading">Test for COVID19 against your symptoms</string>
+    <string name="button_start_test">Start a test</string>
+    <string name="previous">Previous tests</string>
 </resources>

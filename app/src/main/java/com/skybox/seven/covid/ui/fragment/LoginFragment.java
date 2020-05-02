@@ -2,10 +2,6 @@ package com.skybox.seven.covid.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -13,17 +9,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ProgressBar;
 
-import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.skybox.seven.covid.R;
+import com.skybox.seven.covid.network.responses.ValidationErrors;
 import com.skybox.seven.covid.ui.HomeActivity;
-import com.skybox.seven.covid.viewmodels.CovidFactory;
-import com.skybox.seven.covid.viewmodels.MainViewModel;
+import com.skybox.seven.covid.viewmodels.AuthViewModel;
 
 import java.lang.ref.WeakReference;
 
@@ -33,7 +30,7 @@ import io.radar.sdk.Radar;
  * A simple {@link Fragment} subclass.
  */
 public class LoginFragment extends Fragment {
-    private MainViewModel viewModel;
+    private AuthViewModel viewModel;
     private TextInputLayout phoneTextField;
     private TextInputLayout passwordTextField;
 
@@ -48,14 +45,14 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_login, container, false);
 
-        viewModel = new ViewModelProvider(getActivity(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(getViewModelStore(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(AuthViewModel.class);
 
         phoneTextField = v.findViewById(R.id.phone_number);
         passwordTextField = v.findViewById(R.id.userPassword);
 
 //        phoneTextField.getEditText().addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
-        viewModel.credentials.observe(getActivity(), loginResponse -> {
+        viewModel.credentials.observe(getViewLifecycleOwner(), loginResponse -> {
             Intent intent = new Intent();
             intent.setClass(getActivity(),HomeActivity.class);
             intent.putExtra(HomeActivity.NAME_MESSAGE,loginResponse.getName());
@@ -63,6 +60,14 @@ public class LoginFragment extends Fragment {
             Radar.setUserId(loginResponse.getId());
             getActivity().startActivity(intent);
             startActivity(intent);
+        });
+
+        viewModel.loading.observe(getViewLifecycleOwner(), loading -> {
+            if (loading) {
+                (v.findViewById(R.id.loading_progress)).setVisibility(View.VISIBLE);
+            } else {
+                (v.findViewById(R.id.loading_progress)).setVisibility(View.GONE);
+            }
         });
 
         ((Button) v.findViewById(R.id.loginButton)).setOnClickListener(v1 -> {
@@ -78,6 +83,20 @@ public class LoginFragment extends Fragment {
               transaction.replace(R.id.mainlayout, registerFragment);
               transaction.commit();
       });
+
+        viewModel.validationErrors.observe(getViewLifecycleOwner(), validationErrors -> {
+            ValidationErrors.Errors errors = validationErrors.getErrors();
+            if (errors.getPassword().size() > 0) {
+                String password = errors.getPassword().get(0);
+                ((TextInputLayout)v.findViewById(R.id.userPassword)).getEditText().setError(password);
+            }
+
+            if (errors.getPhone().size() > 0) {
+                String phone = errors.getPhone().get(0);
+                ((TextInputLayout)v.findViewById(R.id.phone_number)).getEditText().setError(phone);
+            }
+
+        });
 
     return v;
     }
