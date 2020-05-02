@@ -19,6 +19,7 @@ import com.skybox.seven.covid.model.MythGraphicInfo;
 import com.skybox.seven.covid.network.RetrofitFactory;
 import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.network.responses.AccessToken;
+import com.skybox.seven.covid.network.responses.ContactRequest;
 import com.skybox.seven.covid.network.responses.GenericResponse;
 import com.skybox.seven.covid.repository.HealthRepository;
 import com.skybox.seven.covid.repository.MythRepository;
@@ -36,21 +37,14 @@ import retrofit2.Retrofit;
 public class MainViewModel extends ViewModel {
     private String TAG = "MAINVIEWMODEL";
     private SharedPreferenceRepository preferenceRepository;
-    private HealthRepository healthRepository = new HealthRepository();
     private MythRepository mythRepository = new MythRepository();
 
-    public MutableLiveData<AccessToken> credentials = new MutableLiveData<>();
-    public MutableLiveData<Boolean> isRegistered = new MutableLiveData<>();
     public MutableLiveData<Boolean> showLoginNotification = new MutableLiveData<>(true);
-
-    public MutableLiveData<List<Advice>> adviceList = new MutableLiveData<>();
-    public MutableLiveData<List<InfoGraphic>> infoGraphicList = new MutableLiveData<>();
 
     public MutableLiveData<List<Myth>> mythList = new MutableLiveData<>();
     public MutableLiveData<List<MythGraphicInfo>> mythGraphicInfoList = new MutableLiveData<>();
 
     public MutableLiveData<Locale> changeLanguage = new MutableLiveData<>();
-    public MutableLiveData<Boolean> contactsRefresh = new MutableLiveData<>();
 
     private Retrofit retrofit;
 
@@ -60,92 +54,8 @@ public class MainViewModel extends ViewModel {
         retrofit = RetrofitFactory.getRetrofit(preferenceRepository);
     }
 
-    public void login(String phone, String password) {
-        Log.e(TAG, "login: started");
-        RetrofitService retrofitService = retrofit.create(RetrofitService.class);
-        Call<AccessToken> call = retrofitService.loginUser(phone, password);
-        call.enqueue(new Callback<AccessToken>() {
-            @Override
-            public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
-                AccessToken user = response.body();
-                if (user != null) {
-                    credentials.setValue(user);
-                    Log.e(TAG, "onResponse: " + user);
-                    preferenceRepository.setToken(user);
-                    String fireToken = preferenceRepository.getFirebaseToken();
-                    if (fireToken != null) {
-                        Call<GenericResponse> fToken = retrofitService.pushToken(user.getType() + " " + user.getToken(), fireToken);
-                        fToken.enqueue(new Callback<GenericResponse>() {
-                            @Override
-                            public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
-                                Log.e(TAG, "onResponse: succeful updated firebase token");
-                            }
-
-                            @Override
-                            public void onFailure(Call<GenericResponse> call, Throwable t) {
-                                Log.e(TAG, "onFailure: failled to update firebase");
-                            }
-                        });
-                    } else {
-                        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                String newToken = task.getResult().getToken();
-                                preferenceRepository.setFirebaseMessagingToken(newToken);
-                                Call<GenericResponse> fToken = retrofitService.pushToken(user.getType() + " " + user.getToken(), newToken);
-                                fToken.enqueue(new Callback<GenericResponse>() {
-                                    @Override
-                                    public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
-                                        Log.e(TAG, "onResponse: succeful updated firebase token");
-                                    }
-
-                                    @Override
-                                    public void onFailure(Call<GenericResponse> call, Throwable t) {
-                                        Log.e(TAG, "onFailure: failled to update firebase");
-                                    }
-                                });
-                            }
-                        });
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<AccessToken> call, Throwable t) {
-                t.printStackTrace();
-                Log.e(TAG, "onFailure: failed to log in");
-            }
-        });
-    }
-
-    public void register(String fname, String lname, String number, String gender) {
-        RetrofitService retrofitService = retrofit.create(RetrofitService.class);
-        Call<GenericResponse> call = retrofitService.register(fname, lname, number, gender);
-        call.enqueue(new Callback<GenericResponse>() {
-            @Override
-            public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
-                Log.e("TAG", "onResponse: " + response);
-                if (response.isSuccessful()) {
-                    isRegistered.setValue(true);
-                } else {
-                    isRegistered.setValue(false);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<GenericResponse> call, Throwable t) {
-                t.printStackTrace();
-                isRegistered.setValue(false);
-            }
-        });
-    }
-
     public void logout() {
         preferenceRepository.deleteToken();
-    }
-
-    public void getAdviceList() {
-        infoGraphicList.setValue(healthRepository.getInfoGraphicList());
-        adviceList.setValue(healthRepository.getAdviceList());
     }
 
     public boolean isLoggedIn() {
@@ -159,9 +69,9 @@ public class MainViewModel extends ViewModel {
         mythList.setValue(mythRepository.getMythList());
     }
 
-    public void saveContacts(ArrayList<FamMember> contacts, LatLng userLocation) {
+    public void saveContacts(ArrayList<ContactRequest> members, LatLng userLocation) {
         RetrofitService service = retrofit.create(RetrofitService.class);
-        service.saveContacts(getToken(), contacts, userLocation).enqueue(new Callback<GenericResponse>() {
+        service.saveContacts(getToken(), members).enqueue(new Callback<GenericResponse>() {
             @Override
             public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
                 // TODO: Get some actual response sent to the UI

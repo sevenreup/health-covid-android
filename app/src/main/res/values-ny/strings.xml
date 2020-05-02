@@ -14,4 +14,11 @@
     <string name="title_mythbusters">Kuswanya Mabodza</string>
     <string name="title_news">Nkhani</string>
     <string name="title_qna">Manfunso ndi Mayanko</string>
+    <string name="title_testing_panel">Mbali yoyezera</string>
+
+
+
+    <string name="selftest_heading">Ziyezeni Corona virus malingana ndimene mukumvera mthupi mwanu</string>
+    <string name="button_start_test">Yambani kuziyeza</string>
+    <string name="previous">Kuyezesa kwapitako</string>
 </resources>

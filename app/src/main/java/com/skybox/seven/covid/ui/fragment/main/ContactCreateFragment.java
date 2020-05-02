@@ -15,6 +15,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.FamMember;
+import com.skybox.seven.covid.network.responses.ContactRequest;
 import com.skybox.seven.covid.ui.Location;
 import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
@@ -30,7 +31,7 @@ import androidx.lifecycle.ViewModelProvider;
 public class ContactCreateFragment extends Fragment {
     LayoutInflater inflater;
     LinearLayout membersView;
-    ArrayList<FamMember> members = new ArrayList<>();
+    ArrayList<ContactRequest> members = new ArrayList<>();
     MainViewModel viewModel;
     LatLng userLocation;
     Button saveButton;
@@ -59,7 +60,7 @@ public class ContactCreateFragment extends Fragment {
             ((Button)view.findViewById(R.id.saveMember)).setOnClickListener(vw->{
                 String name = String.valueOf(((EditText)view.findViewById(R.id.userName)).getText());
                 String phoneNumber = String.valueOf(((EditText)view.findViewById(R.id.phoneNumber)).getText());
-                FamMember famMember = new FamMember(name,phoneNumber);
+                ContactRequest famMember = new ContactRequest(name,phoneNumber);
                 members.add(famMember);
                 setupFamily();
                 bottomDialog.dismiss();
@@ -89,7 +90,7 @@ public class ContactCreateFragment extends Fragment {
 
     private void setupFamily() {
         membersView.removeAllViews();
-        for (FamMember member : members) {
+        for (ContactRequest member : members) {
             View view = inflater.inflate(R.layout.member_item,null);
             ((TextView)view.findViewById(R.id.name)).setText(member.getName());
             membersView.addView(view);

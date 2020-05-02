@@ -19,16 +19,9 @@
             android:id="@+id/ContName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:text="" />
-
-        <TextView
-            android:id="@+id/ContLName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/ContName"
-            android:text=""/>
-
+            android:layout_toRightOf="@+id/nam"
+            android:layout_marginRight="20dp"
+            android:text="sadvlhchnk" />
 
 
         <TextView
@@ -37,8 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            android:layout_toRightOf="@+id/ContLName"
-            android:text="" />
+            android:layout_toRightOf="@+id/ContName"
+            android:text="acndkanjbdjkvnsdk" />
 
         <Button
             android:id="@+id/yes"
@@ -46,7 +39,7 @@
             android:layout_width="118dp"
             android:layout_height="35dp"
             android:drawableEnd="@drawable/ic_check"
-            android:text="@string/accept"
+            android:text="Accept"
             android:textSize="12dp" />
 
         <Button
@@ -58,7 +51,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
             android:drawableEnd="@drawable/ic_no"
-            android:text="@string/reject" />
+            android:text="Reject" />
 
     </RelativeLayout>
 
