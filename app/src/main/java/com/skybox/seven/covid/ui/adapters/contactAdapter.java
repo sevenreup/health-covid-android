@@ -66,15 +66,12 @@ public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ContactH
 
     }
 
-<<<<<<< HEAD
     public void setNews(ArrayList<NewsArticle> models){
         this.models = models;
         notifyDataSetChanged();
 
     }
 
-=======
->>>>>>> parent of a4dcd25... Revert "Merge branch 'personalcovid'"
 
     public class ContactHolder extends RecyclerView.ViewHolder {
         public final View mView;

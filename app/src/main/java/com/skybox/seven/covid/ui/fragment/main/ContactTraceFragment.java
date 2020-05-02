@@ -5,24 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-<<<<<<< HEAD
-=======
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
->>>>>>> parent of a4dcd25... Revert "Merge branch 'personalcovid'"
-import android.widget.Toast;
 
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.network.ContactClientInstance;
@@ -33,12 +22,7 @@ import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
-import java.util.Observable;
 
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -85,15 +69,7 @@ public class ContactTraceFragment extends Fragment {
 
         });
 
-
-<<<<<<< HEAD
-   return v; }
-
-    private void generateContactList(ArrayList<ContactModel.ContactUsersContacts>models){
-        ContactAdapter = new contactAdapter(getContext(),models,CONTACT_LIST);
-=======
-        ContactAdapter = new contactAdapter(getContext(),contactsList);
->>>>>>> parent of a4dcd25... Revert "Merge branch 'personalcovid'"
+        ContactAdapter = new contactAdapter(getContext(),contactsList,CONTACT_LIST);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(ContactAdapter);
@@ -115,11 +91,6 @@ public class ContactTraceFragment extends Fragment {
                 contactsList=response.body();
                 ContactAdapter.setData(contactsList);
             }
-
-<<<<<<< HEAD
-    }   */
-   
-=======
             @Override
             public void onFailure(Call<ArrayList<ContactModel.ContactUsersContacts>> call, Throwable t) {
                 progressDialog.dismiss();
@@ -128,5 +99,4 @@ public class ContactTraceFragment extends Fragment {
         });
 
     }
->>>>>>> parent of a4dcd25... Revert "Merge branch 'personalcovid'"
 }
