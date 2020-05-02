@@ -33,21 +33,20 @@ android:layout_height="80dp"
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Test for COVID19 against your symptoms"
+                android:text="@string/selftest_heading"
                 android:layout_gravity="center"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
         </LinearLayout>
         <LinearLayout
             android:layout_height="50dp"
-            android:background="#DFDFDF"
+            android:background="#F1EFEF"
             android:layout_width="match_parent">
             <Button
                 android:id="@+id/selftest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="PERFOM"
-                android:background="#fff"
+                android:text="@string/button_start_test"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="5dp"
                 />
@@ -60,7 +59,7 @@ android:layout_height="80dp"
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Previous tests"
+            android:text="@string/previous"
             android:layout_gravity="end"
             android:layout_marginRight="10dp"/>
     <androidx.recyclerview.widget.RecyclerView

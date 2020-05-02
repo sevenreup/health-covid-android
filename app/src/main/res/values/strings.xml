@@ -16,6 +16,7 @@
     <string name="title_emergency">Emergency Contacts</string>
     <string name="title_personal">Profile</string>
     <string name="title_contact_request">Contact Requests</string>
+    <string name="title_testing_panel">Testing panel</string>
 
     <string name="add_location">Add Location</string>
     <string name="name">Name</string>
@@ -69,12 +70,6 @@
 
     <string name="default_notification_channel_name" translatable="true">Health</string>
 
-
-
-    <string name="default_notification_channel_name" translatable="true">Health</string>
-
-
-
     <string name="one">1 </string>
     <string name="two">2 </string>
     <string name="three">3 </string>
@@ -99,17 +94,28 @@
     <string name="twenty">20 </string>
     <string name="eighteen">18 </string>
 
-    <string name="date">Choose todays date</string>
-    <string name="question_one">Experiencing shortness of breath?</string>
-    <string name="question_two">Experiencing sore throat?</string>
-    <string name="question_three">Experiencing fever?</string>
-    <string name="question_four">Experiencing dry cough?</string>
-    <string name="question_five">You forgot a question</string>
-    <string name="question_six">Experiencing nasal congestion, runny nose?</string>
-    <string name="question_seven">Experiencing diarrhea?</string>
-    <string name="find">Couldn\'t find what you are looking for?</string>
-    <string name="verify">Slide to verify</string>
-    <string name="question_null">Feeling dizziness?</string>
-    <string name="degree">Choose degree:</string>
+    <string name="response">You have successfully performed a self test!</string>
+    <string name="status">Pending</string>
+    <string name="tracked">I would like to be tracked to help with analytics</string>
+    <string name="heading1">Your health background questionare</string>
+    <string name="question_one">I have hypersensitivity reactions i.e allegies</string>
+    <string name="question_two">I was once diagonised with respiratory diseases i.e Asthma, Tuberculosis, Bronchitis</string>
+    <string name="heading2">COVID19 Symptoms questionare</string>
+    <string name="disclaimer1">Tick below against the symptoms you are experiencing</string>
+    <string name="symptom1">Dizziness</string>
+    <string name="symptom2">Diarrhea</string>
+    <string name="symptom3">Sore throat</string>
+    <string name="symptom4">nasal congestion</string>
+    <string name="symptom5">Aches and pains</string>
+    <string name="symptom6">Tiredness</string>
+   <string name="heading3">Description</string>
+    <string name="option">Please provide a brief description of how you feel in your own words (optional)</string>
+    <string name="disclaimer2">Please agree to our terms and condtions \n 1. Any form of misleading...</string>
+    <string name="agreement">I agree to the terms and conditions applied by the authorities</string>
+    <string name="sbt">Submit</string>
+    <string name="clc">Cancel</string>
 
+    <string name="selftest_heading">Test for COVID19 against your symptoms</string>
+    <string name="button_start_test">Start a test</string>
+    <string name="previous">Previous tests</string>
 </resources>

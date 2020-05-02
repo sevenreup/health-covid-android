@@ -100,7 +100,7 @@
 <fragment
         android:id="@+id/actulTest_Fragment"
         android:name="com.skybox.seven.covid.ui.fragment.main.actulTest_Fragment"
-        android:label="fragment_actul_test_"
+        android:label="@string/title_testing_panel"
         tools:layout="@layout/fragment_actul_test_" >
         <action
             android:id="@+id/action_actulTest_Fragment_to_selfTestFragment"
