@@ -17,6 +17,7 @@ import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class OnboardingActivity extends LocalizationActivity implements OnBoardingAdapter.OnBoardCallback {
     MainViewModel viewModel;
@@ -33,6 +34,7 @@ public class OnboardingActivity extends LocalizationActivity implements OnBoardi
         TabLayout tabLayout = findViewById(R.id.into_tab_layout);
         viewPager2.setAdapter(adapter);
         new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> { }).attach();
+        viewModel.changeLanguage.observe(this, this::setLanguage);
     }
 
     private void setOnboardingItems() {
@@ -48,7 +50,7 @@ public class OnboardingActivity extends LocalizationActivity implements OnBoardi
                 "The start up logo will be fixed later",
                 "if you want to stop this from appearing just uncomment viewModel.setOnBoardingInfo(true); on the button clicks",
                 0,
-                OnBoardingItem.normal
+                OnBoardingItem.language
         );
         onBoardingItems.add(second);
         OnBoardingItem third = new OnBoardingItem(
@@ -92,5 +94,10 @@ public class OnboardingActivity extends LocalizationActivity implements OnBoardi
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finishAffinity();
+    }
+
+    @Override
+    public void onLanguageChange(Locale locale) {
+        viewModel.changeLanguage.setValue(locale);
     }
 }
