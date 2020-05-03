@@ -41,7 +41,10 @@ public class HomeActivity extends LocalizationActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_home);
+
+        viewModel = new ViewModelProvider(this, new CovidFactory(getApplication())).get(MainViewModel.class);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create   channel to show notifications.
@@ -62,8 +65,6 @@ public class HomeActivity extends LocalizationActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        viewModel = new ViewModelProvider(this, new CovidFactory(getApplication())).get(MainViewModel.class);
-
         navigationView= findViewById(R.id.navbar);
         NavController navController = Navigation.findNavController(this, R.id.container);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.homeFragment, R.id.casesFragment, R.id.settingsFragment).build();
@@ -71,23 +72,6 @@ public class HomeActivity extends LocalizationActivity {
 
         NavigationUI.setupWithNavController(navigationView, navController);
         NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration);
-
-//        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-//            switch (destination.getId()) {
-//                case R.id.homeFragment:
-//                    toolbar.setTitle(R.string.app_name);
-//                    break;
-//                case R.id.settingsFragment:
-//                    toolbar.setTitle("Settings");
-//                    break;
-//                case R.id.casesFragment:
-//                    toolbar.setTitle("Covid-19 Stats");
-//                    break;
-//                default:
-//                    toolbar.setTitle("");
-//                    break;
-//            }
-//        });
 
         changeListener = (sharedPreferences, key) -> {
             if (key.equals(SharedPreferenceRepository.TOKEN)) {

@@ -36,6 +36,15 @@
         </service>
         <activity android:name=".ui.OnboardingActivity"/>
 
+        <activity android:name=".ui.SplashScreenActivity"
+            android:theme="@style/AppTheme.SplashScreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <receiver
             android:name=".location.LocationReceiver"
             android:enabled="true"
@@ -59,13 +68,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".ui.HomeActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".ui.HomeActivity" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".ui.MainActivity" />
         <activity
             android:name=".ui.Location"

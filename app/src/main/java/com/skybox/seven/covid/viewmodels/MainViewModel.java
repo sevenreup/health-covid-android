@@ -95,6 +95,14 @@ public class MainViewModel extends ViewModel {
         return "";
     }
 
+    public boolean checkOnBoardingGo() {
+        return preferenceRepository.getOnBoardingPref();
+    }
+
+    public void setOnBoardingInfo (boolean value) {
+        preferenceRepository.setOnBoardingPref(value);
+    }
+
     public void registerPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener listener) {
         preferenceRepository.registerOnChangeListener(listener);
     }

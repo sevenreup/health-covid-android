@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import com.skybox.seven.covid.network.responses.AccessToken;
 
 public class SharedPreferenceRepository {
-    public static String TOKEN = "token", TOKEN_TYPE = "token_type", FIREBASE_MESSAGING = "firebase_message";
+    public static String TOKEN = "token", TOKEN_TYPE = "token_type", FIREBASE_MESSAGING = "firebase_message", ONBOARDING = "onboarding_status";
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
@@ -50,5 +50,14 @@ public class SharedPreferenceRepository {
 
     public void unRegisterOnChangeListener(SharedPreferences.OnSharedPreferenceChangeListener listener) {
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(listener);
+    }
+
+    public boolean getOnBoardingPref() {
+        return sharedPreferences.getBoolean(ONBOARDING, false);
+    }
+
+    public void setOnBoardingPref(boolean value) {
+        editor.putBoolean(ONBOARDING, value);
+        editor.apply();
     }
 }

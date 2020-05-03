@@ -57,9 +57,11 @@ public class LoginFragment extends Fragment {
             intent.setClass(getActivity(),HomeActivity.class);
             intent.putExtra(HomeActivity.NAME_MESSAGE,loginResponse.getName());
             intent.putExtra(HomeActivity.PHONE_MESSAGE, loginResponse.getPhone());
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             Radar.setUserId(loginResponse.getId());
             getActivity().startActivity(intent);
             startActivity(intent);
+            getActivity().finishAffinity();
         });
 
         viewModel.loading.observe(getViewLifecycleOwner(), loading -> {

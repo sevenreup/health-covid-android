@@ -108,7 +108,7 @@
     <string name="symptom4">nasal congestion</string>
     <string name="symptom5">Aches and pains</string>
     <string name="symptom6">Tiredness</string>
-   <string name="heading3">Description</string>
+    <string name="heading3">Description</string>
     <string name="option">Please provide a brief description of how you feel in your own words (optional)</string>
     <string name="disclaimer2">Please agree to our terms and condtions \n 1. Any form of misleading...</string>
     <string name="agreement">I agree to the terms and conditions applied by the authorities</string>
