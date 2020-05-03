@@ -9,15 +9,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.chip.ChipGroup;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.OnBoardingItem;
 
 import java.util.List;
+import java.util.Locale;
 
 
 public class OnBoardingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    List<OnBoardingItem> onBoardingItems;
-    OnBoardCallback callback;
+    private List<OnBoardingItem> onBoardingItems;
+    private OnBoardCallback callback;
 
     public OnBoardingAdapter(List<OnBoardingItem> onBoardingItems, OnBoardCallback callback) {
         this.onBoardingItems = onBoardingItems;
@@ -34,6 +36,9 @@ public class OnBoardingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             case OnBoardingItem.end:
                 View view1 = LayoutInflater.from(parent.getContext()).inflate(R.layout.on_boarding_item_end, parent, false);
                 return new OnBoardEndViewHolder(view1);
+            case OnBoardingItem.language:
+                View view2 = LayoutInflater.from(parent.getContext()).inflate(R.layout.on_boarding_item_language, parent, false);
+                return new OnBoardLanguageViewHolder(view2);
         }
         return null;
     }
@@ -58,6 +63,20 @@ public class OnBoardingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 viewHolder1.login.setOnClickListener(v -> callback.onClickLogin());
                 viewHolder1.register.setOnClickListener(v -> callback.onClickRegister());
                 break;
+            case OnBoardingItem.language:
+                OnBoardLanguageViewHolder viewHolder2 = (OnBoardLanguageViewHolder) holder;
+                viewHolder2.title.setText(item.getTitle());
+                viewHolder2.body.setText(item.getExplanation());
+                viewHolder2.languageGroup.check(R.id.page_english);
+                viewHolder2.save.setOnClickListener(v -> {
+                    int id = viewHolder2.languageGroup.getCheckedChipId();
+                    if (id == R.id.page_english) {
+                        callback.onLanguageChange(new Locale("en", "US"));
+                    } else {
+                        callback.onLanguageChange(new Locale("ny", "MW"));
+                    }
+                });
+                break;
         }
     }
 
@@ -73,6 +92,20 @@ public class OnBoardingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             super(itemView);
             title = itemView.findViewById(R.id.page_title);
             body = itemView.findViewById(R.id.page_explanation);
+        }
+    }
+
+    public class OnBoardLanguageViewHolder extends RecyclerView.ViewHolder {
+        public TextView title, body;
+        MaterialButton save;
+        ChipGroup languageGroup;
+
+        public OnBoardLanguageViewHolder(@NonNull View itemView) {
+            super(itemView);
+            title = itemView.findViewById(R.id.page_title);
+            body = itemView.findViewById(R.id.page_explanation);
+            save = itemView.findViewById(R.id.page_save);
+            languageGroup = itemView.findViewById(R.id.language_group);
         }
     }
 
@@ -93,5 +126,7 @@ public class OnBoardingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         void onClickRegister();
 
         void onClickSkip();
+
+        void onLanguageChange(Locale locale);
     }
 }
