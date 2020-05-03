@@ -2,5 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:opacity="opaque">
     <item android:drawable="@android:color/holo_blue_bright" />
-    <item android:drawable="@drawable/ic_health_logo"/>
+    <item>
+        <bitmap android:src="@drawable/splash_image" android:gravity="center"/>
+    </item>
 </layer-list>
