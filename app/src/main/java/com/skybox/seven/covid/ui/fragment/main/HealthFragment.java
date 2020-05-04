@@ -59,8 +59,9 @@ public class HealthFragment extends Fragment {
 
             @Override
             public void onInfoGraphicClick(String graphic) {
-                adviceViewModel.activeInfoGraphic.setValue(graphic);
-                adviceBottomSheetFragment.show(getChildFragmentManager(), null);
+//                adviceViewModel.activeInfoGraphic.setValue(graphic);
+//                adviceBottomSheetFragment.show(getChildFragmentManager(), null);
+                ImageViewerFragment.display(getChildFragmentManager());
             }
         });
         recyclerView.addItemDecoration(new SpaceItemDecorator(50, true, false));
