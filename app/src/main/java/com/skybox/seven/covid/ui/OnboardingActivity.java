@@ -74,7 +74,7 @@ public class OnboardingActivity extends LocalizationActivity implements OnBoardi
 
     @Override
     public void onClickLogin() {
-//        viewModel.setOnBoardingInfo(true);
+        viewModel.setOnBoardingInfo(true);
         Intent intent = new Intent(this, AuthActivity.class);
         intent.putExtra("register", false);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -83,7 +83,7 @@ public class OnboardingActivity extends LocalizationActivity implements OnBoardi
 
     @Override
     public void onClickRegister() {
-//        viewModel.setOnBoardingInfo(true);
+        viewModel.setOnBoardingInfo(true);
         Intent intent = new Intent(this, AuthActivity.class);
         intent.putExtra("register", true);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -92,7 +92,7 @@ public class OnboardingActivity extends LocalizationActivity implements OnBoardi
 
     @Override
     public void onClickSkip() {
-//        viewModel.setOnBoardingInfo(true);
+        viewModel.setOnBoardingInfo(true);
         Intent intent = new Intent(this, HomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
