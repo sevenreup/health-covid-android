@@ -32,6 +32,7 @@ public class HealthFragment extends Fragment {
     private List<InfoGraphic> infoGraphics = new ArrayList<>();
     private AdviceViewModel adviceViewModel;
     private AdviceBottomSheetFragment adviceBottomSheetFragment;
+    private ImageViewerFragment imageViewerFragment;
 
     public HealthFragment() {
         // Required empty public constructor
@@ -49,6 +50,7 @@ public class HealthFragment extends Fragment {
         recyclerView = v.findViewById(R.id.health_recycler);
         currentGroup = v.findViewById(R.id.chip_group);
         adviceBottomSheetFragment = new AdviceBottomSheetFragment();
+        imageViewerFragment = new ImageViewerFragment(adviceViewModel.activeInfoGraphic);
 
         HealthController controller = new HealthController(getActivity(), new HealthController.HealthTipsCallback() {
             @Override
@@ -59,9 +61,8 @@ public class HealthFragment extends Fragment {
 
             @Override
             public void onInfoGraphicClick(String graphic) {
-//                adviceViewModel.activeInfoGraphic.setValue(graphic);
-//                adviceBottomSheetFragment.show(getChildFragmentManager(), null);
-                ImageViewerFragment.display(getChildFragmentManager());
+                adviceViewModel.activeInfoGraphic.setValue(graphic);
+                imageViewerFragment.show(getChildFragmentManager(), ImageViewerFragment.TAG);
             }
         });
         recyclerView.addItemDecoration(new SpaceItemDecorator(50, true, false));
