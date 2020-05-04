@@ -12,6 +12,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.OnBoardingItem;
 import com.skybox.seven.covid.ui.adapters.OnBoardingAdapter;
+import com.skybox.seven.covid.util.OnBoardingPageTransformer;
 import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
@@ -33,6 +34,9 @@ public class OnboardingActivity extends LocalizationActivity implements OnBoardi
         OnBoardingAdapter adapter = new OnBoardingAdapter(onBoardingItems, this);
         TabLayout tabLayout = findViewById(R.id.into_tab_layout);
         viewPager2.setAdapter(adapter);
+
+        viewPager2.setPageTransformer(new OnBoardingPageTransformer());
+
         new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> { }).attach();
         viewModel.changeLanguage.observe(this, this::setLanguage);
     }
