@@ -120,5 +120,7 @@
     <string name="previous">Previous tests</string>
     <string name="reject">Reject</string>
     <string name="accept">Accept</string>
+    <string name="advice_title_bt_health_tip">Health Tip: \n\n</string>
+    <string name="advice_title_bt_health_why">\n\nWhy: \n\n</string>
 
 </resources>

@@ -46,11 +46,9 @@ public class AdviceBottomSheetFragment extends BottomSheetDialogFragment {
     }
 
     private String buildSharableString(Advice advice) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Health Tip: \n\n");
-        builder.append(advice.getTitle());
-        builder.append("\n\nWhy: \n\n");
-        builder.append(advice.getAdvice());
-        return builder.toString();
+        return getString(R.string.advice_title_bt_health_tip) +
+                advice.getTitle() +
+                getString(R.string.advice_title_bt_health_why) +
+                advice.getAdvice();
     }
 }
