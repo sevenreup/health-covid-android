@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/page_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_health_logo" />
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:srcCompat="@drawable/ic_health_logo"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:gravity="center"
+        android:scaleType="center" />
 
 
-    <LinearLayout
-        android:id="@+id/page_container"
+    <LinearLayout android:id="@+id/page_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/page_image">
 
@@ -28,14 +26,21 @@
             android:id="@+id/page_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:text="Mad"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:textSize="22sp"/>
 
         <TextView
             android:id="@+id/page_explanation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="Mad"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:textSize="18sp"/>
     </LinearLayout>
 
     <com.google.android.material.chip.ChipGroup
@@ -49,10 +54,6 @@
         android:layout_marginRight="24dp"
         android:layout_marginBottom="24dp"
         app:chipSpacingHorizontal="25dp"
-        app:layout_constraintBottom_toTopOf="@id/page_save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/page_container"
         app:singleLine="true"
         app:singleSelection="true">
 
@@ -74,16 +75,13 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/page_save"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:text="Save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/language_group"
-        style="?attr/materialButtonOutlinedStyle"/>
+        android:text="Save" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

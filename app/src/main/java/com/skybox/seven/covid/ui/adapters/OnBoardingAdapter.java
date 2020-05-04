@@ -59,6 +59,8 @@ public class OnBoardingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 break;
             case OnBoardingItem.end:
                 OnBoardEndViewHolder viewHolder1 = (OnBoardEndViewHolder) holder;
+                viewHolder1.title.setText(item.getTitle());
+                viewHolder1.body.setText(item.getExplanation());
                 viewHolder1.skip.setOnClickListener(v -> callback.onClickSkip());
                 viewHolder1.login.setOnClickListener(v -> callback.onClickLogin());
                 viewHolder1.register.setOnClickListener(v -> callback.onClickRegister());
@@ -110,10 +112,13 @@ public class OnBoardingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public class OnBoardEndViewHolder extends RecyclerView.ViewHolder {
+        public TextView title, body;
         MaterialButton login, register, skip;
 
         public OnBoardEndViewHolder(@NonNull View itemView) {
             super(itemView);
+            title = itemView.findViewById(R.id.page_title);
+            body = itemView.findViewById(R.id.page_explanation);
             login = itemView.findViewById(R.id.page_login);
             register = itemView.findViewById(R.id.page_register);
             skip = itemView.findViewById(R.id.page_skip);

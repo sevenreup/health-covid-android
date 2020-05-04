@@ -43,30 +43,29 @@ public class OnboardingActivity extends LocalizationActivity implements OnBoardi
 
     private void setOnboardingItems() {
         OnBoardingItem first = new OnBoardingItem(
-                "Covid-19",
-                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam molestiae distinctio " +
-                        "ullam alias nihil veritatis aliquam quisquam? Maiores facilis iure in odit, atque alias, magnam ab voluptatum enim, quis incidunt?\n",
+                "Welcome to the Covid 19 app.",
+                "Get the right info about the Covid 19 pandemic as well as self-testing without ever going outside right in the palm of your hand.\n",
                 0,
                 OnBoardingItem.normal
         );
         onBoardingItems.add(first);
         OnBoardingItem second = new OnBoardingItem(
-                "The start up logo will be fixed later",
-                "if you want to stop this from appearing just uncomment viewModel.setOnBoardingInfo(true); on the button clicks",
+                "Change language",
+                "",
                 0,
                 OnBoardingItem.language
         );
         onBoardingItems.add(second);
-        OnBoardingItem third = new OnBoardingItem(
-                "This will be fixed later",
-                "if you want to stop this from appearing just uncomment viewModel.setOnBoardingInfo(true); on the button clicks",
-                0,
-                OnBoardingItem.normal
-        );
-        onBoardingItems.add(third);
+//        OnBoardingItem third = new OnBoardingItem(
+//                "This will be fixed later",
+//                "if you want to stop this from appearing just uncomment viewModel.setOnBoardingInfo(true); on the button clicks",
+//                0,
+//                OnBoardingItem.normal
+//        );
+//        onBoardingItems.add(third);
         OnBoardingItem fourth = new OnBoardingItem(
-                "This is the title",
-                "if you want to stop this from appearing just uncomment viewModel.setOnBoardingInfo(true); on the button clicks",
+                "Sign up/ Sign in or skip",
+                "",
                 0,
                 OnBoardingItem.end
         );

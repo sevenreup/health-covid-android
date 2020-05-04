@@ -15,6 +15,34 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_health_logo" />
 
+    <LinearLayout android:id="@+id/page_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/page_image">
+
+        <TextView
+            android:id="@+id/page_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mad"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:textSize="22sp"/>
+
+        <TextView
+            android:id="@+id/page_explanation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mad"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,7 +54,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/page_image">
+        app:layout_constraintTop_toBottomOf="@id/page_container">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/page_skip"
