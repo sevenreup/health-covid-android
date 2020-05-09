@@ -5,42 +5,10 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.main.MythsFragment">
-
-
-    <TextView
-        android:id="@+id/qnaTV"
+    <com.google.android.material.tabs.TabLayout android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/title_mythbusters"
-        android:gravity="center_horizontal"/>
-
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/myth_chip_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:chipSpacingHorizontal="25dp"
-        app:singleLine="true"
-        app:singleSelection="true"
-        android:layout_below="@id/qnaTV">
-
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/myth_chip"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/myth_advice" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/myth_info_chip"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/myth_info_graphic"
-            />
-
-    </com.google.android.material.chip.ChipGroup>
-
+        />
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:paddingLeft="20dp"
@@ -48,7 +16,7 @@
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/myth_chip_group"
+        android:layout_below="@+id/tab_layout"
         />
 
 </RelativeLayout>

@@ -5,10 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.Myth;
 import com.skybox.seven.covid.model.MythGraphicInfo;
@@ -22,9 +25,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class MythsFragment extends Fragment {
-
-    private ChipGroup currentGroup;
-
+    List<TipsChips> chips = new ArrayList<>();
 
     public MythsFragment() {
         // Required empty public constructor
@@ -35,52 +36,29 @@ public class MythsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_myths, container, false);
-
-        currentGroup = v.findViewById(R.id.myth_chip_group);
+        getPages();
         ViewPager2 viewPager2 = v.findViewById(R.id.viewPager);
+        TabLayout tabLayout = v.findViewById(R.id.tab_layout);
 
-        TipsAdapter tipsAdapter = new TipsAdapter(getChildFragmentManager(), getLifecycle(), getPages());
+        TipsAdapter tipsAdapter = new TipsAdapter(getChildFragmentManager(), getLifecycle(), chips);
         viewPager2.setAdapter(tipsAdapter);
 
-//
-//
-//        currentGroup.setOnCheckedChangeListener((group, checkedId) -> {
-//            switch (checkedId) {
-//                case R.id.myth_chip:
-//                    lastChecked = checkedId;
-//                    currentChip = Myth.CurrentChip.myth;
-//                    controller.setData(currentChip, mythList, mythGraphicInfoList);
-//
-//                    break;
-//                case R.id.myth_info_chip:
-//                    lastChecked = checkedId;
-//                    currentChip = Myth.CurrentChip.mythgraphicinfo;
-//                    controller.setData(currentChip, mythList, mythGraphicInfoList);
-//                    break;
-//                default:
-//                    group.check(lastChecked);
-//                    break;
-//            }
-//        });
-//
-//        currentGroup.check(R.id.myth_chip);
-//
-//        viewModel.mythList.observe(getViewLifecycleOwner(), list -> {
-//            mythList = list;
-//            controller.setData(currentChip, mythList, mythGraphicInfoList);
-//        });
-//        viewModel.mythGraphicInfoList.observe(getViewLifecycleOwner(), list -> mythGraphicInfoList = list);
-//
-//        viewModel.getMythList();
-//        controller.setData(currentChip, mythList, mythGraphicInfoList);
+        new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
+            switch (chips.get(position)) {
+                case myth:
+                    tab.setText(R.string.myth_advice);
+                    break;
+                case mythgraphicinfo:
+                    tab.setText(R.string.myth_info_graphic);
+                    break;
+            }
+        }).attach();
         return v;
     }
 
-    private List<TipsChips> getPages() {
-        List<TipsChips> chips = new ArrayList<>();
+    private void getPages() {
         chips.add(TipsChips.myth);
         chips.add(TipsChips.mythgraphicinfo);
-        return chips;
     }
 }
 
