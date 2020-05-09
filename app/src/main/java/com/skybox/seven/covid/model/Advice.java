@@ -7,6 +7,7 @@ public class Advice {
     private String video;
     private int image;
     private boolean hasVideo;
+    private boolean expanded = false;
 
     public Advice(String shortTitle, String title, String advice, int image) {
         this.shortTitle = shortTitle;
@@ -65,4 +66,11 @@ public class Advice {
         this.hasVideo = hasVideo;
     }
 
+    public boolean isExpanded() {
+        return expanded;
+    }
+
+    public void setExpanded(boolean expanded) {
+        this.expanded = expanded;
+    }
 }

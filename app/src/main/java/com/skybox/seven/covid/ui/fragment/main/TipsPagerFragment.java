@@ -1,26 +1,21 @@
 package com.skybox.seven.covid.ui.fragment.main;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.HealthController;
 import com.skybox.seven.covid.epoxy.MythController;
 import com.skybox.seven.covid.model.Advice;
-import com.skybox.seven.covid.model.Myth;
 import com.skybox.seven.covid.model.TipsChips;
-import com.skybox.seven.covid.ui.bottomsheets.AdviceBottomSheetFragment;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
-import com.skybox.seven.covid.viewmodels.CovidFactory;
-import com.skybox.seven.covid.viewmodels.MainViewModel;
 import com.skybox.seven.covid.viewmodels.TipsViewModel;
 
 import java.util.ArrayList;
@@ -32,7 +27,6 @@ public class TipsPagerFragment extends Fragment {
     private EpoxyRecyclerView recyclerView;
     private TipsChips currentChip;
 
-    private AdviceBottomSheetFragment adviceBottomSheetFragment;
     private ImageViewerFragment imageViewerFragment;
 
     public TipsPagerFragment() {
@@ -50,8 +44,6 @@ public class TipsPagerFragment extends Fragment {
 
         TipsViewModel viewModel = new ViewModelProvider(getViewModelStore(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(TipsViewModel.class);
 
-
-        adviceBottomSheetFragment = new AdviceBottomSheetFragment();
         imageViewerFragment = new ImageViewerFragment(viewModel.activeInfoGraphic);
 
         recyclerView = v.findViewById(R.id.tips_recycler);
@@ -74,8 +66,7 @@ public class TipsPagerFragment extends Fragment {
             HealthController healthController = new HealthController(getActivity(), new HealthController.HealthTipsCallback() {
                 @Override
                 public void onAdviceClick(Advice advice) {
-                    viewModel.activeAdvice.setValue(advice);
-                    adviceBottomSheetFragment.show(getChildFragmentManager(), null);
+                    shareAdvice(advice);
                 }
 
                 @Override
@@ -91,8 +82,7 @@ public class TipsPagerFragment extends Fragment {
             HealthController healthController = new HealthController(getActivity(), new HealthController.HealthTipsCallback() {
                 @Override
                 public void onAdviceClick(Advice advice) {
-                    viewModel.activeAdvice.setValue(advice);
-                    adviceBottomSheetFragment.show(getChildFragmentManager(), null);
+                    shareAdvice(advice);
                 }
 
                 @Override
@@ -105,6 +95,23 @@ public class TipsPagerFragment extends Fragment {
             healthController.setData(currentChip, viewModel.adviceList.getValue(),null);
         }
         return v;
+    }
+
+    private void shareAdvice(Advice advice) {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, buildSharableString(advice));
+        sendIntent.setType("text/plain");
+
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        startActivity(shareIntent);
+    }
+
+    private String buildSharableString(Advice advice) {
+        return getString(R.string.advice_title_bt_health_tip) +
+                advice.getTitle() +
+                getString(R.string.advice_title_bt_health_why) +
+                advice.getAdvice();
     }
 
 }

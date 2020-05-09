@@ -27,6 +27,7 @@ public class HealthController extends Typed3EpoxyController<TipsChips, List<Advi
 
     @Override
     protected void buildModels(TipsChips current, List<Advice> adviceList, List<InfoGraphic> infoGraphicList) {
+
         switch (current) {
             case advice:
                 for (Advice advice:

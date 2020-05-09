@@ -6,18 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.epoxy.HealthController;
-import com.skybox.seven.covid.model.Advice;
 import com.skybox.seven.covid.model.TipsChips;
 import com.skybox.seven.covid.ui.adapters.TipsAdapter;
-import com.skybox.seven.covid.util.SpaceItemDecorator;
-import com.skybox.seven.covid.viewmodels.TipsViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
