@@ -65,8 +65,4 @@ public class Advice {
         this.hasVideo = hasVideo;
     }
 
-    public enum CurrentChip {
-        advice,
-        infographic
-    }
 }

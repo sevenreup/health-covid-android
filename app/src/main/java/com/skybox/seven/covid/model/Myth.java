@@ -34,9 +34,4 @@ public class Myth {
     public void setParagraph(String paragraph) {
         this.paragraph = paragraph;
     }
-
-    public enum CurrentChip{
-        myth,
-        mythgraphicinfo
-    }
 }

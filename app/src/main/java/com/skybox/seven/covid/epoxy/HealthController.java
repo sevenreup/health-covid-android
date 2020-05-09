@@ -12,10 +12,11 @@ import com.skybox.seven.covid.epoxy.model.InfoGraphicModel;
 import com.skybox.seven.covid.epoxy.model.InfoGraphicModel_;
 import com.skybox.seven.covid.model.Advice;
 import com.skybox.seven.covid.model.InfoGraphic;
+import com.skybox.seven.covid.model.TipsChips;
 
 import java.util.List;
 
-public class HealthController extends Typed3EpoxyController<Advice.CurrentChip, List<Advice>, List<InfoGraphic>> {
+public class HealthController extends Typed3EpoxyController<TipsChips, List<Advice>, List<InfoGraphic>> {
     Context context;
     HealthTipsCallback callback;
 
@@ -25,7 +26,7 @@ public class HealthController extends Typed3EpoxyController<Advice.CurrentChip, 
     }
 
     @Override
-    protected void buildModels(Advice.CurrentChip current, List<Advice> adviceList, List<InfoGraphic> infoGraphicList) {
+    protected void buildModels(TipsChips current, List<Advice> adviceList, List<InfoGraphic> infoGraphicList) {
         switch (current) {
             case advice:
                 for (Advice advice:

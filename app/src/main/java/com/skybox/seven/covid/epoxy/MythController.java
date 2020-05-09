@@ -8,10 +8,11 @@ import com.skybox.seven.covid.epoxy.model.MythGraphicInfoModel_;
 import com.skybox.seven.covid.epoxy.model.MythMainModel_;
 import com.skybox.seven.covid.model.Myth;
 import com.skybox.seven.covid.model.MythGraphicInfo;
+import com.skybox.seven.covid.model.TipsChips;
 
 import java.util.List;
 
-public class MythController extends Typed3EpoxyController<Myth.CurrentChip, List<Myth>, List<MythGraphicInfo>> {
+public class MythController extends Typed3EpoxyController<TipsChips, List<Myth>, List<MythGraphicInfo>> {
     Context context;
 
     public MythController(Context context) {
@@ -19,7 +20,7 @@ public class MythController extends Typed3EpoxyController<Myth.CurrentChip, List
     }
 
     @Override
-    protected void buildModels(Myth.CurrentChip current, List<Myth> mythList, List<MythGraphicInfo> mythGraphicInfoList) {
+    protected void buildModels(TipsChips current, List<Myth> mythList, List<MythGraphicInfo> mythGraphicInfoList) {
         switch (current) {
             case myth:
                 for (Myth myth:

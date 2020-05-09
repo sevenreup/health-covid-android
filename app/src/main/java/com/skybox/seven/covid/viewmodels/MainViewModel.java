@@ -37,12 +37,8 @@ import retrofit2.Retrofit;
 public class MainViewModel extends ViewModel {
     private String TAG = "MAINVIEWMODEL";
     private SharedPreferenceRepository preferenceRepository;
-    private MythRepository mythRepository = new MythRepository();
 
     public MutableLiveData<Boolean> showLoginNotification = new MutableLiveData<>(true);
-
-    public MutableLiveData<List<Myth>> mythList = new MutableLiveData<>();
-    public MutableLiveData<List<MythGraphicInfo>> mythGraphicInfoList = new MutableLiveData<>();
 
     public MutableLiveData<Locale> changeLanguage = new MutableLiveData<>();
     public MutableLiveData<Boolean> contactsRefresh = new MutableLiveData<>();
@@ -63,11 +59,6 @@ public class MainViewModel extends ViewModel {
         AccessToken accessToken = preferenceRepository.getToken();
         Log.e(TAG, "isLoggedIn: " + accessToken.toString());
         return accessToken.getToken() != null;
-    }
-
-    public void getMythList() {
-        mythGraphicInfoList.setValue(mythRepository.getMythGraphicInfoList());
-        mythList.setValue(mythRepository.getMythList());
     }
 
     public void saveContacts(ArrayList<ContactRequest> members, LatLng userLocation) {
