@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.Advice;
-import com.skybox.seven.covid.viewmodels.AdviceViewModel;
+import com.skybox.seven.covid.viewmodels.TipsViewModel;
 
 public class AdviceBottomSheetFragment extends BottomSheetDialogFragment {
     public AdviceBottomSheetFragment() {
@@ -24,7 +24,7 @@ public class AdviceBottomSheetFragment extends BottomSheetDialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_advice_bottom_sheet, container, false);
-        AdviceViewModel viewModel = new ViewModelProvider(getParentFragment().getViewModelStore(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(AdviceViewModel.class);
+        TipsViewModel viewModel = new ViewModelProvider(getParentFragment().getViewModelStore(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(TipsViewModel.class);
 
         viewModel.activeAdvice.observe(getViewLifecycleOwner(), advice -> {
                 ((TextView) v.findViewById(R.id.bt_title)).setText(advice.getTitle());
