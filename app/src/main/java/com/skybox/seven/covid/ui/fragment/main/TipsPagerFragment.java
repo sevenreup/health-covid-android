@@ -14,6 +14,7 @@ import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.HealthController;
 import com.skybox.seven.covid.epoxy.MythController;
 import com.skybox.seven.covid.model.Advice;
+import com.skybox.seven.covid.model.Myth;
 import com.skybox.seven.covid.model.TipsChips;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
 import com.skybox.seven.covid.viewmodels.TipsViewModel;
@@ -52,13 +53,34 @@ public class TipsPagerFragment extends Fragment {
 
         if (currentChip == TipsChips.myth) {
             viewModel.getMythList();
-            MythController controller = new MythController(getActivity());
+            MythController controller = new MythController(getActivity(), new MythController.MythCallback() {
+                @Override
+                public void onMythClick(Myth myth) {
+                    
+                }
+
+                @Override
+                public void onInfoGraphicClick(String image) {
+
+                }
+            });
             recyclerView.setController(controller);
             controller.setData(currentChip, viewModel.mythList.getValue(), new ArrayList<>());
         } else if (currentChip == TipsChips.mythgraphicinfo) {
             viewModel.getMythGraphicList();
             MythController controller;
-            controller = new MythController(getActivity());
+            controller = new MythController(getActivity(), new MythController.MythCallback() {
+                @Override
+                public void onMythClick(Myth myth) {
+
+                }
+
+                @Override
+                public void onInfoGraphicClick(String image) {
+                    viewModel.activeInfoGraphic.setValue(image);
+                    imageViewerFragment.show(getChildFragmentManager(), ImageViewerFragment.TAG);
+                }
+            });
             recyclerView.setController(controller);
             controller.setData(currentChip, new ArrayList<>(), viewModel.mythGraphicInfoList.getValue());
         } else if (currentChip == TipsChips.infographic) {

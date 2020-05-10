@@ -18,6 +18,8 @@ import com.skybox.seven.covid.model.Myth;
 public class MythMainModel extends EpoxyModelWithHolder<MythMainModel.MyMainModelHolder> {
     @EpoxyAttribute
     Myth myth;
+    @EpoxyAttribute
+    View.OnClickListener listener;
 
     @Override
     protected MythMainModel.MyMainModelHolder createNewHolder() { return new MyMainModelHolder(); }

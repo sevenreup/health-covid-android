@@ -21,6 +21,8 @@ public class MythGraphicInfoModel extends EpoxyModelWithHolder<MythGraphicInfoMo
     String url;
     @EpoxyAttribute
     Context context;
+    @EpoxyAttribute
+    View.OnClickListener listener;
 
     @Override
     protected MythGraphicInfoModel.GrafInfoModelHolder createNewHolder() { return new GrafInfoModelHolder(); }
@@ -33,6 +35,7 @@ public class MythGraphicInfoModel extends EpoxyModelWithHolder<MythGraphicInfoMo
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .error(R.drawable.ic_error)
                 .into(holder.image);
+        holder.image.setOnClickListener(listener);
     }
 
     @Override
