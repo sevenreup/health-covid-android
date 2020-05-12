@@ -30,7 +30,6 @@
 android:layout_height="match_parent"
                 android:src="@drawable/barner"
                 android:layout_marginTop="10dp"/>
-<<<<<<< Updated upstream
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -38,9 +37,7 @@ android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
-=======
 
->>>>>>> Stashed changes
         </LinearLayout>
         <LinearLayout
             android:layout_height="50dp"
@@ -58,7 +55,6 @@ android:layout_height="match_parent"
 
 
         </LinearLayout>
->>>>>>> Stashed changes
     </androidx.cardview.widget.CardView>
         <TextView
             android:layout_width="wrap_content"
