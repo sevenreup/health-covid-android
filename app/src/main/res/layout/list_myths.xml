@@ -28,13 +28,7 @@
                 android:layout_width="270dp"
                 android:layout_margin="7dp"/>
 
-            <ImageView
-                android:id="@+id/director"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="end"
-                android:background="@drawable/ic_keyboard_arrow" />
-        </LinearLayout>
+           </LinearLayout>
 
 
 </androidx.cardview.widget.CardView>
