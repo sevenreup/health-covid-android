@@ -35,21 +35,21 @@ class databaseHandler2(context: Context, name: String?, factory: SQLiteDatabase.
 
     }
 
-    fun getCurrentTest(ctx: Context): ArrayList<dbModel>{
+    fun getCurrentTest(ctx: Context): ArrayList<SelfTestResult>{
         val QUERY_GET = "SELECT * FROM $TABLE_NAME"
         val db = this.readableDatabase
         val cursor = db.rawQuery(QUERY_GET, null)
-        val tests = ArrayList<dbModel>()
+        val tests = ArrayList<SelfTestResult>()
 
         if(cursor.count == 0){
             Toast.makeText(ctx, "No previous test records found", Toast.LENGTH_LONG).show()
         }else{
             while (cursor.moveToNext()){
-                val self = dbModel()
+                val self = SelfTestResult()
 
-                self.ColumnId = cursor.getInt(cursor.getColumnIndex(COLUMN_ID))
-                self.Reply = cursor.getString(cursor.getColumnIndex(COLUMN_RESPONSE))
-                self.Status = cursor.getString(cursor.getColumnIndex(COLUMN_STATUS))
+                self.id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID))
+                self.reply = cursor.getString(cursor.getColumnIndex(COLUMN_RESPONSE))
+                self.status = cursor.getString(cursor.getColumnIndex(COLUMN_STATUS))
 
 
 
@@ -63,10 +63,10 @@ class databaseHandler2(context: Context, name: String?, factory: SQLiteDatabase.
         return tests
     }
 
-    fun addTest(mCtx: Context, self: dbModel){
+    fun addTest(mCtx: Context, self: SelfTestResult){
         val values = ContentValues()
-        values.put(COLUMN_RESPONSE, self.Reply)
-        values.put(COLUMN_STATUS, self.Status)
+        values.put(COLUMN_RESPONSE, self.reply)
+        values.put(COLUMN_STATUS, self.status)
 
         val db = this.writableDatabase
         try {

@@ -6,39 +6,30 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import com.skybox.seven.covid.R
-import com.skybox.seven.covid.data.dbModel
+import com.skybox.seven.covid.data.SelfTestResult
 import com.skybox.seven.covid.ui.fragment.main.SelfTestFragment
 import kotlinx.android.synthetic.main.selftestrecycler_layout.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
 
-class selftestAdapter(val arrayList: ArrayList<dbModel>, val context: SelfTestFragment): RecyclerView.Adapter<selftestAdapter.ViewHolder>() {
+class SelfTestAdapter(val callback: SelfTestAdapterCallback, val context: SelfTestFragment): RecyclerView.Adapter<SelfTestAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-          val response = itemView.response
-          val status = itemView.actual_status
+    private var resultsList: ArrayList<SelfTestResult> = ArrayList();
 
-          val date = itemView.test_date
-          val time = itemView.test_time
-
-
-          val modifications = itemView.menu_more
-    }
-
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): selftestAdapter.ViewHolder {
+    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): SelfTestAdapter.ViewHolder {
            val v = LayoutInflater.from(p0.context).inflate(R.layout.selftestrecycler_layout, p0, false)
            return ViewHolder(v)
     }
 
     override fun getItemCount(): Int {
-       return arrayList.size
+       return resultsList.size
     }
 
-    override fun onBindViewHolder(p0: selftestAdapter.ViewHolder, p1: Int) {
-        val values: dbModel = arrayList[p1]
-        p0.response.text = values.Reply
-        p0.status.text = values.Status
+    override fun onBindViewHolder(p0: SelfTestAdapter.ViewHolder, p1: Int) {
+        val values: SelfTestResult = resultsList[p1]
+        p0.response.text = values.reply
+        p0.status.text = values.status
 
         val c = Calendar.getInstance()
         val day = c.get(Calendar.DAY_OF_MONTH).toString()
@@ -72,11 +63,9 @@ class selftestAdapter(val arrayList: ArrayList<dbModel>, val context: SelfTestFr
             popUp.setOnMenuItemClickListener {item ->
                 when (item.itemId) {
                     R.id.del -> {
-                        if (SelfTestFragment.dbHandler2.deleteTest(values.ColumnId)){
-                            arrayList.removeAt(p1)
-                            notifyItemRemoved(p1)
-                            notifyItemRangeChanged(p1, arrayList.size)
-                        }
+                        callback.onDeleteClick(values)
+                        resultsList.remove(values)
+                        notifyItemChanged(p1)
                         true
                     }else -> false
                 }
@@ -88,7 +77,26 @@ class selftestAdapter(val arrayList: ArrayList<dbModel>, val context: SelfTestFr
 
     }
 
+    fun setData(arrayList: List<SelfTestResult>) {
+        this.resultsList.clear()
+        this.resultsList.addAll(arrayList)
+        this.notifyDataSetChanged()
+    }
 
+    interface SelfTestAdapterCallback {
+        fun onDeleteClick(result: SelfTestResult);
+    }
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        val response = itemView.response
+        val status = itemView.actual_status
+
+        val date = itemView.test_date
+        val time = itemView.test_time
+
+
+        val modifications = itemView.menu_more
+    }
 }
 
 
