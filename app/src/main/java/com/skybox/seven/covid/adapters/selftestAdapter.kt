@@ -1,16 +1,12 @@
-package com.skybox.seven.covid.ui.adapters
+package com.skybox.seven.covid.adapters
 
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.PopupMenu
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.dbModel
-import com.skybox.seven.covid.model.SelfTestModel
 import com.skybox.seven.covid.ui.fragment.main.SelfTestFragment
 import kotlinx.android.synthetic.main.selftestrecycler_layout.view.*
 import java.util.*

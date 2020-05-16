@@ -1,14 +1,10 @@
-package com.skybox.seven.covid.ui.adapters;
+package com.skybox.seven.covid.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-
-import com.skybox.seven.covid.ui.fragment.main.ContactRequestFragment;
-import com.skybox.seven.covid.ui.fragment.main.ContactTraceFragment;
 
 import java.util.ArrayList;
 import java.util.List;

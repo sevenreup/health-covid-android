@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.adapters
+package com.skybox.seven.covid.adapters
 
 class QnaModel (val title: String, val desc: String) {
 }
