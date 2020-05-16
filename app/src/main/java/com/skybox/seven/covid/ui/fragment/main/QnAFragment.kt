@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.skybox.seven.covid.R
-import com.skybox.seven.covid.ui.adapters.QnaAdapter
-import com.skybox.seven.covid.ui.adapters.QnaModel
+import com.skybox.seven.covid.adapters.QnaAdapter
+import com.skybox.seven.covid.adapters.QnaModel
 
 class QnAFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

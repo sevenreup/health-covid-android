@@ -12,7 +12,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.TipsChips;
-import com.skybox.seven.covid.ui.adapters.TipsAdapter;
+import com.skybox.seven.covid.adapters.TipsAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -44,7 +44,7 @@ public class EmergencyContactsFragment extends Fragment {
 
         EpoxyRecyclerView recyclerView = v.findViewById(R.id.emergency_recycler);
         EmergencyController controller = new EmergencyController();
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), MultiViewDecorator.HORIZONTAL));
+        recyclerView.addItemDecoration(new MultiViewDecorator(getContext()));
         recyclerView.setController(controller);
 
 

@@ -12,20 +12,19 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.NewsArticle;
-import com.skybox.seven.covid.ui.adapters.contactAdapter;
+import com.skybox.seven.covid.adapters.contactAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.skybox.seven.covid.ui.adapters.contactAdapter.NEWS_LIST;
+import static com.skybox.seven.covid.adapters.contactAdapter.NEWS_LIST;
 
 /**
  * A simple {@link Fragment} subclass.

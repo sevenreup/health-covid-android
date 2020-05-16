@@ -13,7 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.ui.adapters.ContactsPageAdapter;
+import com.skybox.seven.covid.adapters.ContactsPageAdapter;
 
 /**
  * A simple {@link Fragment} subclass.

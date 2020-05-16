@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.network.ContactClientInstance;
 import com.skybox.seven.covid.network.RetrofitService;
-import com.skybox.seven.covid.ui.adapters.ContactModel;
-import com.skybox.seven.covid.ui.adapters.contactAdapter;
+import com.skybox.seven.covid.adapters.ContactModel;
+import com.skybox.seven.covid.adapters.contactAdapter;
 import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
@@ -27,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.skybox.seven.covid.ui.adapters.contactAdapter.CONTACT_LIST;
+import static com.skybox.seven.covid.adapters.contactAdapter.CONTACT_LIST;
 
 /**
  * A simple {@link Fragment} subclass.

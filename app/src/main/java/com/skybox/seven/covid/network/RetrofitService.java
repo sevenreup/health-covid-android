@@ -1,12 +1,10 @@
 package com.skybox.seven.covid.network;
 
-import com.google.android.gms.maps.model.LatLng;
-import com.skybox.seven.covid.model.FamMember;
 import com.skybox.seven.covid.network.responses.AccessToken;
 import com.skybox.seven.covid.network.responses.ContactRequest;
 import com.skybox.seven.covid.network.responses.GenericResponse;
-import com.skybox.seven.covid.ui.adapters.ContactModel;
-import com.skybox.seven.covid.ui.adapters.ContactRequestModel;
+import com.skybox.seven.covid.adapters.ContactModel;
+import com.skybox.seven.covid.adapters.ContactRequestModel;
 
 import java.util.ArrayList;
 
@@ -18,7 +16,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 
 public interface RetrofitService {
     @Headers({"Accept: application/json"})

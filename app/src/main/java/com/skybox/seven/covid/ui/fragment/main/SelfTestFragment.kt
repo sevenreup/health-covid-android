@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.databaseHandler2
-import com.skybox.seven.covid.ui.adapters.selftestAdapter
+import com.skybox.seven.covid.adapters.selftestAdapter
 import kotlinx.android.synthetic.main.selftest.*
 
 class SelfTestFragment: Fragment() {

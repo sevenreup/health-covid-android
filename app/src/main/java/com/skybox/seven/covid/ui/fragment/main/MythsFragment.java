@@ -5,18 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.model.Myth;
-import com.skybox.seven.covid.model.MythGraphicInfo;
 import com.skybox.seven.covid.model.TipsChips;
-import com.skybox.seven.covid.ui.adapters.TipsAdapter;
+import com.skybox.seven.covid.adapters.TipsAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

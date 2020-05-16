@@ -12,16 +12,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.network.ContactClientInstance;
 import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.network.responses.GenericResponse;
-import com.skybox.seven.covid.ui.adapters.ContactModel;
-import com.skybox.seven.covid.ui.adapters.ContactRequestAdapter;
-import com.skybox.seven.covid.ui.adapters.ContactRequestModel;
+import com.skybox.seven.covid.adapters.ContactRequestAdapter;
+import com.skybox.seven.covid.adapters.ContactRequestModel;
 import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
