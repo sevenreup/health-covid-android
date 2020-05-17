@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.fragment.main
+package com.skybox.seven.covid.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

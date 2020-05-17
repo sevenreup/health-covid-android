@@ -7,7 +7,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.skybox.seven.covid.model.TipsChips;
-import com.skybox.seven.covid.ui.fragment.main.TipsPagerFragment;
+import com.skybox.seven.covid.ui.fragment.TipsPagerFragment;
 
 import java.util.List;
 

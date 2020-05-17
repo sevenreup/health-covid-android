@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.fragment.main;
+package com.skybox.seven.covid.ui.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +14,8 @@ import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.adapters.ContactsPageAdapter;
+import com.skybox.seven.covid.ui.fragment.ContactRequestFragment;
+import com.skybox.seven.covid.ui.fragment.ContactTraceFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,12 +43,7 @@ public class ContactsFragment extends Fragment {
         requests = v.findViewById(R.id.requests);
         addContButton = v.findViewById(R.id.addContButton);
 
-        addContButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(getActivity(), R.id.container).navigate(R.id.createContacts);
-            }
-        });
+        addContButton.setOnClickListener(v1 -> Navigation.findNavController(getActivity(), R.id.container).navigate(R.id.createContacts));
 
         pagerAdapter = new ContactsPageAdapter(getChildFragmentManager());
         pagerAdapter.addFragment(new ContactTraceFragment(), getString(R.string.contacts_title));

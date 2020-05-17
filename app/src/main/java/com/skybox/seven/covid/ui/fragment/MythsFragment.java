@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.fragment.main;
+package com.skybox.seven.covid.ui.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,9 +20,10 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HealthFragment extends Fragment {
+public class MythsFragment extends Fragment {
     List<TipsChips> chips = new ArrayList<>();
-    public HealthFragment() {
+
+    public MythsFragment() {
         // Required empty public constructor
     }
 
@@ -30,22 +31,21 @@ public class HealthFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_myths, container, false);
         getPages();
+        ViewPager2 viewPager2 = v.findViewById(R.id.viewPager);
         TabLayout tabLayout = v.findViewById(R.id.tab_layout);
 
-        ViewPager2 viewPager2 = v.findViewById(R.id.viewPager);
         TipsAdapter tipsAdapter = new TipsAdapter(getChildFragmentManager(), getLifecycle(), chips);
         viewPager2.setAdapter(tipsAdapter);
 
         new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
             switch (chips.get(position)) {
-                case advice:
-                    tab.setText(R.string.health_advice);
+                case myth:
+                    tab.setText(R.string.myth_advice);
                     break;
-                case infographic:
-                    tab.setText(R.string.health_info_graphic);
+                case mythgraphicinfo:
+                    tab.setText(R.string.myth_info_graphic);
                     break;
             }
         }).attach();
@@ -53,7 +53,8 @@ public class HealthFragment extends Fragment {
     }
 
     private void getPages() {
-        chips.add(TipsChips.advice);
-        chips.add(TipsChips.infographic);
+        chips.add(TipsChips.myth);
+        chips.add(TipsChips.mythgraphicinfo);
     }
 }
+

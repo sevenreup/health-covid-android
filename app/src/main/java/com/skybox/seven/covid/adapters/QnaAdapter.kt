@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.skybox.seven.covid.R
-import com.skybox.seven.covid.ui.fragment.main.QnAFragment
+import com.skybox.seven.covid.ui.fragment.QnAFragment
 import kotlinx.android.synthetic.main.list_myths.view.*
 
 class QnaAdapter(val arrayList: ArrayList<QnaModel>, val context: QnAFragment): RecyclerView.Adapter<QnaAdapter.ViewHolder>(){

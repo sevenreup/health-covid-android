@@ -7,7 +7,7 @@ import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.SelfTestResult
-import com.skybox.seven.covid.ui.fragment.main.SelfTestFragment
+import com.skybox.seven.covid.ui.fragment.SelfTestFragment
 import kotlinx.android.synthetic.main.selftestrecycler_layout.view.*
 import java.util.*
 import kotlin.collections.ArrayList
