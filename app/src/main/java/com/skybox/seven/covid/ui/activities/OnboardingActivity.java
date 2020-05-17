@@ -58,13 +58,6 @@ public class OnboardingActivity extends LocalizationActivity implements OnBoardi
                 OnBoardingItem.language
         );
         onBoardingItems.add(second);
-//        OnBoardingItem third = new OnBoardingItem(
-//                "This will be fixed later",
-//                "if you want to stop this from appearing just uncomment viewModel.setOnBoardingInfo(true); on the button clicks",
-//                0,
-//                OnBoardingItem.normal
-//        );
-//        onBoardingItems.add(third);
         OnBoardingItem fourth = new OnBoardingItem(
                 "Sign up/ Sign in or skip",
                 "",
