@@ -25,7 +25,7 @@ import java.lang.ref.WeakReference;
 import io.radar.sdk.Radar;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Login Fragment {@link Fragment}.
  */
 public class LoginFragment extends Fragment {
     private AuthViewModel viewModel;
@@ -33,22 +33,18 @@ public class LoginFragment extends Fragment {
     private TextInputLayout passwordTextField;
 
     public LoginFragment() {
-        // Required empty public constructor
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_login, container, false);
 
         viewModel = new ViewModelProvider(getViewModelStore(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(AuthViewModel.class);
 
         phoneTextField = v.findViewById(R.id.phone_number);
         passwordTextField = v.findViewById(R.id.userPassword);
-
-//        phoneTextField.getEditText().addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
         viewModel.credentials.observe(getViewLifecycleOwner(), loginResponse -> {
             Intent intent = new Intent();
@@ -70,14 +66,14 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        ((Button) v.findViewById(R.id.loginButton)).setOnClickListener(v1 -> {
+        v.findViewById(R.id.loginButton).setOnClickListener(v1 -> {
            String phone = phoneTextField.getEditText().getText().toString();
            String password = passwordTextField.getEditText().getText().toString();
            viewModel.login(phone, password);
 
        });
 
-        ((Button) v.findViewById(R.id.registerView)).setOnClickListener(v12 -> {
+        v.findViewById(R.id.registerView).setOnClickListener(v12 -> {
               RegisterFragment registerFragment = new RegisterFragment();
               FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
               transaction.replace(R.id.mainlayout, registerFragment);
@@ -101,6 +97,10 @@ public class LoginFragment extends Fragment {
     return v;
     }
 
+    /**
+     * PhoneNumber formatter and validator
+     * Todo: actually make it work and whatnot
+     */
     public class PhoneFormatter implements TextWatcher {
         WeakReference<EditText> mobile;
 
