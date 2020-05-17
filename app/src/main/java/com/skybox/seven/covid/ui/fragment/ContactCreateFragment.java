@@ -14,9 +14,8 @@ import android.widget.TextView;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.model.FamMember;
 import com.skybox.seven.covid.network.responses.ContactRequest;
-import com.skybox.seven.covid.ui.Location;
+import com.skybox.seven.covid.ui.activities.Location;
 import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 

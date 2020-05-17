@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui;
+package com.skybox.seven.covid.ui.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.skybox.seven.covid.R;
+import com.skybox.seven.covid.ui.activities.HomeActivity;
+import com.skybox.seven.covid.ui.activities.OnboardingActivity;
 
 import static com.skybox.seven.covid.repository.SharedPreferenceRepository.ONBOARDING;
 

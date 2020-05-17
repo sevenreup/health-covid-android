@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui;
+package com.skybox.seven.covid.ui.activities;
 
 import android.os.Bundle;
 

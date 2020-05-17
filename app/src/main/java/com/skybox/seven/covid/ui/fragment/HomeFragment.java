@@ -15,7 +15,7 @@ import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.MainController;
 import com.skybox.seven.covid.model.MenuItem;
-import com.skybox.seven.covid.ui.AuthActivity;
+import com.skybox.seven.covid.ui.activities.AuthActivity;
 import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 

@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui;
+package com.skybox.seven.covid.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.OnBoardingItem;
 import com.skybox.seven.covid.adapters.OnBoardingAdapter;
+import com.skybox.seven.covid.ui.activities.AuthActivity;
+import com.skybox.seven.covid.ui.activities.HomeActivity;
 import com.skybox.seven.covid.util.OnBoardingPageTransformer;
 import com.skybox.seven.covid.viewmodels.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;

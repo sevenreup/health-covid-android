@@ -9,17 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.network.responses.ValidationErrors;
-import com.skybox.seven.covid.ui.HomeActivity;
+import com.skybox.seven.covid.ui.activities.HomeActivity;
 import com.skybox.seven.covid.viewmodels.AuthViewModel;
 
 import java.lang.ref.WeakReference;
