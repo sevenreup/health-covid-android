@@ -15,37 +15,33 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.network.responses.ValidationErrors;
 import com.skybox.seven.covid.viewmodels.AuthViewModel;
-import com.skybox.seven.covid.viewmodels.CovidFactory;
-import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class RegisterFragment extends Fragment {
-    private TextInputLayout firstnameInput, lastnameInput, phonenumberInput, passwordInput;
+    private TextInputLayout firstNameInput, lastNameInput, phoneNumberInput, passwordInput;
     private AuthViewModel viewModel;
 
     public RegisterFragment() {
-        // Required empty public constructor
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_register, container, false);
         viewModel = new ViewModelProvider(getViewModelStore(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(AuthViewModel.class);
 
-        firstnameInput = v.findViewById(R.id.firstName);
-        lastnameInput = v.findViewById(R.id.lastName);
-        phonenumberInput = v.findViewById(R.id.contactNumber);
+        firstNameInput = v.findViewById(R.id.firstName);
+        lastNameInput = v.findViewById(R.id.lastName);
+        phoneNumberInput = v.findViewById(R.id.contactNumber);
         passwordInput = v.findViewById(R.id.userPassword);
 
         v.findViewById(R.id.submitButton).setOnClickListener(v1 -> {
-            viewModel.register(firstnameInput.getEditText().getText().toString(),
-                    lastnameInput.getEditText().getText().toString(),
-                    phonenumberInput.getEditText().getText().toString(),
+            viewModel.register(firstNameInput.getEditText().getText().toString(),
+                    lastNameInput.getEditText().getText().toString(),
+                    phoneNumberInput.getEditText().getText().toString(),
                     passwordInput.getEditText().getText().toString());
 
         });
@@ -63,30 +59,27 @@ public class RegisterFragment extends Fragment {
                 transaction.commit();
             }
         });
-        viewModel.validationErrors.observe(getViewLifecycleOwner(), new Observer<ValidationErrors>() {
-            @Override
-            public void onChanged(ValidationErrors validationErrors) {
-                ValidationErrors.Errors errors = validationErrors.getErrors();
-                if (errors.getFirstName().size() > 0) {
-                    String fName = errors.getFirstName().get(0);
-                    ((TextInputLayout)v.findViewById(R.id.firstName)).getEditText().setError(fName);
-                }
-
-                if (errors.getLastName().size() > 0) {
-                    String lName = errors.getLastName().get(0);
-                    ((TextInputLayout)v.findViewById(R.id.lastName)).getEditText().setError(lName);
-                }
-                if (errors.getPassword().size() > 0) {
-                    String password = errors.getPassword().get(0);
-                    ((TextInputLayout)v.findViewById(R.id.userPassword)).getEditText().setError(password);
-                }
-
-                if (errors.getPhone().size() > 0) {
-                    String phone = errors.getPhone().get(0);
-                    ((TextInputLayout)v.findViewById(R.id.contactNumber)).getEditText().setError(phone);
-                }
-
+        viewModel.validationErrors.observe(getViewLifecycleOwner(), validationErrors -> {
+            ValidationErrors.Errors errors = validationErrors.getErrors();
+            if (errors.getFirstName().size() > 0) {
+                String fName = errors.getFirstName().get(0);
+                ((TextInputLayout)v.findViewById(R.id.firstName)).getEditText().setError(fName);
             }
+
+            if (errors.getLastName().size() > 0) {
+                String lName = errors.getLastName().get(0);
+                ((TextInputLayout)v.findViewById(R.id.lastName)).getEditText().setError(lName);
+            }
+            if (errors.getPassword().size() > 0) {
+                String password = errors.getPassword().get(0);
+                ((TextInputLayout)v.findViewById(R.id.userPassword)).getEditText().setError(password);
+            }
+
+            if (errors.getPhone().size() > 0) {
+                String phone = errors.getPhone().get(0);
+                ((TextInputLayout)v.findViewById(R.id.contactNumber)).getEditText().setError(phone);
+            }
+
         });
     return v;
     }
