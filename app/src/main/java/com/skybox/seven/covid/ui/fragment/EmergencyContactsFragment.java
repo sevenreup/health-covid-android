@@ -1,13 +1,11 @@
 package com.skybox.seven.covid.ui.fragment;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.google.android.material.chip.Chip;
@@ -17,14 +15,13 @@ import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.EmergencyController;
 import com.skybox.seven.covid.model.ContactNumber;
 import com.skybox.seven.covid.util.MultiViewDecorator;
-import com.skybox.seven.covid.util.SpaceItemDecorator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 /**
- * A simple {@link Fragment} subclass.
+ * The Emergency contact page {@link Fragment}.
  */
 public class EmergencyContactsFragment extends Fragment {
     private ChipGroup mainSelector, filterSelector;
@@ -39,14 +36,12 @@ public class EmergencyContactsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_emergency_contacts, container, false);
 
         EpoxyRecyclerView recyclerView = v.findViewById(R.id.emergency_recycler);
         EmergencyController controller = new EmergencyController();
         recyclerView.addItemDecoration(new MultiViewDecorator(getContext()));
         recyclerView.setController(controller);
-
 
         mainSelector = v.findViewById(R.id.emergency_filter);
         filterSelector = v.findViewById(R.id.filter_chip_group);
