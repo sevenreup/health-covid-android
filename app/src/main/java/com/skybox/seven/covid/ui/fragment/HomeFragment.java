@@ -16,7 +16,7 @@ import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.MainController;
 import com.skybox.seven.covid.model.MenuItem;
 import com.skybox.seven.covid.ui.activities.AuthActivity;
-import com.skybox.seven.covid.viewmodels.CovidFactory;
+import com.skybox.seven.covid.viewmodels.factories.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;

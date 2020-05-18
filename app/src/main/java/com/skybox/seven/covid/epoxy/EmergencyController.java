@@ -1,6 +1,5 @@
 package com.skybox.seven.covid.epoxy;
 
-import com.airbnb.epoxy.AutoModel;
 import com.airbnb.epoxy.TypedEpoxyController;
 import com.skybox.seven.covid.epoxy.model.EmergencyContactsFilterModel_;
 import com.skybox.seven.covid.epoxy.model.HeaderModel_;

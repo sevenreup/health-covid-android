@@ -20,7 +20,7 @@ import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.network.responses.GenericResponse;
 import com.skybox.seven.covid.adapters.ContactRequestAdapter;
 import com.skybox.seven.covid.adapters.ContactRequestModel;
-import com.skybox.seven.covid.viewmodels.CovidFactory;
+import com.skybox.seven.covid.viewmodels.factories.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;

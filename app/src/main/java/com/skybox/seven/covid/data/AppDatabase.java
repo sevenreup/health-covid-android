@@ -8,17 +8,19 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.skybox.seven.covid.data.daos.MythsDAO;
 import com.skybox.seven.covid.data.daos.SelfTestResultDAO;
+import com.skybox.seven.covid.data.entities.Language;
 import com.skybox.seven.covid.data.entities.Myth;
 import com.skybox.seven.covid.data.entities.SelfTestResult;
-import com.skybox.seven.covid.data.resultentities.MythWithLanguages;
 
-@Database(entities = {SelfTestResult.class, Myth.class, MythWithLanguages.class}, version = 1)
+@Database(entities = {SelfTestResult.class, Myth.class, Language.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
     private final static String DB_NAME = "MalawiHealth";
 
     public abstract SelfTestResultDAO selfTestResultDAO();
+    public abstract MythsDAO mythsDAO();
 
     public static AppDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {

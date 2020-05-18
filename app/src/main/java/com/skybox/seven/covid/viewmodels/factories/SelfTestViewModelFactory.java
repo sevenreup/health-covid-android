@@ -1,10 +1,11 @@
-package com.skybox.seven.covid.viewmodels;
+package com.skybox.seven.covid.viewmodels.factories;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.skybox.seven.covid.repository.SelfTestRepository;
+import com.skybox.seven.covid.data.repositories.SelfTestRepository;
+import com.skybox.seven.covid.viewmodels.SelfTestViewModel;
 
 public class SelfTestViewModelFactory implements ViewModelProvider.Factory {
     private SelfTestRepository selfTestRepository;

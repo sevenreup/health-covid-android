@@ -1,6 +1,7 @@
 package com.skybox.seven.covid.data.entities;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = Myth.tableName)
@@ -13,6 +14,7 @@ public class Myth {
     private String paragraph;
     private Integer languageOwnerId;
 
+    @Ignore
     public Myth(String title, String myth, String paragraph) {
         super();
         this.title = title;

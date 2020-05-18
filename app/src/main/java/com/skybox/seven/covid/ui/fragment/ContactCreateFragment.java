@@ -16,7 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.network.responses.ContactRequest;
 import com.skybox.seven.covid.ui.activities.Location;
-import com.skybox.seven.covid.viewmodels.CovidFactory;
+import com.skybox.seven.covid.viewmodels.factories.CovidFactory;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.repository;
+package com.skybox.seven.covid.data.repositories;
 
 import android.os.AsyncTask;
 

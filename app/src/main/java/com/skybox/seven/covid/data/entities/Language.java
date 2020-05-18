@@ -1,10 +1,12 @@
 package com.skybox.seven.covid.data.entities;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "languages")
+@Entity(tableName = Language.tableName)
 public class Language {
+    final static String tableName = "languages";
     @PrimaryKey(autoGenerate = true)
     private Integer languageId;
     private String language;
@@ -12,6 +14,8 @@ public class Language {
 
     public Language() {
     }
+
+    @Ignore
     public Language(String language, String country) {
         super();
         this.language = language;

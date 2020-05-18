@@ -7,6 +7,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.skybox.seven.covid.model.TipsChips;
+import com.skybox.seven.covid.ui.fragment.MythTipsPagerFragment;
 import com.skybox.seven.covid.ui.fragment.TipsPagerFragment;
 
 import java.util.List;
@@ -22,7 +23,13 @@ public class TipsAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        return new TipsPagerFragment(chipList.get(position));
+        switch (chipList.get(position)) {
+            case myth:
+                return new MythTipsPagerFragment(TipsChips.myth);
+            default:
+                return new TipsPagerFragment(chipList.get(position));
+        }
+
     }
 
     @Override
