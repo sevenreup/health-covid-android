@@ -1,10 +1,13 @@
-package com.skybox.seven.covid.data;
+package com.skybox.seven.covid.data.entities;
 
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 @Entity(tableName = Advice.tableName)
 public class Advice {
     final static String tableName = "advices";
+    @PrimaryKey(autoGenerate = true)
+    private Integer id;
     private String shortTitle;
     private String title;
     private String advice;
@@ -13,13 +16,25 @@ public class Advice {
     private boolean hasVideo;
     private boolean expanded = false;
 
+    public Advice() {
+    }
+
     public Advice(String shortTitle, String title, String advice, int image) {
+        super();
         this.shortTitle = shortTitle;
         this.title = title;
         this.advice = advice;
         this.video = null;
         this.hasVideo = false;
         this.image = image;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getShortTitle() {

@@ -1,9 +1,11 @@
-package com.skybox.seven.covid.data;
+package com.skybox.seven.covid.data.daos;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.skybox.seven.covid.data.entities.SelfTestResult;
 
 import java.util.List;
 

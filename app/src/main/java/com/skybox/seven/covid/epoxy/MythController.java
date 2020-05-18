@@ -5,7 +5,7 @@ import android.content.Context;
 import com.airbnb.epoxy.Typed3EpoxyController;
 import com.skybox.seven.covid.epoxy.model.MythGraphicInfoModel_;
 import com.skybox.seven.covid.epoxy.model.MythMainModel_;
-import com.skybox.seven.covid.data.Myth;
+import com.skybox.seven.covid.data.entities.Myth;
 import com.skybox.seven.covid.model.MythGraphicInfo;
 import com.skybox.seven.covid.model.TipsChips;
 

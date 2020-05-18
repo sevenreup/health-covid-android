@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.adapters.SelfTestAdapter
-import com.skybox.seven.covid.data.SelfTestResult
+import com.skybox.seven.covid.data.entities.SelfTestResult
 import com.skybox.seven.covid.util.InjectorUtil
 import com.skybox.seven.covid.viewmodels.SelfTestViewModel
 import kotlinx.android.synthetic.main.selftest.*

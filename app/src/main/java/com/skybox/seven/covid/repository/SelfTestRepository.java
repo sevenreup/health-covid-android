@@ -2,8 +2,8 @@ package com.skybox.seven.covid.repository;
 
 import android.os.AsyncTask;
 
-import com.skybox.seven.covid.data.SelfTestResult;
-import com.skybox.seven.covid.data.SelfTestResultDAO;
+import com.skybox.seven.covid.data.entities.SelfTestResult;
+import com.skybox.seven.covid.data.daos.SelfTestResultDAO;
 
 import java.util.List;
 

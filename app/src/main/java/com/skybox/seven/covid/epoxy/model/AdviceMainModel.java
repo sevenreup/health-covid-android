@@ -16,7 +16,7 @@ import com.airbnb.epoxy.EpoxyModelWithHolder;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.data.Advice;
+import com.skybox.seven.covid.data.entities.Advice;
 
 @EpoxyModelClass(layout = R.layout.model_advice_main)
 public class AdviceMainModel extends EpoxyModelWithHolder<AdviceMainModel.AdMainModelHolder> {

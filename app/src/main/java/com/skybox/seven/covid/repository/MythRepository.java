@@ -1,6 +1,6 @@
 package com.skybox.seven.covid.repository;
 
-import com.skybox.seven.covid.data.Myth;
+import com.skybox.seven.covid.data.entities.Myth;
 import com.skybox.seven.covid.model.MythGraphicInfo;
 
 import java.util.ArrayList;

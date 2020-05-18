@@ -3,7 +3,7 @@ package com.skybox.seven.covid.viewmodels;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.skybox.seven.covid.data.SelfTestResult;
+import com.skybox.seven.covid.data.entities.SelfTestResult;
 import com.skybox.seven.covid.repository.SelfTestRepository;
 
 import java.util.List;
