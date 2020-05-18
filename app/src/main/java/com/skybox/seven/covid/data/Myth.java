@@ -1,6 +1,10 @@
-package com.skybox.seven.covid.model;
+package com.skybox.seven.covid.data;
 
+import androidx.room.Entity;
+
+@Entity(tableName = Myth.tableName)
 public class Myth {
+    final static String tableName = "myths";
     private String title;
     private String myth;
     private String paragraph;

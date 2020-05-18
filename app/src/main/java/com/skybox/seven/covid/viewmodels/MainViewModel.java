@@ -9,24 +9,15 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.model.Advice;
-import com.skybox.seven.covid.model.FamMember;
-import com.skybox.seven.covid.model.InfoGraphic;
-import com.skybox.seven.covid.model.Myth;
-import com.skybox.seven.covid.model.MythGraphicInfo;
 import com.skybox.seven.covid.network.RetrofitFactory;
 import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.network.responses.AccessToken;
 import com.skybox.seven.covid.network.responses.ContactRequest;
 import com.skybox.seven.covid.network.responses.GenericResponse;
-import com.skybox.seven.covid.repository.HealthRepository;
-import com.skybox.seven.covid.repository.MythRepository;
 import com.skybox.seven.covid.repository.SharedPreferenceRepository;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 import retrofit2.Call;

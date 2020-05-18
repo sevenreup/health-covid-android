@@ -14,13 +14,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.MutableLiveData;
 
 import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -29,7 +27,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.skybox.seven.covid.GlideApp;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.model.Advice;
 
 import java.io.File;
 import java.io.FileOutputStream;

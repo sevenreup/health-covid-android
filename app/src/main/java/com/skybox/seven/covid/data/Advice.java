@@ -1,6 +1,10 @@
-package com.skybox.seven.covid.model;
+package com.skybox.seven.covid.data;
 
+import androidx.room.Entity;
+
+@Entity(tableName = Advice.tableName)
 public class Advice {
+    final static String tableName = "advices";
     private String shortTitle;
     private String title;
     private String advice;

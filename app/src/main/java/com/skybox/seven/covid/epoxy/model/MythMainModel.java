@@ -11,7 +11,7 @@ import com.airbnb.epoxy.EpoxyModelClass;
 import com.airbnb.epoxy.EpoxyModelWithHolder;
 import com.google.android.material.card.MaterialCardView;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.model.Myth;
+import com.skybox.seven.covid.data.Myth;
 
 
 @EpoxyModelClass(layout = R.layout.mythrow)

@@ -5,11 +5,10 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-import com.skybox.seven.covid.model.Advice;
+import com.skybox.seven.covid.data.Advice;
 import com.skybox.seven.covid.model.InfoGraphic;
-import com.skybox.seven.covid.model.Myth;
+import com.skybox.seven.covid.data.Myth;
 import com.skybox.seven.covid.model.MythGraphicInfo;
 import com.skybox.seven.covid.model.TipsChips;
 import com.skybox.seven.covid.repository.HealthRepository;
