@@ -12,6 +12,7 @@ import androidx.work.WorkManager;
 
 import com.skybox.seven.covid.BuildConfig;
 import com.skybox.seven.covid.data.daos.AdviceDAO;
+import com.skybox.seven.covid.data.daos.InfoGraphicDAO;
 import com.skybox.seven.covid.data.daos.LanguageDAO;
 import com.skybox.seven.covid.data.daos.MythsDAO;
 import com.skybox.seven.covid.data.daos.SelfTestResultDAO;
@@ -20,7 +21,6 @@ import com.skybox.seven.covid.data.entities.InfoGraphic;
 import com.skybox.seven.covid.data.entities.Language;
 import com.skybox.seven.covid.data.entities.Myth;
 import com.skybox.seven.covid.data.entities.SelfTestResult;
-import com.skybox.seven.covid.repository.RandomSeeders;
 import com.skybox.seven.covid.util.DataBaseInitWorker;
 
 import java.util.concurrent.Executors;
@@ -34,6 +34,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract MythsDAO mythsDAO();
     public abstract LanguageDAO languageDAO();
     public abstract AdviceDAO adviceDAO();
+    public abstract InfoGraphicDAO infoGraphicDAO();
 
     public static AppDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {

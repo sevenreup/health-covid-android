@@ -11,30 +11,27 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.epoxy.HealthController;
-import com.skybox.seven.covid.epoxy.MythController;
 import com.skybox.seven.covid.data.entities.Advice;
-import com.skybox.seven.covid.data.entities.Myth;
+import com.skybox.seven.covid.epoxy.HealthController;
 import com.skybox.seven.covid.model.TipsChips;
+import com.skybox.seven.covid.util.InjectorUtil;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
-import com.skybox.seven.covid.viewmodels.TipsViewModel;
-
-import java.util.ArrayList;
+import com.skybox.seven.covid.viewmodels.AdviceViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TipsPagerFragment extends Fragment {
+public class AdvicePagerFragment extends Fragment {
     private EpoxyRecyclerView recyclerView;
     private TipsChips currentChip;
 
     private ImageViewerFragment imageViewerFragment;
 
-    public TipsPagerFragment() {
+    public AdvicePagerFragment() {
         currentChip = TipsChips.myth;
     }
 
-    public TipsPagerFragment(TipsChips currentChip) {
+    public AdvicePagerFragment(TipsChips currentChip) {
         this.currentChip = currentChip;
     }
 
@@ -43,47 +40,14 @@ public class TipsPagerFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tips_pager, container, false);
 
-        TipsViewModel viewModel = new ViewModelProvider(getViewModelStore(), new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(TipsViewModel.class);
+        AdviceViewModel viewModel = new ViewModelProvider(getViewModelStore(), InjectorUtil.provideAdviceViewModelFactory(getContext())).get(AdviceViewModel.class);
 
         imageViewerFragment = new ImageViewerFragment(viewModel.activeInfoGraphic);
 
         recyclerView = v.findViewById(R.id.tips_recycler);
         recyclerView.addItemDecoration(new SpaceItemDecorator(50, true, false));
 
-
-        if (currentChip == TipsChips.myth) {
-            viewModel.getMythList();
-            MythController controller = new MythController(getActivity(), new MythController.MythCallback() {
-                @Override
-                public void onMythClick(Myth myth) {
-                    
-                }
-
-                @Override
-                public void onInfoGraphicClick(String image) {
-
-                }
-            });
-            recyclerView.setController(controller);
-            controller.setData(currentChip, viewModel.mythList.getValue(), new ArrayList<>());
-        } else if (currentChip == TipsChips.mythgraphicinfo) {
-            viewModel.getMythGraphicList();
-            MythController controller;
-            controller = new MythController(getActivity(), new MythController.MythCallback() {
-                @Override
-                public void onMythClick(Myth myth) {
-
-                }
-
-                @Override
-                public void onInfoGraphicClick(String image) {
-                    viewModel.activeInfoGraphic.setValue(image);
-                    imageViewerFragment.show(getChildFragmentManager(), ImageViewerFragment.TAG);
-                }
-            });
-            recyclerView.setController(controller);
-            controller.setData(currentChip, new ArrayList<>(), viewModel.mythGraphicInfoList.getValue());
-        } else if (currentChip == TipsChips.infographic) {
+        if (currentChip == TipsChips.infographic) {
             viewModel.getInfoGraphicList();
             HealthController healthController = new HealthController(getActivity(), new HealthController.HealthTipsCallback() {
                 @Override

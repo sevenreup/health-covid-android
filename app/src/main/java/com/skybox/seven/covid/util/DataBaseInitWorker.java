@@ -21,7 +21,9 @@ public class DataBaseInitWorker extends Worker {
     public Result doWork() {
         AppDatabase.getDatabase(context).languageDAO().insertAll(RandomSeeders.setUpLanguages());
         AppDatabase.getDatabase(context).adviceDAO().insertAll(RandomSeeders.setUpAdvice());
-        AppDatabase.getDatabase(context).mythsDAO().insertAll(RandomSeeders.setUpMythGraphicInfo());
+        AppDatabase.getDatabase(context).mythsDAO().insertAll(RandomSeeders.setUpMyths());
+        AppDatabase.getDatabase(context).infoGraphicDAO().insertAll(RandomSeeders.setUpInfoGraphic());
+        AppDatabase.getDatabase(context).infoGraphicDAO().insertAll(RandomSeeders.setUpMythGraphicInfo());
         return Result.success();
     }
 }

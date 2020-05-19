@@ -1,5 +1,6 @@
 package com.skybox.seven.covid.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,10 +21,14 @@ import com.skybox.seven.covid.util.InjectorUtil;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
 import com.skybox.seven.covid.viewmodels.MythViewModel;
 
+import java.util.ArrayList;
+
 public class MythTipsPagerFragment extends Fragment {
     private MythViewModel viewModel;
     private TipsChips tipsChips;
     private EpoxyRecyclerView recyclerView;
+    private ImageViewerFragment imageViewerFragment;
+
 
     public MythTipsPagerFragment() {
         this.tipsChips = TipsChips.myth;
@@ -38,6 +43,7 @@ public class MythTipsPagerFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tips_pager, container, false);
         viewModel = new ViewModelProvider(getViewModelStore(), InjectorUtil.provideMythViewModelFactory(getContext())).get(MythViewModel.class);
+        imageViewerFragment = new ImageViewerFragment(viewModel.activeInfoGraphic);
 
         recyclerView = v.findViewById(R.id.tips_recycler);
         recyclerView.addItemDecoration(new SpaceItemDecorator(50, true, false));
@@ -62,9 +68,45 @@ public class MythTipsPagerFragment extends Fragment {
             recyclerView.setController(controller);
             viewModel.mythsList.observe(getViewLifecycleOwner(), myths -> {
                 Log.e("TAG", myths.toString());
-                controller.setData(tipsChips,myths, null);
+                controller.setData(tipsChips,myths, new ArrayList<>());
             });
             viewModel.getAllMyths();
+        } else {
+            MythController controller = new MythController(getContext(), new MythController.MythCallback() {
+                @Override
+                public void onMythClick(Myth myth) {
+
+                }
+
+                @Override
+                public void onInfoGraphicClick(String image) {
+                    viewModel.activeInfoGraphic.setValue(image);
+                    imageViewerFragment.show(getChildFragmentManager(), ImageViewerFragment.TAG);
+                }
+            });
+            recyclerView.setController(controller);
+            viewModel.infoGraphics.observe(getViewLifecycleOwner(), myths -> {
+                Log.e("TAG", myths.toString());
+                controller.setData(tipsChips,new ArrayList<>(), myths);
+            });
+            viewModel.getAllInfoGraphics();
         }
+    }
+
+    private void shareAdvice(Myth myth) {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, buildSharableString(myth));
+        sendIntent.setType("text/plain");
+
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        startActivity(shareIntent);
+    }
+
+    private String buildSharableString(Myth myth) {
+        return getString(R.string.advice_title_bt_health_tip) +
+                myth.getTitle() +
+                getString(R.string.advice_title_bt_health_why) +
+                myth.getMyth();
     }
 }

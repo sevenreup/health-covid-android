@@ -16,14 +16,17 @@ public class RandomSeeders {
         languages.add(new Language(2,"ny", "MW"));
         return languages;
     }
-    public static List<String> setUpInfoGraphic() {
-        List<String> ask = new ArrayList<>();
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/safe-greetings.tmb-479v.png?sfvrsn=2e97004e_4");
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/handshaking.tmb-479v.png?sfvrsn=4aed53c5_4");
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/wearing-gloves.tmb-479v.png?sfvrsn=ec69b46a_4");
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(19).tmb-479v.png?sfvrsn=99db25de_1");
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(13).tmb-479v.png?sfvrsn=d2a2dc01_1");
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(23).tmb-479v.png?sfvrsn=b399c676_1");
+    public static List<InfoGraphic> setUpInfoGraphic() {
+        List<InfoGraphic> ask = new ArrayList<>();
+        ask.add(new InfoGraphic(10, "https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/safe-greetings.tmb-479v.png?sfvrsn=2e97004e_4", 2, 1));
+        ask.add(new InfoGraphic(11,"https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/handshaking.tmb-479v.png?sfvrsn=4aed53c5_4",2,1));
+        ask.add(new InfoGraphic(12,"https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/wearing-gloves.tmb-479v.png?sfvrsn=ec69b46a_4",2,1));
+        ask.add(new InfoGraphic(13,"https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(19).tmb-479v.png?sfvrsn=99db25de_1",2,1));
+        ask.add(new InfoGraphic(14,"https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(13).tmb-479v.png?sfvrsn=d2a2dc01_1",2,1));
+        ask.add(new InfoGraphic(15,"https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(23).tmb-479v.png?sfvrsn=b399c676_1",2,1));
+        ask.add(new InfoGraphic(16,"https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(23).tmb-479v.png?sfvrsn=b399c676_1",2,2));
+        ask.add(new InfoGraphic(17,"https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(23).tmb-479v.png?sfvrsn=b399c676_1",2,2));
+        ask.add(new InfoGraphic(18,"https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(23).tmb-479v.png?sfvrsn=b399c676_1",2,2));
         return ask;
     }
 
@@ -67,18 +70,21 @@ public class RandomSeeders {
                 R.drawable.ic_wash_hands));
         return adviceList;
     }
-    public static List<String> setUpMyth() {
-        List<String> ask = new ArrayList<>();
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/safe-greetings.tmb-479v.png?sfvrsn=2e97004e_4");
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/handshaking.tmb-479v.png?sfvrsn=4aed53c5_4");
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/wearing-gloves.tmb-479v.png?sfvrsn=ec69b46a_4");
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(19).tmb-479v.png?sfvrsn=99db25de_1");
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(13).tmb-479v.png?sfvrsn=d2a2dc01_1");
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(23).tmb-479v.png?sfvrsn=b399c676_1");
+    public static List<InfoGraphic> setUpMythGraphicInfo() {
+        List<InfoGraphic> ask = new ArrayList<>();
+        ask.add(new InfoGraphic(1, "https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/safe-greetings.tmb-479v.png?sfvrsn=2e97004e_4", 1, 1));
+        ask.add(new InfoGraphic(2,"https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/handshaking.tmb-479v.png?sfvrsn=4aed53c5_4",1,1));
+        ask.add(new InfoGraphic(3,"https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/wearing-gloves.tmb-479v.png?sfvrsn=ec69b46a_4",1,1));
+        ask.add(new InfoGraphic(4,"https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(19).tmb-479v.png?sfvrsn=99db25de_1",1,1));
+        ask.add(new InfoGraphic(5,"https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(13).tmb-479v.png?sfvrsn=d2a2dc01_1",1,1));
+        ask.add(new InfoGraphic(6,"https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(23).tmb-479v.png?sfvrsn=b399c676_1",1,1));
+        ask.add(new InfoGraphic(7,"https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(23).tmb-479v.png?sfvrsn=b399c676_1",1,2));
+        ask.add(new InfoGraphic(8,"https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(23).tmb-479v.png?sfvrsn=b399c676_1",1,2));
+        ask.add(new InfoGraphic(9,"https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(23).tmb-479v.png?sfvrsn=b399c676_1",1,2));
         return ask;
     }
 
-    public static List<Myth> setUpMythGraphicInfo() {
+    public static List<Myth> setUpMyths() {
         List<Myth> mythList = new ArrayList<>();
         mythList.add(new Myth(1,1,"5G mobile networks DO NOT spread COVID-19",
                 "5G mobile networks DO NOT spread COVID-19",

@@ -13,7 +13,7 @@ public class AdviceRepository {
         this.adviceDAO = adviceDAO;
     }
 
-    public List<Advice> getAllMyths(Integer locale) {
+    public List<Advice> getAllAdvice(Integer locale) {
         return adviceDAO.getAllAdvices(locale);
     }
 
