@@ -9,7 +9,6 @@ import androidx.lifecycle.MutableLiveData;
 import com.skybox.seven.covid.data.entities.Advice;
 import com.skybox.seven.covid.data.entities.InfoGraphic;
 import com.skybox.seven.covid.data.entities.Myth;
-import com.skybox.seven.covid.model.MythGraphicInfo;
 import com.skybox.seven.covid.model.TipsChips;
 import com.skybox.seven.covid.repository.HealthRepository;
 import com.skybox.seven.covid.repository.MythRepository;
@@ -18,7 +17,7 @@ import java.util.List;
 
 public class TipsViewModel extends AndroidViewModel {
     public MutableLiveData<List<Myth>> mythList = new MutableLiveData<>();
-    public MutableLiveData<List<MythGraphicInfo>> mythGraphicInfoList = new MutableLiveData<>();
+    public MutableLiveData<List<InfoGraphic>> mythGraphicInfoList = new MutableLiveData<>();
 
     public MutableLiveData<Advice> activeAdvice = new MutableLiveData<>();
     public MutableLiveData<String> activeInfoGraphic = new MutableLiveData<>();
@@ -40,7 +39,6 @@ public class TipsViewModel extends AndroidViewModel {
     }
 
     public void getMythGraphicList() {
-        mythGraphicInfoList.setValue(mythRepository.getMythGraphicInfoList());
     }
 
     public void getAdviceList() {

@@ -1,29 +1,48 @@
 package com.skybox.seven.covid.data.entities;
 
-import java.util.List;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = InfoGraphic.tableName)
 public class InfoGraphic {
-    private String title;
-    private List<String> images;
+    final static String tableName = "infoGraphics";
+    @PrimaryKey
+    private Integer id;
+    private String image;
+    private Integer type;
 
-    public InfoGraphic(String title, List<String> images) {
-        this.title = title;
-        this.images = images;
+    public InfoGraphic() {
     }
 
-    public String getTitle() {
-        return title;
+    @Ignore
+    public InfoGraphic(Integer id, String image, Integer type) {
+        this.id = id;
+        this.image = image;
+        this.type = type;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public Integer getId() {
+        return id;
     }
 
-    public List<String> getImages() {
-        return images;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setImages(List<String> images) {
-        this.images = images;
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }

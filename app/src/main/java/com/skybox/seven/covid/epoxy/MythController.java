@@ -3,15 +3,15 @@ package com.skybox.seven.covid.epoxy;
 import android.content.Context;
 
 import com.airbnb.epoxy.Typed3EpoxyController;
+import com.skybox.seven.covid.data.entities.InfoGraphic;
 import com.skybox.seven.covid.epoxy.model.MythGraphicInfoModel_;
 import com.skybox.seven.covid.epoxy.model.MythMainModel_;
 import com.skybox.seven.covid.data.entities.Myth;
-import com.skybox.seven.covid.model.MythGraphicInfo;
 import com.skybox.seven.covid.model.TipsChips;
 
 import java.util.List;
 
-public class MythController extends Typed3EpoxyController<TipsChips, List<Myth>, List<MythGraphicInfo>> {
+public class MythController extends Typed3EpoxyController<TipsChips, List<Myth>, List<InfoGraphic>> {
     private Context context;
     private MythCallback callback;
 
@@ -21,7 +21,7 @@ public class MythController extends Typed3EpoxyController<TipsChips, List<Myth>,
     }
 
     @Override
-    protected void buildModels(TipsChips current, List<Myth> mythList, List<MythGraphicInfo> mythGraphicInfoList) {
+    protected void buildModels(TipsChips current, List<Myth> mythList, List<InfoGraphic> mythGraphicInfoList) {
         switch (current) {
             case myth:
                 for (Myth myth:
@@ -30,12 +30,9 @@ public class MythController extends Typed3EpoxyController<TipsChips, List<Myth>,
                 }
                 break;
             case mythgraphicinfo:
-                for (MythGraphicInfo graphics:
+                for (InfoGraphic graphics:
                         mythGraphicInfoList) {
-                    for (String image:
-                            graphics.getImages()) {
-                        new MythGraphicInfoModel_().id(image).context(context).url(image).listener((model, parentView, clickedView, position) -> callback.onInfoGraphicClick(image)).addTo(this);
-                    }
+                        new MythGraphicInfoModel_().id(graphics.getId()).context(context).url(graphics.getImage()).listener((model, parentView, clickedView, position) -> callback.onInfoGraphicClick(graphics.getImage())).addTo(this);
                 }
                 break;
             default:

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "60b081bad5472459dedfff89557e99d1",
+    "identityHash": "0c3b4557024280f99f74100ba9fc2005",
     "entities": [
       {
         "tableName": "Results",
@@ -149,6 +149,38 @@
         "foreignKeys": []
       },
       {
+        "tableName": "infoGraphics",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `image` TEXT, `type` INTEGER, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "image",
+            "columnName": "image",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
         "tableName": "languages",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`languageId` INTEGER, `language` TEXT, `country` TEXT, PRIMARY KEY(`languageId`))",
         "fields": [
@@ -184,7 +216,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '60b081bad5472459dedfff89557e99d1')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0c3b4557024280f99f74100ba9fc2005')"
     ]
   }
 }

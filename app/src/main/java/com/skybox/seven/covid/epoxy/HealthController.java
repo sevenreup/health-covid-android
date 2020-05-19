@@ -33,10 +33,7 @@ public class HealthController extends Typed3EpoxyController<TipsChips, List<Advi
             case infographic:
                 for (InfoGraphic graphics:
                      infoGraphicList) {
-                    for (String image:
-                         graphics.getImages()) {
-                        new InfoGraphicModel_().id(image).context(context).listener((model, parentView, clickedView, position) -> callback.onInfoGraphicClick(image)).url(image).addTo(this);
-                    }
+                        new InfoGraphicModel_().id(graphics.getId()).context(context).listener((model, parentView, clickedView, position) -> callback.onInfoGraphicClick(graphics.getImage())).url(graphics.getImage()).addTo(this);
                 }
                 break;
             default:
