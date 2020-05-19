@@ -1,0 +1,90 @@
+[
+    {
+        "id": 1,
+        "shortTitle": "Wash your hands",
+        "title": "Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash them with soap and water.",
+        "advice": "Washing your hands with soap and water or using alcohol-based hand rub kills viruses that may be on your hands.",
+        "video": "",
+        "image": 1,
+        "hasVideo": false,
+        "expanded": false,
+        "languageOwnerId": 1
+    },
+    {
+        "id": 2,
+        "shortTitle": "Social distancing",
+        "title": "Maintain at least 1 metre (3 feet) distance between yourself and others.",
+        "advice": "When someone coughs, sneezes, or speaks they spray small liquid droplets from their nose or mouth which may contain virus. If you are too close, you can breathe in the droplets, including the COVID-19 virus if the person has the disease.",
+        "video": "",
+        "image": 1,
+        "hasVideo": false,
+        "expanded": false,
+        "languageOwnerId": 1
+    },
+    {
+        "id": 3,
+        "shortTitle": "Avoid going to crowded places.", 
+        "title": "Avoid going to crowded places.",
+        "advice": "Where people come together in crowds, you are more likely to come into close contact with someone that has COIVD-19 and it is more difficult to maintain physical distance of 1 metre (3 feet).",
+        "video": "",
+        "image": 1,
+        "hasVideo": false,
+        "expanded": false,
+        "languageOwnerId": 1
+    },
+    {
+        "id": 4,
+        "shortTitle": "Avoid touching eyes, nose and mouth.",
+        "title": "Avoid touching eyes, nose and mouth.",
+        "advice": "Hands touch many surfaces and can pick up viruses. Once contaminated, hands can transfer the virus to your eyes, nose or mouth. From there, the virus can enter your body and infect you..",
+        "video": "",
+        "image": 1,
+        "hasVideo": false,
+        "expanded": false,
+        "languageOwnerId": 1
+    },
+    {
+        "id": 5,
+        "shortTitle":"Make sure you, and the people around you, follow good respiratory hygiene.",
+        "title": "Make sure you, and the people around you, follow good respiratory hygiene. This means covering your mouth and nose with your bent elbow or tissue when you cough or sneeze. Then dispose of the used tissue immediately and wash your hands",
+        "advice": "Droplets spread virus. By following good respiratory hygiene, you protect the people around you from viruses such as cold, flu and COVID-19.",
+        "video": "",
+        "image": 1,
+        "hasVideo": false,
+        "expanded": false,
+        "languageOwnerId": 1
+    },
+    {
+        "id": 6,
+        "shortTitle": "Stay home and self-isolate",
+        "title": "Stay home and self-isolate even with minor symptoms such as cough, headache, mild fever, until you recover. Have someone bring you supplies. If you need to leave your house, wear a mask to avoid infecting others.",
+        "advice": "Avoiding contact with others will protect them from possible COVID-19 and other viruses.",
+        "video": "",
+        "image": 1,
+        "hasVideo": false,
+        "expanded": false,
+        "languageOwnerId": 1
+    },
+    {
+        "id": 7,
+        "shortTitle": "seek medical attention",
+        "title": "If you have a fever, cough and difficulty breathing, seek medical attention, but call by telephone in advance if possible and follow the directions of your local health authority.",
+        "advice": "National and local authorities will have the most up to date information on the situation in your area. Calling in advance will allow your health care provider to quickly direct you to the right health facility. This will also protect you and help prevent spread of viruses and other infections.",
+        "video": "",
+        "image": 1,
+        "hasVideo": false,
+        "expanded": false,
+        "languageOwnerId": 1
+    },
+    {
+        "id": 8,
+        "shortTitle": "Keep up to date",
+        "title":  "Keep up to date on the latest information from trusted sources, such as WHO or your local and national health authorities.",
+        "advice": "Local and national authorities are best placed to advise on what people in your area should be doing to protect themselves.",
+        "video": "",
+        "image": 1,
+        "hasVideo": false,
+        "expanded": false,
+        "languageOwnerId": 1
+    }
+]
