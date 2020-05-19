@@ -9,6 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.skybox.seven.covid.BuildConfig;
 import com.skybox.seven.covid.data.daos.AdviceDAO;
 import com.skybox.seven.covid.data.daos.LanguageDAO;
 import com.skybox.seven.covid.data.daos.MythsDAO;
@@ -23,7 +24,7 @@ import com.skybox.seven.covid.util.InjectorUtil;
 
 import java.util.concurrent.Executors;
 
-@Database(entities = {SelfTestResult.class, Myth.class, Advice.class, InfoGraphic.class,Language.class}, version = 1)
+@Database(entities = {SelfTestResult.class, Myth.class, Advice.class, InfoGraphic.class,Language.class}, version = BuildConfig.HEALTH_DB_VERSION)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
     private final static String DB_NAME = "MalawiHealth";

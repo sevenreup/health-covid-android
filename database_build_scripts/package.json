@@ -1,0 +1,20 @@
+{
+  "name": "database-seeder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/gulp": "^4.0.6",
+    "@types/sqlite3": "^3.1.6",
+    "gulp": "^4.0.2",
+    "room-populate": "^1.0.6",
+    "sqlite3": "^4.2.0",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.9.2"
+  }
+}
