@@ -56,6 +56,15 @@ public class RandomSeeders {
                 "Keep up to date on the latest information from trusted sources, such as WHO or your local and national health authorities.",
                 "Local and national authorities are best placed to advise on what people in your area should be doing to protect themselves.",
                 R.drawable.ic_wash_hands));
+
+        adviceList.add(new Advice(9,2,"chichewa",
+                "Keep up to date on the latest information from trusted sources, such as WHO or your local and national health authorities.",
+                "Local and national authorities are best placed to advise on what people in your area should be doing to protect themselves.",
+                R.drawable.ic_wash_hands));
+        adviceList.add(new Advice(10,2,"chichewa",
+                "Keep up to date on the latest information from trusted sources, such as WHO or your local and national health authorities.",
+                "Local and national authorities are best placed to advise on what people in your area should be doing to protect themselves.",
+                R.drawable.ic_wash_hands));
         return adviceList;
     }
     public static List<String> setUpMyth() {
@@ -101,6 +110,19 @@ public class RandomSeeders {
                 "Drinking alcohol does not protect you against COVID-19 and can be dangerous",
                 "Frequent or excessive alcohol consumption can increase your risk of health problems."));
         mythList.add(new Myth(6,1,"COVID-19 virus can be transmitted in areas with hot and humid climates",
+                "COVID-19 virus can be transmitted in areas with hot and humid climates",
+                "From the evidence so far, the COVID-19 virus can be transmitted in ALL AREAS, including areas with hot and humid weather. " +
+                        "Regardless of climate, adopt protective measures if you live in, or travel to an area reporting COVID-19. The best way to protect yourself " +
+                        "against COVID-19 is by frequently cleaning your hands. By doing this you eliminate viruses that may be on your hands and avoid infection that " +
+                        "could occur by then touching your eyes, mouth, and nose."));
+
+        mythList.add(new Myth(7,2,"chichewa",
+                "COVID-19 virus can be transmitted in areas with hot and humid climates",
+                "From the evidence so far, the COVID-19 virus can be transmitted in ALL AREAS, including areas with hot and humid weather. " +
+                        "Regardless of climate, adopt protective measures if you live in, or travel to an area reporting COVID-19. The best way to protect yourself " +
+                        "against COVID-19 is by frequently cleaning your hands. By doing this you eliminate viruses that may be on your hands and avoid infection that " +
+                        "could occur by then touching your eyes, mouth, and nose."));
+        mythList.add(new Myth(8,2,"chichew",
                 "COVID-19 virus can be transmitted in areas with hot and humid climates",
                 "From the evidence so far, the COVID-19 virus can be transmitted in ALL AREAS, including areas with hot and humid weather. " +
                         "Regardless of climate, adopt protective measures if you live in, or travel to an area reporting COVID-19. The best way to protect yourself " +

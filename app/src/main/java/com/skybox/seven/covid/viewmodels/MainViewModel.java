@@ -77,19 +77,20 @@ public class MainViewModel extends ViewModel {
         return "";
     }
 
-    public boolean checkOnBoardingGo() {
-        return preferenceRepository.getOnBoardingPref();
-    }
-
-    public void setOnBoardingInfo (boolean value) {
-        preferenceRepository.setOnBoardingPref(value);
-    }
-
     public void registerPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener listener) {
         preferenceRepository.registerOnChangeListener(listener);
     }
 
     public void  removePreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener listener) {
         preferenceRepository.unRegisterOnChangeListener(listener);
+    }
+
+    public void setLanguage(int language) {
+        preferenceRepository.setActiveLanguage(language);
+        if (language == 1) {
+            changeLanguage.setValue(new Locale("eng", "USA"));
+        } else {
+            changeLanguage.setValue(new Locale("ny", "MW"));
+        }
     }
 }

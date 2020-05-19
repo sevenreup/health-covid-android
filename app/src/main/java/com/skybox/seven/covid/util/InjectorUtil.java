@@ -24,7 +24,7 @@ public class InjectorUtil {
     }
 
     public static MythViewModelFactory provideMythViewModelFactory(Context context) {
-        return new MythViewModelFactory(getMythRepository(context));
+        return new MythViewModelFactory(getMythRepository(context), context);
     }
 
     public static LanguageRepository getLanguageRepository(Context context) {

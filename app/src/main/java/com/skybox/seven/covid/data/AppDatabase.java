@@ -1,13 +1,14 @@
 package com.skybox.seven.covid.data;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import com.skybox.seven.covid.BuildConfig;
 import com.skybox.seven.covid.data.daos.AdviceDAO;
@@ -20,7 +21,7 @@ import com.skybox.seven.covid.data.entities.Language;
 import com.skybox.seven.covid.data.entities.Myth;
 import com.skybox.seven.covid.data.entities.SelfTestResult;
 import com.skybox.seven.covid.repository.RandomSeeders;
-import com.skybox.seven.covid.util.InjectorUtil;
+import com.skybox.seven.covid.util.DataBaseInitWorker;
 
 import java.util.concurrent.Executors;
 
@@ -38,21 +39,17 @@ public abstract class AppDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             synchronized (AppDatabase.class) {
                 INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DB_NAME)
+                        .allowMainThreadQueries()
                         .addCallback(new Callback() {
-                            // Seed using a worker
                             @Override
                             public void onCreate(@NonNull SupportSQLiteDatabase db) {
                                 super.onCreate(db);
-                                Executors.newSingleThreadExecutor().execute(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Log.e("stuff", "adding stuff");
-                                        InjectorUtil.getLanguageRepository(context).addAllLanguages(RandomSeeders.setUpLanguages());
-                                    }
+                                Executors.newSingleThreadExecutor().execute(() -> {
+                                    OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(DataBaseInitWorker.class).build();
+                                    WorkManager.getInstance(context).enqueue(workRequest);
                                 });
                             }
                         })
-                        .allowMainThreadQueries()
                         .build();
             }
         }

@@ -62,6 +62,7 @@ public class MythTipsPagerFragment extends Fragment {
             recyclerView.setController(controller);
             viewModel.mythsList.observe(getViewLifecycleOwner(), myths -> {
                 Log.e("TAG", myths.toString());
+                controller.setData(tipsChips,myths, null);
             });
             viewModel.getAllMyths();
         }

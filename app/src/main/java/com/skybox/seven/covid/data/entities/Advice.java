@@ -1,5 +1,6 @@
 package com.skybox.seven.covid.data.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -104,5 +105,11 @@ public class Advice {
 
     public void setLanguageOwnerId(Integer languageOwnerId) {
         this.languageOwnerId = languageOwnerId;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return shortTitle;
     }
 }

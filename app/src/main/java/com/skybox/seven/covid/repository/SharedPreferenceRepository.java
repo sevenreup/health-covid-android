@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import com.skybox.seven.covid.network.responses.AccessToken;
 
 public class SharedPreferenceRepository {
-    public static String TOKEN = "token", TOKEN_TYPE = "token_type", FIREBASE_MESSAGING = "firebase_message", ONBOARDING = "onboarding_status";
+    public static String TOKEN = "token", TOKEN_TYPE = "token_type", FIREBASE_MESSAGING = "firebase_message", ONBOARDING = "onboarding_status", LANGUAGE_INT = "language_int";
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
@@ -59,5 +59,14 @@ public class SharedPreferenceRepository {
     public void setOnBoardingPref(boolean value) {
         editor.putBoolean(ONBOARDING, value);
         editor.apply();
+    }
+
+    public void setActiveLanguage(int id) {
+        editor.putInt(LANGUAGE_INT, id);
+        editor.apply();
+    }
+
+    public int getActiveLanguage() {
+        return sharedPreferences.getInt(LANGUAGE_INT, 1);
     }
 }

@@ -73,9 +73,9 @@ public class OnBoardingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 viewHolder2.save.setOnClickListener(v -> {
                     int id = viewHolder2.languageGroup.getCheckedChipId();
                     if (id == R.id.page_english) {
-                        callback.onLanguageChange(new Locale("en", "US"));
+                        callback.onLanguageChange(1);
                     } else {
-                        callback.onLanguageChange(new Locale("ny", "MW"));
+                        callback.onLanguageChange(2);
                     }
                 });
                 break;
@@ -132,6 +132,6 @@ public class OnBoardingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         void onClickSkip();
 
-        void onLanguageChange(Locale locale);
+        void onLanguageChange(int id);
     }
 }
