@@ -9,6 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.skybox.seven.covid.data.daos.AdviceDAO;
 import com.skybox.seven.covid.data.daos.LanguageDAO;
 import com.skybox.seven.covid.data.daos.MythsDAO;
 import com.skybox.seven.covid.data.daos.SelfTestResultDAO;
@@ -28,6 +29,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract SelfTestResultDAO selfTestResultDAO();
     public abstract MythsDAO mythsDAO();
     public abstract LanguageDAO languageDAO();
+    public abstract AdviceDAO adviceDAO();
 
     public static AppDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {

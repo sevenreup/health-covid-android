@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = Advice.tableName)
 public class Advice {
     final static String tableName = "advices";
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     private Integer id;
     private String shortTitle;
     private String title;
@@ -15,18 +15,21 @@ public class Advice {
     private int image;
     private boolean hasVideo;
     private boolean expanded = false;
+    private Integer languageOwnerId;
 
     public Advice() {
     }
 
-    public Advice(String shortTitle, String title, String advice, int image) {
+    public Advice(Integer id, Integer languageOwnerId, String shortTitle, String title, String advice, int image) {
         super();
+        this.id = id;
         this.shortTitle = shortTitle;
         this.title = title;
         this.advice = advice;
         this.video = null;
         this.hasVideo = false;
         this.image = image;
+        this.languageOwnerId = languageOwnerId;
     }
 
     public Integer getId() {
@@ -91,5 +94,13 @@ public class Advice {
 
     public void setExpanded(boolean expanded) {
         this.expanded = expanded;
+    }
+
+    public Integer getLanguageOwnerId() {
+        return languageOwnerId;
+    }
+
+    public void setLanguageOwnerId(Integer languageOwnerId) {
+        this.languageOwnerId = languageOwnerId;
     }
 }

@@ -3,6 +3,7 @@ package com.skybox.seven.covid.util;
 import android.content.Context;
 
 import com.skybox.seven.covid.data.AppDatabase;
+import com.skybox.seven.covid.data.repositories.AdviceRepository;
 import com.skybox.seven.covid.data.repositories.LanguageRepository;
 import com.skybox.seven.covid.data.repositories.MythRepository;
 import com.skybox.seven.covid.data.repositories.SelfTestRepository;
@@ -28,5 +29,9 @@ public class InjectorUtil {
 
     public static LanguageRepository getLanguageRepository(Context context) {
         return LanguageRepository.getInstance(AppDatabase.getDatabase(context).languageDAO());
+    }
+
+    public static AdviceRepository getAdviceRepository(Context context) {
+        return AdviceRepository.getInstance(AppDatabase.getDatabase(context).adviceDAO());
     }
 }
