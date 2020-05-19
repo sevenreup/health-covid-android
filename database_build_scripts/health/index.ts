@@ -12,7 +12,7 @@ import { Advice } from "./data/advice";
 
 const FILE_LANGUAGES = "language.list.json";
 const FILE_ADVICE = "advice.list.json";
-const FILE_MYTH = "myth.list.json";
+// const FILE_MYTH = "myth.list.json";
 
 export async function health(schemaPath: string, dataDir: string): Promise<string> {
     const schemaFile = await findLatestSchema(schemaPath);

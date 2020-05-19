@@ -22,7 +22,7 @@ async function populateLanguage(db: Database, LanguageList: Array<Language>) {
     });
   });
   const stmt = await new Promise<Statement>((resolve, reject) => {
-    db.prepare("REPLACE INTO languages VALUES (?,?,?,?,?,?)", function (
+    db.prepare("REPLACE INTO languages VALUES (?,?,?)", function (
       this: Statement,
       err: Error
     ) {
@@ -34,9 +34,13 @@ async function populateLanguage(db: Database, LanguageList: Array<Language>) {
     });
   });
 
-  for (const Language of LanguageList) {
+  for (const language of LanguageList) {
     await new Promise<void>((resolve, reject) => {
-      stmt.run([], function (err: Error) {
+      stmt.run([
+        language.languageId,
+        language.language,
+        language.country
+      ], function (err: Error) {
         if (err != null) reject(err);
         else resolve();
       });

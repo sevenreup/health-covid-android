@@ -22,7 +22,7 @@ async function populateAdvice(db: Database, adviceList: Array<Advice>) {
     });
   });
   const stmt = await new Promise<Statement>((resolve, reject) => {
-    db.prepare("REPLACE INTO advices VALUES (?,?,?,?,?,?)", function (
+    db.prepare("REPLACE INTO advices VALUES (?,?,?,?,?,?,?,?,?)", function (
       this: Statement,
       err: Error
     ) {
@@ -36,7 +36,17 @@ async function populateAdvice(db: Database, adviceList: Array<Advice>) {
 
   for (const advice of adviceList) {
     await new Promise<void>((resolve, reject) => {
-      stmt.run([], function (err: Error) {
+      stmt.run([
+        advice.id,
+        advice.shortTitle,
+        advice.title,
+        advice.advice,
+        advice.video,
+        advice.image,
+        advice.hasVideo,
+        advice.expanded,
+        advice.languageOwnerId
+      ], function (err: Error) {
         if (err != null) reject(err);
         else resolve();
       });
