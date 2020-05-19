@@ -6,7 +6,7 @@ import com.airbnb.epoxy.Typed3EpoxyController;
 import com.skybox.seven.covid.epoxy.model.AdviceMainModel_;
 import com.skybox.seven.covid.epoxy.model.InfoGraphicModel_;
 import com.skybox.seven.covid.data.entities.Advice;
-import com.skybox.seven.covid.model.InfoGraphic;
+import com.skybox.seven.covid.data.entities.InfoGraphic;
 import com.skybox.seven.covid.model.TipsChips;
 
 import java.util.List;

@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = Language.tableName)
 public class Language {
     final static String tableName = "languages";
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     private Integer languageId;
     private String language;
     private String country;
@@ -16,8 +16,9 @@ public class Language {
     }
 
     @Ignore
-    public Language(String language, String country) {
+    public Language(Integer id, String language, String country) {
         super();
+        this.languageId = id;
         this.language = language;
         this.country = country;
     }

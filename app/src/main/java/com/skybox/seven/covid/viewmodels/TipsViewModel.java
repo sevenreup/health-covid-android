@@ -7,7 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.skybox.seven.covid.data.entities.Advice;
-import com.skybox.seven.covid.model.InfoGraphic;
+import com.skybox.seven.covid.data.entities.InfoGraphic;
 import com.skybox.seven.covid.data.entities.Myth;
 import com.skybox.seven.covid.model.MythGraphicInfo;
 import com.skybox.seven.covid.model.TipsChips;

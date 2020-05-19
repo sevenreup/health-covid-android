@@ -2,7 +2,7 @@ package com.skybox.seven.covid.repository;
 
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.data.entities.Advice;
-import com.skybox.seven.covid.model.InfoGraphic;
+import com.skybox.seven.covid.data.entities.InfoGraphic;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = Myth.tableName)
 public class Myth {
     final static String tableName = "myths";
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     private Integer id;
     private String title;
     private String myth;
@@ -20,6 +20,15 @@ public class Myth {
         this.title = title;
         this.myth = myth;
         this.paragraph = paragraph;
+    }
+
+    @Ignore
+    public Myth(Integer id, Integer languageOwnerId, String title, String myth, String paragraph) {
+        this.id = id;
+        this.title = title;
+        this.myth = myth;
+        this.paragraph = paragraph;
+        this.languageOwnerId = languageOwnerId;
     }
 
     public Myth() {

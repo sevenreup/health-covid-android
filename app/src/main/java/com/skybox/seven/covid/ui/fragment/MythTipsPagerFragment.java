@@ -63,6 +63,7 @@ public class MythTipsPagerFragment extends Fragment {
             viewModel.mythsList.observe(getViewLifecycleOwner(), myths -> {
                 Log.e("TAG", myths.toString());
             });
+            viewModel.getAllMyths();
         }
     }
 }

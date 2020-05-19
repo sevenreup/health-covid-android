@@ -3,6 +3,7 @@ package com.skybox.seven.covid.util;
 import android.content.Context;
 
 import com.skybox.seven.covid.data.AppDatabase;
+import com.skybox.seven.covid.data.repositories.LanguageRepository;
 import com.skybox.seven.covid.data.repositories.MythRepository;
 import com.skybox.seven.covid.data.repositories.SelfTestRepository;
 import com.skybox.seven.covid.viewmodels.factories.MythViewModelFactory;
@@ -23,5 +24,9 @@ public class InjectorUtil {
 
     public static MythViewModelFactory provideMythViewModelFactory(Context context) {
         return new MythViewModelFactory(getMythRepository(context));
+    }
+
+    public static LanguageRepository getLanguageRepository(Context context) {
+        return LanguageRepository.getInstance(AppDatabase.getDatabase(context).languageDAO());
     }
 }

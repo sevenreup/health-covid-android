@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.model;
+package com.skybox.seven.covid.data.entities;
 
 import java.util.List;
 
