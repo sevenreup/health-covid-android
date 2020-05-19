@@ -1,6 +1,7 @@
 package com.skybox.seven.covid.data.entities;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = Advice.tableName)
@@ -20,6 +21,7 @@ public class Advice {
     public Advice() {
     }
 
+    @Ignore
     public Advice(Integer id, Integer languageOwnerId, String shortTitle, String title, String advice, int image) {
         super();
         this.id = id;
