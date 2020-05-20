@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.adapters.ContactRequestAdapter;
 import com.skybox.seven.covid.util.InjectorUtil;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
  */
 public class ContactRequestFragment extends Fragment implements ContactRequestAdapter.ContactsCallBAck {
 
-    private RecyclerView recyclerView;
+    private EpoxyRecyclerView recyclerView;
     private ContactRequestAdapter contactRequestAdapter;
     ContactsViewModel viewModel;
 
@@ -33,8 +34,8 @@ public class ContactRequestFragment extends Fragment implements ContactRequestAd
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_contact_request, container, false);
-        recyclerView = v.findViewById(R.id.contactRequestRecyclerView);
+        View v = inflater.inflate(R.layout.fragment_generic_epoxy_swipe, container, false);
+        recyclerView = v.findViewById(R.id.generic_recycler_id);
 
         viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideContactsViewModelFactory(getContext())).get(ContactsViewModel.class);
 

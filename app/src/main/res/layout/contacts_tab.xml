@@ -22,9 +22,34 @@
          android:layout_height="wrap_content"
          android:text="Contact Requests"/>
  </com.google.android.material.tabs.TabLayout>
-    
-    <androidx.viewpager.widget.ViewPager
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/error_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/contactTab"
+        android:layout_marginStart="@dimen/menu_card_margin"
+        android:layout_marginLeft="@dimen/menu_card_margin"
+        android:layout_marginTop="@dimen/menu_card_margin"
+        android:layout_marginEnd="@dimen/menu_card_margin"
+        android:layout_marginRight="@dimen/menu_card_margin"
+        android:layout_marginBottom="@dimen/menu_card_margin"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Network Error, Can not load" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_below="@id/error_holder"
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

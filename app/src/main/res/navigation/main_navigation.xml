@@ -128,7 +128,7 @@
         android:id="@+id/contactRequestFragment"
         android:name="com.skybox.seven.covid.ui.fragment.ContactRequestFragment"
         android:label="@string/title_contact_request"
-        tools:layout="@layout/fragment_contact_request" />
+        tools:layout="@layout/fragment_generic_epoxy_swipe" />
     <fragment
         android:id="@+id/contactsFragment"
         android:name="com.skybox.seven.covid.ui.fragment.ContactsFragment"
