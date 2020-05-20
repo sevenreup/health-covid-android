@@ -34,7 +34,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <activity android:name=".ui.activities.OnboardingActivity"/>
+        <activity android:name=".ui.activities.OnBoardingActivity"/>
 
         <activity android:name=".ui.activities.SplashScreenActivity"
             android:theme="@style/AppTheme.SplashScreenTheme">

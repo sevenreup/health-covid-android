@@ -11,7 +11,6 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.data.AppDatabase;
-import com.skybox.seven.covid.data.daos.LanguageDAO;
 import com.skybox.seven.covid.model.OnBoardingItem;
 import com.skybox.seven.covid.adapters.OnBoardingAdapter;
 import com.skybox.seven.covid.util.OnBoardingPageTransformer;
@@ -20,7 +19,7 @@ import com.skybox.seven.covid.viewmodels.OnBoardingViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OnboardingActivity extends LocalizationActivity implements OnBoardingAdapter.OnBoardCallback {
+public class OnBoardingActivity extends LocalizationActivity implements OnBoardingAdapter.OnBoardCallback {
     OnBoardingViewModel viewModel;
     List<OnBoardingItem> onBoardingItems = new ArrayList<>();
 
@@ -29,12 +28,12 @@ public class OnboardingActivity extends LocalizationActivity implements OnBoardi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding);
         viewModel = new ViewModelProvider(getViewModelStore(), new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(OnBoardingViewModel.class);
-        setOnboardingItems();
+        setOnBoardingItems();
         ViewPager2 viewPager2 = findViewById(R.id.intro_pager);
         OnBoardingAdapter adapter = new OnBoardingAdapter(onBoardingItems, this);
         TabLayout tabLayout = findViewById(R.id.into_tab_layout);
         viewPager2.setAdapter(adapter);
-        LanguageDAO languageDAO = AppDatabase.getDatabase(getBaseContext()).languageDAO();
+        AppDatabase.initStuff(getBaseContext()).languageDAO().getAllLanguages();
 
         viewPager2.setPageTransformer(new OnBoardingPageTransformer());
 
@@ -42,7 +41,7 @@ public class OnboardingActivity extends LocalizationActivity implements OnBoardi
         viewModel.changeLanguage.observe(this, this::setLanguage);
     }
 
-    private void setOnboardingItems() {
+    private void setOnBoardingItems() {
         OnBoardingItem first = new OnBoardingItem(
                 "Welcome to the Covid 19 app.",
                 "Get the right info about the Covid 19 pandemic as well as self-testing without ever going outside right in the palm of your hand.\n",

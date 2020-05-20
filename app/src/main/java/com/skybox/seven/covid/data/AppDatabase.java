@@ -1,6 +1,7 @@
 package com.skybox.seven.covid.data;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -27,6 +28,7 @@ import java.util.concurrent.Executors;
 
 @Database(entities = {SelfTestResult.class, Myth.class, Advice.class, InfoGraphic.class,Language.class}, version = BuildConfig.HEALTH_DB_VERSION)
 public abstract class AppDatabase extends RoomDatabase {
+    private static final String TAG = "AppDatabase";
     private static AppDatabase INSTANCE;
     private final static String DB_NAME = "MalawiHealth";
 
@@ -45,6 +47,28 @@ public abstract class AppDatabase extends RoomDatabase {
                             @Override
                             public void onCreate(@NonNull SupportSQLiteDatabase db) {
                                 super.onCreate(db);
+                                Executors.newSingleThreadExecutor().execute(() -> {
+                                    OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(DataBaseInitWorker.class).build();
+                                    WorkManager.getInstance(context).enqueue(workRequest);
+                                });
+                            }
+                        })
+                        .build();
+            }
+        }
+        return INSTANCE;
+    }
+
+    public static AppDatabase initStuff (final Context context) {
+        if (INSTANCE == null) {
+            synchronized (AppDatabase.class) {
+                INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DB_NAME)
+                        .allowMainThreadQueries()
+                        .addCallback(new Callback() {
+                            @Override
+                            public void onCreate(@NonNull SupportSQLiteDatabase db) {
+                                super.onCreate(db);
+                                Log.e(TAG, "onCreating");
                                 Executors.newSingleThreadExecutor().execute(() -> {
                                     OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(DataBaseInitWorker.class).build();
                                     WorkManager.getInstance(context).enqueue(workRequest);

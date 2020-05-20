@@ -9,8 +9,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.ui.activities.HomeActivity;
-import com.skybox.seven.covid.ui.activities.OnboardingActivity;
 
 import static com.skybox.seven.covid.repository.SharedPreferenceRepository.ONBOARDING;
 
@@ -27,7 +25,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             startActivity(intent);
             finishAffinity();
         } else {
-            Intent intent = new Intent(this, OnboardingActivity.class);
+            Intent intent = new Intent(this, OnBoardingActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finishAffinity();
