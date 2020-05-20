@@ -12,7 +12,7 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.NewsArticle;
-import com.skybox.seven.covid.adapters.contactAdapter;
+import com.skybox.seven.covid.adapters.ContactsAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,7 +24,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.skybox.seven.covid.adapters.contactAdapter.NEWS_LIST;
+import static com.skybox.seven.covid.adapters.ContactsAdapter.NEWS_LIST;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,7 +32,7 @@ import static com.skybox.seven.covid.adapters.contactAdapter.NEWS_LIST;
 public class NewsFragment extends Fragment {
 
     RecyclerView recyclerView;
-    contactAdapter adapter;
+    ContactsAdapter adapter;
 
     public NewsFragment() {
         // Required empty public constructor
@@ -47,7 +47,7 @@ public class NewsFragment extends Fragment {
 
         recyclerView = rootView.findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new contactAdapter(getContext(),new ArrayList(),NEWS_LIST);
+        adapter = new ContactsAdapter(getContext(),new ArrayList(),NEWS_LIST);
         recyclerView.setAdapter(adapter);
         new newsColl().execute();
 

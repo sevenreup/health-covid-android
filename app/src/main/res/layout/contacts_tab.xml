@@ -4,15 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <Button
-        android:id="@+id/addContButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_add_contact"
-        android:layout_centerHorizontal="true"/>
-
  <com.google.android.material.tabs.TabLayout
-    android:layout_below="@+id/addContButton"
      android:id="@+id/contactTab"
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
@@ -35,8 +27,16 @@
         android:layout_below="@+id/contactTab"
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"/>
 
-    </androidx.viewpager.widget.ViewPager>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addContButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/ic_add"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/menu_card_margin"/>
 
 </RelativeLayout>

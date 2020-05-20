@@ -4,32 +4,29 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.adapters.ContactsPageAdapter;
-import com.skybox.seven.covid.ui.fragment.ContactRequestFragment;
-import com.skybox.seven.covid.ui.fragment.ContactTraceFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ContactsFragment extends Fragment {
-    TabLayout tabLayout;
-    ViewPager viewPager;
-    ContactsPageAdapter pagerAdapter;
-    TabItem contacts;
-    TabItem requests;
-    Button addContButton;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private ContactsPageAdapter pagerAdapter;
+    private TabItem contacts;
+    private TabItem requests;
+    private FloatingActionButton addContButton;
 
     public ContactsFragment() {
-        // Required empty public constructor
     }
 
 
@@ -51,10 +48,6 @@ public class ContactsFragment extends Fragment {
 
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-
-     //   pagerAdapter = new ContactsPageAdapter(getSupportFragment(), tableLayout.getTabCount());
-       // viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tableLayout));
-
 
         return v;
     }

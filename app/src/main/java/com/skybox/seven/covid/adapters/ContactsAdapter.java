@@ -15,14 +15,14 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class contactAdapter extends RecyclerView.Adapter<contactAdapter.ContactHolder> {
+public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ContactHolder> {
      private ArrayList models;
     private Context context;
 
     public static int CONTACT_LIST = 0, NEWS_LIST = 1;
     int listType = CONTACT_LIST;
 
-    public contactAdapter(Context context, ArrayList models, int listType) {
+    public ContactsAdapter(Context context, ArrayList models, int listType) {
         this.models = models;
         this.context = context;
         this.listType = listType;

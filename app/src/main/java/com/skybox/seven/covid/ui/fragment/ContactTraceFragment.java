@@ -8,17 +8,17 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.adapters.ContactModel;
-import com.skybox.seven.covid.adapters.contactAdapter;
+import com.skybox.seven.covid.adapters.ContactsAdapter;
 import com.skybox.seven.covid.network.ContactClientInstance;
 import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.util.InjectorUtil;
+import com.skybox.seven.covid.util.SpaceItemDecorator;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.skybox.seven.covid.adapters.contactAdapter.CONTACT_LIST;
+import static com.skybox.seven.covid.adapters.ContactsAdapter.CONTACT_LIST;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,15 +35,13 @@ import static com.skybox.seven.covid.adapters.contactAdapter.CONTACT_LIST;
 public class ContactTraceFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private contactAdapter ContactAdapter;
-    private LinearLayoutManager layoutManager;
+    private ContactsAdapter ContactsAdapter;
     ProgressDialog progressDialog;
     MainViewModel viewModel;
     RetrofitService service;
     ArrayList<ContactModel.ContactUsersContacts>contactsList = new ArrayList<>();
 
     public ContactTraceFragment() {
-        // Required empty public constructor
     }
 
 
@@ -61,18 +59,12 @@ public class ContactTraceFragment extends Fragment {
         progressDialog.setMessage("Loading....");
         progressDialog.show();
 
-        viewModel.contactsRefresh.observe(getActivity(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                generateContactList();
-            }
+        viewModel.contactsRefresh.observe(getActivity(), aBoolean -> generateContactList());
 
-        });
-
-        ContactAdapter = new contactAdapter(getContext(),contactsList,CONTACT_LIST);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(ContactAdapter);
+        ContactsAdapter = new ContactsAdapter(getContext(),contactsList,CONTACT_LIST);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        recyclerView.addItemDecoration(new SpaceItemDecorator(20, true, false));
+        recyclerView.setAdapter(ContactsAdapter);
 
         service = ContactClientInstance.getRetrofitInstance().create(RetrofitService.class);
         generateContactList();
@@ -89,7 +81,7 @@ public class ContactTraceFragment extends Fragment {
             {
                 progressDialog.dismiss();
                 contactsList=response.body();
-                ContactAdapter.setData(contactsList);
+                ContactsAdapter.setData(contactsList);
             }
             @Override
             public void onFailure(Call<ArrayList<ContactModel.ContactUsersContacts>> call, Throwable t) {
