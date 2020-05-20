@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.skybox.seven.covid.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ContactRequestAdapter extends RecyclerView.Adapter <ContactRequestAdapter.CRModelHolder>{
     ArrayList<ContactRequestModel.PendingContacts> models;
@@ -57,8 +58,9 @@ public class ContactRequestAdapter extends RecyclerView.Adapter <ContactRequestA
         return models.size();
     }
 
-    public void setData(ArrayList<ContactRequestModel.PendingContacts> models) {
-        this.models =models;
+    public void setData(List<ContactRequestModel.PendingContacts> models) {
+        this.models.clear();
+        this.models.addAll(models);
         notifyDataSetChanged();
     }
 
