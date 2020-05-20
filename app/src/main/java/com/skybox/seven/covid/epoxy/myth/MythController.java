@@ -1,12 +1,10 @@
-package com.skybox.seven.covid.epoxy;
+package com.skybox.seven.covid.epoxy.myth;
 
 import android.content.Context;
 import android.util.Log;
 
 import com.airbnb.epoxy.Typed3EpoxyController;
 import com.skybox.seven.covid.data.entities.InfoGraphic;
-import com.skybox.seven.covid.epoxy.model.MythGraphicInfoModel_;
-import com.skybox.seven.covid.epoxy.model.MythMainModel_;
 import com.skybox.seven.covid.data.entities.Myth;
 import com.skybox.seven.covid.model.TipsChips;
 

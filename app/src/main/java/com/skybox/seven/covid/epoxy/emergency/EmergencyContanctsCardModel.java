@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.epoxy.model;
+package com.skybox.seven.covid.epoxy.emergency;
 
 import android.view.View;
 

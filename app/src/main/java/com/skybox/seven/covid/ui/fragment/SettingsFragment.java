@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
@@ -16,7 +15,7 @@ import androidx.navigation.Navigation;
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.epoxy.SettingsController;
+import com.skybox.seven.covid.epoxy.settings.SettingsController;
 import com.skybox.seven.covid.ui.activities.AuthActivity;
 import com.skybox.seven.covid.util.Constants;
 import com.skybox.seven.covid.util.InjectorUtil;

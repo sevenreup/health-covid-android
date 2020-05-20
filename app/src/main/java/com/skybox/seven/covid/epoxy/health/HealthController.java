@@ -1,10 +1,8 @@
-package com.skybox.seven.covid.epoxy;
+package com.skybox.seven.covid.epoxy.health;
 
 import android.content.Context;
 
 import com.airbnb.epoxy.Typed3EpoxyController;
-import com.skybox.seven.covid.epoxy.model.AdviceMainModel_;
-import com.skybox.seven.covid.epoxy.model.InfoGraphicModel_;
 import com.skybox.seven.covid.data.entities.Advice;
 import com.skybox.seven.covid.data.entities.InfoGraphic;
 import com.skybox.seven.covid.model.TipsChips;

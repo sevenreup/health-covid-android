@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.epoxy.model;
+package com.skybox.seven.covid.epoxy.health;
 
 import android.text.TextUtils;
 import android.view.View;

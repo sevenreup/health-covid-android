@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.data.entities.Advice;
-import com.skybox.seven.covid.epoxy.HealthController;
+import com.skybox.seven.covid.epoxy.health.HealthController;
 import com.skybox.seven.covid.model.TipsChips;
 import com.skybox.seven.covid.util.InjectorUtil;
 import com.skybox.seven.covid.util.SpaceItemDecorator;

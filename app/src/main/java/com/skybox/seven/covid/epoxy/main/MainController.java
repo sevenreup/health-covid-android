@@ -1,23 +1,10 @@
-package com.skybox.seven.covid.epoxy;
+package com.skybox.seven.covid.epoxy.main;
 
 import android.util.Log;
-import android.view.View;
-
-import androidx.navigation.NavController;
 
 import com.airbnb.epoxy.AutoModel;
-import com.airbnb.epoxy.OnModelClickListener;
-import com.airbnb.epoxy.Typed2EpoxyController;
 import com.airbnb.epoxy.Typed3EpoxyController;
-import com.airbnb.epoxy.TypedEpoxyController;
-import com.skybox.seven.covid.epoxy.model.EmergencyContanctsCardModel;
-import com.skybox.seven.covid.epoxy.model.EmergencyContanctsCardModel_;
-import com.skybox.seven.covid.epoxy.model.HomeCarouselModelModel_;
-import com.skybox.seven.covid.epoxy.model.MainMenuItem_;
-import com.skybox.seven.covid.epoxy.model.MainNotLogged;
-import com.skybox.seven.covid.epoxy.model.MainNotLogged_;
-import com.skybox.seven.covid.epoxy.model.PersonalCardModel;
-import com.skybox.seven.covid.epoxy.model.PersonalCardModel_;
+import com.skybox.seven.covid.epoxy.emergency.EmergencyContanctsCardModel_;
 import com.skybox.seven.covid.model.MenuItem;
 
 import java.util.ArrayList;
@@ -26,7 +13,8 @@ import java.util.List;
 public class MainController extends Typed3EpoxyController<Boolean, Boolean,List<MenuItem>> {
     @AutoModel PersonalCardModel_ header;
     @AutoModel MainNotLogged_ notLogged_;
-    @AutoModel EmergencyContanctsCardModel_ emergencyContancts_;
+    @AutoModel
+    EmergencyContanctsCardModel_ emergencyContancts_;
     private MainControllerCallback callback;
 
     public MainController(MainControllerCallback callback) {

@@ -1,6 +1,5 @@
-package com.skybox.seven.covid.epoxy.model;
+package com.skybox.seven.covid.epoxy.emergency;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -10,7 +9,6 @@ import com.airbnb.epoxy.EpoxyAttribute;
 import com.airbnb.epoxy.EpoxyHolder;
 import com.airbnb.epoxy.EpoxyModelClass;
 import com.airbnb.epoxy.EpoxyModelWithHolder;
-import com.google.android.material.chip.ChipGroup;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.ContactNumber;
 

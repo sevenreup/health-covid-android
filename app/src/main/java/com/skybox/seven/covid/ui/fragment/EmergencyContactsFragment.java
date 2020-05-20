@@ -12,9 +12,8 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipDrawable;
 import com.google.android.material.chip.ChipGroup;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.epoxy.EmergencyController;
+import com.skybox.seven.covid.epoxy.emergency.EmergencyController;
 import com.skybox.seven.covid.model.ContactNumber;
-import com.skybox.seven.covid.util.MultiViewDecorator;
 
 import java.util.ArrayList;
 import java.util.HashMap;

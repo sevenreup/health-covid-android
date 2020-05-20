@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.adapters.ContactModel;
 import com.skybox.seven.covid.adapters.ContactsAdapter;
@@ -34,7 +35,7 @@ import static com.skybox.seven.covid.adapters.ContactsAdapter.CONTACT_LIST;
  */
 public class ContactTraceFragment extends Fragment {
 
-    private RecyclerView recyclerView;
+    private EpoxyRecyclerView recyclerView;
     private ContactsAdapter ContactsAdapter;
     ProgressDialog progressDialog;
     MainViewModel viewModel;
@@ -50,8 +51,8 @@ public class ContactTraceFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        View v = inflater.inflate(R.layout.fragment_contact_trace2, container, false);
-        recyclerView = v.findViewById(R.id.contactRecyclerView);
+        View v = inflater.inflate(R.layout.fragment_generic_epoxy, container, false);
+        recyclerView = v.findViewById(R.id.generic_recycler_id);
 
         viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideHomeViewModelFactory(getContext())).get(MainViewModel.class);
 

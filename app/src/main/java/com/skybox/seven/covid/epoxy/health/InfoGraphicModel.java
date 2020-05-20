@@ -1,4 +1,5 @@
-package com.skybox.seven.covid.epoxy.model;
+package com.skybox.seven.covid.epoxy.health;
+
 
 import android.content.Context;
 import android.view.View;
@@ -14,21 +15,19 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.skybox.seven.covid.GlideApp;
 import com.skybox.seven.covid.R;
 
-@EpoxyModelClass(layout = R.layout.model_graphic_info_myth)
-public class MythGraphicInfoModel extends EpoxyModelWithHolder<MythGraphicInfoModel.GrafInfoModelHolder> {
 
-    @EpoxyAttribute
-    String url;
-    @EpoxyAttribute
-    Context context;
-    @EpoxyAttribute
-    View.OnClickListener listener;
+@EpoxyModelClass(layout = R.layout.model_info_graphic_main)
+public class InfoGraphicModel extends EpoxyModelWithHolder<InfoGraphicModel.InfoGModelHolder> {
+    @EpoxyAttribute String url;
+    @EpoxyAttribute Context context;
+    @EpoxyAttribute View.OnClickListener listener;
+    @Override
+    protected InfoGModelHolder createNewHolder() {
+        return new InfoGModelHolder();
+    }
 
     @Override
-    protected MythGraphicInfoModel.GrafInfoModelHolder createNewHolder() { return new GrafInfoModelHolder(); }
-
-    @Override
-    public void bind(@NonNull GrafInfoModelHolder holder) {
+    public void bind(@NonNull InfoGModelHolder holder) {
         super.bind(holder);
         GlideApp.with(context)
                 .load(url)
@@ -40,15 +39,14 @@ public class MythGraphicInfoModel extends EpoxyModelWithHolder<MythGraphicInfoMo
 
     @Override
     protected int getDefaultLayout() {
-        return R.layout.model_graphic_info_myth;
+        return R.layout.model_info_graphic_main;
     }
 
-    public class GrafInfoModelHolder extends EpoxyHolder {
+    public static class InfoGModelHolder extends EpoxyHolder {
         ImageView image;
-
         @Override
         protected void bindView(@NonNull View itemView) {
-            image = itemView.findViewById(R.id.myth_info_image);
+            image = itemView.findViewById(R.id.info_image);
         }
     }
 }

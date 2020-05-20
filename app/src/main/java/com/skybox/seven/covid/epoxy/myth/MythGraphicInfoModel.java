@@ -1,5 +1,4 @@
-package com.skybox.seven.covid.epoxy.model;
-
+package com.skybox.seven.covid.epoxy.myth;
 
 import android.content.Context;
 import android.view.View;
@@ -11,24 +10,25 @@ import com.airbnb.epoxy.EpoxyAttribute;
 import com.airbnb.epoxy.EpoxyHolder;
 import com.airbnb.epoxy.EpoxyModelClass;
 import com.airbnb.epoxy.EpoxyModelWithHolder;
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.skybox.seven.covid.GlideApp;
 import com.skybox.seven.covid.R;
 
+@EpoxyModelClass(layout = R.layout.model_graphic_info_myth)
+public class MythGraphicInfoModel extends EpoxyModelWithHolder<MythGraphicInfoModel.GrafInfoModelHolder> {
 
-@EpoxyModelClass(layout = R.layout.model_info_graphic_main)
-public class InfoGraphicModel extends EpoxyModelWithHolder<InfoGraphicModel.InfoGModelHolder> {
-    @EpoxyAttribute String url;
-    @EpoxyAttribute Context context;
-    @EpoxyAttribute View.OnClickListener listener;
-    @Override
-    protected InfoGModelHolder createNewHolder() {
-        return new InfoGModelHolder();
-    }
+    @EpoxyAttribute
+    String url;
+    @EpoxyAttribute
+    Context context;
+    @EpoxyAttribute
+    View.OnClickListener listener;
 
     @Override
-    public void bind(@NonNull InfoGModelHolder holder) {
+    protected MythGraphicInfoModel.GrafInfoModelHolder createNewHolder() { return new GrafInfoModelHolder(); }
+
+    @Override
+    public void bind(@NonNull GrafInfoModelHolder holder) {
         super.bind(holder);
         GlideApp.with(context)
                 .load(url)
@@ -40,14 +40,15 @@ public class InfoGraphicModel extends EpoxyModelWithHolder<InfoGraphicModel.Info
 
     @Override
     protected int getDefaultLayout() {
-        return R.layout.model_info_graphic_main;
+        return R.layout.model_graphic_info_myth;
     }
 
-    public static class InfoGModelHolder extends EpoxyHolder {
+    public class GrafInfoModelHolder extends EpoxyHolder {
         ImageView image;
+
         @Override
         protected void bindView(@NonNull View itemView) {
-            image = itemView.findViewById(R.id.info_image);
+            image = itemView.findViewById(R.id.myth_info_image);
         }
     }
 }

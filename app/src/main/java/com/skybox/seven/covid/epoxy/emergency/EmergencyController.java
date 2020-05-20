@@ -1,8 +1,7 @@
-package com.skybox.seven.covid.epoxy;
+package com.skybox.seven.covid.epoxy.emergency;
 
 import com.airbnb.epoxy.TypedEpoxyController;
-import com.skybox.seven.covid.epoxy.model.EmergencyContactsFilterModel_;
-import com.skybox.seven.covid.epoxy.model.HeaderModel_;
+import com.skybox.seven.covid.epoxy.main.HeaderModel_;
 import com.skybox.seven.covid.model.ContactNumber;
 
 import java.util.HashMap;

@@ -13,7 +13,7 @@ import androidx.navigation.Navigation;
 
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.epoxy.MainController;
+import com.skybox.seven.covid.epoxy.main.MainController;
 import com.skybox.seven.covid.model.MenuItem;
 import com.skybox.seven.covid.ui.activities.AuthActivity;
 import com.skybox.seven.covid.util.InjectorUtil;
@@ -41,11 +41,11 @@ public class HomeFragment extends Fragment implements MainController.MainControl
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_home, container, false);
+        View v = inflater.inflate(R.layout.fragment_generic_epoxy, container, false);
         viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideHomeViewModelFactory(getContext())).get(MainViewModel.class);
 
         controller = new MainController(this);
-        recyclerView = v.findViewById(R.id.home_frag_recycler);
+        recyclerView = v.findViewById(R.id.generic_recycler_id);
 
         recyclerView.setController(controller);
         createMenuItems();

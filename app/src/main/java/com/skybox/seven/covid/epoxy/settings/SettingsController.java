@@ -1,16 +1,8 @@
-package com.skybox.seven.covid.epoxy;
-
-import android.view.View;
+package com.skybox.seven.covid.epoxy.settings;
 
 import com.airbnb.epoxy.AutoModel;
-import com.airbnb.epoxy.EpoxyController;
-import com.airbnb.epoxy.OnModelClickListener;
 import com.airbnb.epoxy.Typed2EpoxyController;
-import com.airbnb.epoxy.TypedEpoxyController;
-import com.skybox.seven.covid.epoxy.model.MainNotLogged;
-import com.skybox.seven.covid.epoxy.model.MainNotLogged_;
-import com.skybox.seven.covid.epoxy.model.SettingsHeaderModel_;
-import com.skybox.seven.covid.epoxy.model.SettingsItemModel_;
+import com.skybox.seven.covid.epoxy.main.MainNotLogged_;
 
 public class SettingsController extends Typed2EpoxyController<Boolean, Boolean> {
     @AutoModel

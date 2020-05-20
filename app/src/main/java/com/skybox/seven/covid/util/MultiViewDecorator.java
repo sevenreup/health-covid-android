@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.epoxy.EpoxyControllerAdapter;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.epoxy.model.HeaderModel_;
+import com.skybox.seven.covid.epoxy.main.HeaderModel_;
 
 public class MultiViewDecorator extends RecyclerView.ItemDecoration {
     private Drawable mDivider;
@@ -24,8 +24,6 @@ public class MultiViewDecorator extends RecyclerView.ItemDecoration {
         paint = new Paint();
         paint.setColor(R.color.colorAccent);
         paint.setStrokeWidth(2);
-
-        this.context = context;
     }
 
     @Override
