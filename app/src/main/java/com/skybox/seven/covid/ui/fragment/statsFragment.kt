@@ -1,5 +1,6 @@
 package com.skybox.seven.covid.ui.fragment
 
+import android.animation.ValueAnimator
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,6 +14,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.LargeValueFormatter
 
 import com.skybox.seven.covid.R
+import kotlinx.android.synthetic.main.fragment_stats.*
 
 
 class statsFragment : Fragment() {
@@ -29,8 +31,62 @@ class statsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         caseData()
+        deathsData()
+        activeData()
+        recoveredData()
+        affectedData()
 
     }
+
+    private fun affectedData(){
+        val elapse: Long = 5000
+
+        val animator: ValueAnimator = ValueAnimator.ofInt(0, 1024)
+        animator.duration = elapse
+        animator.addUpdateListener(ValueAnimator.AnimatorUpdateListener (){
+            num_affected.text = animator.animatedValue.toString()
+        })
+        animator.start()
+
+    }
+
+    private fun deathsData(){
+        val elapse: Long = 5000
+
+        val animator: ValueAnimator = ValueAnimator.ofInt(0, 3)
+        animator.duration = elapse
+        animator.addUpdateListener(ValueAnimator.AnimatorUpdateListener (){
+            num_deaths.text = animator.animatedValue.toString()
+        })
+        animator.start()
+
+    }
+
+    private fun activeData(){
+        val elapse: Long = 5000
+
+        val animator: ValueAnimator = ValueAnimator.ofInt(0, 400)
+        animator.duration = elapse
+        animator.addUpdateListener(ValueAnimator.AnimatorUpdateListener (){
+            num_active.text = animator.animatedValue.toString()
+        })
+        animator.start()
+
+    }
+
+    private fun recoveredData(){
+        val elapse: Long = 5000
+
+        val animator: ValueAnimator = ValueAnimator.ofInt(0, 30)
+        animator.duration = elapse
+        animator.addUpdateListener(ValueAnimator.AnimatorUpdateListener (){
+            num_recovered.text = animator.animatedValue.toString()
+        })
+        animator.start()
+
+    }
+
+
     private fun caseData() {
 
         val barChartView = view?.findViewById<BarChart>(R.id.caseChart)
