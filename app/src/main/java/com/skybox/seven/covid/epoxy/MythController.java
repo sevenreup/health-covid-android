@@ -1,6 +1,7 @@
 package com.skybox.seven.covid.epoxy;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.airbnb.epoxy.Typed3EpoxyController;
 import com.skybox.seven.covid.data.entities.InfoGraphic;
@@ -22,6 +23,7 @@ public class MythController extends Typed3EpoxyController<TipsChips, List<Myth>,
 
     @Override
     protected void buildModels(TipsChips current, List<Myth> mythList, List<InfoGraphic> mythGraphicInfoList) {
+        Log.e("TAG", "buildModels: " + current);
         switch (current) {
             case myth:
                 for (Myth myth:

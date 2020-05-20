@@ -10,7 +10,7 @@ import java.util.List;
 
 @Dao
 public interface InfoGraphicDAO {
-    @Query("SELECT * From infoGraphics WHERE type = :type & languageId = :locale")
+    @Query("SELECT * From infoGraphics WHERE type = :type AND languageId = :locale")
     List<InfoGraphic> getAllInfoGraphics(Integer locale, Integer type);
 
     @Insert

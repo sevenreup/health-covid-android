@@ -8,6 +8,7 @@ import com.skybox.seven.covid.data.entities.InfoGraphic;
 import com.skybox.seven.covid.data.repositories.AdviceRepository;
 import com.skybox.seven.covid.data.repositories.InfoGraphicRepository;
 import com.skybox.seven.covid.repository.SharedPreferenceRepository;
+import com.skybox.seven.covid.util.Constants;
 
 import java.util.List;
 
@@ -33,6 +34,6 @@ public class AdviceViewModel extends ViewModel {
     }
 
     public void getInfoGraphicList() {
-        infoGraphicList.setValue(infoGraphicRepository.getAllInfoGraphics(sharedPreferenceRepository.getActiveLanguage(), 2));
+        infoGraphicList.setValue(infoGraphicRepository.getAllInfoGraphics(sharedPreferenceRepository.getActiveLanguage(), Constants.ADVICE));
     }
 }

@@ -63,8 +63,6 @@ public class SettingsFragment extends Fragment implements SettingsController.Set
 
     @Override
     public void onNotificationClick() {
-        ((TextView) dialogView.findViewById(R.id.btn_title)).setText(R.string.settings_notification);
-        dialog.show();
     }
 
     @Override
@@ -72,7 +70,7 @@ public class SettingsFragment extends Fragment implements SettingsController.Set
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
         alertDialog.setTitle(R.string.settings_language);
         String[] allLanguages = {"English", "Chichewa"};
-        alertDialog.setSingleChoiceItems(allLanguages, viewModel.getLanguage() - 1, (dialog, which) -> {
+        alertDialog.setSingleChoiceItems(allLanguages, (viewModel.getLanguage() - 1), (dialog, which) -> {
             switch (which) {
                 case 0:
                     viewModel.setLanguage(Constants.ENGLISH);
@@ -119,12 +117,10 @@ public class SettingsFragment extends Fragment implements SettingsController.Set
     @Override
     public void onDestroy() {
         super.onDestroy();
-//        dialog.dismiss();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-//        dialog.dismiss();
     }
 }
