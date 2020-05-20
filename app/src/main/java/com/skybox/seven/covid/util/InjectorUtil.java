@@ -8,18 +8,25 @@ import com.skybox.seven.covid.data.repositories.InfoGraphicRepository;
 import com.skybox.seven.covid.data.repositories.LanguageRepository;
 import com.skybox.seven.covid.data.repositories.MythRepository;
 import com.skybox.seven.covid.data.repositories.SelfTestRepository;
+import com.skybox.seven.covid.viewmodels.ContactsViewModel;
 import com.skybox.seven.covid.viewmodels.factories.AdviceViewModelFactory;
+import com.skybox.seven.covid.viewmodels.factories.ContactsViewModelFactory;
 import com.skybox.seven.covid.viewmodels.factories.HomeViewModelFactory;
 import com.skybox.seven.covid.viewmodels.factories.MythViewModelFactory;
 import com.skybox.seven.covid.viewmodels.factories.SelfTestViewModelFactory;
 
 public class InjectorUtil {
+    // All repository returns
     private static SelfTestRepository getSelfTestRepository(Context context) {
         return SelfTestRepository.getINSTANCE(AppDatabase.getDatabase(context).selfTestResultDAO());
     }
 
-    public static SelfTestViewModelFactory provideSelfTestViewModelFactory(Context context) {
-        return new SelfTestViewModelFactory(getSelfTestRepository(context));
+    public static LanguageRepository getLanguageRepository(Context context) {
+        return LanguageRepository.getInstance(AppDatabase.getDatabase(context).languageDAO());
+    }
+
+    public static AdviceRepository getAdviceRepository(Context context) {
+        return AdviceRepository.getInstance(AppDatabase.getDatabase(context).adviceDAO());
     }
 
     public static MythRepository getMythRepository(Context context) {
@@ -28,6 +35,11 @@ public class InjectorUtil {
 
     public static InfoGraphicRepository getInfoGraphicRepository(Context context) {
         return InfoGraphicRepository.getInstance(AppDatabase.getDatabase(context).infoGraphicDAO());
+    }
+
+    // All Factory Returns
+    public static SelfTestViewModelFactory provideSelfTestViewModelFactory(Context context) {
+        return new SelfTestViewModelFactory(getSelfTestRepository(context));
     }
 
     public static MythViewModelFactory provideMythViewModelFactory(Context context) {
@@ -42,11 +54,7 @@ public class InjectorUtil {
         return new HomeViewModelFactory(context);
     }
 
-    public static LanguageRepository getLanguageRepository(Context context) {
-        return LanguageRepository.getInstance(AppDatabase.getDatabase(context).languageDAO());
-    }
-
-    public static AdviceRepository getAdviceRepository(Context context) {
-        return AdviceRepository.getInstance(AppDatabase.getDatabase(context).adviceDAO());
+    public static ContactsViewModelFactory provideContactsViewModelFactory(Context context) {
+        return new ContactsViewModelFactory(context);
     }
 }

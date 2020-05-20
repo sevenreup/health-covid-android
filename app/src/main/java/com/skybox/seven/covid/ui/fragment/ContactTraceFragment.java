@@ -19,6 +19,7 @@ import com.skybox.seven.covid.network.ContactClientInstance;
 import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.util.InjectorUtil;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
+import com.skybox.seven.covid.viewmodels.ContactsViewModel;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class ContactTraceFragment extends Fragment {
     private EpoxyRecyclerView recyclerView;
     ProgressDialog progressDialog;
     ContactsController controller;
-    MainViewModel viewModel;
+    ContactsViewModel viewModel;
     RetrofitService service;
 
     public ContactTraceFragment() {
@@ -50,7 +51,7 @@ public class ContactTraceFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_generic_epoxy, container, false);
         recyclerView = v.findViewById(R.id.generic_recycler_id);
 
-        viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideHomeViewModelFactory(getContext())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideContactsViewModelFactory(getContext())).get(ContactsViewModel.class);
 
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Loading....");

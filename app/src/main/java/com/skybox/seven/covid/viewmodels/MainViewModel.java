@@ -36,7 +36,6 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<Boolean> showLoginNotification = new MutableLiveData<>(true);
 
     public MutableLiveData<Locale> changeLanguage = new MutableLiveData<>();
-    public MutableLiveData<Boolean> contactsRefresh = new MutableLiveData<>();
 
     private Retrofit retrofit;
 

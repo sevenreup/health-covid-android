@@ -20,6 +20,7 @@ import com.skybox.seven.covid.network.ContactClientInstance;
 import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.network.responses.GenericResponse;
 import com.skybox.seven.covid.util.InjectorUtil;
+import com.skybox.seven.covid.viewmodels.ContactsViewModel;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class ContactRequestFragment extends Fragment implements ContactRequestAd
     private ContactRequestAdapter contactRequestAdapter;
     private LinearLayoutManager layoutManager;
     ProgressDialog progressDialog;
-    MainViewModel viewModel;
+    ContactsViewModel viewModel;
     RetrofitService service;
     ArrayList<ContactRequestModel.PendingContacts> pendingContacts = new ArrayList<>();
 
@@ -53,7 +54,7 @@ public class ContactRequestFragment extends Fragment implements ContactRequestAd
         View v = inflater.inflate(R.layout.fragment_contact_request, container, false);
         recyclerView = v.findViewById(R.id.contactRequestRecyclerView);
 
-        viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideHomeViewModelFactory(getContext())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideContactsViewModelFactory(getContext())).get(ContactsViewModel.class);
 
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Loading....");
