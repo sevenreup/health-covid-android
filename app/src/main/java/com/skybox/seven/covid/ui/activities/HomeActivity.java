@@ -18,7 +18,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.repository.SharedPreferenceRepository;
-import com.skybox.seven.covid.viewmodels.factories.CovidFactory;
+import com.skybox.seven.covid.util.InjectorUtil;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 public class HomeActivity extends LocalizationActivity {
@@ -36,7 +36,7 @@ public class HomeActivity extends LocalizationActivity {
 
         setContentView(R.layout.activity_home);
 
-        viewModel = new ViewModelProvider(this, new CovidFactory(getApplication())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(this, InjectorUtil.provideHomeViewModelFactory(getBaseContext())).get(MainViewModel.class);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create   channel to show notifications.
@@ -80,5 +80,10 @@ public class HomeActivity extends LocalizationActivity {
     protected void onDestroy() {
         viewModel.removePreferenceChangeListener(changeListener);
         super.onDestroy();
+    }
+
+    @Override
+    public void onBeforeLocaleChanged() {
+        super.onBeforeLocaleChanged();
     }
 }

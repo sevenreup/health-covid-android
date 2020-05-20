@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "c33290f0a7fa87a151b935cbd8b454c3",
+    "identityHash": "34d22eaa3d1a23f4892bbbb57d41f18c",
     "entities": [
       {
         "tableName": "Results",
@@ -188,7 +188,7 @@
       },
       {
         "tableName": "languages",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`languageId` INTEGER, `language` TEXT, `country` TEXT, PRIMARY KEY(`languageId`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`languageId` INTEGER, `language` TEXT, `country` TEXT, `name` TEXT, PRIMARY KEY(`languageId`))",
         "fields": [
           {
             "fieldPath": "languageId",
@@ -207,6 +207,12 @@
             "columnName": "country",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -222,7 +228,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c33290f0a7fa87a151b935cbd8b454c3')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '34d22eaa3d1a23f4892bbbb57d41f18c')"
     ]
   }
 }

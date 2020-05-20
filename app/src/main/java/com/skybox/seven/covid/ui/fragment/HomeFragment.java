@@ -16,7 +16,7 @@ import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.MainController;
 import com.skybox.seven.covid.model.MenuItem;
 import com.skybox.seven.covid.ui.activities.AuthActivity;
-import com.skybox.seven.covid.viewmodels.factories.CovidFactory;
+import com.skybox.seven.covid.util.InjectorUtil;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment implements MainController.MainControl
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-        viewModel = new ViewModelProvider(getActivity(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideHomeViewModelFactory(getContext())).get(MainViewModel.class);
 
         controller = new MainController(this);
         recyclerView = v.findViewById(R.id.home_frag_recycler);

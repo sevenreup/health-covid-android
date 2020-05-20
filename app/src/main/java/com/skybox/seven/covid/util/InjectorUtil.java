@@ -9,6 +9,7 @@ import com.skybox.seven.covid.data.repositories.LanguageRepository;
 import com.skybox.seven.covid.data.repositories.MythRepository;
 import com.skybox.seven.covid.data.repositories.SelfTestRepository;
 import com.skybox.seven.covid.viewmodels.factories.AdviceViewModelFactory;
+import com.skybox.seven.covid.viewmodels.factories.HomeViewModelFactory;
 import com.skybox.seven.covid.viewmodels.factories.MythViewModelFactory;
 import com.skybox.seven.covid.viewmodels.factories.SelfTestViewModelFactory;
 
@@ -35,6 +36,10 @@ public class InjectorUtil {
 
     public static AdviceViewModelFactory provideAdviceViewModelFactory(Context context) {
         return new AdviceViewModelFactory(getAdviceRepository(context), getInfoGraphicRepository(context),context);
+    }
+
+    public static HomeViewModelFactory provideHomeViewModelFactory(Context context) {
+        return new HomeViewModelFactory(context);
     }
 
     public static LanguageRepository getLanguageRepository(Context context) {

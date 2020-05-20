@@ -10,14 +10,18 @@ import androidx.lifecycle.ViewModel;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.skybox.seven.covid.R;
+import com.skybox.seven.covid.data.entities.Language;
+import com.skybox.seven.covid.data.repositories.LanguageRepository;
 import com.skybox.seven.covid.network.RetrofitFactory;
 import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.network.responses.AccessToken;
 import com.skybox.seven.covid.network.responses.ContactRequest;
 import com.skybox.seven.covid.network.responses.GenericResponse;
 import com.skybox.seven.covid.repository.SharedPreferenceRepository;
+import com.skybox.seven.covid.util.Constants;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import retrofit2.Call;
@@ -36,9 +40,9 @@ public class MainViewModel extends ViewModel {
 
     private Retrofit retrofit;
 
-    public MainViewModel(Application application) {
+    public MainViewModel(SharedPreferenceRepository preferenceRepository) {
         super();
-        preferenceRepository = new SharedPreferenceRepository(application.getSharedPreferences(application.getString(R.string.shared_preference_key), Context.MODE_PRIVATE));
+        this.preferenceRepository = preferenceRepository;
         retrofit = RetrofitFactory.getRetrofit(preferenceRepository);
     }
 
@@ -85,9 +89,13 @@ public class MainViewModel extends ViewModel {
         preferenceRepository.unRegisterOnChangeListener(listener);
     }
 
+    public int getLanguage() {
+        return preferenceRepository.getActiveLanguage();
+    }
+
     public void setLanguage(int language) {
         preferenceRepository.setActiveLanguage(language);
-        if (language == 1) {
+        if (language == Constants.ENGLISH) {
             changeLanguage.setValue(new Locale("eng", "USA"));
         } else {
             changeLanguage.setValue(new Locale("ny", "MW"));

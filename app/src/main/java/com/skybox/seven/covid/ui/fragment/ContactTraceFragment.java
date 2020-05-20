@@ -14,11 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.network.ContactClientInstance;
-import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.adapters.ContactModel;
 import com.skybox.seven.covid.adapters.contactAdapter;
-import com.skybox.seven.covid.viewmodels.factories.CovidFactory;
+import com.skybox.seven.covid.network.ContactClientInstance;
+import com.skybox.seven.covid.network.RetrofitService;
+import com.skybox.seven.covid.util.InjectorUtil;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public class ContactTraceFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_contact_trace2, container, false);
         recyclerView = v.findViewById(R.id.contactRecyclerView);
 
-        viewModel = new ViewModelProvider(getActivity(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideHomeViewModelFactory(getContext())).get(MainViewModel.class);
 
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Loading....");

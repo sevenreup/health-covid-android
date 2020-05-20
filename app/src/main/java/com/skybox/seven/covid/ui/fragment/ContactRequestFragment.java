@@ -2,25 +2,24 @@ package com.skybox.seven.covid.ui.fragment;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.skybox.seven.covid.R;
+import com.skybox.seven.covid.adapters.ContactRequestAdapter;
+import com.skybox.seven.covid.adapters.ContactRequestModel;
 import com.skybox.seven.covid.network.ContactClientInstance;
 import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.network.responses.GenericResponse;
-import com.skybox.seven.covid.adapters.ContactRequestAdapter;
-import com.skybox.seven.covid.adapters.ContactRequestModel;
-import com.skybox.seven.covid.viewmodels.factories.CovidFactory;
+import com.skybox.seven.covid.util.InjectorUtil;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
@@ -54,7 +53,7 @@ public class ContactRequestFragment extends Fragment implements ContactRequestAd
         View v = inflater.inflate(R.layout.fragment_contact_request, container, false);
         recyclerView = v.findViewById(R.id.contactRequestRecyclerView);
 
-        viewModel = new ViewModelProvider(getActivity(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideHomeViewModelFactory(getContext())).get(MainViewModel.class);
 
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Loading....");

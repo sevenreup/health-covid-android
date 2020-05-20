@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.network.RetrofitFactory;
 import com.skybox.seven.covid.repository.SharedPreferenceRepository;
+import com.skybox.seven.covid.util.Constants;
 
 import java.util.Locale;
 
@@ -35,7 +36,7 @@ public class OnBoardingViewModel extends AndroidViewModel {
 
     public void setLanguage(int language) {
         preferenceRepository.setActiveLanguage(language);
-        if (language == 1) {
+        if (language == Constants.ENGLISH) {
             changeLanguage.setValue(new Locale("eng", "USA"));
         } else {
             changeLanguage.setValue(new Locale("ny", "MW"));

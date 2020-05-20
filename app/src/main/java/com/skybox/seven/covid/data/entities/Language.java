@@ -1,5 +1,6 @@
 package com.skybox.seven.covid.data.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -11,16 +12,18 @@ public class Language {
     private Integer languageId;
     private String language;
     private String country;
+    private String name;
 
     public Language() {
     }
 
     @Ignore
-    public Language(Integer id, String language, String country) {
+    public Language(Integer id, String language, String country, String name) {
         super();
         this.languageId = id;
         this.language = language;
         this.country = country;
+        this.name = name;
     }
     public Integer getLanguageId() {
         return languageId;
@@ -46,5 +49,19 @@ public class Language {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
     }
 }

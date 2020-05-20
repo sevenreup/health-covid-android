@@ -7,7 +7,6 @@ import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 import com.skybox.seven.covid.data.AppDatabase;
-import com.skybox.seven.covid.repository.RandomSeeders;
 
 public class DataBaseInitWorker extends Worker {
     private Context context;

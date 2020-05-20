@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import androidx.annotation.NonNull;
 
 import com.akexorcist.localizationactivity.core.LocalizationApplicationDelegate;
+import com.skybox.seven.covid.data.entities.Language;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,10 +17,10 @@ import io.radar.sdk.Radar;
 
 public class Covid extends Application {
     private LocalizationApplicationDelegate localizationApplicationDelegate = new LocalizationApplicationDelegate();
-    public static final List<Locale> SUPPORTED_LOCALES =
+    public static final List<Language> SUPPORTED_LOCALES =
             Arrays.asList(
-                    new Locale("en", "US"),
-                    new Locale("ny", "MW")
+                    new Language(1,"en", "US", "English"),
+                    new Language(2,"ny", "MW", "Chichewa")
             );
     @Override
     public void onCreate() {

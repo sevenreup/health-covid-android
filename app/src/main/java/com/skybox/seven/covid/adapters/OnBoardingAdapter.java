@@ -12,6 +12,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.chip.ChipGroup;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.OnBoardingItem;
+import com.skybox.seven.covid.util.Constants;
 
 import java.util.List;
 import java.util.Locale;
@@ -73,9 +74,9 @@ public class OnBoardingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 viewHolder2.save.setOnClickListener(v -> {
                     int id = viewHolder2.languageGroup.getCheckedChipId();
                     if (id == R.id.page_english) {
-                        callback.onLanguageChange(1);
+                        callback.onLanguageChange(Constants.ENGLISH);
                     } else {
-                        callback.onLanguageChange(2);
+                        callback.onLanguageChange(Constants.CHICHEWA);
                     }
                 });
                 break;

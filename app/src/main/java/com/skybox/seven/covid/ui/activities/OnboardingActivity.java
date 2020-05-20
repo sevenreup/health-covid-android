@@ -16,12 +16,9 @@ import com.skybox.seven.covid.model.OnBoardingItem;
 import com.skybox.seven.covid.adapters.OnBoardingAdapter;
 import com.skybox.seven.covid.util.OnBoardingPageTransformer;
 import com.skybox.seven.covid.viewmodels.OnBoardingViewModel;
-import com.skybox.seven.covid.viewmodels.factories.CovidFactory;
-import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class OnboardingActivity extends LocalizationActivity implements OnBoardingAdapter.OnBoardCallback {
     OnBoardingViewModel viewModel;

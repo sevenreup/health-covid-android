@@ -11,18 +11,18 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.network.responses.ContactRequest;
 import com.skybox.seven.covid.ui.activities.Location;
-import com.skybox.seven.covid.viewmodels.factories.CovidFactory;
+import com.skybox.seven.covid.util.InjectorUtil;
 import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,7 +44,7 @@ public class ContactCreateFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_contact_create, container, false);
-        viewModel = new ViewModelProvider(getViewModelStore(), new CovidFactory(getActivity().getApplication())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(getViewModelStore(), InjectorUtil.provideHomeViewModelFactory(getContext())).get(MainViewModel.class);
         membersView = v.findViewById(R.id.membersParent);
         RelativeLayout addPersonView = v.findViewById(R.id.addPerson);
         RelativeLayout addLocView = v.findViewById(R.id.addLocation);
