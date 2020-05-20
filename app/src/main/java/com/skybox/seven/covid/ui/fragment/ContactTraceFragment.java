@@ -10,12 +10,11 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.adapters.ContactModel;
-import com.skybox.seven.covid.adapters.ContactsAdapter;
+import com.skybox.seven.covid.epoxy.contacts.ContactsController;
 import com.skybox.seven.covid.network.ContactClientInstance;
 import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.util.InjectorUtil;
@@ -28,19 +27,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.skybox.seven.covid.adapters.ContactsAdapter.CONTACT_LIST;
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ContactTraceFragment extends Fragment {
 
     private EpoxyRecyclerView recyclerView;
-    private ContactsAdapter ContactsAdapter;
     ProgressDialog progressDialog;
+    ContactsController controller;
     MainViewModel viewModel;
     RetrofitService service;
-    ArrayList<ContactModel.ContactUsersContacts>contactsList = new ArrayList<>();
 
     public ContactTraceFragment() {
     }
@@ -62,10 +58,11 @@ public class ContactTraceFragment extends Fragment {
 
         viewModel.contactsRefresh.observe(getActivity(), aBoolean -> generateContactList());
 
-        ContactsAdapter = new ContactsAdapter(getContext(),contactsList,CONTACT_LIST);
+        controller = new ContactsController();
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
         recyclerView.addItemDecoration(new SpaceItemDecorator(20, true, false));
-        recyclerView.setAdapter(ContactsAdapter);
+        recyclerView.setController(controller);
 
         service = ContactClientInstance.getRetrofitInstance().create(RetrofitService.class);
         generateContactList();
@@ -81,8 +78,7 @@ public class ContactTraceFragment extends Fragment {
             public void onResponse(Call<ArrayList<ContactModel.ContactUsersContacts>> call, Response<ArrayList<ContactModel.ContactUsersContacts>> response)
             {
                 progressDialog.dismiss();
-                contactsList=response.body();
-                ContactsAdapter.setData(contactsList);
+                controller.setData(false, response.body());
             }
             @Override
             public void onFailure(Call<ArrayList<ContactModel.ContactUsersContacts>> call, Throwable t) {

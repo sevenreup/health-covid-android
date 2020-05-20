@@ -23,7 +23,7 @@
             android:layout_marginRight="5dp"/>
 
         <TextView
-            android:id="@+id/ContName"
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/nam"
@@ -40,7 +40,7 @@
             android:text="Number:" />
 
         <TextView
-            android:id="@+id/ContNumber"
+            android:id="@+id/number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ContName"
