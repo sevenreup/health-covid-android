@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
@@ -26,6 +27,7 @@ public class ContactRequestFragment extends Fragment implements ContactRequestAd
     private EpoxyRecyclerView recyclerView;
     private ContactRequestAdapter contactRequestAdapter;
     ContactsViewModel viewModel;
+    private SwipeRefreshLayout refreshLayout;
 
     public ContactRequestFragment() {
     }
@@ -36,6 +38,7 @@ public class ContactRequestFragment extends Fragment implements ContactRequestAd
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_generic_epoxy_swipe, container, false);
         recyclerView = v.findViewById(R.id.generic_recycler_id);
+        refreshLayout = v.findViewById(R.id.generic_swipe_view);
 
         viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideContactsViewModelFactory(getContext())).get(ContactsViewModel.class);
 
@@ -45,6 +48,11 @@ public class ContactRequestFragment extends Fragment implements ContactRequestAd
         recyclerView.setAdapter(contactRequestAdapter);
 
         viewModel.pendingContacts.observe(getViewLifecycleOwner(), pendingContacts -> contactRequestAdapter.setData(pendingContacts));
+        viewModel.contactsLoading.observe(getViewLifecycleOwner(), aBoolean ->{
+            if (!aBoolean) {
+                refreshLayout.setRefreshing(false);
+            }
+        });
 
         viewModel.generatePendingContactList();
         return v;
