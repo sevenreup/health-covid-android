@@ -1,7 +1,6 @@
 package com.skybox.seven.covid.epoxy.contacts;
 
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -10,10 +9,11 @@ import com.airbnb.epoxy.EpoxyAttribute;
 import com.airbnb.epoxy.EpoxyHolder;
 import com.airbnb.epoxy.EpoxyModelClass;
 import com.airbnb.epoxy.EpoxyModelWithHolder;
+import com.google.android.material.button.MaterialButton;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.ContactRequestModel;
 
-@EpoxyModelClass(layout = R.layout.request_row)
+@EpoxyModelClass(layout = R.layout.model_contact_request_row)
 public class ContactRequestEpoxyModel extends EpoxyModelWithHolder<ContactRequestEpoxyModel.CRModelHolder> {
     @EpoxyAttribute ContactRequestModel.PendingContacts contact;
     @EpoxyAttribute View.OnClickListener rejectListener;
@@ -35,22 +35,22 @@ public class ContactRequestEpoxyModel extends EpoxyModelWithHolder<ContactReques
 
     @Override
     protected int getDefaultLayout() {
-        return R.layout.request_row;
+        return R.layout.model_contact_request_row;
     }
 
     static class CRModelHolder extends EpoxyHolder {
 
         public TextView name;
         public TextView number;
-        public Button acceptButton;
-        public Button rejectButton;
+        public MaterialButton acceptButton;
+        public MaterialButton rejectButton;
 
         @Override
         protected void bindView(@NonNull View itemView) {
             this.name = itemView.findViewById(R.id.ContName);
             this.number = itemView.findViewById(R.id.ContNumber);
-            this.acceptButton = itemView.findViewById(R.id.yes);
-            this.rejectButton = itemView.findViewById(R.id.no);
+            this.acceptButton = itemView.findViewById(R.id.accept);
+            this.rejectButton = itemView.findViewById(R.id.reject);
         }
     }
 }

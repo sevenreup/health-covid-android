@@ -22,9 +22,8 @@ import com.skybox.seven.covid.viewmodels.ContactsViewModel;
  */
 public class ContactRequestFragment extends Fragment implements ContactsRequestController.ContactsCallBack {
 
-    private EpoxyRecyclerView recyclerView;
-    ContactsRequestController controller;
-    ContactsViewModel viewModel;
+    private ContactsRequestController controller;
+    private ContactsViewModel viewModel;
     private SwipeRefreshLayout refreshLayout;
 
     public ContactRequestFragment() {
@@ -35,14 +34,12 @@ public class ContactRequestFragment extends Fragment implements ContactsRequestC
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_generic_epoxy_swipe, container, false);
-        recyclerView = v.findViewById(R.id.generic_recycler_id);
+        EpoxyRecyclerView recyclerView = v.findViewById(R.id.generic_recycler_id);
         refreshLayout = v.findViewById(R.id.generic_swipe_view);
 
         viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideContactsViewModelFactory(getContext())).get(ContactsViewModel.class);
         controller = new ContactsRequestController(this);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setController(controller);
 
         refreshLayout.setOnRefreshListener(() -> viewModel.generatePendingContactList());
