@@ -9,9 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -31,6 +33,7 @@ public class LoginFragment extends Fragment {
     private AuthViewModel viewModel;
     private TextInputLayout phoneTextField;
     private TextInputLayout passwordTextField;
+    private TextView authErrors;
 
     public LoginFragment() {
     }
@@ -45,6 +48,7 @@ public class LoginFragment extends Fragment {
 
         phoneTextField = v.findViewById(R.id.phone_number);
         passwordTextField = v.findViewById(R.id.userPassword);
+        authErrors = v.findViewById(R.id.auth_errors);
 
         viewModel.credentials.observe(getViewLifecycleOwner(), loginResponse -> {
             Intent intent = new Intent();
@@ -67,6 +71,7 @@ public class LoginFragment extends Fragment {
         });
 
         v.findViewById(R.id.loginButton).setOnClickListener(v1 -> {
+            authErrors.setVisibility(View.GONE);
            String phone = phoneTextField.getEditText().getText().toString();
            String password = passwordTextField.getEditText().getText().toString();
            viewModel.login(phone, password);
@@ -82,16 +87,22 @@ public class LoginFragment extends Fragment {
 
         viewModel.validationErrors.observe(getViewLifecycleOwner(), validationErrors -> {
             ValidationErrors.Errors errors = validationErrors.getErrors();
-            if (errors.getPassword().size() > 0) {
-                String password = errors.getPassword().get(0);
-                ((TextInputLayout)v.findViewById(R.id.userPassword)).getEditText().setError(password);
-            }
+            if (errors.getPassword() != null)
+                if (errors.getPassword().size() > 0) {
+                    String password = errors.getPassword().get(0);
+                    ((TextInputLayout)v.findViewById(R.id.userPassword)).getEditText().setError(password);
+                }
 
-            if (errors.getPhone().size() > 0) {
-                String phone = errors.getPhone().get(0);
-                ((TextInputLayout)v.findViewById(R.id.phone_number)).getEditText().setError(phone);
-            }
+            if (errors.getPhone() != null)
+                if (errors.getPhone().size() > 0) {
+                    String phone = errors.getPhone().get(0);
+                    ((TextInputLayout)v.findViewById(R.id.phone_number)).getEditText().setError(phone);
+                }
+        });
 
+        viewModel.authErrors.observe(getViewLifecycleOwner(), s -> {
+            authErrors.setText(s);
+            authErrors.setVisibility(View.VISIBLE);
         });
 
     return v;

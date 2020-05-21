@@ -35,6 +35,7 @@ public class AuthViewModel extends AndroidViewModel {
     public MutableLiveData<AccessToken> credentials = new MutableLiveData<>();
     public MutableLiveData<Boolean> isRegistered = new MutableLiveData<>();
     public MutableLiveData<ValidationErrors> validationErrors = new MutableLiveData<>();
+    public MutableLiveData<String> authErrors = new MutableLiveData<>();
 
     public AuthViewModel(Application application) {
         super(application);
@@ -92,16 +93,19 @@ public class AuthViewModel extends AndroidViewModel {
                     }
                 } else {
                     loading.setValue(false);
-                    try {
-                        String responseTemp = response.errorBody().string();
-                        if (responseTemp != null) {
-                            ValidationErrors errors = new Gson().fromJson(responseTemp, ValidationErrors.class);
-                            validationErrors.setValue(errors);
+                    if (response.raw().code() == 401) {
+                        authErrors.setValue("Phone number or password is invalid");
+                    } else {
+                        try {
+                            String responseTemp = response.errorBody().string();
+                            if (responseTemp != null) {
+                                ValidationErrors errors = new Gson().fromJson(responseTemp, ValidationErrors.class);
+                                validationErrors.setValue(errors);
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
-                    } catch (IOException e) {
-                        e.printStackTrace();
                     }
-
                 }
             }
 
