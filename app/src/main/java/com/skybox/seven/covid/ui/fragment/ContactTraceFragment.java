@@ -18,7 +18,7 @@ import com.skybox.seven.covid.util.SpaceItemDecorator;
 import com.skybox.seven.covid.viewmodels.ContactsViewModel;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A view for all the user's contacts {@link Fragment}.
  */
 public class ContactTraceFragment extends Fragment {
 
@@ -42,21 +42,19 @@ public class ContactTraceFragment extends Fragment {
         viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideContactsViewModelFactory(getContext())).get(ContactsViewModel.class);
         controller = new ContactsController();
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.addItemDecoration(new SpaceItemDecorator(20, true, false));
         recyclerView.setController(controller);
 
         refreshLayout.setOnRefreshListener(() -> viewModel.getAllContacts());
 
         viewModel.contactsRefresh.observe(getActivity(), aBoolean -> viewModel.getAllContacts());
-        viewModel.actualContacts.observe(getViewLifecycleOwner(), contactUsersContacts -> controller.setData(false, viewModel.networkLoading.getValue(),contactUsersContacts));
+        viewModel.actualContacts.observe(getViewLifecycleOwner(), contactUsersContacts -> controller.setData(false,contactUsersContacts));
         viewModel.contactsLoading.observe(getViewLifecycleOwner(), aBoolean ->{
-            controller.setData(aBoolean, viewModel.networkLoading.getValue(), viewModel.actualContacts.getValue());
+            controller.setData(aBoolean, viewModel.actualContacts.getValue());
             if (!aBoolean) {
                 refreshLayout.setRefreshing(false);
             }
         });
-        viewModel.networkLoading.observe(getViewLifecycleOwner(), aBoolean -> controller.setData(viewModel.contactsLoading.getValue(), aBoolean, viewModel.actualContacts.getValue()));
 
         viewModel.getAllContacts();
 

@@ -3,8 +3,8 @@ package com.skybox.seven.covid.network;
 import com.skybox.seven.covid.network.responses.AccessToken;
 import com.skybox.seven.covid.network.responses.ContactRequest;
 import com.skybox.seven.covid.network.responses.GenericResponse;
-import com.skybox.seven.covid.adapters.ContactModel;
-import com.skybox.seven.covid.adapters.ContactRequestModel;
+import com.skybox.seven.covid.model.ContactModel;
+import com.skybox.seven.covid.model.ContactRequestModel;
 
 import java.util.ArrayList;
 

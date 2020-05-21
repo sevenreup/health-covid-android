@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.adapters;
+package com.skybox.seven.covid.model;
 
 import com.google.gson.annotations.SerializedName;
 

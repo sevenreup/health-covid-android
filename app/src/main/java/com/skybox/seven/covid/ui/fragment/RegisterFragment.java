@@ -61,24 +61,28 @@ public class RegisterFragment extends Fragment {
         });
         viewModel.validationErrors.observe(getViewLifecycleOwner(), validationErrors -> {
             ValidationErrors.Errors errors = validationErrors.getErrors();
-            if (errors.getFirstName().size() > 0) {
-                String fName = errors.getFirstName().get(0);
-                ((TextInputLayout)v.findViewById(R.id.firstName)).getEditText().setError(fName);
-            }
+            if (errors.getFirstName() != null)
+                if (errors.getFirstName().size() > 0) {
+                    String fName = errors.getFirstName().get(0);
+                    ((TextInputLayout)v.findViewById(R.id.firstName)).getEditText().setError(fName);
+                }
+            if (errors.getLastName() != null)
+                if (errors.getLastName().size() > 0) {
+                    String lName = errors.getLastName().get(0);
+                    ((TextInputLayout)v.findViewById(R.id.lastName)).getEditText().setError(lName);
+                }
 
-            if (errors.getLastName().size() > 0) {
-                String lName = errors.getLastName().get(0);
-                ((TextInputLayout)v.findViewById(R.id.lastName)).getEditText().setError(lName);
-            }
-            if (errors.getPassword().size() > 0) {
-                String password = errors.getPassword().get(0);
-                ((TextInputLayout)v.findViewById(R.id.userPassword)).getEditText().setError(password);
-            }
+            if (errors.getPassword() != null)
+                if (errors.getPassword().size() > 0) {
+                    String password = errors.getPassword().get(0);
+                    ((TextInputLayout)v.findViewById(R.id.userPassword)).getEditText().setError(password);
+                }
 
-            if (errors.getPhone().size() > 0) {
-                String phone = errors.getPhone().get(0);
-                ((TextInputLayout)v.findViewById(R.id.contactNumber)).getEditText().setError(phone);
-            }
+            if (errors.getPhone() != null)
+                if (errors.getPhone().size() > 0) {
+                    String phone = errors.getPhone().get(0);
+                    ((TextInputLayout)v.findViewById(R.id.contactNumber)).getEditText().setError(phone);
+                }
 
         });
     return v;
