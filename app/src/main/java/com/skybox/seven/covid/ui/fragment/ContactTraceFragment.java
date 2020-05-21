@@ -18,7 +18,7 @@ import com.skybox.seven.covid.util.SpaceItemDecorator;
 import com.skybox.seven.covid.viewmodels.ContactsViewModel;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A view for all the user's contacts {@link Fragment}.
  */
 public class ContactTraceFragment extends Fragment {
 
@@ -42,7 +42,6 @@ public class ContactTraceFragment extends Fragment {
         viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideContactsViewModelFactory(getContext())).get(ContactsViewModel.class);
         controller = new ContactsController();
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.addItemDecoration(new SpaceItemDecorator(20, true, false));
         recyclerView.setController(controller);
 

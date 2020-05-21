@@ -25,7 +25,6 @@ public class ContactEpoxyModel extends EpoxyModelWithHolder<ContactEpoxyModel.Co
     public void bind(@NonNull ContactEpoxyViewHolder holder) {
         super.bind(holder);
         holder.name.setText(contact.getUser().getFName() + " " + contact.getUser().getLName());
-        holder.number.setText(contact.getUser().getPhone());
     }
 
     @Override
@@ -36,12 +35,10 @@ public class ContactEpoxyModel extends EpoxyModelWithHolder<ContactEpoxyModel.Co
     static class ContactEpoxyViewHolder extends EpoxyHolder {
 
         public TextView name;
-        public TextView number;
 
         @Override
         protected void bindView(@NonNull View itemView) {
             this.name = itemView.findViewById(R.id.name);
-            this.number = itemView.findViewById(R.id.number);
         }
     }
 }

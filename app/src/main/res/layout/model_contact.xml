@@ -5,50 +5,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="3dp"
     android:elevation="20dp"
-    android:layout_margin="15dp"
     app:cardUseCompatPadding="true">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
-        android:padding="10dp">
+        android:padding="@dimen/menu_card_margin"
+        android:layout_margin="@dimen/menu_card_margin">
 
-        <TextView
+        <ImageView android:id="@+id/icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/nam"
-            android:text="Name"
-            android:layout_marginRight="5dp"/>
+            app:srcCompat="@drawable/usericon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/nam"
-            android:drawableEnd="@drawable/ic_link"
-            android:text="sadvlhchnk" />
-
-        <TextView
-            android:id="@+id/num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/nam"
-            android:layout_marginTop="18dp"
-            android:layout_marginRight="5dp"
-            android:text="Number:" />
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:text="sadvlhchnk"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/icon"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ContName"
-            android:layout_toRightOf="@+id/num"
-            android:layout_marginTop="12dp"
-            android:drawableEnd="@drawable/phoneicon"
-            android:text="acndkanjbdjkvnsdk" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

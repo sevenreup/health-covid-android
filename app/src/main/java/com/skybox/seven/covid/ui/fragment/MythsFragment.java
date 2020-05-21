@@ -24,7 +24,6 @@ public class MythsFragment extends Fragment {
     List<TipsChips> chips = new ArrayList<>();
 
     public MythsFragment() {
-        // Required empty public constructor
     }
 
 

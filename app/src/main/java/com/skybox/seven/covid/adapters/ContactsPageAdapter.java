@@ -1,41 +1,34 @@
 package com.skybox.seven.covid.adapters;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.lifecycle.Lifecycle;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.skybox.seven.covid.ui.fragment.ContactRequestFragment;
+import com.skybox.seven.covid.ui.fragment.ContactTraceFragment;
 
-public class ContactsPageAdapter extends FragmentStatePagerAdapter{
-    private final List<Fragment> mFragmentList = new ArrayList<>();
-    private final List<String>mFragmentTitleList = new ArrayList<>();
+public class ContactsPageAdapter extends FragmentStateAdapter {
 
-    public ContactsPageAdapter(FragmentManager fm) {
-        super(fm);
+    public ContactsPageAdapter(FragmentManager fm, Lifecycle lifecycle) {
+        super(fm, lifecycle);
     }
 
     @NonNull
     @Override
-    public Fragment getItem(int position) {
-        return mFragmentList.get(position);
+    public Fragment createFragment(int position) {
+        switch (position) {
+            case 0:
+                return new ContactTraceFragment();
+            case 1:
+                return new ContactRequestFragment();
         }
-
-    public void  addFragment(Fragment fragment, String title) {
-        mFragmentList.add(fragment);
-        mFragmentTitleList.add(title);
-    }
-
-    @Nullable
-    @Override
-    public CharSequence getPageTitle(int position){
-        return mFragmentTitleList.get(position);
+        return null;
     }
 
     @Override
-    public int getCount() {
-        return mFragmentList.size();
+    public int getItemCount() {
+        return 2;
     }
 }
