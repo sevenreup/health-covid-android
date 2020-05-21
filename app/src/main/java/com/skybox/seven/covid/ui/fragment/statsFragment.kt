@@ -24,17 +24,24 @@ class statsFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_stats, container, false)
 
+
+
         return view
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         caseData()
         deathsData()
         activeData()
         recoveredData()
         affectedData()
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+
 
     }
 
@@ -44,7 +51,8 @@ class statsFragment : Fragment() {
         val animator: ValueAnimator = ValueAnimator.ofInt(0, 1024)
         animator.duration = elapse
         animator.addUpdateListener(ValueAnimator.AnimatorUpdateListener (){
-            num_affected.text = animator.animatedValue.toString()
+            if (num_affected != null)
+                num_affected.text = animator.animatedValue.toString()
         })
         animator.start()
 
@@ -56,7 +64,8 @@ class statsFragment : Fragment() {
         val animator: ValueAnimator = ValueAnimator.ofInt(0, 3)
         animator.duration = elapse
         animator.addUpdateListener(ValueAnimator.AnimatorUpdateListener (){
-            num_deaths.text = animator.animatedValue.toString()
+            if (num_deaths != null)
+                num_deaths.text = animator.animatedValue.toString()
         })
         animator.start()
 
@@ -68,7 +77,8 @@ class statsFragment : Fragment() {
         val animator: ValueAnimator = ValueAnimator.ofInt(0, 400)
         animator.duration = elapse
         animator.addUpdateListener(ValueAnimator.AnimatorUpdateListener (){
-            num_active.text = animator.animatedValue.toString()
+            if (num_active != null)
+                num_active.text = animator.animatedValue.toString()
         })
         animator.start()
 
@@ -80,7 +90,8 @@ class statsFragment : Fragment() {
         val animator: ValueAnimator = ValueAnimator.ofInt(0, 30)
         animator.duration = elapse
         animator.addUpdateListener(ValueAnimator.AnimatorUpdateListener (){
-            num_recovered.text = animator.animatedValue.toString()
+            if (num_recovered != null)
+             num_recovered.text = animator.animatedValue.toString()
         })
         animator.start()
 
