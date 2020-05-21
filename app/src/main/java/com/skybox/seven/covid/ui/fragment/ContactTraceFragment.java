@@ -48,14 +48,13 @@ public class ContactTraceFragment extends Fragment {
         refreshLayout.setOnRefreshListener(() -> viewModel.getAllContacts());
 
         viewModel.contactsRefresh.observe(getActivity(), aBoolean -> viewModel.getAllContacts());
-        viewModel.actualContacts.observe(getViewLifecycleOwner(), contactUsersContacts -> controller.setData(false, viewModel.networkLoading.getValue(),contactUsersContacts));
+        viewModel.actualContacts.observe(getViewLifecycleOwner(), contactUsersContacts -> controller.setData(false,contactUsersContacts));
         viewModel.contactsLoading.observe(getViewLifecycleOwner(), aBoolean ->{
-            controller.setData(aBoolean, viewModel.networkLoading.getValue(), viewModel.actualContacts.getValue());
+            controller.setData(aBoolean, viewModel.actualContacts.getValue());
             if (!aBoolean) {
                 refreshLayout.setRefreshing(false);
             }
         });
-        viewModel.networkLoading.observe(getViewLifecycleOwner(), aBoolean -> controller.setData(viewModel.contactsLoading.getValue(), aBoolean, viewModel.actualContacts.getValue()));
 
         viewModel.getAllContacts();
 

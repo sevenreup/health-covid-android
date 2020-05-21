@@ -3,8 +3,8 @@ package com.skybox.seven.covid.viewmodels;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.skybox.seven.covid.adapters.ContactModel;
-import com.skybox.seven.covid.adapters.ContactRequestModel;
+import com.skybox.seven.covid.model.ContactModel;
+import com.skybox.seven.covid.model.ContactRequestModel;
 import com.skybox.seven.covid.network.RetrofitFactory;
 import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.network.responses.AccessToken;

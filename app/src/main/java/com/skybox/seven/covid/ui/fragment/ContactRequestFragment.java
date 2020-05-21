@@ -13,19 +13,17 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.adapters.ContactRequestAdapter;
+import com.skybox.seven.covid.epoxy.contacts.ContactsRequestController;
 import com.skybox.seven.covid.util.InjectorUtil;
 import com.skybox.seven.covid.viewmodels.ContactsViewModel;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ContactRequestFragment extends Fragment implements ContactRequestAdapter.ContactsCallBAck {
+public class ContactRequestFragment extends Fragment implements ContactsRequestController.ContactsCallBack {
 
     private EpoxyRecyclerView recyclerView;
-    private ContactRequestAdapter contactRequestAdapter;
+    ContactsRequestController controller;
     ContactsViewModel viewModel;
     private SwipeRefreshLayout refreshLayout;
 
@@ -41,14 +39,18 @@ public class ContactRequestFragment extends Fragment implements ContactRequestAd
         refreshLayout = v.findViewById(R.id.generic_swipe_view);
 
         viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideContactsViewModelFactory(getContext())).get(ContactsViewModel.class);
+        controller = new ContactsRequestController(this);
 
-        contactRequestAdapter = new ContactRequestAdapter(getContext(), new ArrayList<>(), this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(contactRequestAdapter);
+        recyclerView.setController(controller);
 
-        viewModel.pendingContacts.observe(getViewLifecycleOwner(), pendingContacts -> contactRequestAdapter.setData(pendingContacts));
+        refreshLayout.setOnRefreshListener(() -> viewModel.generatePendingContactList());
+
+        viewModel.contactsRefresh.observe(getActivity(), aBoolean -> viewModel.getAllContacts());
+        viewModel.pendingContacts.observe(getViewLifecycleOwner(), pendingContacts -> controller.setData(false,pendingContacts));
         viewModel.contactsLoading.observe(getViewLifecycleOwner(), aBoolean ->{
+            controller.setData(aBoolean, viewModel.pendingContacts.getValue());
             if (!aBoolean) {
                 refreshLayout.setRefreshing(false);
             }

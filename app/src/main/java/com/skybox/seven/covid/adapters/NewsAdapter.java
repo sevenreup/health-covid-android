@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.skybox.seven.covid.R;
+import com.skybox.seven.covid.model.ContactModel;
 import com.skybox.seven.covid.model.NewsArticle;
 
 import java.util.ArrayList;

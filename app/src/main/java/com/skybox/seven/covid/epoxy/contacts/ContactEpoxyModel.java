@@ -10,7 +10,7 @@ import com.airbnb.epoxy.EpoxyHolder;
 import com.airbnb.epoxy.EpoxyModelClass;
 import com.airbnb.epoxy.EpoxyModelWithHolder;
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.adapters.ContactModel;
+import com.skybox.seven.covid.model.ContactModel;
 
 @EpoxyModelClass(layout = R.layout.model_contact)
 public class ContactEpoxyModel extends EpoxyModelWithHolder<ContactEpoxyModel.ContactEpoxyViewHolder> {

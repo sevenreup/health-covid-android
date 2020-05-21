@@ -1,18 +1,18 @@
 package com.skybox.seven.covid.epoxy.contacts;
 
 import com.airbnb.epoxy.AutoModel;
-import com.airbnb.epoxy.Typed3EpoxyController;
-import com.skybox.seven.covid.adapters.ContactModel;
+import com.airbnb.epoxy.Typed2EpoxyController;
 import com.skybox.seven.covid.epoxy.generic.ListLoadingModel_;
+import com.skybox.seven.covid.model.ContactModel;
 
 import java.util.List;
 
-public class ContactsController extends Typed3EpoxyController<Boolean, Boolean,List<ContactModel.ContactUsersContacts>> {
+public class ContactsController extends Typed2EpoxyController<Boolean,List<ContactModel.ContactUsersContacts>> {
     @AutoModel
     ListLoadingModel_ loadingModel_;
 
     @Override
-    protected void buildModels(Boolean loading, Boolean network,List<ContactModel.ContactUsersContacts> contacts) {
+    protected void buildModels(Boolean loading,List<ContactModel.ContactUsersContacts> contacts) {
         loadingModel_.addIf(loading, this);
         for (ContactModel.ContactUsersContacts contact: contacts) {
             new ContactEpoxyModel_().id(contact.getUser().getPhone()).contact(contact).addTo(this);
