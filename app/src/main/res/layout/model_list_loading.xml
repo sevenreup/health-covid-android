@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
-    <RelativeLayout
+    android:layout_height="wrap_content">
+    <ProgressBar
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/menu_card_margin">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="loading..."/>
-    </RelativeLayout>
-</com.google.android.material.card.MaterialCardView>
+        android:indeterminate="true"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>
