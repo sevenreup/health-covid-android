@@ -40,7 +40,7 @@ public class AuthViewModel extends AndroidViewModel {
     public AuthViewModel(Application application) {
         super(application);
         preferenceRepository = new SharedPreferenceRepository(application.getSharedPreferences(application.getString(R.string.shared_preference_key), Context.MODE_PRIVATE));
-        retrofit = RetrofitFactory.getRetrofit(preferenceRepository);
+        retrofit = RetrofitFactory.getRetrofit(application);
     }
 
     public void login(String phone, String password) {

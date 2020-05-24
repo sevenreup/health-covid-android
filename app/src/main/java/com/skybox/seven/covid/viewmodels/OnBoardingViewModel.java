@@ -27,7 +27,7 @@ public class OnBoardingViewModel extends AndroidViewModel {
     public OnBoardingViewModel(Application application) {
         super(application);
         preferenceRepository = new SharedPreferenceRepository(application.getSharedPreferences(application.getString(R.string.shared_preference_key), Context.MODE_PRIVATE));
-        retrofit = RetrofitFactory.getRetrofit(preferenceRepository);
+        retrofit = RetrofitFactory.getRetrofit(application);
     }
 
     public void setOnBoardingInfo (boolean value) {

@@ -1,13 +1,21 @@
 package com.skybox.seven.covid.network;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.skybox.seven.covid.network.responses.AccessToken;
 import com.skybox.seven.covid.repository.SharedPreferenceRepository;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Authenticator;
+import okhttp3.Cache;
+import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -28,25 +36,79 @@ public class RetrofitFactory {
     private RetrofitFactory() {
     }
 
-    public static Retrofit getRetrofit(SharedPreferenceRepository repository) {
+    /**
+     * This returns the base Retrofit Client for the app server
+     * @param context
+     * @return Retrofit
+     */
+    public static Retrofit getRetrofit(Context context) {
 
         if (retrofit == null) {
-            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-            OkHttpClient client = new OkHttpClient().newBuilder()
-//                    .authenticator(new TokenAuthenticator(repository))
-                    .addInterceptor(loggingInterceptor)
-                    .addInterceptor(chain -> {
-                         Request.Builder builder = chain.request().newBuilder();
-//                         builder.addHeader("Accept", "application/json");
-                        return chain.proceed(builder.build());
-                    }).build();
-
             Gson gson = new GsonBuilder().setLenient().create();
-            retrofit = new Retrofit.Builder().client(client).baseUrl("https://rocky-forest-46591.herokuapp.com/api/").addConverterFactory(GsonConverterFactory.create(gson)).build();
+            retrofit = new Retrofit.Builder().client(buildOkHttpClient(context)).baseUrl("https://rocky-forest-46591.herokuapp.com/api/").addConverterFactory(GsonConverterFactory.create(gson)).build();
         }
         return retrofit;
+    }
+    /**
+     *  Added a bunch of Caching Interceptors Because don't have caching enabled on the server
+     *  Todo: Make sure the Server has caching enabled and whatnot
+     *  Todo: Remove other forcefully caching interceptors and just leave the normal on (OkHttpClient.cache())
+     * @return OkHttpClient
+     */
+    private static OkHttpClient buildOkHttpClient(Context context) {
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        File httpCacheDir = new File(context.getCacheDir(), "offlineCache");
+        Cache cache = new Cache(httpCacheDir, 10 * 1024 * 1024);
+
+        return new OkHttpClient()
+                .newBuilder()
+                .cache(cache)
+                .addInterceptor(loggingInterceptor)
+                .addNetworkInterceptor(provideCacheInterceptor())
+                .addNetworkInterceptor(provideOfflineCacheInterceptor())
+                .build();
+    }
+
+    /**
+     * This Interceptor adds all the required caching headers to the response to enable caching
+     * This only does that if the server does not support caching
+     * @return Interceptor
+     */
+    private static Interceptor provideCacheInterceptor() {
+        return chain -> {
+            Request request = chain.request();
+            Response originalResponse = chain.proceed(request);
+            String cacheControl = originalResponse.header("Cache-Control");
+            if (cacheControl == null || cacheControl.contains("no-store") || cacheControl.contains("no-cache") || cacheControl.contains("must-revalidate") || cacheControl.contains("max-stale=0"))
+            {
+                CacheControl cc = new CacheControl.Builder().maxStale(1, TimeUnit.DAYS).build();
+                request = request.newBuilder().cacheControl(cc).build();
+                return chain.proceed(request);
+            } else {
+                return originalResponse;
+            }
+        };
+    }
+
+    /**
+     * This interceptor retries the request with a header to get cache response header
+     * @return Interceptor
+     */
+    private static Interceptor provideOfflineCacheInterceptor() {
+        return chain -> {
+            try {
+                return chain.proceed(chain.request());
+            } catch (Exception e) {
+                CacheControl cacheControl = new CacheControl.Builder()
+                        .onlyIfCached()
+                        .maxStale(1, TimeUnit.DAYS)
+                        .build();
+                Request offlineRequest = chain.request().newBuilder().cacheControl(cacheControl).build();
+                return chain.proceed(offlineRequest);
+            }
+        };
     }
 
     static class TokenAuthenticator implements Authenticator {

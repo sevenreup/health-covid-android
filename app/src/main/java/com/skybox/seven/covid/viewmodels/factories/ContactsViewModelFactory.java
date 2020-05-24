@@ -20,6 +20,6 @@ public class ContactsViewModelFactory implements ViewModelProvider.Factory {
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new ContactsViewModel(new SharedPreferenceRepository(context.getSharedPreferences(context.getString(R.string.shared_preference_key), Context.MODE_PRIVATE)));
+        return (T) new ContactsViewModel(context);
     }
 }

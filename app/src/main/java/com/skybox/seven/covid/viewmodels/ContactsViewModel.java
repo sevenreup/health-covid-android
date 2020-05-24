@@ -1,8 +1,11 @@
 package com.skybox.seven.covid.viewmodels;
 
+import android.content.Context;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.ContactModel;
 import com.skybox.seven.covid.model.ContactRequestModel;
 import com.skybox.seven.covid.network.RetrofitFactory;
@@ -28,9 +31,9 @@ public class ContactsViewModel extends ViewModel {
     public MutableLiveData<Boolean> contactsLoading = new MutableLiveData<>();
     public MutableLiveData<Boolean> networkLoading = new MutableLiveData<>(false);
 
-    public ContactsViewModel(SharedPreferenceRepository preferenceRepository) {
-        this.preferenceRepository = preferenceRepository;
-        retrofit = RetrofitFactory.getRetrofit(preferenceRepository);
+    public ContactsViewModel(Context context) {
+        this.preferenceRepository = new SharedPreferenceRepository(context.getSharedPreferences(context.getString(R.string.shared_preference_key), Context.MODE_PRIVATE));
+        retrofit = RetrofitFactory.getRetrofit(context);
     }
 
     public String getToken() {

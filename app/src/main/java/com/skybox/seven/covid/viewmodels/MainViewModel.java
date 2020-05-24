@@ -39,10 +39,10 @@ public class MainViewModel extends ViewModel {
 
     private Retrofit retrofit;
 
-    public MainViewModel(SharedPreferenceRepository preferenceRepository) {
+    public MainViewModel(Context context) {
         super();
-        this.preferenceRepository = preferenceRepository;
-        retrofit = RetrofitFactory.getRetrofit(preferenceRepository);
+        this.preferenceRepository = new SharedPreferenceRepository(context.getSharedPreferences(context.getString(R.string.shared_preference_key), Context.MODE_PRIVATE));
+        retrofit = RetrofitFactory.getRetrofit(context);
     }
 
     public void logout() {

@@ -69,7 +69,7 @@ public class HealthFireMessagingService extends com.google.firebase.messaging.Fi
         repository.setFirebaseMessagingToken(message);
         AccessToken token = repository.getToken();
         if (token.getToken() != null) {
-            Retrofit retrofit = RetrofitFactory.getRetrofit(repository);
+            Retrofit retrofit = RetrofitFactory.getRetrofit(getApplicationContext());
             RetrofitService service = retrofit.create(RetrofitService.class);
             Call<GenericResponse> call = service.pushToken(token.getType() + " " + token.getToken(), message);
             call.enqueue(new Callback<GenericResponse>() {
