@@ -7,8 +7,6 @@ import com.google.gson.GsonBuilder;
 import com.skybox.seven.covid.network.responses.AccessToken;
 import com.skybox.seven.covid.repository.SharedPreferenceRepository;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -17,16 +15,11 @@ import okhttp3.Authenticator;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.Route;
 import okhttp3.logging.HttpLoggingInterceptor;
-import okio.BufferedSink;
-import okio.GzipSink;
-import okio.Okio;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -66,29 +59,24 @@ public class RetrofitFactory {
                 .newBuilder()
                 .cache(cache)
                 .addInterceptor(loggingInterceptor)
-                .addNetworkInterceptor(provideCacheInterceptor())
+                .addNetworkInterceptor(provideOnlineInterceptor())
                 .addNetworkInterceptor(provideOfflineCacheInterceptor())
                 .build();
     }
 
     /**
-     * This Interceptor adds all the required caching headers to the response to enable caching
+     * This Interceptor adds all the required caching headers to the response to enable caching when online
      * This only does that if the server does not support caching
      * @return Interceptor
      */
-    private static Interceptor provideCacheInterceptor() {
+    public static Interceptor provideOnlineInterceptor() {
         return chain -> {
-            Request request = chain.request();
-            Response originalResponse = chain.proceed(request);
-            String cacheControl = originalResponse.header("Cache-Control");
-            if (cacheControl == null || cacheControl.contains("no-store") || cacheControl.contains("no-cache") || cacheControl.contains("must-revalidate") || cacheControl.contains("max-stale=0"))
-            {
-                CacheControl cc = new CacheControl.Builder().maxStale(1, TimeUnit.DAYS).build();
-                request = request.newBuilder().cacheControl(cc).build();
-                return chain.proceed(request);
-            } else {
-                return originalResponse;
-            }
+            Response response = chain.proceed(chain.request());
+            int maxAge = 60;
+            return response.newBuilder()
+                    .header("Cache-Control", "public, max-age=" + maxAge)
+                    .removeHeader("Pragma")
+                    .build();
         };
     }
 
@@ -96,21 +84,26 @@ public class RetrofitFactory {
      * This interceptor retries the request with a header to get cache response header
      * @return Interceptor
      */
-    private static Interceptor provideOfflineCacheInterceptor() {
+    public static Interceptor provideOfflineCacheInterceptor() {
         return chain -> {
-            try {
-                return chain.proceed(chain.request());
-            } catch (Exception e) {
+            Request request = chain.request();
+            if (!checkInternet()) {
                 CacheControl cacheControl = new CacheControl.Builder()
                         .onlyIfCached()
                         .maxStale(1, TimeUnit.DAYS)
                         .build();
-                Request offlineRequest = chain.request().newBuilder().cacheControl(cacheControl).build();
-                return chain.proceed(offlineRequest);
+                request = request.newBuilder()
+                        .cacheControl(cacheControl)
+                        .removeHeader("Pragma")
+                        .build();
             }
+            return chain.proceed(request);
         };
     }
 
+    static Boolean checkInternet() {
+        return true;
+    }
     static class TokenAuthenticator implements Authenticator {
         SharedPreferenceRepository repository;
 
