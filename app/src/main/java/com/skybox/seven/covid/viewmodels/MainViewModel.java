@@ -1,19 +1,14 @@
-package com.skybox.seven.covid.ui.main;
+package com.skybox.seven.covid.viewmodels;
 
-import android.app.Application;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.data.entities.Language;
-import com.skybox.seven.covid.data.repositories.LanguageRepository;
-import com.skybox.seven.covid.network.RetrofitFactory;
-import com.skybox.seven.covid.network.RetrofitService;
+import com.skybox.seven.covid.network.HealthService;
 import com.skybox.seven.covid.network.responses.AccessToken;
 import com.skybox.seven.covid.network.responses.ContactRequest;
 import com.skybox.seven.covid.network.responses.GenericResponse;
@@ -21,13 +16,11 @@ import com.skybox.seven.covid.repository.SharedPreferenceRepository;
 import com.skybox.seven.covid.util.Constants;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class MainViewModel extends ViewModel {
     private String TAG = "MAINVIEWMODEL";
@@ -37,12 +30,13 @@ public class MainViewModel extends ViewModel {
 
     public MutableLiveData<Locale> changeLanguage = new MutableLiveData<>();
 
-    private Retrofit retrofit;
+    private HealthService service;
 
-    public MainViewModel(Context context) {
+    @ViewModelInject
+    public MainViewModel(SharedPreferenceRepository sharedPreferenceRepository, HealthService service) {
         super();
-        this.preferenceRepository = new SharedPreferenceRepository(context.getSharedPreferences(context.getString(R.string.shared_preference_key), Context.MODE_PRIVATE));
-        retrofit = RetrofitFactory.getRetrofit(context);
+        this.preferenceRepository = sharedPreferenceRepository;
+        this.service = service;
     }
 
     public void logout() {
@@ -56,7 +50,6 @@ public class MainViewModel extends ViewModel {
     }
 
     public void saveContacts(ArrayList<ContactRequest> members, LatLng userLocation) {
-        RetrofitService service = retrofit.create(RetrofitService.class);
         service.saveContacts(getToken(), members).enqueue(new Callback<GenericResponse>() {
             @Override
             public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {

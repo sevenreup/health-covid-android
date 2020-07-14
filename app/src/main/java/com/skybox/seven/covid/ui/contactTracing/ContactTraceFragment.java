@@ -12,12 +12,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.contacts.ContactsController;
-import com.skybox.seven.covid.util.InjectorUtil;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
+import com.skybox.seven.covid.viewmodels.ContactsViewModel;
 
-/**
- * A view for all the user's contacts {@link Fragment}.
- */
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class ContactTraceFragment extends Fragment {
 
     private ContactsController controller;
@@ -37,7 +37,7 @@ public class ContactTraceFragment extends Fragment {
         EpoxyRecyclerView recyclerView = v.findViewById(R.id.generic_recycler_id);
         refreshLayout = v.findViewById(R.id.generic_swipe_view);
 
-        viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideContactsViewModelFactory(getContext())).get(ContactsViewModel.class);
+        viewModel = new ViewModelProvider(getActivity()).get(ContactsViewModel.class);
         controller = new ContactsController();
 
         recyclerView.addItemDecoration(new SpaceItemDecorator(20, true, false));

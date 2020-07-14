@@ -15,12 +15,12 @@ import com.skybox.seven.covid.data.entities.Advice;
 import com.skybox.seven.covid.epoxy.health.HealthController;
 import com.skybox.seven.covid.model.TipsChips;
 import com.skybox.seven.covid.ui.common.ImageViewerFragment;
-import com.skybox.seven.covid.util.InjectorUtil;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
+import com.skybox.seven.covid.viewmodels.AdviceViewModel;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class AdvicePagerFragment extends Fragment {
     private EpoxyRecyclerView recyclerView;
     private TipsChips currentChip;
@@ -40,7 +40,7 @@ public class AdvicePagerFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tips_pager, container, false);
 
-        AdviceViewModel viewModel = new ViewModelProvider(getViewModelStore(), InjectorUtil.provideAdviceViewModelFactory(getContext())).get(AdviceViewModel.class);
+        AdviceViewModel viewModel = new ViewModelProvider(getActivity()).get(AdviceViewModel.class);
 
         imageViewerFragment = new ImageViewerFragment(viewModel.activeInfoGraphic);
 

@@ -16,6 +16,7 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.location.LocationReceiver;
 import com.skybox.seven.covid.location.LocationRepository;
+import com.skybox.seven.covid.viewmodels.LocationViewModel;
 
 public class RadarTestActivity extends LocalizationActivity {
     private LocationReceiver locationReceiver;

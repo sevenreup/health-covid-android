@@ -1,5 +1,6 @@
-package com.skybox.seven.covid.ui.myth;
+package com.skybox.seven.covid.viewmodels;
 
+import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -20,6 +21,7 @@ public class MythViewModel extends ViewModel {
     private InfoGraphicRepository infographicRepository;
     public MutableLiveData<String> activeInfoGraphic = new MutableLiveData<>();
 
+    @ViewModelInject
     public MythViewModel(MythRepository mythRepository, InfoGraphicRepository infographicRepository, SharedPreferenceRepository repository) {
         this.mythRepository = mythRepository;
         this.repository = repository;

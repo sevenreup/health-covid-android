@@ -18,11 +18,14 @@ import com.skybox.seven.covid.data.entities.Myth;
 import com.skybox.seven.covid.epoxy.myth.MythController;
 import com.skybox.seven.covid.model.TipsChips;
 import com.skybox.seven.covid.ui.common.ImageViewerFragment;
-import com.skybox.seven.covid.util.InjectorUtil;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
+import com.skybox.seven.covid.viewmodels.MythViewModel;
 
 import java.util.ArrayList;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class MythTipsPagerFragment extends Fragment {
     private MythViewModel viewModel;
     private TipsChips tipsChips;
@@ -42,7 +45,7 @@ public class MythTipsPagerFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_tips_pager, container, false);
-        viewModel = new ViewModelProvider(getViewModelStore(), InjectorUtil.provideMythViewModelFactory(getContext())).get(MythViewModel.class);
+        viewModel = new ViewModelProvider(getActivity()).get(MythViewModel.class);
         imageViewerFragment = new ImageViewerFragment(viewModel.activeInfoGraphic);
 
         recyclerView = v.findViewById(R.id.tips_recycler);

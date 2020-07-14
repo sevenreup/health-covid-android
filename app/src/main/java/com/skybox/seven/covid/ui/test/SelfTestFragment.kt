@@ -14,14 +14,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.adapters.SelfTestAdapter
 import com.skybox.seven.covid.data.entities.SelfTestResult
-import com.skybox.seven.covid.util.InjectorUtil
+import com.skybox.seven.covid.viewmodels.SelfTestViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.selftest.*
 
+@AndroidEntryPoint
 class SelfTestFragment: Fragment(), SelfTestAdapter.SelfTestAdapterCallback {
 
-    private val viewModel: SelfTestViewModel by viewModels {
-        InjectorUtil.provideSelfTestViewModelFactory(requireContext())
-    }
+    private val viewModel: SelfTestViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.selftest, container, false)

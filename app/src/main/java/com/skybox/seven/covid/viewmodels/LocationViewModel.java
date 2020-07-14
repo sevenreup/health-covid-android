@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.common;
+package com.skybox.seven.covid.viewmodels;
 
 import android.app.Application;
 import android.util.Log;

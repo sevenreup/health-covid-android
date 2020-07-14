@@ -13,8 +13,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+import dagger.hilt.android.HiltAndroidApp;
 import io.radar.sdk.Radar;
 
+@HiltAndroidApp
 public class Covid extends Application {
     private LocalizationApplicationDelegate localizationApplicationDelegate = new LocalizationApplicationDelegate();
     public static final List<Language> SUPPORTED_LOCALES =

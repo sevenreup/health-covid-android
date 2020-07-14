@@ -1,15 +1,12 @@
-package com.skybox.seven.covid.ui.contactTracing;
+package com.skybox.seven.covid.viewmodels;
 
-import android.content.Context;
-
+import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.model.ContactModel;
 import com.skybox.seven.covid.model.ContactRequestModel;
-import com.skybox.seven.covid.network.RetrofitFactory;
-import com.skybox.seven.covid.network.RetrofitService;
+import com.skybox.seven.covid.network.HealthService;
 import com.skybox.seven.covid.network.responses.AccessToken;
 import com.skybox.seven.covid.network.responses.GenericResponse;
 import com.skybox.seven.covid.repository.SharedPreferenceRepository;
@@ -20,20 +17,20 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class ContactsViewModel extends ViewModel {
     private SharedPreferenceRepository preferenceRepository;
     public MutableLiveData<Boolean> contactsRefresh = new MutableLiveData<>();
-    private Retrofit retrofit;
+    private HealthService service;
     public MutableLiveData<List<ContactModel.ContactUsersContacts>> actualContacts = new MutableLiveData<>(new ArrayList<>());
     public MutableLiveData<List<ContactRequestModel.PendingContacts>> pendingContacts = new MutableLiveData<>(new ArrayList<>());
     public MutableLiveData<Boolean> contactsLoading = new MutableLiveData<>();
     public MutableLiveData<Boolean> networkLoading = new MutableLiveData<>(false);
 
-    public ContactsViewModel(Context context) {
-        this.preferenceRepository = new SharedPreferenceRepository(context.getSharedPreferences(context.getString(R.string.shared_preference_key), Context.MODE_PRIVATE));
-        retrofit = RetrofitFactory.getRetrofit(context);
+    @ViewModelInject
+    public ContactsViewModel(SharedPreferenceRepository sharedPreferenceRepository, HealthService service) {
+        this.preferenceRepository = sharedPreferenceRepository;
+        this.service = service;
     }
 
     public String getToken() {
@@ -47,7 +44,6 @@ public class ContactsViewModel extends ViewModel {
     public void getAllContacts() {
         contactsLoading.setValue(true);
         networkLoading.setValue(false);
-        RetrofitService service = retrofit.create(RetrofitService.class);
         Call<ArrayList<ContactModel.ContactUsersContacts>> call = service.getAllContacts(getToken());
 
         call.enqueue(new Callback<ArrayList<ContactModel.ContactUsersContacts>>() {
@@ -69,7 +65,6 @@ public class ContactsViewModel extends ViewModel {
     public void generatePendingContactList() {
         contactsLoading.setValue(true);
         networkLoading.setValue(false);
-        RetrofitService service = retrofit.create(RetrofitService.class);
         Call<ArrayList<ContactRequestModel.PendingContacts>> call = service.getPendingContacts(getToken());
 
         call.enqueue(new Callback<ArrayList<ContactRequestModel.PendingContacts>>() {
@@ -90,7 +85,6 @@ public class ContactsViewModel extends ViewModel {
 
     public void acceptContact(int id, int position) {
         networkLoading.setValue(false);
-        RetrofitService service = retrofit.create(RetrofitService.class);
         Call<GenericResponse> call = service.verifyContact(getToken(), id, "accepted");
         call.enqueue(new Callback<GenericResponse>() {
             @Override
@@ -109,7 +103,6 @@ public class ContactsViewModel extends ViewModel {
 
     public void rejectContact(int id, int position) {
         networkLoading.setValue(false);
-        RetrofitService service = retrofit.create(RetrofitService.class);
         Call<GenericResponse> call = service.verifyContact(getToken(), id, "rejected");
         call.enqueue(new Callback<GenericResponse>() {
             @Override

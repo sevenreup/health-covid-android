@@ -17,14 +17,13 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.settings.SettingsController;
 import com.skybox.seven.covid.ui.auth.AuthActivity;
+import com.skybox.seven.covid.viewmodels.MainViewModel;
 import com.skybox.seven.covid.util.Constants;
-import com.skybox.seven.covid.util.InjectorUtil;
-import com.skybox.seven.covid.ui.main.MainViewModel;
+
+import dagger.hilt.android.AndroidEntryPoint;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
+@AndroidEntryPoint
 public class SettingsFragment extends Fragment implements SettingsController.SettingsCallback {
     private EpoxyRecyclerView recyclerView;
     private MainViewModel viewModel;
@@ -42,7 +41,7 @@ public class SettingsFragment extends Fragment implements SettingsController.Set
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideHomeViewModelFactory(getContext())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
 
         recyclerView = v.findViewById(R.id.settings_recycler);
 

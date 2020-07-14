@@ -1,5 +1,6 @@
-package com.skybox.seven.covid.ui.advice;
+package com.skybox.seven.covid.viewmodels;
 
+import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -22,6 +23,7 @@ public class AdviceViewModel extends ViewModel {
     private SharedPreferenceRepository sharedPreferenceRepository;
     private InfoGraphicRepository infoGraphicRepository;
 
+    @ViewModelInject
     public AdviceViewModel(AdviceRepository adviceRepository, InfoGraphicRepository infographicRepository, SharedPreferenceRepository repository) {
         this.adviceRepository = adviceRepository;
         this.sharedPreferenceRepository = repository;

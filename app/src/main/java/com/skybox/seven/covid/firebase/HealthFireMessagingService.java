@@ -16,7 +16,7 @@ import androidx.core.app.NotificationCompat;
 import com.google.firebase.messaging.RemoteMessage;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.network.RetrofitFactory;
-import com.skybox.seven.covid.network.RetrofitService;
+import com.skybox.seven.covid.network.HealthService;
 import com.skybox.seven.covid.network.responses.AccessToken;
 import com.skybox.seven.covid.network.responses.GenericResponse;
 import com.skybox.seven.covid.repository.SharedPreferenceRepository;
@@ -70,7 +70,7 @@ public class HealthFireMessagingService extends com.google.firebase.messaging.Fi
         AccessToken token = repository.getToken();
         if (token.getToken() != null) {
             Retrofit retrofit = RetrofitFactory.getRetrofit(getApplicationContext());
-            RetrofitService service = retrofit.create(RetrofitService.class);
+            HealthService service = retrofit.create(HealthService.class);
             Call<GenericResponse> call = service.pushToken(token.getType() + " " + token.getToken(), message);
             call.enqueue(new Callback<GenericResponse>() {
                 @Override

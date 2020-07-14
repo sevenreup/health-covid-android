@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.test;
+package com.skybox.seven.covid.viewmodels;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;

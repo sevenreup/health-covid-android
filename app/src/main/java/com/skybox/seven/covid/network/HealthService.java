@@ -17,7 +17,7 @@ import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
-public interface RetrofitService {
+public interface HealthService {
     @Headers({"Accept: application/json"})
     @FormUrlEncoded
     @POST("auth/login")

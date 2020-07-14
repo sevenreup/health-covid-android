@@ -18,8 +18,11 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.repository.SharedPreferenceRepository;
-import com.skybox.seven.covid.util.InjectorUtil;
+import com.skybox.seven.covid.viewmodels.MainViewModel;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class HomeActivity extends LocalizationActivity {
 
     public static final String NAME_MESSAGE = "userName";
@@ -35,7 +38,7 @@ public class HomeActivity extends LocalizationActivity {
 
         setContentView(R.layout.activity_home);
 
-        viewModel = new ViewModelProvider(this, InjectorUtil.provideHomeViewModelFactory(getBaseContext())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create   channel to show notifications.

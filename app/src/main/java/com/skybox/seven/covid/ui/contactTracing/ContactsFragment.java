@@ -16,11 +16,11 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.adapters.ContactsPageAdapter;
-import com.skybox.seven.covid.util.InjectorUtil;
+import com.skybox.seven.covid.viewmodels.ContactsViewModel;
 
-/**
- * A View that holds all the contact pager {@link Fragment}.
- */
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class ContactsFragment extends Fragment {
     ContactsViewModel viewModel;
 
@@ -38,7 +38,7 @@ public class ContactsFragment extends Fragment {
         FloatingActionButton addContButton = v.findViewById(R.id.addContButton);
         MaterialCardView cardView = v.findViewById(R.id.error_holder);
 
-        viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideContactsViewModelFactory(getContext())).get(ContactsViewModel.class);
+        viewModel = new ViewModelProvider(getActivity()).get(ContactsViewModel.class);
         viewModel.networkLoading.observe(getActivity(), aBoolean -> {
             if (aBoolean) {
                 cardView.setVisibility(View.VISIBLE);

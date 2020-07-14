@@ -19,8 +19,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.network.responses.ContactRequest;
 import com.skybox.seven.covid.ui.common.LocationActivity;
-import com.skybox.seven.covid.util.InjectorUtil;
-import com.skybox.seven.covid.ui.main.MainViewModel;
+import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
 
@@ -44,7 +43,7 @@ public class ContactCreateFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_contact_create, container, false);
-        viewModel = new ViewModelProvider(getViewModelStore(), InjectorUtil.provideHomeViewModelFactory(getContext())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
         membersView = v.findViewById(R.id.membersParent);
         RelativeLayout addPersonView = v.findViewById(R.id.addPerson);
         RelativeLayout addLocView = v.findViewById(R.id.addLocation);

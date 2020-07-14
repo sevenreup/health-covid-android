@@ -16,6 +16,7 @@ import com.skybox.seven.covid.adapters.OnBoardingAdapter;
 import com.skybox.seven.covid.ui.auth.AuthActivity;
 import com.skybox.seven.covid.ui.main.HomeActivity;
 import com.skybox.seven.covid.util.OnBoardingPageTransformer;
+import com.skybox.seven.covid.viewmodels.OnBoardingViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

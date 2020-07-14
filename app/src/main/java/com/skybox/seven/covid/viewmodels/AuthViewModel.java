@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.auth;
+package com.skybox.seven.covid.viewmodels;
 
 import android.app.Application;
 import android.content.Context;
@@ -11,7 +11,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.network.RetrofitFactory;
-import com.skybox.seven.covid.network.RetrofitService;
+import com.skybox.seven.covid.network.HealthService;
 import com.skybox.seven.covid.network.responses.AccessToken;
 import com.skybox.seven.covid.network.responses.GenericResponse;
 import com.skybox.seven.covid.network.responses.ValidationErrors;
@@ -46,8 +46,8 @@ public class AuthViewModel extends AndroidViewModel {
     public void login(String phone, String password) {
         Log.e(TAG, "login: started");
         loading.setValue(true);
-        RetrofitService retrofitService = retrofit.create(RetrofitService.class);
-        Call<AccessToken> call = retrofitService.loginUser(phone, password);
+        HealthService healthService = retrofit.create(HealthService.class);
+        Call<AccessToken> call = healthService.loginUser(phone, password);
         call.enqueue(new Callback<AccessToken>() {
             @Override
             public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
@@ -59,7 +59,7 @@ public class AuthViewModel extends AndroidViewModel {
                     preferenceRepository.setToken(user);
                     String fireToken = preferenceRepository.getFirebaseToken();
                     if (fireToken != null) {
-                        Call<GenericResponse> fToken = retrofitService.pushToken(user.getType() + " " + user.getToken(), fireToken);
+                        Call<GenericResponse> fToken = healthService.pushToken(user.getType() + " " + user.getToken(), fireToken);
                         fToken.enqueue(new Callback<GenericResponse>() {
                             @Override
                             public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
@@ -76,7 +76,7 @@ public class AuthViewModel extends AndroidViewModel {
                             if (task.isSuccessful()) {
                                 String newToken = task.getResult().getToken();
                                 preferenceRepository.setFirebaseMessagingToken(newToken);
-                                Call<GenericResponse> fToken = retrofitService.pushToken(user.getType() + " " + user.getToken(), newToken);
+                                Call<GenericResponse> fToken = healthService.pushToken(user.getType() + " " + user.getToken(), newToken);
                                 fToken.enqueue(new Callback<GenericResponse>() {
                                     @Override
                                     public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
@@ -120,8 +120,8 @@ public class AuthViewModel extends AndroidViewModel {
 
     public void register(String fname, String lname, String number, String gender) {
         loading.setValue(true);
-        RetrofitService retrofitService = retrofit.create(RetrofitService.class);
-        Call<GenericResponse> call = retrofitService.register(fname, lname, number, gender);
+        HealthService healthService = retrofit.create(HealthService.class);
+        Call<GenericResponse> call = healthService.register(fname, lname, number, gender);
         call.enqueue(new Callback<GenericResponse>() {
             @Override
             public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {

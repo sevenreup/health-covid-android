@@ -16,16 +16,15 @@ import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.main.MainController;
 import com.skybox.seven.covid.model.MenuItem;
 import com.skybox.seven.covid.ui.auth.AuthActivity;
-import com.skybox.seven.covid.util.InjectorUtil;
-import com.skybox.seven.covid.ui.main.MainViewModel;
+import com.skybox.seven.covid.viewmodels.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import dagger.hilt.android.AndroidEntryPoint;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
+@AndroidEntryPoint
 public class HomeFragment extends Fragment implements MainController.MainControllerCallback {
 
     private MainViewModel viewModel;
@@ -42,7 +41,7 @@ public class HomeFragment extends Fragment implements MainController.MainControl
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_generic_epoxy, container, false);
-        viewModel = new ViewModelProvider(getActivity(), InjectorUtil.provideHomeViewModelFactory(getContext())).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
 
         controller = new MainController(this);
         recyclerView = v.findViewById(R.id.generic_recycler_id);

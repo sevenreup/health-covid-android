@@ -14,6 +14,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.news.NewsController;
+import com.skybox.seven.covid.viewmodels.NewsViewModel;
 
 /**
  * A View that holds all the news {@link Fragment}.
