@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 
 android {
@@ -26,8 +29,8 @@ android {
         }
     }
 
-    viewBinding {
-        enabled = true
+    buildFeatures {
+        viewBinding true
     }
 
     buildTypes {
@@ -48,23 +51,23 @@ android {
 }
 
 dependencies {
-    def work_version = "2.3.4"
-    def nav_version = "2.2.2"
-    def room_version = "2.2.5"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    // android and kotlin issues
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin_version"
     implementation 'androidx.core:core:1.2.0'
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta7'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.google.android.material:material:1.1.0'
+
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation "com.ncorti:slidetoact:0.8.0"
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
-    implementation "androidx.navigation:navigation-fragment:$nav_version"
-    implementation "androidx.navigation:navigation-ui:$nav_version"
+    // navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$versions.navigation"
 
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'
@@ -86,16 +89,23 @@ dependencies {
     implementation 'io.radar:sdk:3.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
-    implementation "androidx.work:work-runtime:$work_version"
+    implementation "androidx.work:work-runtime:$versions.work_version"
     implementation "androidx.core:core-ktx:1.2.0"
     implementation "androidx.fragment:fragment-ktx:1.2.4"
-    implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // Android room database
+    implementation "androidx.room:room-runtime:$versions.room_version"
+    annotationProcessor "androidx.room:room-compiler:$versions.room_version"
 
-    implementation 'com.airbnb.android:epoxy:3.8.0'
-    annotationProcessor 'com.airbnb.android:epoxy-processor:3.8.0'
+    // hilt
+    implementation "com.google.dagger:hilt-android:$versions.hilt"
+    annotationProcessor "com.google.dagger:hilt-android-compiler:$versions.hilt"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$versions.hiltAndroidXVersion"
+    annotationProcessor "androidx.hilt:hilt-compiler:$versions.hiltAndroidXVersion"
+
+    // epoxy
+    implementation "com.airbnb.android:epoxy:$versions.epoxyVersion"
+    annotationProcessor "com.airbnb.android:epoxy-processor:$versions.epoxyVersion"
 
     implementation 'com.akexorcist:localization:1.2.5'
 
