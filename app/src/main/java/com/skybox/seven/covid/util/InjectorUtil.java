@@ -8,7 +8,6 @@ import com.skybox.seven.covid.data.repositories.InfoGraphicRepository;
 import com.skybox.seven.covid.data.repositories.LanguageRepository;
 import com.skybox.seven.covid.data.repositories.MythRepository;
 import com.skybox.seven.covid.data.repositories.SelfTestRepository;
-import com.skybox.seven.covid.viewmodels.ContactsViewModel;
 import com.skybox.seven.covid.viewmodels.factories.AdviceViewModelFactory;
 import com.skybox.seven.covid.viewmodels.factories.ContactsViewModelFactory;
 import com.skybox.seven.covid.viewmodels.factories.HomeViewModelFactory;

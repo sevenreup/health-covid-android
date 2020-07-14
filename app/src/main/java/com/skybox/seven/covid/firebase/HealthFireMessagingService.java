@@ -20,7 +20,7 @@ import com.skybox.seven.covid.network.RetrofitService;
 import com.skybox.seven.covid.network.responses.AccessToken;
 import com.skybox.seven.covid.network.responses.GenericResponse;
 import com.skybox.seven.covid.repository.SharedPreferenceRepository;
-import com.skybox.seven.covid.ui.activities.HomeActivity;
+import com.skybox.seven.covid.ui.main.HomeActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

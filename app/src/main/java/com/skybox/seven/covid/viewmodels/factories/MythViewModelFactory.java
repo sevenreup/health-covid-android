@@ -10,7 +10,7 @@ import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.data.repositories.InfoGraphicRepository;
 import com.skybox.seven.covid.data.repositories.MythRepository;
 import com.skybox.seven.covid.repository.SharedPreferenceRepository;
-import com.skybox.seven.covid.viewmodels.MythViewModel;
+import com.skybox.seven.covid.ui.myth.MythViewModel;
 
 public class MythViewModelFactory implements ViewModelProvider.Factory {
     private MythRepository mythRepository;

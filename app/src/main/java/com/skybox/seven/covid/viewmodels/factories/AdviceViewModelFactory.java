@@ -10,7 +10,7 @@ import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.data.repositories.AdviceRepository;
 import com.skybox.seven.covid.data.repositories.InfoGraphicRepository;
 import com.skybox.seven.covid.repository.SharedPreferenceRepository;
-import com.skybox.seven.covid.viewmodels.AdviceViewModel;
+import com.skybox.seven.covid.ui.advice.AdviceViewModel;
 
 public class AdviceViewModelFactory implements ViewModelProvider.Factory {
     private AdviceRepository adviceRepository;

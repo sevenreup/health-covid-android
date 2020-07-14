@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragment.PersonalFragment"
+    tools:context=".ui.user.PersonalFragment"
     android:layout_margin="@dimen/menu_card_margin">
 
     <TextView android:id="@+id/greating"

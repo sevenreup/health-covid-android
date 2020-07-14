@@ -6,9 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.repository.SharedPreferenceRepository;
-import com.skybox.seven.covid.viewmodels.MainViewModel;
+import com.skybox.seven.covid.ui.main.MainViewModel;
 
 public class HomeViewModelFactory implements ViewModelProvider.Factory {
     Context context;

@@ -34,9 +34,9 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <activity android:name=".ui.activities.OnBoardingActivity"/>
+        <activity android:name=".ui.onboarding.OnBoardingActivity"/>
 
-        <activity android:name=".ui.activities.SplashScreenActivity"
+        <activity android:name=".ui.common.SplashScreenActivity"
             android:theme="@style/AppTheme.SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,8 +54,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ui.activities.RadarTestActivity" />
-        <activity android:name=".ui.activities.AuthActivity"/>
+        <activity android:name=".ui.common.RadarTestActivity" />
+        <activity android:name=".ui.auth.AuthActivity"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -68,11 +68,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".ui.activities.HomeActivity" />
+        <activity android:name=".ui.main.HomeActivity" />
 
-        <activity android:name=".ui.activities.MainActivity" />
         <activity
-            android:name=".ui.activities.Location"
+            android:name=".ui.common.LocationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <provider

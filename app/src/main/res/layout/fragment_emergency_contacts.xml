@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.fragment.EmergencyContactsFragment">
+    tools:context=".ui.emergency.EmergencyContactsFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"

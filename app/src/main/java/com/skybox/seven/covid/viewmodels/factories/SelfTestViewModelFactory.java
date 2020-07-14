@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.skybox.seven.covid.data.repositories.SelfTestRepository;
-import com.skybox.seven.covid.viewmodels.SelfTestViewModel;
+import com.skybox.seven.covid.ui.test.SelfTestViewModel;
 
 public class SelfTestViewModelFactory implements ViewModelProvider.Factory {
     private SelfTestRepository selfTestRepository;

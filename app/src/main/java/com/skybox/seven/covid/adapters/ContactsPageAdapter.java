@@ -6,8 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.skybox.seven.covid.ui.fragment.ContactRequestFragment;
-import com.skybox.seven.covid.ui.fragment.ContactTraceFragment;
+import com.skybox.seven.covid.ui.contactTracing.ContactRequestFragment;
+import com.skybox.seven.covid.ui.contactTracing.ContactTraceFragment;
 
 public class ContactsPageAdapter extends FragmentStateAdapter {
 
