@@ -3,17 +3,23 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/homeFragment"
+        android:id="@+id/home"
         android:icon="@drawable/homeicon"
         android:title="Home"
         android:visible="true" />
     <item
-        android:id="@+id/casesFragment"
-        android:icon="@drawable/ic_group"
+        android:id="@+id/stats"
+        android:icon="@drawable/ic_location_on"
         android:title="Cases" />
     <item
-        android:id="@+id/settingsFragment"
-        android:icon="@drawable/settingsicon"
+        android:id="@+id/news"
+        android:icon="@drawable/ic_newspaper"
         android:title="Settings"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/usericon"
+        android:title="Profile"
         android:visible="true" />
 </menu>
