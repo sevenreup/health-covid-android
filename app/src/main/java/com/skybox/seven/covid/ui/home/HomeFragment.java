@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
+import com.skybox.seven.covid.databinding.FragmentGenericEpoxyBinding;
 import com.skybox.seven.covid.epoxy.main.MainController;
 import com.skybox.seven.covid.model.MenuItem;
 import com.skybox.seven.covid.ui.auth.AuthActivity;
@@ -26,9 +27,8 @@ import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public class HomeFragment extends Fragment implements MainController.MainControllerCallback {
-
+    private FragmentGenericEpoxyBinding binding;
     private MainViewModel viewModel;
-    private EpoxyRecyclerView recyclerView;
     private MainController controller;
     private List<MenuItem> menuItems = new ArrayList<>();
 
@@ -40,19 +40,18 @@ public class HomeFragment extends Fragment implements MainController.MainControl
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_generic_epoxy, container, false);
+        binding = FragmentGenericEpoxyBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
 
         controller = new MainController(this);
-        recyclerView = v.findViewById(R.id.generic_recycler_id);
 
-        recyclerView.setController(controller);
+        binding.genericRecyclerId.setController(controller);
         createMenuItems();
         controller.setData(viewModel.isLoggedIn(),viewModel.showLoginNotification.getValue() ,menuItems);
 
         viewModel.showLoginNotification.observe(getViewLifecycleOwner(), show -> controller.setData(viewModel.isLoggedIn(),show ,menuItems));
 
-        return v;
+        return binding.genericRecyclerId;
     }
 
     private void createMenuItems() {
@@ -89,21 +88,21 @@ public class HomeFragment extends Fragment implements MainController.MainControl
 
     @Override
     public void NavigateToPage(int dest) {
-        Navigation.findNavController(getActivity(), R.id.container).navigate(dest);
+        Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(dest);
     }
 
     @Override
     public void OnSelfTestClick() {
-        Navigation.findNavController(getActivity(), R.id.container).navigate(R.id.selfTestFragment);
+        Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.selfTestFragment);
     }
 
     @Override
     public void OnPersonalCardClick() {
-        Navigation.findNavController(getActivity(), R.id.container).navigate(R.id.personalFragment);
+        Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.personalFragment);
     }
 
     @Override
     public void OnEmergencyContactsClick() {
-        Navigation.findNavController(getActivity(), R.id.container).navigate(R.id.emergencyContactsFragment);
+        Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.emergencyContactsFragment);
     }
 }
