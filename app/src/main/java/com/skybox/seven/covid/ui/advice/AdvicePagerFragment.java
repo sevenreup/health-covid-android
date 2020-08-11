@@ -16,7 +16,6 @@ import com.skybox.seven.covid.epoxy.health.HealthController;
 import com.skybox.seven.covid.model.TipsChips;
 import com.skybox.seven.covid.ui.common.ImageViewerFragment;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
-import com.skybox.seven.covid.viewmodels.AdviceViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 

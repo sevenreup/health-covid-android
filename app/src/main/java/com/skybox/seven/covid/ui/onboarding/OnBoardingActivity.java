@@ -11,7 +11,6 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.akexorcist.localizationactivity.core.LocalizationActivityDelegate;
 import com.akexorcist.localizationactivity.core.OnLocaleChangedListener;
-import com.akexorcist.localizationactivity.ui.LocalizationActivity;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.skybox.seven.covid.R;
@@ -22,7 +21,6 @@ import com.skybox.seven.covid.ui.auth.AuthActivity;
 import com.skybox.seven.covid.ui.main.HomeActivity;
 import com.skybox.seven.covid.util.Constants;
 import com.skybox.seven.covid.util.OnBoardingPageTransformer;
-import com.skybox.seven.covid.viewmodels.OnBoardingViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

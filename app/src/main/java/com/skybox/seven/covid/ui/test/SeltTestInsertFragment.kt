@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation.findNavController
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.entities.SelfTestResult
-import com.skybox.seven.covid.viewmodels.SelfTestViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_actul_test_.*
 

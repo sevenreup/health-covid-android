@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.viewmodels;
+package com.skybox.seven.covid.ui.contactTracing;
 
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;

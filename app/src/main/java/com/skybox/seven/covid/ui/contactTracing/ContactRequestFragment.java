@@ -12,7 +12,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.contacts.ContactsRequestController;
-import com.skybox.seven.covid.viewmodels.ContactsViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 

@@ -11,13 +11,12 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.databinding.FragmentGenericEpoxyBinding;
 import com.skybox.seven.covid.epoxy.main.MainController;
 import com.skybox.seven.covid.model.MenuItem;
 import com.skybox.seven.covid.ui.auth.AuthActivity;
-import com.skybox.seven.covid.viewmodels.MainViewModel;
+import com.skybox.seven.covid.ui.main.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

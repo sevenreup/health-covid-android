@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.viewmodels;
+package com.skybox.seven.covid.ui.onboarding;
 
 import android.app.Application;
 import android.content.Context;

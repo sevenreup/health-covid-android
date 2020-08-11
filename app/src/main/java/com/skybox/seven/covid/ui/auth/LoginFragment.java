@@ -18,7 +18,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.network.responses.ValidationErrors;
 import com.skybox.seven.covid.ui.main.HomeActivity;
-import com.skybox.seven.covid.viewmodels.AuthViewModel;
 
 import java.lang.ref.WeakReference;
 

@@ -16,7 +16,6 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.adapters.ContactsPageAdapter;
-import com.skybox.seven.covid.viewmodels.ContactsViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 

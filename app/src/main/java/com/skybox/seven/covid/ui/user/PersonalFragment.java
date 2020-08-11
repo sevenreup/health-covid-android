@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.viewmodels.LocationViewModel;
+import com.skybox.seven.covid.ui.common.LocationViewModel;
 
 /**
  * A simple {@link Fragment} subclass.

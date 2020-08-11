@@ -21,7 +21,6 @@ import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.ActivityHomeBinding
 import com.skybox.seven.covid.repository.SharedPreferenceRepository
 import com.skybox.seven.covid.util.setupWithNavController
-import com.skybox.seven.covid.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 

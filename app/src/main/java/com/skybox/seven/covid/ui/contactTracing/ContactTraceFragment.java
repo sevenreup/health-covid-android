@@ -13,7 +13,6 @@ import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.contacts.ContactsController;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
-import com.skybox.seven.covid.viewmodels.ContactsViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
