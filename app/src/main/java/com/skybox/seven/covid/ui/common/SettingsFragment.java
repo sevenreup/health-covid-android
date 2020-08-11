@@ -77,6 +77,7 @@ public class SettingsFragment extends Fragment implements SettingsController.Set
                     viewModel.setLanguage(Constants.CHICHEWA);
                     break;
             }
+            dialog.dismiss();
         });
         AlertDialog dialog = alertDialog.create();
         dialog.setCanceledOnTouchOutside(true);

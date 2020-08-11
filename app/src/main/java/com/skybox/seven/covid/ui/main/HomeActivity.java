@@ -2,18 +2,22 @@ package com.skybox.seven.covid.ui.main;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.akexorcist.localizationactivity.ui.LocalizationActivity;
+import com.akexorcist.localizationactivity.core.LocalizationActivityDelegate;
+import com.akexorcist.localizationactivity.core.OnLocaleChangedListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.skybox.seven.covid.R;
@@ -23,7 +27,8 @@ import com.skybox.seven.covid.viewmodels.MainViewModel;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class HomeActivity extends LocalizationActivity {
+public class HomeActivity extends AppCompatActivity implements OnLocaleChangedListener {
+    private LocalizationActivityDelegate delegate = new LocalizationActivityDelegate(this);
 
     public static final String NAME_MESSAGE = "userName";
     public static final String PHONE_MESSAGE = "userNumber";
@@ -34,9 +39,11 @@ public class HomeActivity extends LocalizationActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        delegate.addOnLocaleChangedListener(this);
+        delegate.onCreate();
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_home);
+
 
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
@@ -75,7 +82,9 @@ public class HomeActivity extends LocalizationActivity {
             }
         };
         viewModel.registerPreferenceChangeListener(changeListener);
-        viewModel.changeLanguage.observe(this, this::setLanguage);
+        viewModel.changeLanguage.observe(this, locale -> {
+            delegate.setLanguage(this, locale);
+        });
     }
 
     @Override
@@ -85,7 +94,33 @@ public class HomeActivity extends LocalizationActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        delegate.onResume(this);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(delegate.attachBaseContext(newBase));
+    }
+
+    @Override
+    public Context getApplicationContext() {
+        return delegate.getApplicationContext(super.getApplicationContext());
+    }
+
+    @Override
+    public Resources getResources() {
+        return delegate.getResources(super.getResources());
+    }
+
+    @Override
+    public void onAfterLocaleChanged() {
+
+    }
+
+    @Override
     public void onBeforeLocaleChanged() {
-        super.onBeforeLocaleChanged();
+
     }
 }

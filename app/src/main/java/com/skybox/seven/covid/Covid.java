@@ -2,9 +2,6 @@ package com.skybox.seven.covid;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.res.Configuration;
-
-import androidx.annotation.NonNull;
 
 import com.akexorcist.localizationactivity.core.LocalizationApplicationDelegate;
 import com.skybox.seven.covid.data.entities.Language;
@@ -18,7 +15,7 @@ import io.radar.sdk.Radar;
 
 @HiltAndroidApp
 public class Covid extends Application {
-    private LocalizationApplicationDelegate localizationApplicationDelegate = new LocalizationApplicationDelegate();
+    private LocalizationApplicationDelegate delegate = new LocalizationApplicationDelegate();
     public static final List<Language> SUPPORTED_LOCALES =
             Arrays.asList(
                     new Language(1,"en", "US", "English"),
@@ -33,18 +30,7 @@ public class Covid extends Application {
 
     @Override
     protected void attachBaseContext(Context base) {
-        localizationApplicationDelegate.setDefaultLanguage(base, Locale.ENGLISH);
-        super.attachBaseContext(localizationApplicationDelegate.attachBaseContext(base));
-    }
-
-    @Override
-    public void onConfigurationChanged(@NonNull Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        localizationApplicationDelegate.onConfigurationChanged(this);
-    }
-
-    @Override
-    public Context getApplicationContext() {
-        return localizationApplicationDelegate.getApplicationContext(super.getApplicationContext());
+        delegate.setDefaultLanguage(base, Locale.ENGLISH);
+        super.attachBaseContext(delegate.attachBaseContext(base));
     }
 }

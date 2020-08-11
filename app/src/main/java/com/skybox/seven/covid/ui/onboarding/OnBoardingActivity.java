@@ -1,27 +1,35 @@
 package com.skybox.seven.covid.ui.onboarding;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.akexorcist.localizationactivity.core.LocalizationActivityDelegate;
+import com.akexorcist.localizationactivity.core.OnLocaleChangedListener;
 import com.akexorcist.localizationactivity.ui.LocalizationActivity;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.skybox.seven.covid.R;
+import com.skybox.seven.covid.adapters.OnBoardingAdapter;
 import com.skybox.seven.covid.data.AppDatabase;
 import com.skybox.seven.covid.model.OnBoardingItem;
-import com.skybox.seven.covid.adapters.OnBoardingAdapter;
 import com.skybox.seven.covid.ui.auth.AuthActivity;
 import com.skybox.seven.covid.ui.main.HomeActivity;
+import com.skybox.seven.covid.util.Constants;
 import com.skybox.seven.covid.util.OnBoardingPageTransformer;
 import com.skybox.seven.covid.viewmodels.OnBoardingViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-public class OnBoardingActivity extends LocalizationActivity implements OnBoardingAdapter.OnBoardCallback {
+public class OnBoardingActivity extends AppCompatActivity implements OnBoardingAdapter.OnBoardCallback, OnLocaleChangedListener {
+    private LocalizationActivityDelegate delegate = new LocalizationActivityDelegate(this);
     OnBoardingViewModel viewModel;
     List<OnBoardingItem> onBoardingItems = new ArrayList<>();
 
@@ -40,7 +48,6 @@ public class OnBoardingActivity extends LocalizationActivity implements OnBoardi
         viewPager2.setPageTransformer(new OnBoardingPageTransformer());
 
         new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> { }).attach();
-        viewModel.changeLanguage.observe(this, this::setLanguage);
     }
 
     private void setOnBoardingItems() {
@@ -96,7 +103,41 @@ public class OnBoardingActivity extends LocalizationActivity implements OnBoardi
 
     @Override
     public void onLanguageChange(int id) {
+        if (id == Constants.ENGLISH) {
+            delegate.setLanguage(this, new Locale("eng", "USA"));
+        } else {
+            delegate.setLanguage(this, new Locale("ny", "MW"));
+        }
+    }
 
-        viewModel.setLanguage(id);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        delegate.onResume(this);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(delegate.attachBaseContext(newBase));
+    }
+
+    @Override
+    public Context getApplicationContext() {
+        return delegate.getApplicationContext(super.getApplicationContext());
+    }
+
+    @Override
+    public Resources getResources() {
+        return delegate.getResources(super.getResources());
+    }
+
+    @Override
+    public void onAfterLocaleChanged() {
+
+    }
+
+    @Override
+    public void onBeforeLocaleChanged() {
+
     }
 }

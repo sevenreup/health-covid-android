@@ -27,6 +27,7 @@ public class MainViewModel extends ViewModel {
     private SharedPreferenceRepository preferenceRepository;
 
     public MutableLiveData<Boolean> showLoginNotification = new MutableLiveData<>(true);
+    public MutableLiveData<Integer> status = new MutableLiveData<>(-1);
 
     public MutableLiveData<Locale> changeLanguage = new MutableLiveData<>();
 
@@ -88,8 +89,10 @@ public class MainViewModel extends ViewModel {
     public void setLanguage(int language) {
         preferenceRepository.setActiveLanguage(language);
         if (language == Constants.ENGLISH) {
+            status.setValue(0);
             changeLanguage.setValue(new Locale("eng", "USA"));
         } else {
+            status.setValue(1);
             changeLanguage.setValue(new Locale("ny", "MW"));
         }
     }

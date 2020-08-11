@@ -33,13 +33,4 @@ public class OnBoardingViewModel extends AndroidViewModel {
     public void setOnBoardingInfo (boolean value) {
         preferenceRepository.setOnBoardingPref(value);
     }
-
-    public void setLanguage(int language) {
-        preferenceRepository.setActiveLanguage(language);
-        if (language == Constants.ENGLISH) {
-            changeLanguage.setValue(new Locale("eng", "USA"));
-        } else {
-            changeLanguage.setValue(new Locale("ny", "MW"));
-        }
-    }
 }
