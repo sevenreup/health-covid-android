@@ -1,0 +1,81 @@
+<resources>
+
+    <style name="TextAppearance.Covid.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/work_sans_light</item>
+        <item name="android:fontFamily">@font/work_sans_light</item>
+        <item name="android:textSize">96sp</item>
+    </style>
+
+    <style name="TextAppearance.Covid.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/work_sans_semibold</item>
+        <item name="android:fontFamily">@font/work_sans_semibold</item>
+        <item name="android:textSize">60sp</item>
+    </style>
+
+    <style name="TextAppearance.Covid.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/work_sans</item>
+        <item name="android:fontFamily">@font/work_sans</item>
+        <item name="android:textSize">48sp</item>
+    </style>
+
+    <style name="TextAppearance.Covid.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/work_sans</item>
+        <item name="android:fontFamily">@font/work_sans</item>
+        <item name="android:textSize">34sp</item>
+    </style>
+
+    <style name="TextAppearance.Covid.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/work_sans_bold</item>
+        <item name="android:fontFamily">@font/work_sans_bold</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextAppearance.Covid.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/work_sans_medium</item>
+        <item name="android:fontFamily">@font/work_sans_medium</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.Covid.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/work_sans</item>
+        <item name="android:fontFamily">@font/work_sans</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Covid.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/work_sans_medium</item>
+        <item name="android:fontFamily">@font/work_sans_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Covid.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/work_sans</item>
+        <item name="android:fontFamily">@font/work_sans</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.Covid.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/work_sans</item>
+        <item name="android:fontFamily">@font/work_sans</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Covid.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/work_sans_medium</item>
+        <item name="android:fontFamily">@font/work_sans_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Covid.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/work_sans</item>
+        <item name="android:fontFamily">@font/work_sans</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="TextAppearance.Covid.Overline" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="fontFamily">@font/work_sans_semibold</item>
+        <item name="android:fontFamily">@font/work_sans_medium</item>
+        <item name="android:textSize">12sp</item>
+        <item name="textAllCaps">true</item>
+    </style>
+</resources>

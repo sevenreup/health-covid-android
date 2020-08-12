@@ -215,7 +215,7 @@ class statsFragment : Fragment() {
         val legenedEntries = arrayListOf<LegendEntry>()
 
         legenedEntries.add(LegendEntry("2019", Legend.LegendForm.SQUARE, 8f, 8f, null, Color.RED))
-        legenedEntries.add(LegendEntry("2020", Legend.LegendForm.SQUARE, 8f, 8f, null, R.color.primary))
+        legenedEntries.add(LegendEntry("2020", Legend.LegendForm.SQUARE, 8f, 8f, null, Color.BLUE))
 
         legend?.setCustom(legenedEntries)
 

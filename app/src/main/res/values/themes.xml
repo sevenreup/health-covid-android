@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Covid.DayNight" parent="Theme.Covid"/>
+
+    <style name="Theme.Covid" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/reply_blue_700</item>
+        <item name="colorPrimaryVariant">@color/reply_blue_800</item>
+        <item name="colorSecondary">@color/reply_orange_500</item>
+        <item name="colorSecondaryVariant">@color/reply_orange_400</item>
+
+        <item name="android:colorBackground">@color/reply_blue_50</item>
+        <item name="colorSurface">@color/reply_white_50</item>
+        <item name="colorError">@color/reply_red_400</item>
+
+        <item name="colorOnPrimary">@color/reply_white_50</item>
+        <item name="colorOnSecondary">@color/reply_black_900</item>
+        <item name="colorOnBackground">@color/reply_black_900</item>
+        <item name="colorOnSurface">@color/reply_black_900</item>
+        <item name="colorOnError">@color/reply_black_900</item>
+
+        <item name="scrimBackground">@color/reply_white_50_alpha_060</item>
+        <item name="android:statusBarColor">@color/reply_blue_50_alpha_060</item>
+        <item name="android:navigationBarColor">@color/nav_bar</item>
+
+        <!--Typography-->
+        <item name="textAppearanceHeadline2">@style/TextAppearance.Covid.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.Covid.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.Covid.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.Covid.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.Covid.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.Covid.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.Covid.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Covid.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.Covid.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.Covid.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.Covid.Caption</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.Covid.Overline</item>
+
+        <item name="fontFamily">@font/work_sans_semibold</item>
+        <item name="android:fontFamily">@font/work_sans_semibold</item>
+
+    </style>
+</resources>
