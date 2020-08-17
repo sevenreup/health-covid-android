@@ -68,8 +68,13 @@
         tools:layout="@layout/fragment_myths" />
     <fragment
         android:id="@+id/casesFragment"
+<<<<<<< Updated upstream
         android:name="com.skybox.seven.covid.ui.fragment.main.CasesFragment"
         android:label="fragment_cases"
+=======
+        android:name="com.skybox.seven.covid.ui.cases.CasesFragment"
+        android:label="@string/title_statistics"
+>>>>>>> Stashed changes
         tools:layout="@layout/fragment_cases" />
     <fragment
         android:id="@+id/allconacts"

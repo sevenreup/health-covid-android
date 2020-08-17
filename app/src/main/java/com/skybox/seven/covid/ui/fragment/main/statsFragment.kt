@@ -27,6 +27,7 @@ class statsFragment : Fragment() {
         return view
     }
 
+<<<<<<< Updated upstream:app/src/main/java/com/skybox/seven/covid/ui/fragment/main/statsFragment.kt
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -249,4 +250,8 @@ class statsFragment : Fragment() {
         barChartView?.setVisibleXRange(1f, 12f)
     }
 
+=======
+
+
+>>>>>>> Stashed changes:app/src/main/java/com/skybox/seven/covid/ui/cases/statsFragment.kt
 }
