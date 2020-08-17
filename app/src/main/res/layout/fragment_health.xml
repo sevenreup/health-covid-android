@@ -4,45 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragment.main.HealthFragment">
+    tools:context=".ui.health.HealthFragment">
 
-    <TextView
-        android:id="@+id/page_title"
+    <com.google.android.material.tabs.TabLayout android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_alignParentTop="true"/>
+        app:tabBackground="@drawable/tab_layout_selector"/>
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chip_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:chipSpacingHorizontal="25dp"
-        app:singleLine="true"
-        app:singleSelection="true"
-        android:layout_below="@id/page_title">
-
-
-        <com.google.android.material.chip.Chip android:id="@+id/advice_chip"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="advice" />
-
-        <com.google.android.material.chip.Chip android:id="@+id/info_chip"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="info graphic"
-            />
-
-    </com.google.android.material.chip.ChipGroup>
-
-    <com.airbnb.epoxy.EpoxyRecyclerView
-        android:id="@+id/health_recycler"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/chip_group"
+        android:layout_below="@id/tab_layout"
         android:layout_marginTop="16dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp" />

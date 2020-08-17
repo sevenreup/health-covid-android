@@ -4,51 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragment.main.MythsFragment">
+    tools:context=".ui.myth.MythsFragment">
 
-
-    <TextView
-        android:id="@+id/qnaTV"
+    <com.google.android.material.tabs.TabLayout android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/menu_mythbusters"
-        android:gravity="center_horizontal"/>
+        android:layout_height="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/tab_layout_background"
+        app:tabMode="scrollable"
+        app:tabBackground="@drawable/tab_layout_selector"
+        app:tabSelectedTextColor="@android:color/white"
+        app:tabPaddingStart="16dp"
+        app:tabPaddingEnd="16dp"
+        app:tabIndicatorHeight="0dp"
+        app:tabRippleColor="@null"/>
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/myth_chip_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:chipSpacingHorizontal="25dp"
-        app:singleLine="true"
-        app:singleSelection="true"
-        android:layout_below="@id/qnaTV">
-
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/myth_chip"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Myths" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/myth_info_chip"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Graphic Info"
-            />
-
-    </com.google.android.material.chip.ChipGroup>
-
-    <com.airbnb.epoxy.EpoxyRecyclerView
-        android:id="@+id/mythRecycler"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/myth_chip_group"
+        android:layout_below="@+id/tab_layout"
         />
 
 </RelativeLayout>

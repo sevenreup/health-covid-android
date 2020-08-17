@@ -9,11 +9,21 @@ public class MenuItem {
     private int image;
     @StringRes
     private int title;
+    private int id;
 
-    public MenuItem(int image, int title, int location) {
+    public MenuItem(int image, int title, int location, int id) {
+        this.location = location;
         this.image = image;
         this.title = title;
-        this.location = location;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getImage() {

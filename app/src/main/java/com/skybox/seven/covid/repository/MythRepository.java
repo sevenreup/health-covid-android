@@ -1,29 +1,16 @@
 package com.skybox.seven.covid.repository;
 
-import com.skybox.seven.covid.model.Myth;
-import com.skybox.seven.covid.model.MythGraphicInfo;
+import com.skybox.seven.covid.data.entities.InfoGraphic;
+import com.skybox.seven.covid.data.entities.Myth;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MythRepository {
-    private List<MythGraphicInfo>mythGraphicInfoList = new ArrayList<>();
     private List<Myth>mythList = new ArrayList<>();
 
     public MythRepository() {
-        setUpMyth();
         setUpMythGraphicInfo();
-    }
-
-    private void setUpMyth() {
-        List<String> ask = new ArrayList<>();
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/safe-greetings.tmb-479v.png?sfvrsn=2e97004e_4");
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/handshaking.tmb-479v.png?sfvrsn=4aed53c5_4");
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/risk-communications/general-public/wearing-gloves.tmb-479v.png?sfvrsn=ec69b46a_4");
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(19).tmb-479v.png?sfvrsn=99db25de_1");
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(13).tmb-479v.png?sfvrsn=d2a2dc01_1");
-        ask.add("https://www.who.int/images/default-source/health-topics/coronavirus/eng-mythbusting-ncov-(23).tmb-479v.png?sfvrsn=b399c676_1");
-        mythGraphicInfoList.add(new MythGraphicInfo("Ask WHO", ask));
     }
 
     private void setUpMythGraphicInfo() {
@@ -62,14 +49,6 @@ public class MythRepository {
                         "Regardless of climate, adopt protective measures if you live in, or travel to an area reporting COVID-19. The best way to protect yourself " +
                         "against COVID-19 is by frequently cleaning your hands. By doing this you eliminate viruses that may be on your hands and avoid infection that " +
                         "could occur by then touching your eyes, mouth, and nose."));
-    }
-
-    public List<MythGraphicInfo> getMythGraphicInfoList() {
-        return mythGraphicInfoList;
-    }
-
-    public void setMythGraphicInfoList(List<MythGraphicInfo> mythGraphicInfoList) {
-        this.mythGraphicInfoList = mythGraphicInfoList;
     }
 
     public List<Myth> getMythList() {

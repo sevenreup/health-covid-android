@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Umoyo pa Malawi</string>
     <string name="add_location">Wonjezera Maro</string>
     <string name="name">Dzina</string>
     <string name="search_location">Yangana Maro</string>
-    <string name="done">Malizani</string>
-    <string name="title_activity_maps">Maeo</string>
+    <string name="done">Maliza</string>
+    <string name="add_description_i_e_house_color">Wonjezerani zinthu i.e nyumba #, color...</string>
+    <string name="title_activity_maps">Maro</string>
+
+    <string name="title_health_tips">Zaumoyo</string>
+    <string name="title_self_test">Kauniuni</string>
+    <string name="title_contacts">Azanu</string>
+    <string name="title_mythbusters">Kuswanya Mabodza</string>
+    <string name="title_news">Nkhani</string>
+    <string name="title_qna">Manfunso ndi Mayanko</string>
+    <string name="title_testing_panel">Mbali yoyezera</string>
+
+
+
+    <string name="selftest_heading">Ziyezeni Corona virus malingana ndimene mukumvera mthupi mwanu</string>
+    <string name="button_start_test">Yambani kuziyeza</string>
+    <string name="previous">Kuyezesa kwapitako</string>
 </resources>

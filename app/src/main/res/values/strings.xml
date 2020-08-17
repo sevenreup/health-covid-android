@@ -1,10 +1,9 @@
 <resources>
-<<<<<<< Updated upstream
+
     <string name="app_name">Covid</string>
-=======
+
     <string name="shared_preference_key">com.skybox.seven.covid.shared.preference.random</string>
 
-    <string name="app_name">Malawi Health</string>
 
     <string name="title_activity_maps">Map</string>
     <string name="title_settings">Settings</string>
@@ -15,37 +14,63 @@
     <string name="title_mythbusters">Myth Busters</string>
     <string name="title_news">News</string>
     <string name="title_qna">Questions and Answers</string>
-    <string name="title_statistics">Statistics</string>
+
     <string name="title_emergency">Emergency Contacts</string>
     <string name="title_personal">Profile</string>
     <string name="title_contact_request">Contact Requests</string>
     <string name="title_testing_panel">Testing panel</string>
 
->>>>>>> Stashed changes
     <string name="add_location">Add Location</string>
     <string name="name">Name</string>
     <string name="search_location">Search location</string>
     <string name="done">Done</string>
     <string name="add_description_i_e_house_color">Add description i.e house #, color...</string>
-    <string name="title_activity_maps">Map</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cases_disclamer">This page will hold case data. \n Coming soon..</string>
 
+    <string name="settings_notification">Change notifications</string>
+    <string name="settings_language">Set the Current Language</string>
 
-    <string name="menu_health_tips">Health Tips</string>
-    <string name="menu_self_test">Self Test</string>
-    <string name="menu_contacts">Contacts</string>
-    <string name="menu_mythbusters">Myth Busters</string>
-    <string name="menu_news">News</string>
-    <string name="menu_qna">Questions and Answers</string>
+    <string name="contacts_title">Contacts</string>
+    <string name="contacts_request_title">Contact Requests</string>
+    <string name="contacts_friends_family">Friends and Family</string>
+    <string name="contacts_tap_add">Tap to add</string>
 
+    <string name="location_set_hint">Set name for Location</string>
+    <string name="location_save_button">Save Location</string>
 
+    <string name="health_advice">advice</string>
+    <string name="health_info_graphic">info graphic</string>
+
+    <string name="myth_advice">Myths</string>
+    <string name="myth_info_graphic">Graphic Info</string>
+
+    <string name="input_first_name">First Name</string>
+    <string name="input_last_name">Last Name</string>
+    <string name="input_phone_number">Phone Number</string>
+    <string name="input_password">Password</string>
+
+    <string name="forgot_password">Forgot Password?</string>
+
+    <string name="model_not_logged_prompt">It appears you are not Logged in\nTo do your part please\nlogin or register</string>
+    <string name="greeting">Good Morning</string>
+
+    <string name="text_location">Location On</string>
+    <string name="text_contacts">2 Contacts</string>
+
+    <string name="main_sick_question">Are you feeling sick?</string>
+    <string name="main_warning">If you are feeling sick please call the emergency numbers or do a self test</string>
+
+    <string name="button_save">Save</string>
+    <string name="button_login">Login</string>
+    <string name="button_register">Register</string>
+    <string name="button_submit">Submit</string>
+    <string name="button_create_account">Create account</string>
+    <string name="button_save_changes">Save Changes</string>
+    <string name="button_add_contact">Add Contact</string>
+    <string name="button_contact">Contact</string>
 
     <string name="default_notification_channel_name" translatable="true">Health</string>
-
-
 
     <string name="one">1 </string>
     <string name="two">2 </string>
@@ -71,18 +96,34 @@
     <string name="twenty">20 </string>
     <string name="eighteen">18 </string>
 
-    <string name="date">Choose todays date</string>
-    <string name="question_one">Experiencing shortness of breath?</string>
-    <string name="question_two">Experiencing sore throat?</string>
-    <string name="question_three">Experiencing fever?</string>
-    <string name="question_four">Experiencing dry cough?</string>
-    <string name="question_five">You forgot a question</string>
-    <string name="question_six">Experiencing nasal congestion, runny nose?</string>
-    <string name="question_seven">Experiencing diarrhea?</string>
-    <string name="find">Couldn\'t find what you are looking for?</string>
-    <string name="verify">Slide to verify</string>
-    <string name="question_null">Feeling dizziness?</string>
-    <string name="degree">Choose degree:</string>
+    <string name="response">You have successfully performed a self test!</string>
+    <string name="status">Pending</string>
+    <string name="tracked">I would like to be tracked to help with analytics</string>
+    <string name="heading1">Your health background questionare</string>
+    <string name="question_one">I have hypersensitivity reactions i.e allegies</string>
+    <string name="question_two">I was once diagonised with respiratory diseases i.e Asthma, Tuberculosis, Bronchitis</string>
+    <string name="heading2">COVID19 Symptoms questionare</string>
+    <string name="disclaimer1">Tick below against the symptoms you are experiencing</string>
+    <string name="symptom1">Dizziness</string>
+    <string name="symptom2">Diarrhea</string>
+    <string name="symptom3">Sore throat</string>
+    <string name="symptom4">nasal congestion</string>
+    <string name="symptom5">Aches and pains</string>
+    <string name="symptom6">Tiredness</string>
+    <string name="heading3">Description</string>
+    <string name="option">Please provide a brief description of how you feel in your own words (optional)</string>
+    <string name="disclaimer2">Please agree to our terms and condtions \n 1. Any form of misleading...</string>
+    <string name="agreement">I agree to the terms and conditions applied by the authorities</string>
+    <string name="sbt">Submit</string>
+    <string name="clc">Cancel</string>
+
+    <string name="selftest_heading">Test for COVID19 against your symptoms</string>
+    <string name="button_start_test">Start a test</string>
+    <string name="previous">Previous tests</string>
+    <string name="reject">Reject</string>
+    <string name="accept">Accept</string>
+    <string name="advice_title_bt_health_tip">Health Tip: \n\n</string>
+    <string name="advice_title_bt_health_why">\n\nWhy: \n\n</string>
 
 
     <string name="mw_situation">Malawi Situation</string>

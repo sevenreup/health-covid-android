@@ -11,6 +11,9 @@ public class FamMember {
         this.phoneNumber = phoneNumber;
     }
 
+    public FamMember() {
+    }
+
     public String getFamMemberID() {
         return famMemberID;
     }

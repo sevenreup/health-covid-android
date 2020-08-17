@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
-<<<<<<< Updated upstream
+
     <color name="colorAccent">#D81B60</color>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
@@ -12,7 +13,6 @@
     <color name="secondary_text">#757575</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
-=======
 
     <!--Color palette-->
     <color name="reply_white_50">#ffffff</color>
@@ -27,8 +27,6 @@
     <color name="reply_blue_600">#4a6572</color>
     <color name="reply_blue_700">#344955</color>
     <color name="reply_blue_800">#232f34</color>
-
-    <color name="reply_green_100">#55CB70</color>
 
     <color name="reply_orange_300">#fbd790</color>
     <color name="reply_orange_400">#f9be64</color>
@@ -46,5 +44,5 @@
     <color name="reply_black_900_alpha_060">#99000000</color>
 
     <color name="nav_bar">@color/reply_black_900_alpha_020</color>
->>>>>>> Stashed changes
+
 </resources>

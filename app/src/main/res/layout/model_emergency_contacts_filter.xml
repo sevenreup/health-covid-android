@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/menu_card_margin">
+
+        <TextView android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="H"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/rounded_textview"/>
+
+        <TextView
+            android:id="@+id/number_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/logo" />
+
+        <TextView android:id="@+id/number_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Response team"
+            android:layout_marginTop="@dimen/menu_card_margin"
+            android:layout_toEndOf="@id/logo"
+            android:layout_below="@id/number_name"/>
+
+    </RelativeLayout>
+</RelativeLayout>

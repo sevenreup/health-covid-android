@@ -17,7 +17,6 @@
         <item name="colorOnBackground">@color/reply_black_900</item>
         <item name="colorOnSurface">@color/reply_black_900</item>
         <item name="colorOnError">@color/reply_black_900</item>
-        <item name="badgeTextColor">@color/reply_green_100</item>
 
         <item name="scrimBackground">@color/reply_white_50_alpha_060</item>
         <item name="android:statusBarColor">@color/reply_blue_50_alpha_060</item>

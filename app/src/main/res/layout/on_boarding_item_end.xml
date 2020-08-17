@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/page_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/onBoarding_image_end_image_height"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/onBoarding_image_margin_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_health_logo" />
+
+        <TextView
+            android:id="@+id/page_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mad"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:textSize="22sp"
+            app:layout_constraintTop_toBottomOf="@id/page_image"/>
+
+        <TextView
+            android:id="@+id/page_explanation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mad"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/page_title"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/page_explanation">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/page_skip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Skip"
+            style="?attr/materialButtonOutlinedStyle"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/page_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/page_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

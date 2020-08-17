@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="ui.Location">
+        tools:context=".ui.common.LocationActivity">
 
     <fragment
         android:id="@+id/map"
@@ -47,7 +47,7 @@
                 android:textSize="16sp"
                 android:visibility="gone"
                 android:text="Location1"
-                android:hint="Set name for Location"/>
+                android:hint="@string/location_set_hint"/>
             <LinearLayout
                 android:id="@+id/locaNameParent"
                 android:layout_width="match_parent"
@@ -73,7 +73,7 @@
                 android:id="@+id/saveLocation"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Save Location"
+                android:text="@string/location_save_button"
                 android:textAllCaps="true"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
