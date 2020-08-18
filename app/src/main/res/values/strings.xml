@@ -14,7 +14,9 @@
     <string name="title_mythbusters">Myth Busters</string>
     <string name="title_news">News</string>
     <string name="title_qna">Questions and Answers</string>
+
     <string name="title_statistics">Statistics</string>
+    <string name="title_cases">Statistics</string>
 
     <string name="title_emergency">Emergency Contacts</string>
     <string name="title_personal">Profile</string>
@@ -127,6 +129,7 @@
     <string name="advice_title_bt_health_why">\n\nWhy: \n\n</string>
 
 
+
     <string name="mw_situation">Malawi Situation</string>
     <string name="confirmed"> Confirmed </string>
     <string name="recovered"> Recovered </string>
@@ -139,5 +142,6 @@
     <string name="stats_info_title"> Stay at home, Flatten the Curve </string>
     <string name="stats_info_content"> Stay safe and keep on social distancing </string>
     <string name="cases_worldwide"> Covid Cases World wide </string>
+
 
 </resources>
