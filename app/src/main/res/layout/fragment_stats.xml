@@ -12,27 +12,39 @@
         android:layout_height="match_parent"
         >
 
-    <TextView
-        android:id="@+id/stats_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="@string/title_statistics"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/mw_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/title_container"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="20dp"
+            app:layout_constraintVertical_bias="0.421">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_statistics"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/mw_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/background_purple"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="60dp"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            tools:layout_editor_absoluteY="84dp">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -198,9 +210,10 @@
             android:id="@+id/world_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:background="@drawable/background_purple"
             android:orientation="vertical"
-            android:layout_margin="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/stat_info_banner">
