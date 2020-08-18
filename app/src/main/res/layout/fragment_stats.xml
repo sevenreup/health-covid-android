@@ -61,7 +61,7 @@
                         android:layout_margin="10dp"
                         android:text="4, 361"
                         android:textColor="?colorError"
-                        android:textSize="17sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -70,7 +70,7 @@
                         android:layout_marginBottom="10dp"
                         android:text="@string/confirmed"
                         android:textColor="?colorError"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -86,7 +86,7 @@
                         android:layout_margin="10dp"
                         android:text="128"
                         android:textColor="?scrimBackground"
-                        android:textSize="17sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -95,7 +95,7 @@
                         android:layout_marginBottom="10dp"
                         android:text="@string/deaths"
                         android:textColor="?scrimBackground"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -111,7 +111,7 @@
                         android:layout_margin="10dp"
                         android:text="4, 361"
                         android:textColor="?badgeTextColor"
-                        android:textSize="17sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -120,7 +120,7 @@
                         android:layout_marginBottom="10dp"
                         android:text="@string/recovered"
                         android:textColor="?badgeTextColor"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -136,7 +136,7 @@
                         android:layout_margin="10dp"
                         android:text="4, 361"
                         android:textColor="?colorSecondary"
-                        android:textSize="17sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -145,7 +145,7 @@
                         android:layout_marginBottom="10dp"
                         android:text="@string/active"
                         android:textColor="?colorSecondary"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
 
 
