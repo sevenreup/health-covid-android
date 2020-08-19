@@ -16,6 +16,7 @@
 
     <!--Color palette-->
     <color name="reply_white_50">#ffffff</color>
+    <color name="reply_purple_100">#7C52CE</color>
 
     <color name="reply_black_800">#121212</color>
     <color name="reply_black_900">#000000</color>

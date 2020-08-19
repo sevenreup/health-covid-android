@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/deaths_stats"
+    android:title="Year"
+    android:icon="@drawable/ic_calendar_disabled"
+    />
+    <item
+        android:id="@+id/deaths_recovered"
+        android:title="Month"
+        android:icon="@drawable/ic_calendar_disabled"
+        />
+    <item
+        android:id="@+id/deaths_confirmed"
+        android:title="Week"
+        android:icon="@drawable/ic_calendar_disabled"
+        />
+</menu>

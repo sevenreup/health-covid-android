@@ -51,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:text="@string/mw_situation"
+                android:id="@+id/mw_situation"
                 android:textColor="?colorOnPrimary" />
 
             <LinearLayout
@@ -221,220 +222,124 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_margin="20dp"
                 android:text="@string/cases_worldwide"
                 android:textColor="?colorOnPrimary" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/background_black"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="15dp"
-                        android:text="@string/total_confirmed"
-                        android:textColor="?scrimBackground"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:text="82, 026"
-                        android:textColor="?colorOnPrimary"
-                        android:textSize="17sp" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_up_arrow_green" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="15.45%"
-                            android:textColor="?badgeTextColor"
-                            android:textSize="13sp" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/background_black"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="15dp"
-                        android:text="@string/total_deaths"
-                        android:textColor="?scrimBackground" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:text="2,912"
-                        android:textColor="?colorOnPrimary"
-                        android:textSize="17sp" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_up_arrow_red" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="15.45%"
-                            android:textColor="?colorError"
-                            android:textSize="13sp" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:weightSum="2">
-
                 <LinearLayout
+                    android:layout_marginTop="20dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/background_black"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    >
+                    <com.github.mikephil.charting.charts.PieChart
                         android:layout_gravity="center"
-                        android:layout_marginTop="15dp"
-                        android:text="@string/total_recovered"
-                        android:textColor="?scrimBackground"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:text="44,571 "
-                        android:textColor="?colorOnPrimary"
-                        android:textSize="17sp" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_up_arrow_green" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="15.45%"
-                            android:textColor="?badgeTextColor"
-                            android:textSize="13sp" />
-
-                    </LinearLayout>
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:id="@+id/worldChat"
+                        />
+                    
                 </LinearLayout>
-
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/background_black"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="15dp"
-                        android:text="@string/total_active"
-                        android:textColor="?scrimBackground" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:text="44,571"
-                        android:textColor="?colorOnPrimary"
-                        android:textSize="17sp" />
-
+                    android:orientation="vertical"
+                    android:layout_margin="20dp"
+                    >
+                    
                     <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/background_black"
+                        >
+                        <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                        android:text="Total deaths"
+                            android:textSize="13sp"
+                        android:textColor="?colorError"
                         android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_up_arrow_green" />
-
+                        />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="15.45%"
-                            android:textColor="?badgeTextColor"
-                            android:textSize="13sp" />
-
+                            android:text="3, 473"
+                            android:layout_margin="5dp"
+                            android:textColor="?colorOnPrimary"
+                            android:layout_gravity="center"
+                            />
                     </LinearLayout>
-
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/background_black"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Total deaths"
+                            android:textSize="13sp"
+                            android:textColor="?colorSecondary"
+                            android:layout_gravity="center"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3, 473"
+                            android:layout_margin="5dp"
+                            android:textColor="?colorOnPrimary"
+                            android:layout_gravity="center"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/background_black"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Total deaths"
+                            android:textSize="13sp"
+                            android:textColor="?badgeTextColor"
+                            android:layout_gravity="center"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3, 473"
+                            android:layout_margin="5dp"
+                            android:textColor="?colorOnPrimary"
+                            android:layout_gravity="center"
+                            />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View all countries"
+                android:id="@+id/view_countries"
+                android:textColor="?colorOnPrimary"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
