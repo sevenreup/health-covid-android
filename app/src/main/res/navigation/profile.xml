@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/profile"
-    app:startDestination="@id/settingsFragment2">
-
+    app:startDestination="@id/profileFragment">
     <fragment
-        android:id="@+id/settingsFragment2"
-        android:name="com.skybox.seven.covid.ui.common.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        android:id="@+id/profileFragment"
+        android:name="com.skybox.seven.covid.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

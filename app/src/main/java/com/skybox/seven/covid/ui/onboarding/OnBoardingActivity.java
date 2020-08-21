@@ -33,6 +33,8 @@ public class OnBoardingActivity extends AppCompatActivity implements OnBoardingA
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        delegate.addOnLocaleChangedListener(this);
+        delegate.onCreate();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding);
         viewModel = new ViewModelProvider(getViewModelStore(), new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(OnBoardingViewModel.class);

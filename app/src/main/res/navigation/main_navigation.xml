@@ -71,9 +71,10 @@
         tools:layout="@layout/fragment_myths" />
     <fragment
         android:id="@+id/casesFragment"
+
         android:name="com.skybox.seven.covid.ui.cases.CasesFragment"
-        android:label="@string/title_cases"
-        tools:layout="@layout/fragment_cases" />
+        android:label="@string/title_statistics"
+/>
     <fragment
         android:id="@+id/allconacts"
         android:name="com.skybox.seven.covid.ui.contactTracing.ContactTraceFragment"

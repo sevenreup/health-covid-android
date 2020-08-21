@@ -53,7 +53,6 @@ class HomeActivity : AppCompatActivity(), OnLocaleChangedListener {
                 Log.d("Notification", "Key: $key Value: $value")
             }
         }
-        setSupportActionBar(binding.toolbar)
 
         changeListener = OnSharedPreferenceChangeListener { sharedPreferences: SharedPreferences, key: String ->
             if (key == SharedPreferenceRepository.TOKEN) {
@@ -79,9 +78,9 @@ class HomeActivity : AppCompatActivity(), OnLocaleChangedListener {
                 containerId = R.id.nav_host_fragment,
                 intent = intent
         )
-        controllers.observe(this, Observer {
-            setupActionBarWithNavController(it)
-        })
+//        controllers.observe(this, Observer {
+//            setupActionBarWithNavController(it)
+//        })
         currentNavController = controllers
     }
 
