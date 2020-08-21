@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.contactTracing;
+package com.skybox.seven.covid.ui.profile.create;
 
 import android.content.Intent;
 import android.os.Bundle;

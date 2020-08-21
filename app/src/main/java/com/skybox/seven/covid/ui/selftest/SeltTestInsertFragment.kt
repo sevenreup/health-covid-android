@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.test
+package com.skybox.seven.covid.ui.selftest
 
 import android.os.Bundle
 import android.view.LayoutInflater

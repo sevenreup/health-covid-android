@@ -42,7 +42,7 @@
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/createContacts"
-        android:name="com.skybox.seven.covid.ui.contactTracing.ContactCreateFragment"
+        android:name="com.skybox.seven.covid.ui.profile.create.ContactCreateFragment"
         android:label="@string/title_create_contacts"
         tools:layout="@layout/fragment_contact_create">
         <action
@@ -77,7 +77,7 @@
 />
     <fragment
         android:id="@+id/allconacts"
-        android:name="com.skybox.seven.covid.ui.contactTracing.ContactTraceFragment"
+        android:name="com.skybox.seven.covid.ui.profile.contacts.pages.ContactTraceFragment"
         android:label="@string/contacts_title"
         tools:layout="@layout/fragment_generic_epoxy">
         <action
@@ -86,9 +86,8 @@
     </fragment>
     <fragment
         android:id="@+id/selfTestFragment"
-        android:name="com.skybox.seven.covid.ui.test.SelfTestFragment"
-        android:label="@string/title_self_test"
-        tools:layout="@layout/fragment_self_test">
+        android:name="com.skybox.seven.covid.ui.selftest.SelfTestFragment"
+        android:label="@string/title_self_test">
         <action
             android:id="@+id/action_selfTestFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -100,7 +99,7 @@
 
 <fragment
         android:id="@+id/actulTest_Fragment"
-        android:name="com.skybox.seven.covid.ui.test.SeltTestInsertFragment"
+        android:name="com.skybox.seven.covid.ui.selftest.SeltTestInsertFragment"
         android:label="@string/title_testing_panel"
         tools:layout="@layout/fragment_actul_test_" >
         <action
@@ -127,11 +126,11 @@
     </fragment>
     <fragment
         android:id="@+id/contactRequestFragment"
-        android:name="com.skybox.seven.covid.ui.contactTracing.ContactRequestFragment"
+        android:name="com.skybox.seven.covid.ui.profile.contacts.pages.ContactRequestFragment"
         android:label="@string/title_contact_request"
         tools:layout="@layout/fragment_generic_epoxy_swipe" />
     <fragment
         android:id="@+id/contactsFragment"
-        android:name="com.skybox.seven.covid.ui.contactTracing.ContactsFragment"
+        android:name="com.skybox.seven.covid.ui.profile.contacts.ContactsFragment"
         android:label="@string/contacts_title" />
 </navigation>

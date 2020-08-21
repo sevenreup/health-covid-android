@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.FragmentProfileBinding
 
 
@@ -23,11 +25,14 @@ class ProfileFragment : Fragment() {
     }
 
     fun navigateContacts() {
+        findNavController().navigate(R.id.to_contacts)
     }
 
     fun navigateAddContacts() {
+        findNavController().navigate(R.id.to_contactCreate)
     }
 
     fun navigateSelfTest() {
+        findNavController().navigate(R.id.to_selfTest_view)
     }
 }

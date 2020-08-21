@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.contactTracing;
+package com.skybox.seven.covid.ui.profile.contacts.pages;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.contacts.ContactsRequestController;
+import com.skybox.seven.covid.ui.profile.contacts.ContactsViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
