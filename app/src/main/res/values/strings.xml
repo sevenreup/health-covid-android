@@ -130,13 +130,12 @@
     <string name="advice_title_bt_health_why">\n\nWhy: \n\n</string>
 
 
-
     <string name="mw_situation">Malawi Situation</string>
     <string name="confirmed"> Confirmed </string>
     <string name="recovered"> Recovered </string>
     <string name="deaths"> Deaths </string>
     <string name="active"> Active </string>
-    <string name="total_confirmed"> Total onfirmed </string>
+    <string name="total_confirmed"> Total Confirmed </string>
     <string name="total_recovered"> Total Recovered </string>
     <string name="total_deaths"> Total Deaths </string>
     <string name="total_active"> Total Active </string>

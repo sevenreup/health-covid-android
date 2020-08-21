@@ -9,8 +9,8 @@
         android:visible="true" />
     <item
         android:id="@+id/stats"
-        android:icon="@drawable/ic_location_on"
-        android:title="Cases" />
+        android:icon="@drawable/ic_stats_icon"
+        android:title="Stats" />
     <item
         android:id="@+id/news"
         android:icon="@drawable/ic_newspaper"
