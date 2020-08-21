@@ -133,4 +133,18 @@
         android:id="@+id/contactsFragment"
         android:name="com.skybox.seven.covid.ui.contactTracing.ContactsFragment"
         android:label="@string/contacts_title" />
+    <fragment
+        android:id="@+id/preventionFragment"
+        android:name="com.skybox.seven.covid.ui.prevention.PreventionFragment"
+        android:label="fragment_prevention"
+        tools:layout="@layout/fragment_prevention" />
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.skybox.seven.covid.ui.home.HomePageFragment"
+        android:label="fragment_homepage"
+        tools:layout="@layout/fragment_homepage" >
+        <action
+            android:id="@+id/action_homePageFragment_to_preventionFragment"
+            app:destination="@id/preventionFragment" />
+    </fragment>
 </navigation>

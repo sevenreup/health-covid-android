@@ -22,6 +22,7 @@
     <string name="name">Name</string>
     <string name="search_location">Search location</string>
     <string name="done">Done</string>
+    <string name="more">More</string>
     <string name="add_description_i_e_house_color">Add description i.e house #, color...</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cases_disclamer">This page will hold case data. \n Coming soon..</string>

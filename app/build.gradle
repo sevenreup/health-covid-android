@@ -7,6 +7,14 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 
 android {
+
+        lintOptions {
+            checkReleaseBuilds false
+            // Or, if you prefer, you can continue to check for errors in release builds,
+            // but continue the build even when errors are found:
+            abortOnError false
+        }
+
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
@@ -116,4 +124,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    //motion layout
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
 }
