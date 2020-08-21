@@ -9,5 +9,30 @@
         android:id="@+id/statsFragment"
         android:name="com.skybox.seven.covid.ui.cases.statsFragment"
         android:label="fragment_stats"
-        tools:layout="@layout/fragment_stats" />
+        tools:layout="@layout/fragment_stats" >
+        <action
+            android:id="@+id/action_statsFragment_to_statsBarChatFragment"
+            app:destination="@id/statsBarChatFragment" />
+        <action
+            android:id="@+id/action_statsFragment_to_countriesFragment"
+            app:destination="@id/countriesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/statsBarChatFragment"
+        android:name="com.skybox.seven.covid.ui.stats.StatsBarChatFragment"
+        android:label="fragment_stats_bar_chat"
+        tools:layout="@layout/fragment_stats_bar_chat" >
+        <action
+            android:id="@+id/action_statsBarChatFragment_to_statsFragment"
+            app:destination="@id/statsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/countriesFragment"
+        android:name="com.skybox.seven.covid.ui.stats.CountriesFragment"
+        android:label="fragment_countries"
+        tools:layout="@layout/fragment_countries" >
+        <action
+            android:id="@+id/action_countriesFragment_to_statsFragment"
+            app:destination="@id/statsFragment" />
+    </fragment>
 </navigation>
