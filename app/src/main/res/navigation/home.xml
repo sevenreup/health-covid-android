@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/home"
-    app:startDestination="@id/homeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home"
+    app:startDestination="@id/homePageFragment">
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.skybox.seven.covid.ui.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:id="@+id/homePageFragment"
+        android:name="com.skybox.seven.covid.ui.home.HomePageFragment"
+        android:label="fragment_homepage"
+        tools:layout="@layout/fragment_homepage" >
+        <action
+            android:id="@+id/action_homePageFragment2_to_preventionFragment2"
+            app:destination="@id/preventionFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/preventionFragment2"
+        android:name="com.skybox.seven.covid.ui.prevention.PreventionFragment"
+        android:label="fragment_prevention"
+        tools:layout="@layout/fragment_prevention" />
 </navigation>

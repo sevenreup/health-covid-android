@@ -142,7 +142,7 @@
     <fragment
         android:id="@+id/homePageFragment"
         android:name="com.skybox.seven.covid.ui.home.HomePageFragment"
-        android:label="fragment_homepage"
+        android:label="Covid"
         tools:layout="@layout/fragment_homepage" >
         <action
             android:id="@+id/action_homePageFragment_to_preventionFragment"
