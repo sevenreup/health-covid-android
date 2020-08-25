@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="13dp"
-                android:text="Prevention"
+                android:text="@string/prevention"
                 app:layout_constraintLeft_toRightOf="@+id/preventionImage"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -155,7 +155,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="13dp"
-                android:text="Symptom"
+                android:text="@string/symptom"
                 app:layout_constraintLeft_toRightOf="@+id/symptomImage"
                 app:layout_constraintTop_toTopOf="parent" />
 

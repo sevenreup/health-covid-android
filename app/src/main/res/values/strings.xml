@@ -145,4 +145,6 @@
 
     <string name="details_card_statement"> Have more questions on covid-19? Check out more official information </string>
 
+    <string name="prevention">Prevention</string>
+    <string name="symptom">Symptoms</string>
 </resources>

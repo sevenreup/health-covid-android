@@ -22,16 +22,31 @@
 
     <ConstraintSet android:id="@+id/end">
         <Constraint
-            android:layout_height="50dp"
+            android:layout_height="30dp"
             motion:layout_constraintLeft_toLeftOf="parent"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="53dp"
             android:id="@+id/PreventionPageImage"
             motion:layout_constraintTop_toTopOf="parent" />
         <Constraint
             android:layout_height="wrap_content"
-            motion:layout_constraintRight_toRightOf="parent"
             android:layout_width="wrap_content"
             android:id="@+id/PreventionPageTitle"
-            motion:layout_constraintStart_toEndOf="@+id/PreventionPageImage" />
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="30dp"
+            motion:layout_constraintStart_toEndOf="@+id/PreventionPageImage"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@id/PreventionRecyclerView"
+            android:layout_marginTop="30dp"
+            motion:layout_constraintLeft_toLeftOf="parent"
+            motion:layout_constraintRight_toRightOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/PreventionPageImage"
+            android:layout_marginLeft="27dp"
+            android:layout_marginRight="27dp"/>
     </ConstraintSet>
 </MotionScene>
