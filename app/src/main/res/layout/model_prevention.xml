@@ -27,7 +27,7 @@
             android:id="@+id/imageView2"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:srcCompat="@drawable/masterninb" />
+            app:srcCompat="@drawable/mask" />
 
         <TextView
             android:id="@+id/preventionRVCardDescription"
@@ -53,7 +53,7 @@
             android:layout_height="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_health_logo" />
+            app:srcCompat="@drawable/virus" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

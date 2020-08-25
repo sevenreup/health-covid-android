@@ -48,4 +48,7 @@
 
     <color name="nav_bar">@color/reply_black_900_alpha_020</color>
 
+    <color name="background_purple">#7D52CC</color>
+    <color name="hometextcolor">#293f75</color>
+    <color name="lime">#98C94D</color>
 </resources>

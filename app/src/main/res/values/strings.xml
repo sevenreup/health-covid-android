@@ -143,5 +143,6 @@
     <string name="stats_info_content"> Stay safe and keep on social distancing </string>
     <string name="cases_worldwide"> Covid Cases World wide </string>
 
+    <string name="details_card_statement"> Have more questions on covid-19? Check out more official information </string>
 
 </resources>
