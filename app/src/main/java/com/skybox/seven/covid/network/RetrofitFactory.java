@@ -21,6 +21,7 @@ import okhttp3.Response;
 import okhttp3.Route;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitFactory {
@@ -38,7 +39,11 @@ public class RetrofitFactory {
 
         if (retrofit == null) {
             Gson gson = new GsonBuilder().setLenient().create();
-            retrofit = new Retrofit.Builder().client(buildOkHttpClient(context)).baseUrl("https://rocky-forest-46591.herokuapp.com/api/").addConverterFactory(GsonConverterFactory.create(gson)).build();
+            retrofit = new Retrofit.Builder()
+                    .client(buildOkHttpClient(context))
+                    .baseUrl("https://rocky-forest-46591.herokuapp.com/api/")
+                    .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson)).build();
         }
         return retrofit;
     }
