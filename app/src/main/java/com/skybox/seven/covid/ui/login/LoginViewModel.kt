@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.auth.login
+package com.skybox.seven.covid.ui.login
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel

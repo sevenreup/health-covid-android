@@ -55,7 +55,7 @@
         </receiver>
 
         <activity android:name=".ui.common.RadarTestActivity" />
-        <activity android:name=".ui.auth.AuthActivity"/>
+        <activity android:name=".ui.AuthActivity"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -71,7 +71,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".ui.main.HomeActivity" />
+        <activity android:name=".ui.HomeActivity" />
 
         <activity
             android:name=".ui.common.LocationActivity"

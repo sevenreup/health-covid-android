@@ -1,31 +1,29 @@
-package com.skybox.seven.covid.ui.main
+package com.skybox.seven.covid.ui
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
-import android.content.res.Resources
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
-import com.akexorcist.localizationactivity.core.LocalizationActivityDelegate
-import com.akexorcist.localizationactivity.core.OnLocaleChangedListener
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.ActivityHomeBinding
 import com.skybox.seven.covid.repository.SharedPreferenceRepository
 import com.skybox.seven.covid.util.setupWithNavController
+import com.yariksoffice.lingver.Lingver
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 @AndroidEntryPoint
-class HomeActivity : AppCompatActivity(), OnLocaleChangedListener {
-    private val delegate = LocalizationActivityDelegate(this)
+class HomeActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()
     private lateinit var binding: ActivityHomeBinding
@@ -33,8 +31,6 @@ class HomeActivity : AppCompatActivity(), OnLocaleChangedListener {
     private var currentNavController: LiveData<NavController>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        delegate.addOnLocaleChangedListener(this)
-        delegate.onCreate()
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -61,7 +57,7 @@ class HomeActivity : AppCompatActivity(), OnLocaleChangedListener {
             }
         }
         viewModel.registerPreferenceChangeListener(changeListener)
-        viewModel.changeLanguage.observe(this, Observer { locale: Locale? -> delegate.setLanguage(this, locale!!) })
+        viewModel.changeLanguage.observe(this, Observer { locale: Locale? -> setNewLocale(locale!!) })
 
         if (savedInstanceState == null) {
             setUpBottomNavigation()
@@ -77,9 +73,6 @@ class HomeActivity : AppCompatActivity(), OnLocaleChangedListener {
                 containerId = R.id.nav_host_fragment,
                 intent = intent
         )
-//        controllers.observe(this, Observer {
-//            setupActionBarWithNavController(it)
-//        })
         currentNavController = controllers
     }
 
@@ -88,25 +81,10 @@ class HomeActivity : AppCompatActivity(), OnLocaleChangedListener {
         super.onDestroy()
     }
 
-    override fun onResume() {
-        super.onResume()
-        delegate.onResume(this)
+    private fun setNewLocale(locale: Locale) {
+        Lingver.getInstance().setLocale(this, locale)
+        restart()
     }
-
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(delegate.attachBaseContext(newBase))
-    }
-
-    override fun getApplicationContext(): Context {
-        return delegate.getApplicationContext(super.getApplicationContext())
-    }
-
-    override fun getResources(): Resources {
-        return delegate.getResources(super.getResources())
-    }
-
-    override fun onAfterLocaleChanged() {}
-    override fun onBeforeLocaleChanged() {}
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
@@ -118,6 +96,13 @@ class HomeActivity : AppCompatActivity(), OnLocaleChangedListener {
 
     override fun onSupportNavigateUp(): Boolean {
         return currentNavController?.value?.navigateUp() ?: false
+    }
+
+    private fun restart() {
+        val i = Intent(this, HomeActivity::class.java)
+        startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
+
+        Toast.makeText(this, "Activity restarted", Toast.LENGTH_SHORT).show()
     }
 
     companion object {

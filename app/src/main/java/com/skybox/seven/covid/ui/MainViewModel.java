@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.main;
+package com.skybox.seven.covid.ui;
 
 import android.content.SharedPreferences;
 import android.util.Log;

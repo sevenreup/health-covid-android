@@ -6,7 +6,7 @@
 
         <variable
             name="fragment"
-            type="com.skybox.seven.covid.ui.auth.login.LoginFragment" />
+            type="com.skybox.seven.covid.ui.login.LoginFragment" />
     </data>
 
     <androidx.core.widget.NestedScrollView

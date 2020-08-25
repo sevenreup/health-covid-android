@@ -7,13 +7,13 @@
 
         <variable
             name="fragment"
-            type="com.skybox.seven.covid.ui.auth.register.RegisterFragment" />
+            type="com.skybox.seven.covid.ui.register.RegisterFragment" />
     </data>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.auth.register.RegisterFragment">
+        tools:context=".ui.register.RegisterFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

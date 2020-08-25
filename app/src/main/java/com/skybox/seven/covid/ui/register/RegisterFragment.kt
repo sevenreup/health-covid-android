@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.auth.register
+package com.skybox.seven.covid.ui.register
 
 import android.os.Bundle
 import android.view.LayoutInflater
