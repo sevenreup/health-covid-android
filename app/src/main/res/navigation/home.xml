@@ -10,11 +10,11 @@
         android:label="fragment_homepage"
         tools:layout="@layout/fragment_homepage" >
         <action
-            android:id="@+id/action_homePageFragment2_to_preventionFragment2"
-            app:destination="@id/preventionFragment2" />
+            android:id="@+id/to_preventionFragment"
+            app:destination="@id/preventionFragment" />
     </fragment>
     <fragment
-        android:id="@+id/preventionFragment2"
+        android:id="@+id/preventionFragment"
         android:name="com.skybox.seven.covid.ui.prevention.PreventionFragment"
         android:label="fragment_prevention"
         tools:layout="@layout/fragment_prevention" />

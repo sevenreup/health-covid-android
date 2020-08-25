@@ -22,7 +22,9 @@
     <color name="background_purple">#7D52CC</color>
     <color name="hometextcolor">#293f75</color>
     <color name="lime">#98C94D</color>
+
     <color name="reply_red_400">#ff4c5d</color>
     <color name="reply_green_100">#00C571</color>
     <color name="reply_orange_400">#f9be64</color>
+    <color name="reply_blue_800">#232f34</color>
 </resources>
