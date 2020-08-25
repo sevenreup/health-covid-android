@@ -65,7 +65,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setUpBottomNavigation() {
-        val navGraphIDs = listOf(R.navigation.home, R.navigation.stats, R.navigation.news, R.navigation.profile)
+        val navGraphIDs = listOf(R.navigation.home, R.navigation.stats, R.navigation.profile)
 
         val controllers = binding.bottomNav.setupWithNavController(
                 navGraphIds = navGraphIDs,
