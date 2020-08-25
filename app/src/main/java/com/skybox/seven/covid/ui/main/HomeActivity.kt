@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.akexorcist.localizationactivity.core.LocalizationActivityDelegate
 import com.akexorcist.localizationactivity.core.OnLocaleChangedListener
 import com.skybox.seven.covid.R
@@ -61,8 +60,8 @@ class HomeActivity : AppCompatActivity(), OnLocaleChangedListener {
                 }
             }
         }
-        viewModel!!.registerPreferenceChangeListener(changeListener)
-        viewModel!!.changeLanguage.observe(this, Observer { locale: Locale? -> delegate.setLanguage(this, locale!!) })
+        viewModel.registerPreferenceChangeListener(changeListener)
+        viewModel.changeLanguage.observe(this, Observer { locale: Locale? -> delegate.setLanguage(this, locale!!) })
 
         if (savedInstanceState == null) {
             setUpBottomNavigation()
@@ -85,7 +84,7 @@ class HomeActivity : AppCompatActivity(), OnLocaleChangedListener {
     }
 
     override fun onDestroy() {
-        viewModel!!.removePreferenceChangeListener(changeListener)
+        viewModel.removePreferenceChangeListener(changeListener)
         super.onDestroy()
     }
 
