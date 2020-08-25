@@ -20,7 +20,7 @@ import com.skybox.seven.covid.databinding.FragmentHomepageBinding;
 
 public class HomePageFragment extends Fragment {
 
-    private FragmentHomepageBinding fragmentHomepageBinding;
+    private FragmentHomepageBinding binding;
     private ClickHandlers handlers;
 
     public HomePageFragment() {
@@ -31,13 +31,10 @@ public class HomePageFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_homepage, container, false);
-        fragmentHomepageBinding = DataBindingUtil.setContentView(getActivity(),R.layout.fragment_homepage);
-
-            handlers=new ClickHandlers(getContext());
-            fragmentHomepageBinding.setClickHandler(handlers);
-
-        return v;
+        binding = FragmentHomepageBinding.inflate(inflater, container, false);
+        handlers=new ClickHandlers(getContext());
+        binding.setClickHandler(handlers);
+        return binding.getRoot();
     }
 
 
