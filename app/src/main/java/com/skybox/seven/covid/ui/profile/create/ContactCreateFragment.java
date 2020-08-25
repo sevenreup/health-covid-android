@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.contactTracing;
+package com.skybox.seven.covid.ui.profile.create;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.network.responses.ContactRequest;
 import com.skybox.seven.covid.ui.common.LocationActivity;
-import com.skybox.seven.covid.ui.main.MainViewModel;
+import com.skybox.seven.covid.ui.MainViewModel;
 
 import java.util.ArrayList;
 

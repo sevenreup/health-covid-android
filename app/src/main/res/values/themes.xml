@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Theme.Covid.DayNight" parent="Theme.Covid"/>
 
-    <style name="Theme.Covid" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/reply_blue_700</item>
-        <item name="colorPrimaryVariant">@color/reply_blue_800</item>
-        <item name="colorSecondary">@color/reply_orange_500</item>
-        <item name="colorSecondaryVariant">@color/reply_orange_400</item>
+    <style name="Theme.Covid" parent="Base.ThemeBuilder">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryVariant">@color/color_primary_variant</item>
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="colorSecondaryVariant">@color/color_secondary_variant</item>
 
-        <item name="android:colorBackground">@color/reply_blue_50</item>
-        <item name="colorSurface">@color/reply_white_50</item>
-        <item name="colorError">@color/reply_red_400</item>
+        <item name="android:colorBackground">@color/color_background</item>
+        <item name="colorSurface">@color/color_surface</item>
+        <item name="colorError">@color/color_error</item>
 
-        <item name="colorOnPrimary">@color/reply_white_50</item>
-        <item name="colorOnSecondary">@color/reply_black_900</item>
-        <item name="colorOnBackground">@color/reply_black_900</item>
-        <item name="colorOnSurface">@color/reply_black_900</item>
-        <item name="colorOnError">@color/reply_black_900</item>
-        <item name="badgeTextColor">@color/reply_green_100</item>
-        <item name="ambientEnabled">@color/reply_purple_100</item>
+        <item name="colorOnPrimary">@color/color_surface</item>
+        <item name="colorOnSecondary">@color/color_on_secondary</item>
+        <item name="colorOnBackground">@color/color_on_secondary</item>
+        <item name="colorOnSurface">@color/color_on_secondary</item>
+        <item name="colorOnError">@color/color_on_secondary</item>
 
-        <item name="scrimBackground">@color/reply_white_50_alpha_060</item>
-        <item name="android:statusBarColor">@color/reply_blue_50_alpha_060</item>
-        <item name="android:navigationBarColor">@color/nav_bar</item>
+        <item name="badgeTextColor">@color/badge_text_color</item>
+
+        <item name="android:statusBarColor">@color/color_status_bar</item>
 
         <!--Typography-->
         <item name="textAppearanceHeadline2">@style/TextAppearance.Covid.Headline2</item>
@@ -38,8 +36,30 @@
         <item name="textAppearanceCaption">@style/TextAppearance.Covid.Caption</item>
         <item name="textAppearanceOverline">@style/TextAppearance.Covid.Overline</item>
 
-        <item name="fontFamily">@font/work_sans_semibold</item>
-        <item name="android:fontFamily">@font/work_sans_semibold</item>
 
+    </style>
+
+    <style name="Base.ThemeBuilder" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">?colorSurface</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="fontFamily">@font/work_sans_semibold</item>
+        <item name="android:forceDarkAllowed">false</item>
+
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
+        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">?colorControlHighlight</item>
+
+        <item name="android:fontFamily">@font/work_sans_semibold</item>
+        <item name="android:navigationBarColor">?android:colorBackground</item>
+
+        <!--Remap legacy AppCompat attributes to MaterialComponent attributes-->
+        <item name="colorPrimaryDark">?colorPrimaryVariant</item>
+        <item name="colorAccent">?colorSecondary</item>
+
+        <!-- Shapes -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Covid.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Covid.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Covid.LargeComponent</item>
+
+        <item name="textInputStyle">@style/Widget.Covid.TextInputLayout</item>
     </style>
 </resources>

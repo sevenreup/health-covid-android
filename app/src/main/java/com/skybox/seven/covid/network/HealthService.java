@@ -7,7 +7,9 @@ import com.skybox.seven.covid.model.ContactModel;
 import com.skybox.seven.covid.model.ContactRequestModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import io.reactivex.rxjava3.core.Single;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -39,14 +41,14 @@ public interface HealthService {
 
     @Headers({"Accept: application/json"})
     @GET("users/contacts")
-    Call<ArrayList<ContactModel.ContactUsersContacts>> getAllContacts(@Header("Authorization") String Authtoken);
+    Single<List<ContactModel.ContactUsersContacts>> getAllContacts(@Header("Authorization") String Authtoken);
 
     @Headers({"Accept: application/json"})
     @GET("users/contacts/pending")
-    Call<ArrayList<ContactRequestModel.PendingContacts>> getPendingContacts(@Header("Authorization") String Authtoken);
+    Single<List<ContactRequestModel.PendingContacts>> getPendingContacts(@Header("Authorization") String Authtoken);
 
     @Headers({"Accept: application/json"})
     @FormUrlEncoded
     @POST("contact/verify/user")
-    Call<GenericResponse> verifyContact(@Header("Authorization") String Authtoken, @Field("id") int id, @Field("status") String status);
+    Single<GenericResponse> verifyContact(@Header("Authorization") String Authtoken, @Field("id") int id, @Field("status") String status);
 }

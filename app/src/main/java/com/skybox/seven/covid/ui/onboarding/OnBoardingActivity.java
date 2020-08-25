@@ -17,24 +17,22 @@ import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.adapters.OnBoardingAdapter;
 import com.skybox.seven.covid.data.AppDatabase;
 import com.skybox.seven.covid.model.OnBoardingItem;
-import com.skybox.seven.covid.ui.auth.AuthActivity;
-import com.skybox.seven.covid.ui.main.HomeActivity;
+import com.skybox.seven.covid.ui.AuthActivity;
+import com.skybox.seven.covid.ui.HomeActivity;
 import com.skybox.seven.covid.util.Constants;
 import com.skybox.seven.covid.util.OnBoardingPageTransformer;
+import com.yariksoffice.lingver.Lingver;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class OnBoardingActivity extends AppCompatActivity implements OnBoardingAdapter.OnBoardCallback, OnLocaleChangedListener {
-    private LocalizationActivityDelegate delegate = new LocalizationActivityDelegate(this);
+public class OnBoardingActivity extends AppCompatActivity implements OnBoardingAdapter.OnBoardCallback {
     OnBoardingViewModel viewModel;
     List<OnBoardingItem> onBoardingItems = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        delegate.addOnLocaleChangedListener(this);
-        delegate.onCreate();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding);
         viewModel = new ViewModelProvider(getViewModelStore(), new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(OnBoardingViewModel.class);
@@ -104,40 +102,15 @@ public class OnBoardingActivity extends AppCompatActivity implements OnBoardingA
     @Override
     public void onLanguageChange(int id) {
         if (id == Constants.ENGLISH) {
-            delegate.setLanguage(this, new Locale("eng", "USA"));
+            Lingver.getInstance().setLocale(this, new Locale("eng", "USA"));
         } else {
-            delegate.setLanguage(this, new Locale("ny", "MW"));
+            Lingver.getInstance().setLocale(this,  new Locale("ny", "MW"));
         }
+        restart();
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        delegate.onResume(this);
-    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(delegate.attachBaseContext(newBase));
-    }
-
-    @Override
-    public Context getApplicationContext() {
-        return delegate.getApplicationContext(super.getApplicationContext());
-    }
-
-    @Override
-    public Resources getResources() {
-        return delegate.getResources(super.getResources());
-    }
-
-    @Override
-    public void onAfterLocaleChanged() {
-
-    }
-
-    @Override
-    public void onBeforeLocaleChanged() {
-
+    private void restart() {
+        // Todo Just close this and start main activity or send args to switch to the specific pager
+        Intent i = new Intent(this, OnBoardingActivity.class);
+        startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 }
