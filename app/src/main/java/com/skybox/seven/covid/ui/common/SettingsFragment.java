@@ -56,7 +56,7 @@ public class SettingsFragment extends Fragment implements SettingsController.Set
 
     @Override
     public void onContactsClick() {
-        Navigation.findNavController(getActivity(), R.id.container).navigate(R.id.allconacts);
+//        Navigation.findNavController(getActivity(), R.id.container).navigate(R.id.allconacts);
     }
 
     @Override

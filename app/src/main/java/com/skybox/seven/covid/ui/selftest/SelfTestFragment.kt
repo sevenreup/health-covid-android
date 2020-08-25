@@ -38,7 +38,7 @@ class SelfTestFragment: Fragment(), SelfTestAdapter.SelfTestAdapterCallback {
         recycler.adapter = adapter
 
         selftest.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_selfTestFragment_to_actulTest_Fragment)
+//            Navigation.findNavController(it).navigate(R.id.action_selfTestFragment_to_actulTest_Fragment)
         }
     }
 

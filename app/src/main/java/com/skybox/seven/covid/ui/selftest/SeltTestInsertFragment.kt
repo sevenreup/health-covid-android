@@ -52,7 +52,7 @@ class SeltTestInsertFragment : Fragment() {
 
             getResponse.text.clear()
             getStatus.text.clear()
-            findNavController(it).navigate(R.id.action_actulTest_Fragment_to_selfTestFragment)
+//            findNavController(it).navigate(R.id.action_actulTest_Fragment_to_selfTestFragment)
 
         }
     }
