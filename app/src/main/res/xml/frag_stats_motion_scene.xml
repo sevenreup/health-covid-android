@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+   >
+<ConstraintSet
+    android:id="@+id/start"
+    >
+    <Constraint
+        android:id="@+id/stats_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/stat_info_banner"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.08" />
+    <Constraint
+        android:id="@+id/mw_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="60dp" />
+</ConstraintSet>
+    <ConstraintSet
+        android:id="@+id/end"
+        >
+        <Constraint
+            app:layout_constraintBottom_toTopOf="parent"
+            android:id="@+id/stats_title"
+             />
+        <Constraint
+            app:layout_constraintEnd_toStartOf="parent"
+            android:id="@+id/mw_container"
+             />
+    </ConstraintSet>
+    <Transition
+        app:constraintSetStart="@id/start"
+        app:constraintSetEnd="@id/end"
+        app:motionInterpolator="easeInOut"
+        >
+        <OnSwipe
+            app:dragDirection="dragUp"
+            app:dragScale="1"
+            app:moveWhenScrollAtTop="true"
+            app:onTouchUp="stop"
+            app:touchAnchorId="@id/stat_info_banner"
+            app:touchAnchorSide="top" />
+    </Transition>
+
+</MotionScene>

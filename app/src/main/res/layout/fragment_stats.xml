@@ -1,39 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.motion.widget.MotionLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.cases.statsFragment"
+    tools:context=".ui.stats.StatisticsFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:applyMotionScene="true"
+    app:layoutDescription="@xml/frag_stats_motion_scene"
     >
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/mw_container"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/title_container"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_margin="20dp"
-            app:layout_constraintVertical_bias="0.421">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/title_statistics"
-                android:textSize="20sp"
-                android:layout_marginTop="10dp"
-                />
-        </LinearLayout>
+    <TextView
+        android:id="@+id/stats_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_statistics"
+        android:textSize="20sp"
+        android:transitionName="stats_title"
+        app:layout_constraintBottom_toTopOf="@id/mw_container"
+        app:layout_constraintLeft_toLeftOf="parent"
 
-        <LinearLayout
+        />
+
+    <LinearLayout
             android:id="@+id/mw_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -214,7 +204,6 @@
             android:layout_margin="20dp"
             android:background="@drawable/background_purple"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/stat_info_banner">
@@ -265,7 +254,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                        android:text="Total deaths"
+                        android:text="@string/total_active"
                             android:textSize="13sp"
                         android:textColor="?colorError"
                         android:layout_gravity="center"
@@ -290,7 +279,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="Total deaths"
+                            android:text="@string/total_recovered"
                             android:textSize="13sp"
                             android:textColor="?colorSecondary"
                             android:layout_gravity="center"
@@ -315,7 +304,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="Total deaths"
+                            android:text="@string/total_deaths"
                             android:textSize="13sp"
                             android:textColor="?badgeTextColor"
                             android:layout_gravity="center"
@@ -341,5 +330,4 @@
                 android:layout_margin="10dp"
                 />
         </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.constraintlayout.motion.widget.MotionLayout>

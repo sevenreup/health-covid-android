@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.skybox.seven.covid.R
+import com.skybox.seven.covid.ui.stats.StatisticsFragment
 import kotlinx.android.synthetic.main.fragment_cases.*
 
 
@@ -27,9 +28,9 @@ class CasesFragment : Fragment() {
 
         val adapter = pageAdapter(childFragmentManager)
 
-        adapter.addFragment(statsFragment(), "Total")
-        adapter.addFragment(statsFragment(), "Today")
-        adapter.addFragment(statsFragment(), "Yesterday")
+        adapter.addFragment(StatisticsFragment(), "Total")
+        adapter.addFragment(StatisticsFragment(), "Today")
+        adapter.addFragment(StatisticsFragment(), "Yesterday")
         viewPager.adapter = adapter
         tabs.setupWithViewPager(viewPager)
     }
