@@ -139,6 +139,7 @@
     <string name="total_recovered"> Total Recovered </string>
     <string name="total_deaths"> Total Deaths </string>
     <string name="total_active"> Total Active </string>
+    <string name="cases_confirmed">Cases Confirmed</string>
     <string name="stats_info_title"> Stay at home, Flatten the Curve </string>
     <string name="stats_info_content"> Stay safe and keep on social distancing </string>
     <string name="cases_worldwide"> Covid Cases World wide </string>

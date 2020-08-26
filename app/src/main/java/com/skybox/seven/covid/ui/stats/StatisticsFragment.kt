@@ -18,7 +18,6 @@ import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.FragmentStatsBinding
 
 
-@Suppress("DEPRECATION")
 class StatisticsFragment : Fragment() {
     private lateinit var binding: FragmentStatsBinding
 
@@ -55,12 +54,13 @@ class StatisticsFragment : Fragment() {
         barDataSet.valueTextColor = Color.WHITE
         barDataSet.valueTextSize = 16F
         val barData = PieData(barDataSet)
-
+        barData.setDrawValues(false)
         with(binding.worldChat) {
             data = barData
             legend.isEnabled = false
             description = null
             holeRadius = PIE_RADIUS
+            setDrawEntryLabels(false)
             setHoleColor(ContextCompat.getColor(requireContext(), R.color.background_purple))
             animateY(PIE_ANIMATION_DURATION, Easing.EaseInOutQuart)
             invalidate()

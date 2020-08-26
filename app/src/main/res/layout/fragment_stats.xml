@@ -219,22 +219,42 @@
             android:layout_height="wrap_content"
             android:weightSum="2">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
-
-                >
+                android:orientation="vertical">
 
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/worldChat"
                     android:layout_width="match_parent"
                     android:layout_height="160dp"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
-            </LinearLayout>
+                <TextView android:id="@+id/confirmed_cases"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="82,900"
+                    android:textAlignment="center"
+                    app:layout_constraintTop_toTopOf="@id/worldChat"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/confirmed_cases_title"/>
+
+                <TextView android:id="@+id/confirmed_cases_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cases_confirmed"
+                    app:layout_constraintTop_toBottomOf="@id/confirmed_cases"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
