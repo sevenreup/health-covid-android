@@ -131,14 +131,15 @@
 
 
     <string name="mw_situation">Malawi Situation</string>
-    <string name="confirmed"> Confirmed </string>
-    <string name="recovered"> Recovered </string>
-    <string name="deaths"> Deaths </string>
-    <string name="active"> Active </string>
+    <string name="confirmed">Confirmed</string>
+    <string name="recovered">Recovered</string>
+    <string name="deaths">Deaths</string>
+    <string name="active">Active</string>
     <string name="total_confirmed"> Total Confirmed </string>
     <string name="total_recovered"> Total Recovered </string>
     <string name="total_deaths"> Total Deaths </string>
     <string name="total_active"> Total Active </string>
+    <string name="cases_confirmed">Cases Confirmed</string>
     <string name="stats_info_title"> Stay at home, Flatten the Curve </string>
     <string name="stats_info_content"> Stay safe and keep on social distancing </string>
     <string name="cases_worldwide"> Covid Cases World wide </string>
@@ -147,4 +148,8 @@
 
     <string name="prevention">Prevention</string>
     <string name="symptom">Symptoms</string>
+
+    <string name="profile_greeting_title">Hello</string>
+    <string name="profile_question_feelings">How are you feeling today?</string>
+    <string name="profile_test_not_taken_prompt">Test not taken today,</string>
 </resources>

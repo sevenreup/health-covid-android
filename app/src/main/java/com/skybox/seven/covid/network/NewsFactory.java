@@ -27,7 +27,7 @@ public class NewsFactory {
         return retrofit;
     }
 
-    private static OkHttpClient buildOkHttpClient(Context context) {
+    public static OkHttpClient buildOkHttpClient(Context context) {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 

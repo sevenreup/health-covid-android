@@ -45,9 +45,7 @@ public class MainViewModel extends ViewModel {
     }
 
     public boolean isLoggedIn() {
-        AccessToken accessToken = preferenceRepository.getToken();
-        Log.e(TAG, "isLoggedIn: " + accessToken.toString());
-        return accessToken.getToken() != null;
+        return  preferenceRepository.getToken() != null;
     }
 
     public void saveContacts(ArrayList<ContactRequest> members, LatLng userLocation) {
@@ -67,9 +65,8 @@ public class MainViewModel extends ViewModel {
     }
 
     public String getToken() {
-        AccessToken token = preferenceRepository.getToken();
-        if (token.getToken() != null) {
-            return token.getType() + " " + token.getToken();
+        if (preferenceRepository.getToken() != null) {
+            return preferenceRepository.getToken();
         }
         return "";
     }

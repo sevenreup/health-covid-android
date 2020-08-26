@@ -43,7 +43,7 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
                     val user = response.body()
                     credentials.value = user
                     Log.e(TAG, "onResponse: $user")
-                    preferenceRepository.token = user
+                    preferenceRepository.setToken(user)
                     val fireToken = preferenceRepository.firebaseToken
                     if (fireToken != null) {
                         val fToken = healthService.pushToken(user!!.type + " " + user.token, fireToken)
