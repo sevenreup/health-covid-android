@@ -21,6 +21,15 @@ class StatisticsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
+
+        return inflater.inflate(R.layout.fragment_stats, container, false)
+
+    }
+
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
         view?.findViewById<TextView>(R.id.mw_situation)?.setOnClickListener {
             findNavController().navigate(R.id.action_statsFragment_to_statsBarChatFragment)
             this.requireActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
@@ -28,13 +37,6 @@ class StatisticsFragment : Fragment() {
         view?.findViewById<TextView>(R.id.view_countries)?.setOnClickListener {
             findNavController().navigate(R.id.action_statsFragment_to_countriesFragment)
         }
-
-        return inflater.inflate(R.layout.fragment_stats, container, false)
-
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
         worldChat()
     }
