@@ -214,54 +214,63 @@
             android:textColor="?colorOnPrimary" />
 
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="2">
+            android:layout_height="wrap_content">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <RelativeLayout
+                android:id="@+id/layout_chart"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_height="0dp"
+                app:layout_constraintHorizontal_weight="3"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/stats_holder"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
 
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/worldChat"
                     android:layout_width="match_parent"
-                    android:layout_height="160dp"
-                    android:layout_gravity="center"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    android:layout_height="match_parent" />
 
-                <TextView android:id="@+id/confirmed_cases"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="82,900"
-                    android:textAlignment="center"
-                    app:layout_constraintTop_toTopOf="@id/worldChat"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/confirmed_cases_title"/>
+                <LinearLayout
+                    android:id="@+id/layout_cases"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
-                <TextView android:id="@+id/confirmed_cases_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/cases_confirmed"
-                    app:layout_constraintTop_toBottomOf="@id/confirmed_cases"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    <TextView
+                        android:id="@+id/confirmed_cases"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="83, 700"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cases_confirmed"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
+                </LinearLayout>
+
+            </RelativeLayout>
+            <LinearLayout android:id="@+id/stats_holder"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_weight="2"
+                app:layout_constraintLeft_toRightOf="@id/layout_chart"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -337,7 +346,7 @@
                         android:textColor="?colorOnPrimary" />
                 </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/view_countries"
