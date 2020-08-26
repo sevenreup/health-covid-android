@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.stats.malawian_stats
+package com.skybox.seven.covid.ui.stats.malawianStats
 
 import android.graphics.Color
 import android.os.Bundle
@@ -10,21 +10,20 @@ import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
-import com.github.mikephil.charting.utils.ColorTemplate
 import com.skybox.seven.covid.R
 
 
-class DeathsFragment : Fragment() {
+class RecoveredFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        return inflater.inflate(R.layout.fragment_deaths, container, false)
+        return inflater.inflate(R.layout.fragment_recovered, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         barGraph()
     }
@@ -40,7 +39,7 @@ class DeathsFragment : Fragment() {
         colors.add(Color.MAGENTA)
         colors.add(Color.LTGRAY)
 
-        val chart = view?.findViewById<BarChart>(R.id.deathChart)
+        val chart = view?.findViewById<BarChart>(R.id.recoveredChart)
         val bars: ArrayList<BarEntry> = ArrayList()
 
         bars.add(BarEntry(1F, 10F))
@@ -50,7 +49,7 @@ class DeathsFragment : Fragment() {
         bars.add(BarEntry(5F, 50F))
         bars.add(BarEntry(6F, 60F))
         bars.add(BarEntry(7F, 70F))
-        val barDataSet = BarDataSet(bars, "Deaths")
+        val barDataSet = BarDataSet(bars, "Recovered")
         barDataSet.colors = colors
         barDataSet.valueTextColor = Color.BLACK
         barDataSet.valueTextSize = 16F

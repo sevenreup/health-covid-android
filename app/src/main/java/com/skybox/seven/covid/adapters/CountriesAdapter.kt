@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.model.CountriesModel
-import com.skybox.seven.covid.ui.stats.CountriesFragment
+import com.skybox.seven.covid.ui.stats.countriesStats.CountriesFragment
 import kotlinx.android.synthetic.main.countries_recycler.view.*
 
 class CountriesAdapter(val arrayList: ArrayList<CountriesModel>, val context: CountriesFragment): RecyclerView.Adapter<CountriesAdapter.ViewHolder>(){

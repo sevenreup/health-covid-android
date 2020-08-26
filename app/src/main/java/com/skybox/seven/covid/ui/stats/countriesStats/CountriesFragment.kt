@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.stats
+package com.skybox.seven.covid.ui.stats.countriesStats
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -27,10 +27,10 @@ class CountriesFragment : Fragment() {
         val recycler: RecyclerView? = view?.findViewById(R.id.countriesRecycler)
 
         arrayList.add(CountriesModel("Malawi", "312", "134" ,"12, 302"))
-        arrayList.add(CountriesModel("Malawi", "312", "134" ,"12, 302"))
-        arrayList.add(CountriesModel("Malawi", "312", "134" ,"12, 302"))
-        arrayList.add(CountriesModel("Malawi", "312", "134" ,"12, 302"))
-        arrayList.add(CountriesModel("Malawi", "312", "134" ,"12, 302"))
+        arrayList.add(CountriesModel("Tanzania", "212", "134" ,"12, 302"))
+        arrayList.add(CountriesModel("Mozambique", "412", "134" ,"12, 302"))
+        arrayList.add(CountriesModel("Zambia", "112", "134" ,"12, 302"))
+        arrayList.add(CountriesModel("Zimbabwe", "331", "134" ,"12, 302"))
 
 
         recycler!!.layoutManager = LinearLayoutManager(this.context)

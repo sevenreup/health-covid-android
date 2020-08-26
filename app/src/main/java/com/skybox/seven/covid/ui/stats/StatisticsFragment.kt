@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.cases
+package com.skybox.seven.covid.ui.stats
 
 import android.graphics.Color
 import android.os.Bundle
@@ -16,18 +16,10 @@ import com.skybox.seven.covid.R
 
 
 @Suppress("DEPRECATION")
-class statsFragment : Fragment() {
+class StatisticsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
-        return inflater.inflate(R.layout.fragment_stats, container, false)
-
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
 
         view?.findViewById<TextView>(R.id.mw_situation)?.setOnClickListener {
             findNavController().navigate(R.id.action_statsFragment_to_statsBarChatFragment)
@@ -36,6 +28,13 @@ class statsFragment : Fragment() {
         view?.findViewById<TextView>(R.id.view_countries)?.setOnClickListener {
             findNavController().navigate(R.id.action_statsFragment_to_countriesFragment)
         }
+
+        return inflater.inflate(R.layout.fragment_stats, container, false)
+
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         worldChat()
     }
