@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.ui.main.HomeActivity;
+import com.skybox.seven.covid.ui.HomeActivity;
 import com.skybox.seven.covid.ui.onboarding.OnBoardingActivity;
 
 import static com.skybox.seven.covid.repository.SharedPreferenceRepository.ONBOARDING;

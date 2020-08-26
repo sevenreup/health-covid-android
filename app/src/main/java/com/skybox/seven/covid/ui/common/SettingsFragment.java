@@ -16,8 +16,8 @@ import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.settings.SettingsController;
-import com.skybox.seven.covid.ui.auth.AuthActivity;
-import com.skybox.seven.covid.ui.main.MainViewModel;
+import com.skybox.seven.covid.ui.AuthActivity;
+import com.skybox.seven.covid.ui.MainViewModel;
 import com.skybox.seven.covid.util.Constants;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -56,7 +56,7 @@ public class SettingsFragment extends Fragment implements SettingsController.Set
 
     @Override
     public void onContactsClick() {
-        Navigation.findNavController(getActivity(), R.id.container).navigate(R.id.allconacts);
+//        Navigation.findNavController(getActivity(), R.id.container).navigate(R.id.allconacts);
     }
 
     @Override

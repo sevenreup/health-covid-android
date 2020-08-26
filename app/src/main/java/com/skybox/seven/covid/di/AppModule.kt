@@ -15,6 +15,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import javax.inject.Singleton
 
 @Module
@@ -44,4 +45,7 @@ class AppModule {
     // preferences
     @Singleton @Provides fun providesSharedPrefRepo(@ApplicationContext context: Context): SharedPreferenceRepository =
             SharedPreferenceRepository(context.getSharedPreferences(context.getString(R.string.shared_preference_key), Context.MODE_PRIVATE))
+
+    @Provides
+    fun provideDisposable(): CompositeDisposable = CompositeDisposable()
 }
