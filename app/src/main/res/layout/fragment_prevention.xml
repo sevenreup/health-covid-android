@@ -16,18 +16,18 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="61dp"
+        android:layout_marginTop="30dp"
         android:text="@string/prevention"
         android:textStyle="bold"/>
 
     <ImageView
         android:id="@+id/PreventionPageImage"
         android:layout_width="wrap_content"
-        android:layout_height="241dp"
+        android:layout_height="150dp"
         app:layout_constraintTop_toBottomOf="@id/PreventionPageTitle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/symptoms" />
 "
     <com.airbnb.epoxy.EpoxyRecyclerView
@@ -37,7 +37,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PreventionPageImage"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="27dp"
-        android:layout_marginRight="27dp"/>
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
 </androidx.constraintlayout.motion.widget.MotionLayout>
