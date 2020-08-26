@@ -147,4 +147,8 @@
 
     <string name="prevention">Prevention</string>
     <string name="symptom">Symptoms</string>
+
+    <string name="profile_greeting_title">Hello</string>
+    <string name="profile_question_feelings">How are you feeling today?</string>
+    <string name="profile_test_not_taken_prompt">Test not taken today,</string>
 </resources>

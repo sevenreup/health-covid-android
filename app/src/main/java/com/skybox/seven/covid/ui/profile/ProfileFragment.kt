@@ -15,7 +15,7 @@ import com.skybox.seven.covid.util.Constants
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
-    private val viewModel: MainViewModel by activityViewModels()
+    val viewModel: ProfileViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -35,7 +35,10 @@ class ProfileFragment : Fragment() {
     }
 
     fun navigateSelfTest() {
-        viewModel.language = Constants.CHICHEWA
-//        findNavController().navigate(R.id.to_selfTest_view)
+        findNavController().navigate(R.id.to_selfTest_view)
+    }
+
+    fun getGreeting(): String {
+        return ""
     }
 }
