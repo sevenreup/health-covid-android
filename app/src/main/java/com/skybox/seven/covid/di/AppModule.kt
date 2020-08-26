@@ -1,9 +1,9 @@
 package com.skybox.seven.covid.di
 
 import android.content.Context
+import com.google.gson.GsonBuilder
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.AppDatabase
-import com.skybox.seven.covid.data.daos.SelfTestResultDAO
 import com.skybox.seven.covid.data.repositories.*
 import com.skybox.seven.covid.network.*
 import com.skybox.seven.covid.repository.SharedPreferenceRepository
@@ -35,11 +35,12 @@ class AppModule {
     @Singleton
     @Provides
     fun providesStatsApi(@ApplicationContext context: Context): StatsService {
+        val gson = GsonBuilder().setLenient().create()
         val retrofit = Retrofit.Builder()
                 .client(NewsFactory.buildOkHttpClient(context))
                 .baseUrl(Constants.STATS_BASE_URL)
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
         return retrofit.create(StatsService::class.java)
     }

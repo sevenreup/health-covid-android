@@ -8,7 +8,7 @@ public class ContinentStat {
 
     @SerializedName("updated")
     @Expose
-    private Integer updated;
+    private String updated;
     @SerializedName("cases")
     @Expose
     private Integer cases;
@@ -64,11 +64,11 @@ public class ContinentStat {
     @Expose
     private List<String> countries = null;
 
-    public Integer getUpdated() {
+    public String getUpdated() {
         return updated;
     }
 
-    public void setUpdated(Integer updated) {
+    public void setUpdated(String updated) {
         this.updated = updated;
     }
 

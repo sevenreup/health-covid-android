@@ -7,7 +7,7 @@ public class WorldStats {
 
     @SerializedName("updated")
     @Expose
-    private Integer updated;
+    private String updated;
     @SerializedName("cases")
     @Expose
     private Integer cases;
@@ -46,7 +46,7 @@ public class WorldStats {
     private Double testsPerOneMillion;
     @SerializedName("population")
     @Expose
-    private Integer population;
+    private Long population;
     @SerializedName("oneCasePerPeople")
     @Expose
     private Integer oneCasePerPeople;
@@ -67,13 +67,13 @@ public class WorldStats {
     private Double criticalPerOneMillion;
     @SerializedName("affectedCountries")
     @Expose
-    private Integer affectedCountries;
+    private Double affectedCountries;
 
-    public Integer getUpdated() {
+    public String getUpdated() {
         return updated;
     }
 
-    public void setUpdated(Integer updated) {
+    public void setUpdated(String updated) {
         this.updated = updated;
     }
 
@@ -173,11 +173,11 @@ public class WorldStats {
         this.testsPerOneMillion = testsPerOneMillion;
     }
 
-    public Integer getPopulation() {
+    public Long getPopulation() {
         return population;
     }
 
-    public void setPopulation(Integer population) {
+    public void setPopulation(Long population) {
         this.population = population;
     }
 
@@ -229,11 +229,11 @@ public class WorldStats {
         this.criticalPerOneMillion = criticalPerOneMillion;
     }
 
-    public Integer getAffectedCountries() {
+    public Double getAffectedCountries() {
         return affectedCountries;
     }
 
-    public void setAffectedCountries(Integer affectedCountries) {
+    public void setAffectedCountries(Double affectedCountries) {
         this.affectedCountries = affectedCountries;
     }
 

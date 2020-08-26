@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
@@ -16,32 +18,43 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.FragmentStatsBinding
+import com.skybox.seven.covid.model.WorldStats
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class StatisticsFragment : Fragment() {
     private lateinit var binding: FragmentStatsBinding
+    val viewModel: StatsViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.getMalawiData()
+        viewModel.getWorldData()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = FragmentStatsBinding.inflate(inflater, container, false)
-        binding.mwContainer.setOnClickListener {
-            findNavController().navigate(R.id.action_statsFragment_to_statsBarChatFragment)
-            this.requireActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-        }
-        binding.viewCountries.setOnClickListener {
-            findNavController().navigate(R.id.action_statsFragment_to_countriesFragment)
-        }
-        worldChat()
+        binding.lifecycleOwner = this
+        binding.fragment = this
+        viewModel.worldData.observe(viewLifecycleOwner, Observer { worldChat(it) })
         return binding.root
-
     }
 
-    private fun worldChat() {
+    fun toMWStats() {
+        findNavController().navigate(R.id.action_statsFragment_to_statsBarChatFragment)
+    }
+
+    fun toAllCountries() {
+        findNavController().navigate(R.id.action_statsFragment_to_countriesFragment)
+    }
+
+    private fun worldChat(wordData: WorldStats) {
         val barDataSet = PieDataSet(
                 listOf(
-                        PieEntry(50F, getString(R.string.deaths)),
-                        PieEntry(30F, getString(R.string.active)),
-                        PieEntry(20F, getString(R.string.recovered))
+                        PieEntry(wordData.deaths.toFloat(), getString(R.string.deaths)),
+                        PieEntry(wordData.active.toFloat(), getString(R.string.active)),
+                        PieEntry(wordData.recovered.toFloat(), getString(R.string.recovered))
                 ),
                 "key"
         )
@@ -68,7 +81,6 @@ class StatisticsFragment : Fragment() {
     }
 
     companion object {
-        private const val TEXT_ANIMATION_DURATION = 1000L
         private const val PIE_ANIMATION_DURATION = 1500
         private const val PIE_RADIUS = 75f
     }
