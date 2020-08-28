@@ -17,6 +17,7 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.skybox.seven.covid.R
+import com.skybox.seven.covid.StatsDirections
 import com.skybox.seven.covid.databinding.FragmentStatsBinding
 import com.skybox.seven.covid.model.WorldStats
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,11 +43,15 @@ class StatisticsFragment : Fragment() {
     }
 
     fun toMWStats() {
-        findNavController().navigate(R.id.action_statsFragment_to_statsBarChatFragment)
+        if (viewModel.malawiData.value != null) {
+            val action = StatsDirections.toCountryStatsFragment(viewModel.malawiData.value!!)
+            findNavController().navigate(action)
+        }
+        // todo: fix this weird null nav state
     }
 
     fun toAllCountries() {
-        findNavController().navigate(R.id.action_statsFragment_to_countriesFragment)
+        findNavController().navigate(R.id.to_countriesFragment)
     }
 
     private fun worldChat(wordData: WorldStats) {

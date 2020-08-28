@@ -3,7 +3,9 @@ package com.skybox.seven.covid.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CountryStat {
+import java.io.Serializable;
+
+public class CountryStat implements Serializable {
 
     @SerializedName("updated")
     @Expose
@@ -40,16 +42,16 @@ public class CountryStat {
     private Integer critical;
     @SerializedName("casesPerOneMillion")
     @Expose
-    private Integer casesPerOneMillion;
+    private Double casesPerOneMillion;
     @SerializedName("deathsPerOneMillion")
     @Expose
-    private Integer deathsPerOneMillion;
+    private Double deathsPerOneMillion;
     @SerializedName("tests")
     @Expose
-    private Integer tests;
+    private Double tests;
     @SerializedName("testsPerOneMillion")
     @Expose
-    private Integer testsPerOneMillion;
+    private Double testsPerOneMillion;
     @SerializedName("population")
     @Expose
     private Long population;
@@ -163,35 +165,35 @@ public class CountryStat {
         this.critical = critical;
     }
 
-    public Integer getCasesPerOneMillion() {
+    public Double getCasesPerOneMillion() {
         return casesPerOneMillion;
     }
 
-    public void setCasesPerOneMillion(Integer casesPerOneMillion) {
+    public void setCasesPerOneMillion(Double casesPerOneMillion) {
         this.casesPerOneMillion = casesPerOneMillion;
     }
 
-    public Integer getDeathsPerOneMillion() {
+    public Double getDeathsPerOneMillion() {
         return deathsPerOneMillion;
     }
 
-    public void setDeathsPerOneMillion(Integer deathsPerOneMillion) {
+    public void setDeathsPerOneMillion(Double deathsPerOneMillion) {
         this.deathsPerOneMillion = deathsPerOneMillion;
     }
 
-    public Integer getTests() {
+    public Double getTests() {
         return tests;
     }
 
-    public void setTests(Integer tests) {
+    public void setTests(Double tests) {
         this.tests = tests;
     }
 
-    public Integer getTestsPerOneMillion() {
+    public Double getTestsPerOneMillion() {
         return testsPerOneMillion;
     }
 
-    public void setTestsPerOneMillion(Integer testsPerOneMillion) {
+    public void setTestsPerOneMillion(Double testsPerOneMillion) {
         this.testsPerOneMillion = testsPerOneMillion;
     }
 
