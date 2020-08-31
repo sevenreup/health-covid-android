@@ -135,6 +135,10 @@
     <string name="recovered">Recovered</string>
     <string name="deaths">Deaths</string>
     <string name="active">Active</string>
+    <string name="all">All</string>
+    <string name="month">Month</string>
+    <string name="week">Week</string>
+    <string name="year">Year</string>
     <string name="total_confirmed"> Total Confirmed </string>
     <string name="total_recovered"> Total Recovered </string>
     <string name="total_deaths"> Total Deaths </string>

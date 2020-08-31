@@ -118,6 +118,15 @@ Until the source of this virus is identified and controlled, there is a risk of 
 
     </string-array>
 
-
-
+    <string-array name="stats_data">
+        <item>@string/all</item>
+        <item>@string/confirmed</item>
+        <item>@string/recovered</item>
+        <item>@string/deaths</item>
+    </string-array>
+    <string-array name="timeline_data">
+        <item>@string/week</item>
+        <item>@string/month</item>
+        <item>@string/year</item>
+    </string-array>
 </resources>
