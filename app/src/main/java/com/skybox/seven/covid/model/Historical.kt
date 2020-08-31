@@ -16,9 +16,7 @@ data class TimeLine(
 
 class HistoricalResult(
         val country: String = "",
-        val cases: List<TimeLineResult>,
-        val deaths: List<TimeLineResult>,
-        val recovered: List<TimeLineResult>
+        val cases: List<TimeLineResult>
 )
 
 data class TimeLineResult(val date: String?, val cases: Int, val deaths: Int, val recovered: Int) : Parcelable {

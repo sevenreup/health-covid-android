@@ -67,8 +67,6 @@ class CountryStatsViewModel @ViewModelInject constructor(private val statsServic
 
     private fun createResults(data: Historical): HistoricalResult {
         val casesList: List<TimeLineResult>
-        val deathList: List<TimeLineResult>
-        val recoveredList: List<TimeLineResult>
 
         data.apply {
             casesList = data.timeline.casesMap.map { entry ->
@@ -79,9 +77,7 @@ class CountryStatsViewModel @ViewModelInject constructor(private val statsServic
         }
         return HistoricalResult(
                 data.country,
-                casesList,
-                ArrayList(),
-                ArrayList()
+                casesList
         )
     }
 
