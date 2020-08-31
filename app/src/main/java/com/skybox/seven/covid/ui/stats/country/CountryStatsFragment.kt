@@ -45,6 +45,8 @@ class CountryStatsChatFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = FragmentStatsBarChatBinding.inflate(inflater, container, false)
+        binding.fragment = this
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.chartType.addOnButtonCheckedListener { _, _, isChecked ->
             if (isChecked) {
                 graphLoad()
