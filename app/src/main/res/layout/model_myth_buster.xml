@@ -16,17 +16,17 @@
 
 
         <TextView
-            android:id="@+id/preventionRVCardTitle"
+            android:id="@+id/mythRVCardTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Sneezing"
             android:textColor="@color/reply_blue_800"
             android:layout_marginStart="5dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView2" />
+            app:layout_constraintStart_toEndOf="@+id/mythimageView" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/mythimageView"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="10dp"
@@ -36,16 +36,16 @@
             app:srcCompat="@drawable/mask" />
 
         <TextView
-            android:id="@+id/preventionRVCardDescription"
+            android:id="@+id/mythRVCardDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Again i have to type some fake description just to see how this looks. im making a mistake by hardcoding though. well that was stupid."
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toEndOf="@+id/mythimageView"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/preventionRVCardTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/mythRVCardTitle" />
 
         <TextView
             android:id="@+id/textView5"
@@ -55,8 +55,8 @@
             android:textColor="@color/lime"
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@id/preventionRVCardDescription"/>
+            app:layout_constraintStart_toEndOf="@+id/mythimageView"
+            app:layout_constraintTop_toBottomOf="@id/mythRVCardDescription"/>
 
         <ImageView
             android:id="@+id/imageView4"

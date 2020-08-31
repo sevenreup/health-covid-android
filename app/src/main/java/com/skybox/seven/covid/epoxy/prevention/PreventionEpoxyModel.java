@@ -27,8 +27,8 @@ public class PreventionEpoxyModel extends EpoxyModelWithHolder<PreventionEpoxyMo
     @Override
     public void bind(@NonNull PreventionEpoxyModel.PreventionEpoxyViewHolder holder) {
         super.bind(holder);
-        holder.preventionRVCardTitle.setText(prevention.getTitle());
-        holder.preventionRVCardDescription.setText(prevention.getAdvice());
+        holder.preventionRVCardTitle.setText(prevention.getShortTitle());
+        holder.preventionRVCardDescription.setText(prevention.getTitle());
     }
 
     @Override
