@@ -12,10 +12,18 @@
         <action
             android:id="@+id/to_preventionFragment"
             app:destination="@id/preventionFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_mythBustersFragment"
+            app:destination="@id/mythBustersFragment" />
     </fragment>
     <fragment
         android:id="@+id/preventionFragment"
         android:name="com.skybox.seven.covid.ui.prevention.PreventionFragment"
         android:label="fragment_prevention"
         tools:layout="@layout/fragment_prevention" />
+    <fragment
+        android:id="@+id/mythBustersFragment"
+        android:name="com.skybox.seven.covid.ui.mythbusters.MythBustersFragment"
+        android:label="fragment_myth_busters"
+        tools:layout="@layout/fragment_myth_busters" />
 </navigation>
