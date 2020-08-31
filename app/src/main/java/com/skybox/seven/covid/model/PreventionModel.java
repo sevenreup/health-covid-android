@@ -6,10 +6,10 @@ public class PreventionModel {
     @SerializedName("id")
     private Integer id;
 
-    @SerializedName("title")
+    @SerializedName("shortTitle")
     private String Title;
 
-    @SerializedName("description")
+    @SerializedName("title")
     private String Description;
 
     public PreventionModel(Integer id, String title, String description) {

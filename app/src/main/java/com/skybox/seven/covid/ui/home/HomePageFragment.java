@@ -56,12 +56,11 @@ public class HomePageFragment extends Fragment {
                     Navigation.findNavController(Objects.requireNonNull(getActivity()), R.id.nav_host_fragment).navigate(R.id.preventionFragment);
                 break;
 
-                case R.id.mythCard:
-                    Toast.makeText(getActivity(), "Myth Card has been clicked", Toast.LENGTH_SHORT).show();
-                    break;
+               
 
                 case R.id.symptomsCard:
                     Toast.makeText(getActivity(), "Symptoms Card has been clicked", Toast.LENGTH_SHORT).show();
+
                     break;
 
                 case R.id.qnaCard:
@@ -71,6 +70,11 @@ public class HomePageFragment extends Fragment {
                 default:
                     Toast.makeText(getActivity(), "Error in a card", Toast.LENGTH_SHORT).show();
                     break;
+                break;
+
+                case R.id.mythCard:
+                    Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.mythBustersFragment);
+
             }
         }
 
