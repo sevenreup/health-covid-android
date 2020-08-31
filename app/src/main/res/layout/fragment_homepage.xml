@@ -72,7 +72,8 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:weightSum="2"
         android:id="@+id/symptomsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,7 +83,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/preventionCard"
         android:onClick="@{clickHandler::onCardClick}"
-        android:layout_width="157.5dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/symptomsLayout"
         android:layout_margin="@dimen/menu_card_margin"
@@ -128,7 +130,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/symptomsCard"
         android:onClick="@{clickHandler::onCardClick}"
-        android:layout_width="157.5dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         app:layout_constraintLeft_toRightOf="@id/preventionCard"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/menu_card_margin"
@@ -172,7 +175,7 @@
 
     </androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/mythCard"
@@ -181,6 +184,7 @@
         android:layout_margin="@dimen/menu_card_margin"
         app:cardCornerRadius="@dimen/menu_card_radius"
         tools:layout_editor_absoluteX="1dp"
+        android:onClick="@{clickHandler::onCardClick}"
         app:layout_constraintTop_toBottomOf="@+id/symptomsLayout"
         tools:layout_editor_absoluteY="656dp" >
 
@@ -237,6 +241,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="@dimen/menu_card_margin"
+        android:onClick="@{clickHandler::onCardClick}"
         app:layout_constraintTop_toBottomOf="@+id/mythCard"
         app:cardCornerRadius="@dimen/menu_card_radius"
         tools:layout_editor_absoluteX="1dp"

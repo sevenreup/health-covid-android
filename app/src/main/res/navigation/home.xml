@@ -12,10 +12,18 @@
         <action
             android:id="@+id/to_preventionFragment"
             app:destination="@id/preventionFragment" />
+        <action
+            android:id="@+id/to_qnaFragment"
+            app:destination="@id/qnaFragment" />
     </fragment>
     <fragment
         android:id="@+id/preventionFragment"
         android:name="com.skybox.seven.covid.ui.prevention.PreventionFragment"
         android:label="fragment_prevention"
         tools:layout="@layout/fragment_prevention" />
+    <fragment
+        android:id="@+id/qnaFragment"
+        android:name="com.skybox.seven.covid.ui.qna.QnaFragment"
+        android:label="fragment_qna"
+        tools:layout="@layout/fragment_qna" />
 </navigation>

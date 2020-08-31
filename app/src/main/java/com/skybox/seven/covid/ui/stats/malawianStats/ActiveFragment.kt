@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
@@ -12,6 +13,7 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
+import com.skybox.seven.covid.R
 import com.skybox.seven.covid.components.BarChartRoundedRenderer
 import com.skybox.seven.covid.databinding.FragmentActiveBinding
 
@@ -23,12 +25,21 @@ class ActiveFragment : Fragment() {
         binding = FragmentActiveBinding.inflate(inflater, container, false)
         setUpBarGraph()
         setUpData()
-        binding.all.setOnClickListener { setUpData() }
-        binding.one.setOnClickListener { setUpSingleData("Active", Color.RED) }
+        binding.all.setOnClickListener {
+
+            binding.activeYr.setColorFilter(ContextCompat.getColor(requireContext(), R.color.background_purple), android.graphics.PorterDuff.Mode.MULTIPLY)
+            setUpData()
+        }
+        binding.one.setOnClickListener {
+            setUpSingleData("Active", Color.RED)
+            binding.activeMonth.setColorFilter(ContextCompat.getColor(requireContext(), R.color.background_purple), android.graphics.PorterDuff.Mode.MULTIPLY)
+        }
+
         return binding.root
     }
 
     private fun setUpBarGraph() {
+
         with(binding.activeChart) {
             animateX(1400)
             setPinchZoom(false)
@@ -50,6 +61,9 @@ class ActiveFragment : Fragment() {
     }
 
     private fun setUpData() {
+
+        binding.activeYr.setImageResource(R.drawable.ic_calendar_enabled)
+
         val bars = arrayListOf(
                 BarEntry(1F, floatArrayOf(20F, 20F, 5F)),
                 BarEntry(2F, floatArrayOf(20F, 20F, 5F)),
@@ -75,6 +89,9 @@ class ActiveFragment : Fragment() {
     }
 
     private fun setUpSingleData(label: String, color: Int) {
+
+
+
         val bars = arrayListOf(
                 BarEntry(1F, 20F),
                 BarEntry(2F, 20F),
