@@ -2,6 +2,7 @@ package com.skybox.seven.covid.ui.stats.country
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,7 +54,7 @@ class CountryStatsChatFragment : Fragment() {
             }
 
         }
-        binding.timeSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener  {
+        binding.timeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 onTimelineChanged()
             }
@@ -63,9 +64,8 @@ class CountryStatsChatFragment : Fragment() {
 
         }
         viewModel.allStats.observe(viewLifecycleOwner, Observer {
-            when(it.dataState) {
-                DataState.SUCCESS ->
-                {
+            when (it.dataState) {
+                DataState.SUCCESS -> {
                     if (binding.chartType.checkedButtonId == R.id.bar) showBar(it.data!!) else showLine(it.data!!)
                 }
 
@@ -73,7 +73,7 @@ class CountryStatsChatFragment : Fragment() {
                     //todo: show loading
                 }
                 else -> {
-                 // todo: show error
+                    // todo: show error
                 }
             }
 
@@ -105,28 +105,34 @@ class CountryStatsChatFragment : Fragment() {
 
     private fun showBar(data: HistoricalResult) {
         moveBar()
+        val recoveredValues: ArrayList<BarEntry> = ArrayList()
+        val criticalValues: ArrayList<BarEntry> = ArrayList()
         val activeValues: ArrayList<BarEntry> = ArrayList()
 
-        data.cases.forEachIndexed { index, result ->
-            activeValues.add(BarEntry(index.toFloat(), floatArrayOf(result.cases.toFloat(), result.recovered.toFloat(), result.deaths.toFloat())))
+        data.cases.forEachIndexed { index, timeLineResult ->
+            activeValues.add(BarEntry(index.toFloat(), timeLineResult.cases.toFloat()))
+            criticalValues.add(BarEntry(index.toFloat(), timeLineResult.deaths.toFloat()))
+            recoveredValues.add(BarEntry(index.toFloat(), timeLineResult.recovered.toFloat()))
         }
 
-        val activeSet = BarDataSet(activeValues, null)
+        val activeSet = BarDataSet(activeValues, getString(R.string.active))
                 .apply {
-                    color = ContextCompat.getColor(requireContext(), R.color.color_on_secondary)
                     setDrawValues(false)
-                    stackLabels = arrayOf(getString(R.string.active), getString(R.string.recovered), getString(R.string.deaths))
-                    setColors(
-                            ContextCompat.getColor(requireContext(), R.color.active),
-                            ContextCompat.getColor(requireContext(), R.color.recovered),
-                            ContextCompat.getColor(requireContext(), R.color.deaths)
-                    )
+                    color = ContextCompat.getColor(requireContext(), R.color.active)
                 }
-        with(binding.barChart) {
-            this.data = BarData(activeSet)
 
-            invalidate()
-        }
+        val recSet = BarDataSet(recoveredValues, getString(R.string.recovered))
+                .apply {
+                    setDrawValues(false)
+                    color = ContextCompat.getColor(requireContext(), R.color.recovered)
+                }
+        val crSet = BarDataSet(criticalValues, getString(R.string.deaths))
+                .apply {
+                    setDrawValues(false)
+                    color = ContextCompat.getColor(requireContext(), R.color.deaths)
+                }
+        binding.barChart.data = BarData(activeSet, recSet, crSet)
+        binding.barChart.invalidate()
     }
 
     private fun showLine(data: HistoricalResult) {
@@ -190,7 +196,7 @@ class CountryStatsChatFragment : Fragment() {
     private fun initBar() {
         with(binding.barChart) {
             description.isEnabled = false
-            legend.isEnabled = false
+            legend.isEnabled = true
 
             isDragDecelerationEnabled = false
             setTouchEnabled(false)
