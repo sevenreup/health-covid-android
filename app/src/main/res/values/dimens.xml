@@ -11,4 +11,7 @@
     <dimen name="onBoarding_image_height">300dp</dimen>
     <dimen name="onBoarding_image_end_image_height">300dp</dimen>
     <dimen name="onBoarding_image_margin_top">200dp</dimen>
+
+    <dimen name="card_seperator_margin">16dp</dimen>
+
 </resources>

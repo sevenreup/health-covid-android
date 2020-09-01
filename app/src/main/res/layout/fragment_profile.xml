@@ -55,7 +55,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:cardBackgroundColor="#356bf8">
+                    app:cardBackgroundColor="#356bf8">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -153,6 +153,7 @@
                         android:background="@drawable/circle_drawable"
                         android:backgroundTint="?colorSecondary"
                         android:elevation="4dp"
+                        android:onClick="@{() -> fragment.changelanguage()}"
                         android:padding="8dp"
                         android:scaleType="fitXY"
                         android:src="@drawable/ic_navigate_next"

@@ -1,5 +1,11 @@
 package com.skybox.seven.covid.util
 
+import android.graphics.Bitmap
+import com.bumptech.glide.RequestBuilder
+import com.bumptech.glide.RequestManager
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.signature.ObjectKey
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.text.NumberFormat
@@ -44,3 +50,15 @@ fun Int.toNumber() : String = NumberFormat.getInstance().format(this)
 
 fun Double.toPercentString(): String =
         DecimalFormat("#.##'%'", DecimalFormatSymbols(Locale.getDefault())).format(this)
+
+fun RequestManager.loadImage(url: String, isPreloading: Boolean): RequestBuilder<Bitmap> {
+
+    val options = RequestOptions
+            .diskCacheStrategyOf(DiskCacheStrategy.ALL)
+            .dontAnimate()
+            .signature(ObjectKey(url.plus(if (isPreloading) "_preloading" else "_not_preloading")))
+
+    return asBitmap()
+            .apply(options)
+            .load(url)
+}

@@ -3,8 +3,8 @@
 <resources>
 
     <!--Color palette-->
-    <color name="color_primary">#344955</color>
-    <color name="color_primary_variant">#232f34</color>
+    <color name="color_primary">@color/background_purple</color>
+    <color name="color_primary_variant">#5C30AC</color>
     <color name="color_secondary">#f9aa33</color>
     <color name="color_secondary_variant">#f9be64</color>
 
@@ -15,7 +15,7 @@
 
     <color name="color_on_secondary">#000000</color>
 
-    <color name="color_status_bar">#99eef0f2</color>
+    <color name="color_status_bar">@color/color_primary_variant</color>
 
     <color name="badge_text_color">#00C571</color>
 

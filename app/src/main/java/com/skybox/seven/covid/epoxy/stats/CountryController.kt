@@ -12,6 +12,7 @@ class CountryController(private val callbacks: CountryCallbacks) : Typed2EpoxyCo
                     .active(it.active.toString())
                     .recovered(it.recovered.toString())
                     .name(it.country)
+                    .flag(it.countryInfo.flag)
                     .listener {
                         _,_,view,_ -> callbacks.onCountryClicked(it, view)
                     }
