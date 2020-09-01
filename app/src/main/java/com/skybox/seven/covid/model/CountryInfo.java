@@ -1,9 +1,12 @@
 package com.skybox.seven.covid.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CountryInfo {
+public class CountryInfo implements Parcelable {
 
     @SerializedName("_id")
     @Expose
@@ -72,4 +75,43 @@ public class CountryInfo {
         this.flag = flag;
     }
 
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.id);
+        dest.writeString(this.iso2);
+        dest.writeString(this.iso3);
+        dest.writeString(this.lat);
+        dest.writeString(this._long);
+        dest.writeString(this.flag);
+    }
+
+    public CountryInfo() {
+    }
+
+    protected CountryInfo(Parcel in) {
+        this.id = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.iso2 = in.readString();
+        this.iso3 = in.readString();
+        this.lat = in.readString();
+        this._long = in.readString();
+        this.flag = in.readString();
+    }
+
+    public static final Creator<CountryInfo> CREATOR = new Creator<CountryInfo>() {
+        @Override
+        public CountryInfo createFromParcel(Parcel source) {
+            return new CountryInfo(source);
+        }
+
+        @Override
+        public CountryInfo[] newArray(int size) {
+            return new CountryInfo[size];
+        }
+    };
 }

@@ -135,6 +135,10 @@
     <string name="recovered">Recovered</string>
     <string name="deaths">Deaths</string>
     <string name="active">Active</string>
+    <string name="all">All</string>
+    <string name="month">Month</string>
+    <string name="week">Week</string>
+    <string name="year">Year</string>
     <string name="total_confirmed"> Total Confirmed </string>
     <string name="total_recovered"> Total Recovered </string>
     <string name="total_deaths"> Total Deaths </string>
@@ -143,6 +147,8 @@
     <string name="stats_info_title"> Stay at home, Flatten the Curve </string>
     <string name="stats_info_content"> Stay safe and keep on social distancing </string>
     <string name="cases_worldwide"> Covid Cases World wide </string>
+    <string name="overview">Overview</string>
+    <string name="countries">Countries</string>
 
     <string name="details_card_statement"> Have more questions on covid-19? Check out more official information </string>
 

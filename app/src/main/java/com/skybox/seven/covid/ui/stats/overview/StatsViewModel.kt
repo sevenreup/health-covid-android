@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.stats
+package com.skybox.seven.covid.ui.stats.overview
 
 import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
@@ -13,7 +13,8 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 private const val TAG = "StatsViewModel"
-class StatsViewModel @ViewModelInject constructor(private val statsService: StatsService, private val compositeDisposable: CompositeDisposable): ViewModel(){
+
+class StatsViewModel @ViewModelInject constructor(private val statsService: StatsService, private val compositeDisposable: CompositeDisposable) : ViewModel() {
     val malawiData = MutableLiveData<CountryStat>()
     val worldData = MutableLiveData<WorldStats>()
 
@@ -42,6 +43,19 @@ class StatsViewModel @ViewModelInject constructor(private val statsService: Stat
                         }, {
                             // todo: handle errors
                             it.printStackTrace()
+                        })
+        )
+    }
+
+    fun getAllCountries() {
+        compositeDisposable.add(
+                statsService.getAllCountries()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe({
+
+                        }, {
+
                         })
         )
     }
