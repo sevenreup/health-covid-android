@@ -9,7 +9,7 @@ import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.entities.Qna
 
-@EpoxyModelClass(layout = R.layout.model_qna)
+@EpoxyModelClass(layout = R.layout.model_qna_header)
 abstract class QnaEpoxyModel : EpoxyModelWithHolder<QnaEpoxyModel.QnaEpoxyViewHolder>() {
     @EpoxyAttribute
     var questions: Qna? = null
@@ -24,7 +24,7 @@ abstract class QnaEpoxyModel : EpoxyModelWithHolder<QnaEpoxyModel.QnaEpoxyViewHo
     }
 
     override fun getDefaultLayout(): Int {
-        return R.layout.model_qna
+        return R.layout.model_qna_header
     }
 
     class QnaEpoxyViewHolder : EpoxyHolder() {
