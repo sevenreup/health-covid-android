@@ -9,7 +9,7 @@ import com.skybox.seven.covid.databinding.ModelQnaHeaderBindingImpl
 
 
 class QnaController : TypedEpoxyController<Container>() {
-    private lateinit var binding: ModelQnaHeaderBindingImpl
+//    private lateinit var binding: ModelQnaHeaderBindingImpl
 //this works too but l failed to implement expansion the views using this
     //override fun buildModels(loading: Boolean?, questions: List<Qna>) {
     //  for (question in questions) {
@@ -21,9 +21,9 @@ class QnaController : TypedEpoxyController<Container>() {
             header {
                 id(it.question.id)
                 Question(it.question.name)
-                binding.setOnHeaderExpanded { QnaModel ->
-                    container.questions
-                }
+//                binding.setOnHeaderExpanded { QnaModel ->
+//                    container.questions
+//                }
             }
             if (it.question.isExpanded) {
                 it.answers.forEach() {
@@ -34,5 +34,31 @@ class QnaController : TypedEpoxyController<Container>() {
             }
         }
     }
+    /**
+     * have a grobal var to hold last expanded
+     * var expanded model = null
+     *
+     * QnaEpoxyModel_()..clickListener((model, parentView, clickedView, position) -> {
+     *  if (expandedModel == null) {
+     *      expandItem(parentView, true);
+     *      expandedModel = parentView;
+     *      }
+     *  else if (expandedModel == parentView) {
+     *      expandItem(parentView, false);
+     *      expandedModel = null;
+     *      }
+     *  else {
+     *      expandItem(expandedModel, false);
+     *      expandItem(parentView, true);
+     *      expandedModel = parentView;
+     *      }
+     * })
+     *
+     * the boolean will toggle
+     * the holder lets you access the views
+     * private void expandItem(QnaEpoxyModel.QnaEpoxyViewHolder holder, Boolean expanded) {
+     *      holder.question
+     * }
+     * */
 }
 
