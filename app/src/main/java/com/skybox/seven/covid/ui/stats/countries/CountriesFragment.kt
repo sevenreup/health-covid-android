@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.stats.countriesStats
+package com.skybox.seven.covid.ui.stats.countries
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -39,9 +39,5 @@ class CountriesFragment : Fragment(), CountryCallbacks {
     override fun onCountryClicked(stat: CountryStat, view: View) {
         val action = StatsDirections.toCountryStatsFragment(stat)
         findNavController().navigate(action)
-    }
-
-    fun goBack() {
-        findNavController().navigateUp()
     }
 }

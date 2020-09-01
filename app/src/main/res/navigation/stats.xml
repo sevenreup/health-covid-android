@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/stats"
-    app:startDestination="@id/statsFragment">
+    app:startDestination="@id/statsHolder">
     <action
         android:id="@+id/to_countryStatsFragment"
         app:destination="@id/statsBarChatFragment" />
@@ -12,13 +12,13 @@
         app:destination="@id/countriesFragment" />
 
     <fragment
-        android:id="@+id/statsFragment"
-        android:name="com.skybox.seven.covid.ui.stats.StatisticsFragment"
+        android:id="@+id/statsHolder"
+        android:name="com.skybox.seven.covid.ui.stats.StatsHolderFragment"
         android:label="fragment_stats"
-        tools:layout="@layout/fragment_stats" />
+        tools:layout="@layout/fragment_stats_holder" />
     <fragment
         android:id="@+id/statsBarChatFragment"
-        android:name="com.skybox.seven.covid.ui.stats.country.CountryStatsChatFragment"
+        android:name="com.skybox.seven.covid.ui.stats.single.CountryStatsChatFragment"
         android:label="fragment_stats_bar_chat"
         tools:layout="@layout/fragment_stats_bar_chat" >
         <argument
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/countriesFragment"
-        android:name="com.skybox.seven.covid.ui.stats.countriesStats.CountriesFragment"
+        android:name="com.skybox.seven.covid.ui.stats.countries.CountriesFragment"
         android:label="fragment_countries"
         tools:layout="@layout/fragment_countries" />
 </navigation>

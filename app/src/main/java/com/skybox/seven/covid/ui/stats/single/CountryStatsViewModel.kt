@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.stats.country
+package com.skybox.seven.covid.ui.stats.single
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
@@ -11,8 +11,6 @@ import com.skybox.seven.covid.model.HistoricalResult
 import com.skybox.seven.covid.model.TimeLineResult
 import com.skybox.seven.covid.network.StatsService
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 

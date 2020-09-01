@@ -1,18 +1,16 @@
-package com.skybox.seven.covid.ui.stats
+package com.skybox.seven.covid.ui.stats.overview
 
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.github.mikephil.charting.animation.Easing
-import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
@@ -48,10 +46,6 @@ class StatisticsFragment : Fragment() {
             findNavController().navigate(action)
         }
         // todo: fix this weird null nav state
-    }
-
-    fun toAllCountries() {
-        findNavController().navigate(R.id.to_countriesFragment)
     }
 
     private fun worldChat(wordData: WorldStats) {

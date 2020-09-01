@@ -5,13 +5,13 @@
     <data>
         <variable
             name="fragment"
-            type="com.skybox.seven.covid.ui.stats.country.CountryStatsChatFragment" />
+            type="com.skybox.seven.covid.ui.stats.single.CountryStatsChatFragment" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.stats.country.CountryStatsChatFragment">
+        tools:context=".ui.stats.single.CountryStatsChatFragment">
 
         <ImageView
             android:id="@+id/back_btn"

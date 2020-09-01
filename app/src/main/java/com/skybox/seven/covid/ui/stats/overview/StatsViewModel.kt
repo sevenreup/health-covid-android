@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.stats
+package com.skybox.seven.covid.ui.stats.overview
 
 import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject

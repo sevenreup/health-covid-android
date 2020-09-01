@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.stats.countriesStats
+package com.skybox.seven.covid.ui.stats.countries
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData

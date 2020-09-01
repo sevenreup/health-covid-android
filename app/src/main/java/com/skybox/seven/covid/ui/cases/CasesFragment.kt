@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.skybox.seven.covid.R
-import com.skybox.seven.covid.ui.stats.StatisticsFragment
+import com.skybox.seven.covid.ui.stats.overview.StatisticsFragment
 import kotlinx.android.synthetic.main.fragment_cases.*
 
 
