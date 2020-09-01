@@ -33,8 +33,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:layout_margin="20dp"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_24"/>
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_keyboard_arrow"/>
 
         </RelativeLayout>
 
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/answerLayout"
-            android:visibility="gone"
+
             >
             <TextView
 

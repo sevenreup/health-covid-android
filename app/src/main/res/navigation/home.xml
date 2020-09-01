@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_homePageFragment_to_mythBustersFragment"
             app:destination="@id/mythBustersFragment" />
+        <action
+            android:id="@+id/to_qnaFragment"
+            app:destination="@id/qnaFragment" />
     </fragment>
     <fragment
         android:id="@+id/preventionFragment"
@@ -26,4 +29,9 @@
         android:name="com.skybox.seven.covid.ui.mythbusters.MythBustersFragment"
         android:label="fragment_myth_busters"
         tools:layout="@layout/fragment_myth_busters" />
+    <fragment
+        android:id="@+id/qnaFragment"
+        android:name="com.skybox.seven.covid.ui.qna.QnaFragment"
+        android:label="fragment_qna"
+        tools:layout="@layout/fragment_qna" />
 </navigation>

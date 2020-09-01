@@ -53,27 +53,26 @@ public class HomePageFragment extends Fragment {
             switch (view.getId())
             {
                 case R.id.preventionCard:
-                    Navigation.findNavController(Objects.requireNonNull(getActivity()), R.id.nav_host_fragment).navigate(R.id.preventionFragment);
+                    Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.preventionFragment);
                 break;
 
-               
-
                 case R.id.symptomsCard:
-                    Toast.makeText(getActivity(), "Symptoms Card has been clicked", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity(), "Symptoms Card has been clicked", Toast.LENGTH_SHORT).show();
 
+                    break;
+
+                case R.id.mythCard:
+                    Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.mythBustersFragment);
                     break;
 
                 case R.id.qnaCard:
-                    Navigation.findNavController(Objects.requireNonNull(getActivity()), R.id.nav_host_fragment).navigate(R.id.to_qnaFragment);
+                    Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.to_qnaFragment);
                     break;
 
                 default:
-                    Toast.makeText(getActivity(), "Error in a card", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity(), "Error in a card", Toast.LENGTH_SHORT).show();
                     break;
-                break;
 
-                case R.id.mythCard:
-                    Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.mythBustersFragment);
 
             }
         }
