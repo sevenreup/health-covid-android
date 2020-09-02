@@ -67,11 +67,11 @@ public class HealthFireMessagingService extends com.google.firebase.messaging.Fi
         Log.d(TAG, "registerToServer: " + message);
         SharedPreferenceRepository repository = new SharedPreferenceRepository(getSharedPreferences(getApplication().getString(R.string.shared_preference_key), Context.MODE_PRIVATE));
         repository.setFirebaseMessagingToken(message);
-        AccessToken token = repository.getToken();
-        if (token.getToken() != null) {
+        String token = repository.getToken();
+        if (token != null) {
             Retrofit retrofit = RetrofitFactory.getRetrofit(getApplicationContext());
             HealthService service = retrofit.create(HealthService.class);
-            Call<GenericResponse> call = service.pushToken(token.getType() + " " + token.getToken(), message);
+            Call<GenericResponse> call = service.pushToken(token, message);
             call.enqueue(new Callback<GenericResponse>() {
                 @Override
                 public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {

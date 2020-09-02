@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import com.skybox.seven.covid.network.responses.AccessToken;
 
 public class SharedPreferenceRepository {
-    public static String TOKEN = "token", TOKEN_TYPE = "token_type", FIREBASE_MESSAGING = "firebase_message", ONBOARDING = "onboarding_status", LANGUAGE_INT = "language_int";
+    public static String TOKEN = "token", FIREBASE_MESSAGING = "firebase_message", ONBOARDING = "onboarding_status", LANGUAGE_INT = "language_int";
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
@@ -15,23 +15,20 @@ public class SharedPreferenceRepository {
     }
 
     public void setToken(AccessToken response) {
-        editor.putString(TOKEN, response.getToken());
-        editor.putString(TOKEN_TYPE, response.getType());
+        editor.putString(TOKEN, response.getType() + " " +response.getToken());
         editor.apply();
     }
 
-    public AccessToken getToken() {
-        AccessToken accessToken = new AccessToken();
+    public String getToken() {
+        return sharedPreferences.getString(TOKEN, null);
+    }
 
-        accessToken.setToken(sharedPreferences.getString(TOKEN, null));
-        accessToken.setType(sharedPreferences.getString(TOKEN_TYPE, null));
-
-        return accessToken;
+    public Boolean isLoggedIn() {
+        return getToken() != null;
     }
 
     public void deleteToken() {
         editor.remove(TOKEN);
-        editor.remove(TOKEN_TYPE);
         editor.apply();
     }
 

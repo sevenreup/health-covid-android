@@ -120,9 +120,9 @@ public class RetrofitFactory {
         public Request authenticate(Route route, Response response) throws IOException {
             if (responseCount(response) >= 3)
                 return null;
-            AccessToken token = repository.getToken();
-            if (token.getToken() != null) {
-                return response.request().newBuilder().header("Authorization", token.getType() + " " + token.getToken()).build();
+            String token = repository.getToken();
+            if (token != null) {
+                return response.request().newBuilder().header("Authorization", token).build();
             }
             return null;
         }

@@ -6,14 +6,10 @@ import androidx.lifecycle.ViewModel
 import com.skybox.seven.covid.model.ContactModel.ContactUsersContacts
 import com.skybox.seven.covid.model.ContactRequestModel.PendingContacts
 import com.skybox.seven.covid.network.HealthService
-import com.skybox.seven.covid.network.responses.GenericResponse
 import com.skybox.seven.covid.repository.SharedPreferenceRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.util.*
 
 class ContactsViewModel @ViewModelInject constructor(private val preferenceRepository: SharedPreferenceRepository,
@@ -28,10 +24,7 @@ class ContactsViewModel @ViewModelInject constructor(private val preferenceRepos
 
     val token: String
         get() {
-            val token = preferenceRepository.token
-            return if (token.token != null) {
-                token.type + " " + token.token
-            } else ""
+            return preferenceRepository.token ?: ""
         }
 
     val allContacts: Unit

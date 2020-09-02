@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.skybox.seven.covid.R
-import com.skybox.seven.covid.ui.stats.malawian_stats.DeathsFragment
-import kotlinx.android.synthetic.main.fragment_stats_bar_chat.*
+import com.skybox.seven.covid.ui.stats.malawianStats.ActiveFragment
+import com.skybox.seven.covid.ui.stats.malawianStats.DeathsFragment
+import com.skybox.seven.covid.ui.stats.malawianStats.RecoveredFragment
 
 
 class StatsBarChatFragment : Fragment() {
@@ -34,10 +34,12 @@ class StatsBarChatFragment : Fragment() {
         val pager: ViewPager? = view?.findViewById(R.id.statsViewPager)
 
 
-        val adapter = pageAdapter(childFragmentManager)
+        val adapter = PageAdapter(childFragmentManager)
 
 
         adapter.addFragment(DeathsFragment())
+        adapter.addFragment(ActiveFragment())
+        adapter.addFragment(RecoveredFragment())
 
         pager?.adapter = adapter
 
@@ -64,7 +66,8 @@ class StatsBarChatFragment : Fragment() {
 }
 
 
-class pageAdapter(manager: FragmentManager): FragmentStatePagerAdapter(manager) {
+@Suppress("DEPRECATION")
+class PageAdapter(manager: FragmentManager): FragmentStatePagerAdapter(manager) {
 
     private var fragmentList: MutableList<Fragment> = ArrayList()
     private var titleList: MutableList<String> = ArrayList()

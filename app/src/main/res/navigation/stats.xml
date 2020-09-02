@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/statsFragment"
-        android:name="com.skybox.seven.covid.ui.cases.statsFragment"
+        android:name="com.skybox.seven.covid.ui.stats.StatisticsFragment"
         android:label="fragment_stats"
         tools:layout="@layout/fragment_stats" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/countriesFragment"
-        android:name="com.skybox.seven.covid.ui.stats.CountriesFragment"
+        android:name="com.skybox.seven.covid.ui.stats.countriesStats.CountriesFragment"
         android:label="fragment_countries"
         tools:layout="@layout/fragment_countries" >
         <action
