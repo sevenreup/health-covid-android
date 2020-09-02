@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MotionScene 
+<MotionScene
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="1000">
-       <KeyFrameSet>
-       </KeyFrameSet>
-        <OnSwipe motion:touchAnchorId="@+id/PreventionPageImage" />
+        motion:duration="2000">
+        <KeyFrameSet>
+        </KeyFrameSet>
+        <OnSwipe motion:touchAnchorId="@+id/MythPageImage" />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
@@ -28,25 +28,25 @@
             android:layout_width="40dp"
             android:layout_marginTop="16dp"
             android:layout_marginLeft="53dp"
-            android:id="@+id/PreventionPageImage"
+            android:id="@+id/MythPageImage"
             motion:layout_constraintTop_toTopOf="parent" />
         <Constraint
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:id="@+id/PreventionPageTitle"
+            android:id="@+id/MythPageTitle"
             android:layout_marginTop="20dp"
             android:layout_marginStart="30dp"
-            motion:layout_constraintStart_toEndOf="@+id/PreventionPageImage"
+            motion:layout_constraintStart_toEndOf="@+id/MythPageImage"
             motion:layout_constraintTop_toTopOf="parent" />
 
         <Constraint
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:id="@id/PreventionRecyclerView"
+            android:id="@id/MythRecyclerView"
             android:layout_marginTop="30dp"
             motion:layout_constraintLeft_toLeftOf="parent"
             motion:layout_constraintRight_toRightOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/PreventionPageImage"
+            motion:layout_constraintTop_toBottomOf="@+id/MythPageImage"
             android:layout_marginLeft="27dp"
             android:layout_marginRight="27dp"/>
     </ConstraintSet>

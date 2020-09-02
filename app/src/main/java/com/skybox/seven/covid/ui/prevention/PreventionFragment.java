@@ -26,8 +26,7 @@ public class PreventionFragment extends Fragment {
     private AdviceViewModel viewModel;
 
 
-    public PreventionFragment() {
-    }
+    public PreventionFragment() { }
 
 
     @Override
