@@ -10,9 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.airbnb.epoxy.addGlidePreloader
 import com.airbnb.epoxy.glidePreloader
-import com.airbnb.epoxy.preload.ViewData
-import com.airbnb.epoxy.preload.ViewMetadata
-import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.skybox.seven.covid.GlideApp
 import com.skybox.seven.covid.R
