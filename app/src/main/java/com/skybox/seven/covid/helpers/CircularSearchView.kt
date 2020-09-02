@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewAnimationUtils
 import android.widget.FrameLayout
 import androidx.annotation.RequiresApi
+import androidx.core.widget.addTextChangedListener
 import com.skybox.seven.covid.databinding.LayoutCircularSearchViewBinding
 
 class CircularSearchView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0):
@@ -25,6 +26,9 @@ class CircularSearchView @JvmOverloads constructor(context: Context, attrs: Attr
             callbacks?.onSearchOpen()
             openSearch()
         }
+        binding.searchText.addTextChangedListener(onTextChanged = { text: CharSequence?, _: Int, _: Int, _: Int ->
+            callbacks?.onTextChanged(text.toString())
+        })
     }
 
     private fun openSearch() {
@@ -84,5 +88,6 @@ class CircularSearchView @JvmOverloads constructor(context: Context, attrs: Attr
     interface CircularCallbacks {
         fun onSearchOpen()
         fun onSearchClose()
+        fun onTextChanged(text: String)
     }
 }

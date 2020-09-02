@@ -34,4 +34,11 @@
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textSize">16sp</item>
     </style>
+
+    <style name="Covid.Search" parent="@android:style/TextAppearance">
+        <item name="android:textSize">18sp</item>
+        <item name="backgroundTint">@android:color/white</item>
+        <item name="android:hint">@string/search_hint</item>
+        <item name="android:textColorHint">#D2D9E5</item>
+    </style>
 </resources>

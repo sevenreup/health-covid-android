@@ -149,6 +149,7 @@
     <string name="cases_worldwide"> Covid Cases World wide </string>
     <string name="overview">Overview</string>
     <string name="countries">Countries</string>
+    <string name="search_hint">Search Country</string>
 
     <string name="details_card_statement"> Have more questions on covid-19? Check out more official information </string>
 

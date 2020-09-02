@@ -14,6 +14,7 @@ import com.skybox.seven.covid.databinding.FragmentStatsHolderBinding
 import com.skybox.seven.covid.helpers.CircularSearchView
 import com.skybox.seven.covid.ui.MainViewModel
 import com.skybox.seven.covid.ui.stats.countries.CountriesFragment
+import com.skybox.seven.covid.ui.stats.countries.CountriesViewModel
 import com.skybox.seven.covid.ui.stats.overview.StatisticsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,6 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class StatsHolderFragment : Fragment(), CircularSearchView.CircularCallbacks {
     private lateinit var binding: FragmentStatsHolderBinding
     private val viewModel: MainViewModel by activityViewModels()
+    private val countriesModel: CountriesViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -48,6 +50,14 @@ class StatsHolderFragment : Fragment(), CircularSearchView.CircularCallbacks {
     override fun onSearchClose() {
         viewModel.searchOpened.value = false
         binding.motion.transitionToState(R.id.start)
+    }
+
+    override fun onTextChanged(text: String) {
+        if (text.count() > 0) {
+            countriesModel.searchText.value = text
+        } else {
+            countriesModel.rebuild.value = true
+        }
     }
 
     override fun onPause() {

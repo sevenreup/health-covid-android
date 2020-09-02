@@ -31,9 +31,10 @@
             app:layout_constraintStart_toStartOf="parent"
             android:padding="8dp"/>
 
-        <EditText
+        <EditText android:id="@+id/search_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            style="@style/Covid.Search"
             app:layout_constraintStart_toEndOf="@id/close"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

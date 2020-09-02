@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -22,16 +23,20 @@ import com.skybox.seven.covid.model.CountryStat
 import com.skybox.seven.covid.util.SpaceItemDecorator
 import com.skybox.seven.covid.util.loadImage
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class CountriesFragment : Fragment(), CountryCallbacks {
     private lateinit var binding: FragmentCountriesBinding
-    val viewModel: CountriesViewModel by viewModels()
+    val viewModel: CountriesViewModel by activityViewModels()
     private val controller = CountryController(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.allCountriesData.observe(this, Observer {
+            viewModel.filteredList.value = it
+        })
+        viewModel.filteredList.observe(this, Observer {
             controller.setData(false, it)
         })
         viewModel.getAllCountries()
@@ -50,11 +55,25 @@ class CountriesFragment : Fragment(), CountryCallbacks {
                     }
             )
         }
+        viewModel.searchText.observe(viewLifecycleOwner, Observer {text ->
+            if (viewModel.allCountriesData.value != null) {
+                val filteredList = viewModel.allCountriesData.value!!.filter {
+                    val country = it.country.toLowerCase(Locale.getDefault())
+                    val currentText = text.toLowerCase(Locale.getDefault())
+                    country.contains(currentText)
+                }
+                viewModel.filteredList.value = filteredList
+            }
+        })
+        viewModel.rebuild.observe(viewLifecycleOwner, Observer {
+            viewModel.filteredList.value = viewModel.allCountriesData.value
+        })
         return binding.root
     }
 
     override fun onCountryClicked(stat: CountryStat, view: View) {
         val action = StatsDirections.toCountryStatsFragment(stat)
         findNavController().navigate(action)
+        viewModel.rebuild.value = true
     }
 }
