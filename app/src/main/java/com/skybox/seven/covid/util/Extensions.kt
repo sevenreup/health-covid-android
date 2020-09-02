@@ -1,11 +1,15 @@
 package com.skybox.seven.covid.util
 
+import android.content.res.TypedArray
 import android.graphics.Bitmap
+import android.util.AttributeSet
+import android.widget.FrameLayout
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.signature.ObjectKey
+import com.google.android.material.card.MaterialCardView
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.text.NumberFormat
@@ -61,4 +65,8 @@ fun RequestManager.loadImage(url: String, isPreloading: Boolean): RequestBuilder
     return asBitmap()
             .apply(options)
             .load(url)
+}
+
+fun MaterialCardView.obtainStyledAttributes(attrsSet: AttributeSet?, attrsId: IntArray): TypedArray {
+    return context.theme.obtainStyledAttributes(attrsSet, attrsId, 0, 0)
 }

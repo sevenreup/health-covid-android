@@ -10,13 +10,16 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.FragmentStatsBarChatBinding
 import com.skybox.seven.covid.helpers.DataState
+import com.skybox.seven.covid.model.CountryStat
 import com.skybox.seven.covid.model.HistoricalResult
+import com.skybox.seven.covid.ui.stats.overview.StatisticsFragment
 import com.skybox.seven.covid.util.shortValue
 import com.skybox.seven.covid.util.takeLast
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,6 +54,16 @@ class CountryStatsChatFragment : Fragment() {
             }
 
         }
+        viewModel.countryStats.observe(viewLifecycleOwner, Observer {
+           binding.countryTotals.apply {
+               title = getString(R.string.cases)
+               cases = it.cases.toString()
+               active = it.active.toString()
+               deaths = it.deaths.toString()
+               recovered = it.recovered.toString()
+           }
+            countryChat(it)
+        })
         binding.timeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 onTimelineChanged()
@@ -230,6 +243,22 @@ class CountryStatsChatFragment : Fragment() {
 
     private fun initLine() {
 
+    }
+
+   fun countryChat(countryStat: CountryStat) {
+       val barDataSet = PieDataSet(
+               listOf(
+                       PieEntry(countryStat.deaths.toFloat(), requireContext().getString(R.string.deaths)),
+                       PieEntry(countryStat.active.toFloat(), requireContext().getString(R.string.active)),
+                       PieEntry(countryStat.recovered.toFloat(), requireContext().getString(R.string.recovered))
+               ),
+               "key"
+       )
+       StatisticsFragment.setUpBar(barDataSet, requireContext(), binding.countryTotals.worldChat)
+    }
+
+    fun goBack() {
+        findNavController().navigateUp()
     }
 
     companion object {

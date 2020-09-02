@@ -30,7 +30,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <com.skybox.seven.covid.helpers.CircularSearchView android:id="@+id/search_view"
+    <com.skybox.seven.covid.views.CircularSearchView
+        android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"/>

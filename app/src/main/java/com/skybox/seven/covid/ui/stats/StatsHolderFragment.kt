@@ -11,7 +11,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.FragmentStatsHolderBinding
-import com.skybox.seven.covid.helpers.CircularSearchView
+import com.skybox.seven.covid.views.CircularSearchView
 import com.skybox.seven.covid.ui.MainViewModel
 import com.skybox.seven.covid.ui.stats.countries.CountriesFragment
 import com.skybox.seven.covid.ui.stats.countries.CountriesViewModel

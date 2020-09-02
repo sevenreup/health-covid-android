@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.helpers
+package com.skybox.seven.covid.views
 
 import android.animation.Animator
 import android.content.Context
