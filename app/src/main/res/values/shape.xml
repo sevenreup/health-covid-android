@@ -2,10 +2,8 @@
 
     <style name="ShapeAppearance.Covid.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopLeft">20dp</item>
-        <item name="cornerSizeTopRight">20dp</item>
-        <item name="cornerSizeBottomLeft">0dp</item>
-        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSize">20dp</item>
+        <item name="elevation">4dp</item>
     </style>
 
     <!--Shape Appearance for medium components like cards, alert dialogs-->

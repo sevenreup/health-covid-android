@@ -12,235 +12,182 @@
         <import type="android.view.View" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="16dp"
         tools:context=".ui.profile.ProfileFragment">
 
-        <TextView
-            android:id="@+id/greeting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/profile_greeting_title"
-            android:textAppearance="?textAppearanceHeadline5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/stay_at_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/stay_home"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/greeting" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/test_holder"
-            style="?cardViewStyle"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/stay_at_home">
+            android:layout_height="match_parent">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/greeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_greeting_title"
+                android:textAppearance="?textAppearanceHeadline5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/stay_at_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/stay_home"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/greeting" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/test_holder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginTop="16dp"
+                app:cardElevation="@dimen/card_elevation_large"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/stay_at_home">
 
-                <com.google.android.material.card.MaterialCardView
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardBackgroundColor="#356bf8">
+                    android:layout_height="wrap_content">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/self_test_title"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="10dp">
+                        android:text="@string/selftest_heading"
+                        android:textAppearance="?textAppearanceSubtitle1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/feeling_question"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            android:text="@string/profile_question_feelings"
-                            android:textAppearance="?textAppearanceSubtitle1"
-                            android:textColor="@android:color/white" />
+                    <TextView
+                        android:id="@+id/test_time_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/previous_test"
+                        app:layout_constraintBottom_toBottomOf="@id/test_time"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/test_time" />
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/test_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="Yesterday"
+                        app:layout_constraintStart_toEndOf="@id/test_time_title"
+                        app:layout_constraintTop_toBottomOf="@id/self_test_title" />
+
+                    <View
+                        android:id="@+id/separator"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="?colorPrimary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/test_time" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/button_start_test"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/separator" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/help_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardUseCompatPadding="true"
+                app:cardElevation="@dimen/card_elevation_large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/test_holder">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp">
+                    android:layout_margin="22dp">
 
-                    <ImageView
-                        android:id="@+id/last_test_icon"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:background="@drawable/circle_drawable"
-                        android:backgroundTint="?colorSecondary"
-                        android:elevation="4dp"
-                        android:padding="8dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/virus"
+                    <TextView
+                        android:id="@+id/help_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Help the fight against Covid-19"
+                        android:textAppearance="?textAppearanceHeadline6"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/last_test_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:text="Last Test"
-                        android:textAppearance="?textAppearanceBody1"
-                        app:layout_constraintStart_toEndOf="@id/last_test_icon"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:text="3 days ago"
-                        app:layout_constraintStart_toEndOf="@id/last_test_icon"
-                        app:layout_constraintTop_toBottomOf="@id/last_test_title" />
-
-                    <View
-                        android:id="@+id/seperator"
+                        android:id="@+id/help_exp"
                         android:layout_width="0dp"
-                        android:layout_height="1dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:background="?colorPrimary"
+                        android:text="Keeping a list of people you frequently associate with,This will help the ministry help you and your friend when One of you is at risk faster.."
+                        android:textAppearance="?textAppearanceBody2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/last_test_icon" />
+                        app:layout_constraintTop_toBottomOf="@id/help_header" />
 
-                    <TextView
-                        android:id="@+id/test_not_prompt"
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/view_contacts_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="@string/profile_test_not_taken_prompt"
-                        android:textAppearance="?textAppearanceBody1"
+                        android:layout_marginTop="12dp"
+                        android:onClick="@{() -> fragment.navigateContacts()}"
+                        android:text="View Contacts"
+                        android:visibility="@{fragment.viewModel.isLoggedIn() ? View.VISIBLE : View.GONE}"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/take_test_icon" />
+                        app:layout_constraintTop_toBottomOf="@id/help_exp"
+                        tools:visibility="gone" />
 
-                    <TextView
-                        android:id="@+id/test_not_sub"
+                    <com.google.android.material.button.MaterialButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/profile_test_not_taken_prompt"
-                        app:layout_constraintStart_toStartOf="@id/test_not_prompt"
-                        app:layout_constraintTop_toBottomOf="@id/test_not_prompt" />
-
-                    <ImageView
-                        android:id="@+id/take_test_icon"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_margin="8dp"
-                        android:background="@drawable/circle_drawable"
-                        android:backgroundTint="?colorSecondary"
-                        android:elevation="4dp"
-                        android:onClick="@{() -> fragment.changelanguage()}"
-                        android:padding="8dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_navigate_next"
+                        android:onClick="@{() -> fragment.navigateAddContacts()}"
+                        android:text="Add Contacts"
+                        android:visibility="@{fragment.viewModel.isLoggedIn() ? View.VISIBLE : View.GONE}"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/seperator" />
+                        app:layout_constraintStart_toEndOf="@id/view_contacts_btn"
+                        app:layout_constraintTop_toTopOf="@id/view_contacts_btn"
+                        tools:visibility="gone" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/login"
+                        android:visibility="@{fragment.viewModel.isLoggedIn() ? View.GONE : View.VISIBLE}"
+                        app:layout_constraintEnd_toStartOf="@id/register"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/help_exp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/register"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register"
+                        android:visibility="@{fragment.viewModel.isLoggedIn() ? View.GONE : View.VISIBLE}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/login"
+                        app:layout_constraintTop_toTopOf="@id/login" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/help_holder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/test_holder">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp">
-
-                <TextView
-                    android:id="@+id/help_header"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Help the fight against Covid-19"
-                    android:textAppearance="?textAppearanceHeadline6"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/help_exp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Keeping a list of people you frequently associate with,This will help the ministry help you and your friend when One of you is at risk faster.."
-                    android:textAppearance="?textAppearanceBody2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/help_header" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/view_contacts_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:visibility="@{fragment.viewModel.isLoggedIn() ? View.VISIBLE : View.GONE}"
-                    android:onClick="@{() -> fragment.navigateContacts()}"
-                    android:text="View Contacts"
-                    tools:visibility="gone"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/help_exp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="@{fragment.viewModel.isLoggedIn() ? View.VISIBLE : View.GONE}"
-                    android:onClick="@{() -> fragment.navigateAddContacts()}"
-                    android:text="Add Contacts"
-                    tools:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/view_contacts_btn"
-                    app:layout_constraintTop_toTopOf="@id/view_contacts_btn" />
-
-                <com.google.android.material.button.MaterialButton android:id="@+id/login"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Login"
-                    android:layout_marginTop="8dp"
-                    android:visibility="@{fragment.viewModel.isLoggedIn() ? View.GONE : View.VISIBLE}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/help_exp"
-                    app:layout_constraintEnd_toStartOf="@id/register"/>
-
-                <com.google.android.material.button.MaterialButton android:id="@+id/register"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Register"
-                    android:visibility="@{fragment.viewModel.isLoggedIn() ? View.GONE : View.VISIBLE}"
-                    app:layout_constraintStart_toEndOf="@id/login"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/login"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

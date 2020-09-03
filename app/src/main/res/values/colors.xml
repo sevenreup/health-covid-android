@@ -10,7 +10,7 @@
 
 
     <color name="color_surface">#ffffff</color>
-    <color name="color_background">#eef0f2</color>
+    <color name="color_background">#f8f9fb</color>
     <color name="color_error">#ff4c5d</color>
 
     <color name="color_on_secondary">#000000</color>

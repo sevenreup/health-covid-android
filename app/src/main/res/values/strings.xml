@@ -121,9 +121,9 @@
     <string name="sbt">Submit</string>
     <string name="clc">Cancel</string>
 
-    <string name="selftest_heading">Test for COVID19 against your symptoms</string>
-    <string name="button_start_test">Start a test</string>
-    <string name="previous">Previous tests</string>
+    <string name="selftest_heading">How are you feeling today?</string>
+    <string name="button_start_test">Take Self test</string>
+    <string name="previous_test">Last test:</string>
     <string name="reject">Reject</string>
     <string name="accept">Accept</string>
     <string name="advice_title_bt_health_tip">Health Tip: \n\n</string>
@@ -160,4 +160,6 @@
     <string name="profile_greeting_title">Hello</string>
     <string name="profile_question_feelings">How are you feeling today?</string>
     <string name="profile_test_not_taken_prompt">Test not taken today,</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
 </resources>

@@ -9,7 +9,6 @@
     <string name="title_activity_maps">Mapu</string>
 
     <string name="title_health_tips">Malangizo azaumoyo</string>
-    <string name="title_self_test">Ziyese wekha</string>
     <string name="title_contacts">Anzanu</string>
     <string name="title_mythbusters">Kuswanya Mabodza</string>
     <string name="title_news">Nkhani</string>
@@ -20,7 +19,7 @@
 
     <string name="selftest_heading">Ziyezeni Corona virus malingana ndimene mukumvera mthupi mwanu</string>
     <string name="button_start_test">Yambani kuziyeza</string>
-    <string name="previous">Kuyezesa kwapitako</string>
+    <string name="previous_test">Kuyezesa kwapitako</string>
     <string name="title_settings">Zokonda</string>
     <string name="title_create_contacts">Onjezelani Azanu</string>
     <string name="title_statistics">Ziwerengero</string>

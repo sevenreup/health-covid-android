@@ -13,5 +13,7 @@
     <dimen name="onBoarding_image_margin_top">200dp</dimen>
 
     <dimen name="card_seperator_margin">16dp</dimen>
+    <dimen name="card_elevation_large">6dp</dimen>
+    <dimen name="card_elevation_small">4dp</dimen>
 
 </resources>
