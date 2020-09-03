@@ -8,6 +8,12 @@
         <variable
             name="clickHandler"
             type="com.skybox.seven.covid.ui.home.HomePageFragment.ClickHandlers" />
+        
+    </data>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
 
     </data>
 
