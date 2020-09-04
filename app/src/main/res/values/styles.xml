@@ -41,4 +41,8 @@
         <item name="android:hint">@string/search_hint</item>
         <item name="android:textColorHint">#D2D9E5</item>
     </style>
+    <style name="Widget.Covid.Button.White" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@android:color/white</item>
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
 </resources>
