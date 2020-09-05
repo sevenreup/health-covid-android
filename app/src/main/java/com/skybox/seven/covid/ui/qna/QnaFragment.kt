@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.skybox.seven.covid.data.entities.Qna
+import com.skybox.seven.covid.data.entities.getQnaData
 import com.skybox.seven.covid.databinding.FragmentQnaBinding
 import com.skybox.seven.covid.epoxy.qna.QnaController
 
@@ -15,9 +16,6 @@ import com.skybox.seven.covid.epoxy.qna.QnaController
 class QnaFragment: Fragment() {
 
     private lateinit var binding: FragmentQnaBinding
-
-    private val viewModel:QnaViewModel by viewModels()
-    private val controller = QnaController()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -30,22 +28,25 @@ class QnaFragment: Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        recyclerHandler()
+        val data = getQnaData()
+        recyclerHandler(data as MutableList<Qna>)
     }
 
-    private fun recyclerHandler(){
+    private fun recyclerHandler(data: MutableList<Qna>){
 
         val recycler = binding.qnaRecycler
+        val controller = QnaController()
+
+        controller.setData(false, data)
+
         recycler.apply {
-            layoutManager = LinearLayoutManager(this.context)
-            adapter = controller.adapter
+            layoutManager = LinearLayoutManager(requireContext())
+            setController(controller)
         }
 
-        viewModel.qnaLiveData.observe(viewLifecycleOwner, Observer { container ->
-            controller.setData(container)
-        })
 
     }
+
 
     fun onBackPressed(view: View) {
         requireActivity().onBackPressed()
