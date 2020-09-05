@@ -16,7 +16,7 @@
             android:id="@+id/to_contactCreate"
             app:destination="@id/contact_Create" />
         <action
-            android:id="@+id/to_selfTest_view"
+            android:id="@+id/to_selfTest"
             app:destination="@id/selfTest_view" />
     </fragment>
     <fragment

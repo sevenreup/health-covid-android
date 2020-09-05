@@ -39,7 +39,7 @@ class ProfileFragment : Fragment() {
     }
 
     fun navigateSelfTest() {
-        findNavController().navigate(R.id.to_selfTest_view)
+        findNavController().navigate(R.id.to_selfTest)
     }
 
     fun getGreeting(): String {

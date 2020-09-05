@@ -18,55 +18,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_selftest.*
 
 @AndroidEntryPoint
-class SelfTestFragment: Fragment(), SelfTestAdapter.SelfTestAdapterCallback {
+class SelfTestFragment: Fragment() {
 
     private val viewModel: SelfTestViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_selftest, container, false)
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        val adapter = SelfTestAdapter(this, this)
-        viewModel.selfTestLiveData.observe(this,  Observer<List<SelfTestResult>> { results -> adapter.setData(results) })
-        viewModel.allTests
-
-        val recycler: RecyclerView = view!!.findViewById(R.id.recyclerSelfTest)
-        recycler.layoutManager = LinearLayoutManager(this.context!!, LinearLayout.VERTICAL, false)
-        recycler.adapter = adapter
-
-        selftest.setOnClickListener {
-//            Navigation.findNavController(it).navigate(R.id.action_selfTestFragment_to_actulTest_Fragment)
-        }
-    }
-
-    override fun onResume() {
-        val adapter = SelfTestAdapter(this, this)
-        viewModel.selfTestLiveData.observe(viewLifecycleOwner,  Observer<List<SelfTestResult>> { results -> adapter.setData(results) })
-        viewModel.allTests
-
-        val recycler: RecyclerView = view!!.findViewById(R.id.recyclerSelfTest)
-        recycler.layoutManager = LinearLayoutManager(this.context!!, LinearLayout.VERTICAL, false)
-        recycler.adapter = adapter
-        super.onResume()
-
-    }
-
-    override fun onDeleteClick(result: SelfTestResult) {
-        viewModel.deleteTest(result)
-    }
-    //damn!
-    //override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-      //  super.onViewCreated(view, savedInstanceState)
-//
-  //      view.findViewById<Button>(R.id.fragment_selftest).setOnClickListener {
-    //        findNavController(it).navigate(R.id.action_selfTestFragment_to_actulTest_Fragment)
-      //  }
-    //}
-
-
-
-
 }
