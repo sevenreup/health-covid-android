@@ -14,15 +14,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.adapters.SelfTestAdapter
 import com.skybox.seven.covid.data.entities.SelfTestResult
+import com.skybox.seven.covid.databinding.FragmentSelftestBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_selftest.*
 
 @AndroidEntryPoint
 class SelfTestFragment: Fragment() {
-
+    private lateinit var binding: FragmentSelftestBinding
     private val viewModel: SelfTestViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_selftest, container, false)
+        binding = FragmentSelftestBinding.inflate(inflater, container, false)
+
+        return  binding.root
     }
 }
