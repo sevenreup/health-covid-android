@@ -168,6 +168,7 @@
     <string name="self_test_finish_title">Thank you for finishing</string>
     <string name="self_test_finish_sub_title">A bunch of other stuff</string>
 
+    <string name="start">Start</string>
     <string name="next">Next</string>
     <string name="finish">Finish</string>
 </resources>
