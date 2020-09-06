@@ -1,11 +1,10 @@
 package com.skybox.seven.survey.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.skybox.seven.survey.R
+import androidx.fragment.app.Fragment
 import com.skybox.seven.survey.databinding.FragmentStartStepBinding
 import com.skybox.seven.survey.helper.BasicFragmentArgs
 
@@ -30,7 +29,7 @@ class StartStepFragment : Fragment() {
         @JvmStatic
         fun newInstance(title: String, subTitle: String, buttonText: String) =
                 StartStepFragment().apply {
-                    arguments = BasicFragmentArgs.putGenerics(title, subTitle)
+                    arguments = BasicFragmentArgs.putGenerics(title, subTitle, buttonText)
                 }
     }
 }
