@@ -5,20 +5,20 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.skybox.seven.covid.data.entities.SelfTestResult;
+import com.skybox.seven.covid.data.entities.SelfTestAnswer;
 
 import java.util.List;
 
 @Dao
-public interface SelfTestResultDAO {
-    String TABLE_NAME = "Results";
+public interface SelfTestAnswerDAO {
+    String TABLE_NAME = "SelfTestAnswers";
 
     @Query("SELECT * FROM " + TABLE_NAME)
-    List<SelfTestResult> getAll();
+    List<SelfTestAnswer> getAll();
 
     @Insert
-    void insertAll(SelfTestResult... test);
+    void insertAll(SelfTestAnswer... test);
 
     @Delete
-    void delete(SelfTestResult test);
+    void delete(SelfTestAnswer test);
 }

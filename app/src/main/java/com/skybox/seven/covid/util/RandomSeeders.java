@@ -5,6 +5,7 @@ import com.skybox.seven.covid.data.entities.Advice;
 import com.skybox.seven.covid.data.entities.InfoGraphic;
 import com.skybox.seven.covid.data.entities.Language;
 import com.skybox.seven.covid.data.entities.Myth;
+import com.skybox.seven.covid.data.entities.SelfTestQuestion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -135,5 +136,19 @@ public class RandomSeeders {
                         "against COVID-19 is by frequently cleaning your hands. By doing this you eliminate viruses that may be on your hands and avoid infection that " +
                         "could occur by then touching your eyes, mouth, and nose."));
         return mythList;
+    }
+
+    public static List<SelfTestQuestion> setUpQuestions() {
+        List<SelfTestQuestion> questions = new ArrayList<>();
+        List<String> answers = new ArrayList<>();
+        answers.add("gd dhd");
+        answers.add("gd 36626");
+        answers.add("gd dhd");
+        questions.add(new SelfTestQuestion(1, "This is the quiestion", Constants.BOOLEAN, null));
+        questions.add(new SelfTestQuestion(2, "This is the quiestion 2", Constants.ARRAY, answers));
+        questions.add(new SelfTestQuestion(3, "This is the quiestion", Constants.BOOLEAN, null));
+        questions.add(new SelfTestQuestion(4, "This is the quiestion 2", Constants.ARRAY, answers));questions.add(new SelfTestQuestion(1, "This is the quiestion", Constants.BOOLEAN, null));
+        questions.add(new SelfTestQuestion(5, "This is the quiestion 2", Constants.ARRAY, answers));
+        return questions;
     }
 }

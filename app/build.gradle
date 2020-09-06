@@ -133,6 +133,7 @@ dependencies {
 //    implementation 'com.google.firebase:firebase-analytics:17.4.0'
     
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation "com.quickbirdstudios:surveykit:1.1.0"
 
     implementation 'com.google.firebase:firebase-auth:19.3.0'
 

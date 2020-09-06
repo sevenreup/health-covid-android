@@ -2,49 +2,49 @@ package com.skybox.seven.covid.data.repositories;
 
 import android.os.AsyncTask;
 
-import com.skybox.seven.covid.data.entities.SelfTestResult;
-import com.skybox.seven.covid.data.daos.SelfTestResultDAO;
+import com.skybox.seven.covid.data.entities.SelfTestAnswer;
+import com.skybox.seven.covid.data.daos.SelfTestAnswerDAO;
 
 import java.util.List;
 
 public class SelfTestRepository {
     private static SelfTestRepository INSTANCE = null;
-    private SelfTestResultDAO resultDAO;
+    private SelfTestAnswerDAO resultDAO;
 
-    public SelfTestRepository(SelfTestResultDAO resultDAO) {
+    public SelfTestRepository(SelfTestAnswerDAO resultDAO) {
         this.resultDAO = resultDAO;
     }
 
-    public void addResults(SelfTestResult result) {
+    public void addResults(SelfTestAnswer result) {
         resultDAO.insertAll(result);
     }
 
-    public List<SelfTestResult> getAllTests() {
+    public List<SelfTestAnswer> getAllTests() {
        return resultDAO.getAll();
     }
 
-    public void deleteTest(SelfTestResult result) {
+    public void deleteTest(SelfTestAnswer result) {
         new deleteTestAsync(resultDAO).execute(result);
     }
 
-    private static class deleteTestAsync extends AsyncTask<SelfTestResult, Void, Void> {
-        private SelfTestResultDAO selfTestResultDAO;
+    private static class deleteTestAsync extends AsyncTask<SelfTestAnswer, Void, Void> {
+        private SelfTestAnswerDAO selfTestAnswerDAO;
 
-        public deleteTestAsync(SelfTestResultDAO selfTestResultDAO) {
-            this.selfTestResultDAO = selfTestResultDAO;
+        public deleteTestAsync(SelfTestAnswerDAO selfTestAnswerDAO) {
+            this.selfTestAnswerDAO = selfTestAnswerDAO;
         }
 
         @Override
-        protected Void doInBackground(SelfTestResult... selfTestResults) {
-            selfTestResultDAO.delete(selfTestResults[0]);
+        protected Void doInBackground(SelfTestAnswer... selfTestAnswers) {
+            selfTestAnswerDAO.delete(selfTestAnswers[0]);
             return null;
         }
     }
 
-    public static SelfTestRepository getINSTANCE(SelfTestResultDAO selfTestResultDAO) {
+    public static SelfTestRepository getINSTANCE(SelfTestAnswerDAO selfTestAnswerDAO) {
         if (INSTANCE == null) {
             synchronized (SelfTestRepository.class) {
-                INSTANCE = new SelfTestRepository(selfTestResultDAO);
+                INSTANCE = new SelfTestRepository(selfTestAnswerDAO);
             }
         }
         return INSTANCE;

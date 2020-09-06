@@ -8,12 +8,14 @@ import com.skybox.seven.covid.epoxy.generic.ListLoadingModel_;
 
 import java.util.List;
 
-public class PreventionController extends Typed2EpoxyController<Boolean, List<Advice>> { @AutoModel
-ListLoadingModel_ listLoadingModel_;
-@Override
+public class PreventionController extends Typed2EpoxyController<Boolean, List<Advice>> {
+    @AutoModel
+    ListLoadingModel_ listLoadingModel_;
+
+    @Override
     protected void buildModels(Boolean loading, List<Advice> preventions) {
-    listLoadingModel_.addIf(loading, this);
-        for (Advice prevention: preventions) {
+        listLoadingModel_.addIf(loading, this);
+        for (Advice prevention : preventions) {
             new PreventionEpoxyModel_().id(prevention.getTitle()).prevention(prevention).addTo(this);
         }
     }

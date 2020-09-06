@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/profile"
     app:startDestination="@id/profileFragment">
+    <action android:id="@+id/start_self_test" app:destination="@id/selfTestQuestionareActivity"/>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.skybox.seven.covid.ui.profile.ProfileFragment"
@@ -33,4 +34,8 @@
         android:name="com.skybox.seven.covid.ui.selftest.SelfTestFragment"
         android:label="fragment_self_test"
         tools:layout="@layout/fragment_selftest"/>
+    <activity
+        android:id="@+id/selfTestQuestionareActivity"
+        android:name="com.skybox.seven.covid.ui.survey.SelfTestQuestionareActivity"
+        android:label="SelfTestQuestionareActivity" />
 </navigation>
