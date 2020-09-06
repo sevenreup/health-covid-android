@@ -49,7 +49,7 @@ class SelfTestQuestionareActivity: AppCompatActivity() {
                         getString(R.string.finish)
                 )
         )
-        val config = SurveyConfigs(this)
+        val config = SurveyConfigs(this, this)
         binding.surveyView.start(steps, config, surveyViewModel)
     }
 
