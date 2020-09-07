@@ -39,6 +39,7 @@ abstract class QnaEpoxyModel : EpoxyModelWithHolder<QnaEpoxyModel.QnaEpoxyViewHo
     }
 
     class QnaEpoxyViewHolder : EpoxyHolder() {
+
         var question: TextView? = null
         var answer: TextView? = null
         var arrow: ImageView? = null

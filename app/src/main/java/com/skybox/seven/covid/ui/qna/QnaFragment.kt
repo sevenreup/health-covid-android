@@ -4,9 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.entities.Qna
 import com.skybox.seven.covid.data.entities.getQnaData
 import com.skybox.seven.covid.databinding.FragmentQnaBinding
@@ -30,6 +31,8 @@ class QnaFragment: Fragment() {
 
         val data = getQnaData()
         recyclerHandler(data as MutableList<Qna>)
+
+
     }
 
     private fun recyclerHandler(data: MutableList<Qna>){
@@ -49,7 +52,7 @@ class QnaFragment: Fragment() {
 
 
     fun onBackPressed(view: View) {
-        requireActivity().onBackPressed()
+       return Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.qna_to_homePageFragment)
     }
 
 

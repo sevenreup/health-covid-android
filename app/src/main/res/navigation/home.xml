@@ -33,5 +33,9 @@
         android:id="@+id/qnaFragment"
         android:name="com.skybox.seven.covid.ui.qna.QnaFragment"
         android:label="fragment_qna"
-        tools:layout="@layout/fragment_qna" />
+        tools:layout="@layout/fragment_qna" >
+        <action
+            android:id="@+id/qna_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+    </fragment>
 </navigation>

@@ -2,7 +2,6 @@ package com.skybox.seven.covid.data.entities
 
 import com.skybox.seven.covid.R
 
-
 data class Qna(var pos: Int, var arrow: Int, var question: String, var answer: String)
 
 fun getQnaData () = listOf(
