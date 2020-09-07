@@ -7,7 +7,7 @@ import com.skybox.seven.covid.data.entities.Qna
 
 class QnaController : Typed2EpoxyController<Boolean?, List<Qna>>() {
 
-    private var expandedModel = null
+    lateinit var expandedModel: QnaEpoxyModel.QnaEpoxyViewHolder
 
     override fun buildModels(loading: Boolean?, questions: List<Qna>) {
 
@@ -16,23 +16,28 @@ class QnaController : Typed2EpoxyController<Boolean?, List<Qna>>() {
                     .id(question.question)
                     .questions(question)
                     .expandListener { model, parentView, clickedView, position ->
+                        expandedModel = QnaEpoxyModel.QnaEpoxyViewHolder()
+                        expandItem(parentView, true)
 
-                        when (expandedModel) {
-                            null -> {
-                                expandItem(parentView, true)
-                                //expandedModel = parentView
-                            }
-                            parentView -> {
-                                unExpandedItems(parentView, true)
-                                expandedModel = null
-                            }
-                            else -> {
-                                expandItem(parentView, false)
-                              //  expandItem(expandedModel, true)
-                              //  expandedModel = parentView
+                        clickedView.setOnClickListener {
 
+                            when (expandedModel) {
+                                null -> {
+                                    expandItem(parentView, true)
+                                    expandedModel = parentView
+                                }
+                                parentView -> {
+                                    unExpandedItems(parentView, true)
+                                }
+                                else -> {
+                                    expandItem(parentView, false)
+                                    expandItem(expandedModel, true)
+                                    expandedModel = parentView
+
+                                }
                             }
                         }
+
 
                     }
                     .addTo(this)
