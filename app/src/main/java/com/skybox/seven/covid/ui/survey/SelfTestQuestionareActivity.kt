@@ -7,6 +7,7 @@ import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.ActivitySelfTestQuestionareBinding
 import com.skybox.seven.survey.SurveyViewModel
 import com.skybox.seven.survey.config.SurveyConfigs
+import com.skybox.seven.survey.config.UtilityText
 import com.skybox.seven.survey.model.BooleanStep
 import com.skybox.seven.survey.model.EndStep
 import com.skybox.seven.survey.model.MultiSelectionStep
@@ -49,7 +50,7 @@ class SelfTestQuestionareActivity: AppCompatActivity() {
                         getString(R.string.finish)
                 )
         )
-        val config = SurveyConfigs(this, this)
+        val config = SurveyConfigs(this, this, UtilityText("Next", "Cancel"))
         binding.surveyView.start(steps, config, surveyViewModel)
     }
 
