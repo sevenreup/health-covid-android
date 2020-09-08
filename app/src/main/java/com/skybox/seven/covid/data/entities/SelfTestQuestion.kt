@@ -7,6 +7,7 @@ import com.skybox.seven.covid.data.daos.SelfTestQuestionDAO
 
 @Entity(tableName = SelfTestQuestionDAO.TABLE_NAME)
 data class SelfTestQuestion(@PrimaryKey(autoGenerate = true) var id: Int,
-                            var question: String
-                            ,var type: Int,
-                            var arrays: List<String>?)
+                            var question: String,
+                            val subTitle: String,
+                            var type: Int,
+                            var arrays: ArrayList<String>?)

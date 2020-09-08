@@ -4,6 +4,8 @@ import android.content.Context
 import com.google.gson.GsonBuilder
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.AppDatabase
+import com.skybox.seven.covid.data.daos.SelfTestAnswerDAO
+import com.skybox.seven.covid.data.daos.SelfTestQuestionDAO
 import com.skybox.seven.covid.data.repositories.*
 import com.skybox.seven.covid.network.*
 import com.skybox.seven.covid.repository.SharedPreferenceRepository
@@ -53,7 +55,9 @@ class AppModule {
     @Singleton @Provides fun providesInfoRepo(db: AppDatabase): InfoGraphicRepository = InfoGraphicRepository(db.infoGraphicDAO())
     @Singleton @Provides fun providesLanguageRepo(db: AppDatabase): LanguageRepository = LanguageRepository(db.languageDAO())
     @Singleton @Provides fun providesMythsRepo(db: AppDatabase): MythRepository = MythRepository(db.mythsDAO())
-    @Singleton @Provides fun providesSelfTestRepo(db: AppDatabase): SelfTestRepository = SelfTestRepository(db.selfTestResultDAO())
+
+    @Singleton @Provides fun providesSelfTestQuestions(db: AppDatabase): SelfTestQuestionDAO = db.selfTestQuestionDAO()
+    @Singleton @Provides fun providesSelfTestAnswers(db: AppDatabase): SelfTestAnswerDAO = db.selfTestResultDAO()
 
     // preferences
     @Singleton @Provides fun providesSharedPrefRepo(@ApplicationContext context: Context): SharedPreferenceRepository =

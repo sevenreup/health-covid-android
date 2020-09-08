@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "367f77553aa2f356b703c7fe904e6156",
+    "identityHash": "b05e327355b35c1c1358016c19f2ba40",
     "entities": [
       {
         "tableName": "SelfTestAnswers",
@@ -56,7 +56,7 @@
       },
       {
         "tableName": "SelfTestQuestions",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `question` TEXT NOT NULL, `type` INTEGER NOT NULL, `arrays` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `question` TEXT NOT NULL, `subTitle` TEXT NOT NULL, `type` INTEGER NOT NULL, `arrays` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -67,6 +67,12 @@
           {
             "fieldPath": "question",
             "columnName": "question",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "subTitle",
+            "columnName": "subTitle",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -284,7 +290,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '367f77553aa2f356b703c7fe904e6156')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b05e327355b35c1c1358016c19f2ba40')"
     ]
   }
 }
