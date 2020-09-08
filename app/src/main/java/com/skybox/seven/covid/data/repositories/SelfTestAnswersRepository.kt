@@ -37,4 +37,8 @@ class SelfTestAnswersRepository @Inject constructor(private val selfTestAnswerDA
     }
 
     fun getLastUpdate(): LiveData<Date?> = selfTestCompleteDAO.getLatest()
+
+    fun getTopSelfTests() = selfTestCompleteDAO.getLatestThree()
+
+    fun getAllTest() = selfTestCompleteDAO.getAll()
 }

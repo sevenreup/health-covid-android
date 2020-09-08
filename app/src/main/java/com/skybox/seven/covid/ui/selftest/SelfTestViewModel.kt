@@ -10,4 +10,5 @@ import com.skybox.seven.covid.data.repositories.SelfTestQuestionsRepository
 class SelfTestViewModel @ViewModelInject constructor(private val selfTestAnswersRepository: SelfTestAnswersRepository) : ViewModel() {
     var todayTest = selfTestAnswersRepository.getTodayTest()
     var latestTest = selfTestAnswersRepository.getLastUpdate()
+    val topThree = selfTestAnswersRepository.getTopSelfTests()
 }

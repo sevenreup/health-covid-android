@@ -17,7 +17,8 @@ buildscript {
             work_version: "2.3.4",
             lottieVersion: '3.4.1',
             epoxyVersion: '3.11.0',
-            rxjava: '3.0.0'
+            rxjava: '3.0.0',
+            paging_version: "3.0.0-alpha06"
 
     ]
     repositories {

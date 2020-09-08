@@ -19,6 +19,13 @@ interface SelfTestCompleteDAO {
     @Query("SELECT date FROM $TABLE_NAME ORDER BY date LIMIT 1")
     fun getLatest(): LiveData<Date?>
 
+    @Query("SELECT * FROM $TABLE_NAME ORDER BY date LIMIT 3")
+    fun getLatestThree(): LiveData<List<SelfTestComplete>>
+
+    @Query("SELECT * FROM $TABLE_NAME ORDER BY date")
+    fun getAll(): LiveData<List<SelfTestComplete>>
+
+
     companion object {
         const val TABLE_NAME = "SelfTestComplete"
     }

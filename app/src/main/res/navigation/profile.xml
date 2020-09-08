@@ -5,6 +5,7 @@
     android:id="@+id/profile"
     app:startDestination="@id/profileFragment">
     <action android:id="@+id/start_self_test" app:destination="@id/selfTestQuestionareActivity"/>
+    <action android:id="@+id/to_all_test" app:destination="@id/allTestsFragment"/>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.skybox.seven.covid.ui.profile.ProfileFragment"
@@ -38,4 +39,9 @@
         android:id="@+id/selfTestQuestionareActivity"
         android:name="com.skybox.seven.covid.ui.survey.SelfTestQuestionnaireActivity"
         android:label="SelfTestQuestionareActivity" />
+    <fragment
+        android:id="@+id/allTestsFragment"
+        android:name="com.skybox.seven.covid.ui.selftest.all.AllTestsFragment"
+        android:label="fragment_all_tests"
+        tools:layout="@layout/fragment_all_tests" />
 </navigation>
