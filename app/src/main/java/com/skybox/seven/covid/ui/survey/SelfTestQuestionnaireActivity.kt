@@ -81,6 +81,7 @@ class SelfTestQuestionnaireActivity: AppCompatActivity(), SurveyCallbacks {
                     answerList += SelfTestAnswer(
                             null,
                             Constants.ARRAY,
+                            0,
                             answer.id,
                             selections,
                             null,
@@ -91,6 +92,7 @@ class SelfTestQuestionnaireActivity: AppCompatActivity(), SurveyCallbacks {
                     answerList += SelfTestAnswer(
                             null,
                             Constants.BOOLEAN,
+                            0,
                             answer.id,
                             null,
                             answer.answer,
@@ -99,7 +101,7 @@ class SelfTestQuestionnaireActivity: AppCompatActivity(), SurveyCallbacks {
                 }
             }
         }
-        viewModel.submit(answerList)
+        viewModel.submit(answers)
     }
 
 }

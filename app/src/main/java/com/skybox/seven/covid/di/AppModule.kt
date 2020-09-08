@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.AppDatabase
 import com.skybox.seven.covid.data.daos.SelfTestAnswerDAO
+import com.skybox.seven.covid.data.daos.SelfTestCompleteDAO
 import com.skybox.seven.covid.data.daos.SelfTestQuestionDAO
 import com.skybox.seven.covid.data.repositories.*
 import com.skybox.seven.covid.network.*
@@ -58,6 +59,7 @@ class AppModule {
 
     @Singleton @Provides fun providesSelfTestQuestions(db: AppDatabase): SelfTestQuestionDAO = db.selfTestQuestionDAO()
     @Singleton @Provides fun providesSelfTestAnswers(db: AppDatabase): SelfTestAnswerDAO = db.selfTestAnswerDAO()
+    @Singleton @Provides fun providesSelfTestComplete(db: AppDatabase): SelfTestCompleteDAO = db.selfTestCompleteDAO()
 
     // preferences
     @Singleton @Provides fun providesSharedPrefRepo(@ApplicationContext context: Context): SharedPreferenceRepository =
