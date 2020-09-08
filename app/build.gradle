@@ -134,6 +134,7 @@ dependencies {
     
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation 'com.github.sevenreup:survey-library:59f6863627'
+    implementation 'org.ocpsoft.prettytime:prettytime:4.0.5.Final'
 
     implementation 'com.google.firebase:firebase-auth:19.3.0'
 

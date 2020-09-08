@@ -14,10 +14,10 @@ interface SelfTestCompleteDAO {
     fun insertComplete(test: SelfTestComplete): Single<Long>
 
     @Query("SELECT * FROM $TABLE_NAME WHERE date BETWEEN :start AND :end")
-    fun getTodayResults(start: Date, end: Date): LiveData<SelfTestComplete>
+    fun getTodayResults(start: Date, end: Date): LiveData<SelfTestComplete?>
 
     @Query("SELECT date FROM $TABLE_NAME ORDER BY date LIMIT 1")
-    fun getLatest(): LiveData<Date>
+    fun getLatest(): LiveData<Date?>
 
     companion object {
         const val TABLE_NAME = "SelfTestComplete"

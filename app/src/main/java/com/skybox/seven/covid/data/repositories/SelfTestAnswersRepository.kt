@@ -18,7 +18,7 @@ class SelfTestAnswersRepository @Inject constructor(private val selfTestAnswerDA
 
     fun insertComplete(complete: SelfTestComplete): Single<Long> = selfTestCompleteDAO.insertComplete(complete)
 
-    fun getTodayTest(): LiveData<SelfTestComplete> {
+    fun getTodayTest(): LiveData<SelfTestComplete?> {
         val start = Calendar.getInstance()
         with(start) {
             set(Calendar.HOUR_OF_DAY,0);
@@ -36,5 +36,5 @@ class SelfTestAnswersRepository @Inject constructor(private val selfTestAnswerDA
         return selfTestCompleteDAO.getTodayResults(start.time, end.time)
     }
 
-    fun getLastUpdate(): LiveData<Date> = selfTestCompleteDAO.getLatest()
+    fun getLastUpdate(): LiveData<Date?> = selfTestCompleteDAO.getLatest()
 }

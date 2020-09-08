@@ -10,17 +10,27 @@ import androidx.navigation.fragment.findNavController
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.FragmentSelftestBinding
 import dagger.hilt.android.AndroidEntryPoint
+import org.ocpsoft.prettytime.PrettyTime
+import java.util.*
 
 @AndroidEntryPoint
-class SelfTestFragment: Fragment() {
+class SelfTestFragment : Fragment() {
     private lateinit var binding: FragmentSelftestBinding
-    private val viewModel: SelfTestViewModel by viewModels()
+    val viewModel: SelfTestViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentSelftestBinding.inflate(inflater, container, false)
-        binding.startTest.setOnClickListener {
-            findNavController().navigate(R.id.start_self_test)
-        }
-        return  binding.root
+        binding.fragment = this
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        viewModel.todayTest.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            if (it == null) binding.startTest.setOnClickListener {findNavController().navigate(R.id.start_self_test) }
+            else binding.startTest.setOnClickListener(null)
+        })
+        return binding.root
+    }
+
+    fun formatDate(date: Date?): String {
+        return PrettyTime().format(date)
     }
 }
