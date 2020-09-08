@@ -6,19 +6,20 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.skybox.seven.covid.R
+import com.skybox.seven.covid.data.entities.SelfTestAnswer
 import com.skybox.seven.covid.databinding.ActivitySelfTestQuestionareBinding
 import com.skybox.seven.covid.util.Constants
 import com.skybox.seven.survey.SurveyView
-import com.skybox.seven.survey.SurveyViewModel
+import com.skybox.seven.survey.answer.BooleanResult
+import com.skybox.seven.survey.answer.MultiChoiceResult
 import com.skybox.seven.survey.answer.Result
-import com.skybox.seven.survey.config.SurveyConfigs
 import com.skybox.seven.survey.config.UtilityText
 import com.skybox.seven.survey.helper.SurveyCallbacks
 import com.skybox.seven.survey.model.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SelfTestQuestionareActivity: AppCompatActivity(), SurveyCallbacks {
+class SelfTestQuestionnaireActivity: AppCompatActivity(), SurveyCallbacks {
     private lateinit var binding: ActivitySelfTestQuestionareBinding
     private val viewModel: SelfTestQuestViewModel by viewModels()
 
@@ -26,6 +27,7 @@ class SelfTestQuestionareActivity: AppCompatActivity(), SurveyCallbacks {
         super.onCreate(savedInstanceState)
         binding = ActivitySelfTestQuestionareBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         viewModel.questions.observe(this, Observer {
             val steps = arrayListOf<Step>(
                     StartStep(
@@ -63,9 +65,41 @@ class SelfTestQuestionareActivity: AppCompatActivity(), SurveyCallbacks {
             supportFragmentManager.beginTransaction().add(R.id.survey_view, fragment).commit()
         })
 
+        viewModel.finished.observe(this, Observer {
+            finish()
+        })
     }
 
     override fun finished(answers: HashMap<Int, Result>?) {
+        val answerList: MutableList<SelfTestAnswer> = ArrayList()
+        answers?.forEach {
+            when(it.value.type) {
+                Result.MULTI ->
+                {
+                    val answer = it.value as MultiChoiceResult
+                    val selections = answer.answers.keys.toList()
+                    answerList += SelfTestAnswer(
+                            null,
+                            Constants.ARRAY,
+                            answer.id,
+                            selections,
+                            null,
+                            answer.endDate)
+                }
+                else -> {
+                    val answer = it.value as BooleanResult
+                    answerList += SelfTestAnswer(
+                            null,
+                            Constants.BOOLEAN,
+                            answer.id,
+                            null,
+                            answer.answer,
+                            answer.endDate
+                    )
+                }
+            }
+        }
+        viewModel.submit(answerList)
     }
 
 }

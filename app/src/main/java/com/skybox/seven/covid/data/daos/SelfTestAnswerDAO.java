@@ -9,6 +9,8 @@ import com.skybox.seven.covid.data.entities.SelfTestAnswer;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Completable;
+
 @Dao
 public interface SelfTestAnswerDAO {
     String TABLE_NAME = "SelfTestAnswers";
@@ -17,7 +19,7 @@ public interface SelfTestAnswerDAO {
     List<SelfTestAnswer> getAll();
 
     @Insert
-    void insertAll(SelfTestAnswer... test);
+    Completable insertAll(List<SelfTestAnswer> tests);
 
     @Delete
     void delete(SelfTestAnswer test);

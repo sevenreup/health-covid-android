@@ -37,7 +37,7 @@ public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
     private final static String DB_NAME = "MalawiHealth";
 
-    public abstract SelfTestAnswerDAO selfTestResultDAO();
+    public abstract SelfTestAnswerDAO selfTestAnswerDAO();
     public abstract SelfTestQuestionDAO selfTestQuestionDAO();
     public abstract MythsDAO mythsDAO();
     public abstract LanguageDAO languageDAO();

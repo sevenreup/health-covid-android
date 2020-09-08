@@ -36,6 +36,6 @@
         tools:layout="@layout/fragment_selftest"/>
     <activity
         android:id="@+id/selfTestQuestionareActivity"
-        android:name="com.skybox.seven.covid.ui.survey.SelfTestQuestionareActivity"
+        android:name="com.skybox.seven.covid.ui.survey.SelfTestQuestionnaireActivity"
         android:label="SelfTestQuestionareActivity" />
 </navigation>
