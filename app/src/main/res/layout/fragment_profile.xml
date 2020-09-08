@@ -80,7 +80,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginLeft="10dp"
-                        android:text="Yesterday"
+                        android:clickable="false"
+                        tools:text="Yesterday"
+                        android:text="@{fragment.getFormatDate(fragment.viewModel.lastTest)}"
                         app:layout_constraintStart_toEndOf="@id/test_time_title"
                         app:layout_constraintTop_toBottomOf="@id/self_test_title" />
 
@@ -99,6 +101,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="@string/button_start_test"
+                        android:onClick="@{() -> fragment.navigateSelfTest()}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/separator" />

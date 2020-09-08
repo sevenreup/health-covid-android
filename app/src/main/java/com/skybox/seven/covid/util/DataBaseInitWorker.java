@@ -23,6 +23,7 @@ public class DataBaseInitWorker extends Worker {
         AppDatabase.getDatabase(context).mythsDAO().insertAll(RandomSeeders.setUpMyths());
         AppDatabase.getDatabase(context).infoGraphicDAO().insertAll(RandomSeeders.setUpInfoGraphic());
         AppDatabase.getDatabase(context).infoGraphicDAO().insertAll(RandomSeeders.setUpMythGraphicInfo());
+        AppDatabase.getDatabase(context).selfTestQuestionDAO().insertAll(RandomSeeders.setUpQuestions());
         return Result.success();
     }
 }

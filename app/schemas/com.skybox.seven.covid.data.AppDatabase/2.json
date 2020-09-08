@@ -2,11 +2,67 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "34d22eaa3d1a23f4892bbbb57d41f18c",
+    "identityHash": "16c036d7c024294d1724c4b5c2b15bbd",
     "entities": [
       {
-        "tableName": "Results",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `reply` TEXT NOT NULL, `status` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "tableName": "SelfTestAnswers",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `type` INTEGER NOT NULL, `completeID` INTEGER NOT NULL, `questionID` INTEGER NOT NULL, `answerArray` TEXT, `answerBoolean` INTEGER, `createdAt` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "completeID",
+            "columnName": "completeID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "questionID",
+            "columnName": "questionID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "answerArray",
+            "columnName": "answerArray",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "answerBoolean",
+            "columnName": "answerBoolean",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "SelfTestQuestions",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `question` TEXT NOT NULL, `subTitle` TEXT NOT NULL, `type` INTEGER NOT NULL, `arrays` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -15,15 +71,65 @@
             "notNull": true
           },
           {
-            "fieldPath": "reply",
-            "columnName": "reply",
+            "fieldPath": "question",
+            "columnName": "question",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "status",
-            "columnName": "status",
+            "fieldPath": "subTitle",
+            "columnName": "subTitle",
             "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "arrays",
+            "columnName": "arrays",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "SelfTestComplete",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `title` TEXT NOT NULL, `date` INTEGER NOT NULL, `submitted` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "submitted",
+            "columnName": "submitted",
+            "affinity": "INTEGER",
             "notNull": true
           }
         ],
@@ -31,7 +137,7 @@
           "columnNames": [
             "id"
           ],
-          "autoGenerate": false
+          "autoGenerate": true
         },
         "indices": [],
         "foreignKeys": []
@@ -228,7 +334,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '34d22eaa3d1a23f4892bbbb57d41f18c')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '16c036d7c024294d1724c4b5c2b15bbd')"
     ]
   }
 }

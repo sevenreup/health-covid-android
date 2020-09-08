@@ -17,5 +17,6 @@
     <dimen name="card_seperator_margin">16dp</dimen>
     <dimen name="card_elevation_large">6dp</dimen>
     <dimen name="card_elevation_small">4dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 </resources>
