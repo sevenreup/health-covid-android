@@ -13,13 +13,13 @@ import com.skybox.seven.covid.databinding.FragmentProfileBinding
 import com.skybox.seven.covid.ui.MainViewModel
 import com.skybox.seven.covid.util.Constants
 import com.yariksoffice.lingver.Lingver
+import org.ocpsoft.prettytime.PrettyTime
 import java.util.*
 
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     val viewModel: ProfileViewModel by activityViewModels()
-    val mainViewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -42,8 +42,8 @@ class ProfileFragment : Fragment() {
         findNavController().navigate(R.id.to_selfTest)
     }
 
-    fun getGreeting(): String {
-        return ""
+    fun getFormatDate(date: Date?): String {
+        return PrettyTime().format(date)
     }
 
     fun changelanguage() {
