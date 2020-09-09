@@ -113,6 +113,7 @@ dependencies {
     implementation "androidx.room:room-runtime:$versions.room_version"
     kapt "androidx.room:room-compiler:$versions.room_version"
     implementation "androidx.room:room-rxjava3:$versions.room_version"
+//    implementation "androidx.paging:paging-runtime:$versions.paging_version"
 
     // hilt
     implementation "com.google.dagger:hilt-android:$versions.hilt"
@@ -133,6 +134,8 @@ dependencies {
 //    implementation 'com.google.firebase:firebase-analytics:17.4.0'
     
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.github.sevenreup:survey-library:59f6863627'
+    implementation 'org.ocpsoft.prettytime:prettytime:4.0.5.Final'
 
     implementation 'com.google.firebase:firebase-auth:19.3.0'
 

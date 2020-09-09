@@ -77,6 +77,8 @@
             android:name=".ui.common.LocationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
+        <activity android:name=".ui.survey.SelfTestQuestionnaireActivity"/>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"

@@ -1,7 +1,9 @@
 <resources>
+
     <style name="AppTheme.SplashScreenTheme">
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
+
     <style name="Widget.App.Button.Normal.IconOnly" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="iconPadding">0dp</item>
         <item name="android:insetTop">0dp</item>
@@ -11,14 +13,14 @@
         <item name="android:minWidth">48dp</item>
         <item name="android:minHeight">48dp</item>
     </style>
+
     <style name="AppTheme.Slide">
         <item name="android:windowEnterAnimation">@anim/slide_up</item>
         <item name="android:windowExitAnimation">@anim/slide_down</item>
     </style>
 
 
-    <style name="Widget.Covid.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
-    </style>
+    <style name="Widget.Covid.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox"></style>
 
     <style name="Widget.Covid.Button.OutlinedButton.IconOnly" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="iconPadding">0dp</item>
@@ -29,6 +31,7 @@
         <item name="android:minWidth">48dp</item>
         <item name="android:minHeight">48dp</item>
     </style>
+
     <style name="Covid.TabLayout" parent="TextAppearance.Design.Tab">
         <item name="textAllCaps">false</item>
         <item name="android:textColor">@android:color/black</item>

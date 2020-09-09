@@ -4,69 +4,47 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.navigation.fragment.findNavController
 import com.skybox.seven.covid.R
-import com.skybox.seven.covid.adapters.SelfTestAdapter
-import com.skybox.seven.covid.data.entities.SelfTestResult
+import com.skybox.seven.covid.databinding.FragmentSelftestBinding
+import com.skybox.seven.covid.epoxy.selftest.SelfTestController
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_selftest.*
+import org.ocpsoft.prettytime.PrettyTime
+import java.util.*
 
 @AndroidEntryPoint
-class SelfTestFragment: Fragment(), SelfTestAdapter.SelfTestAdapterCallback {
+class SelfTestFragment : Fragment() {
+    private lateinit var binding: FragmentSelftestBinding
+    val viewModel: SelfTestViewModel by viewModels()
+    val controller: SelfTestController = SelfTestController()
 
-    private val viewModel: SelfTestViewModel by viewModels()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.topThree.observe(this, androidx.lifecycle.Observer {
+            controller.setData(false, it)
+        })
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_selftest, container, false)
+        binding = FragmentSelftestBinding.inflate(inflater, container, false)
+        binding.fragment = this
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        binding.historyRecy.setController(controller)
+
+        viewModel.todayTest.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            if (it == null) binding.startTest.setOnClickListener {findNavController().navigate(R.id.start_self_test) }
+            else binding.startTest.setOnClickListener(null)
+        })
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        val adapter = SelfTestAdapter(this, this)
-        viewModel.selfTestLiveData.observe(this,  Observer<List<SelfTestResult>> { results -> adapter.setData(results) })
-        viewModel.allTests
-
-        val recycler: RecyclerView = view!!.findViewById(R.id.recyclerSelfTest)
-        recycler.layoutManager = LinearLayoutManager(this.context!!, LinearLayout.VERTICAL, false)
-        recycler.adapter = adapter
-
-        selftest.setOnClickListener {
-//            Navigation.findNavController(it).navigate(R.id.action_selfTestFragment_to_actulTest_Fragment)
-        }
+    fun formatDate(date: Date?): String {
+        return PrettyTime().format(date)
     }
-
-    override fun onResume() {
-        val adapter = SelfTestAdapter(this, this)
-        viewModel.selfTestLiveData.observe(viewLifecycleOwner,  Observer<List<SelfTestResult>> { results -> adapter.setData(results) })
-        viewModel.allTests
-
-        val recycler: RecyclerView = view!!.findViewById(R.id.recyclerSelfTest)
-        recycler.layoutManager = LinearLayoutManager(this.context!!, LinearLayout.VERTICAL, false)
-        recycler.adapter = adapter
-        super.onResume()
-
+    fun all() {
+        findNavController().navigate(R.id.to_all_test)
     }
-
-    override fun onDeleteClick(result: SelfTestResult) {
-        viewModel.deleteTest(result)
-    }
-    //damn!
-    //override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-      //  super.onViewCreated(view, savedInstanceState)
-//
-  //      view.findViewById<Button>(R.id.fragment_selftest).setOnClickListener {
-    //        findNavController(it).navigate(R.id.action_selfTestFragment_to_actulTest_Fragment)
-      //  }
-    //}
-
-
-
-
 }

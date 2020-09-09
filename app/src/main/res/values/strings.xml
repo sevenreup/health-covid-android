@@ -162,4 +162,19 @@
     <string name="profile_test_not_taken_prompt">Test not taken today,</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
+
+    <string name="self_test_intro_title">Welcome to the Self Assessment</string>
+    <string name="self_test_intro_sub_title">We are going to ask you a few questions</string>
+    <string name="self_test_finish_title">Thank you for finishing</string>
+    <string name="self_test_finish_sub_title">A bunch of other stuff</string>
+
+    <string name="take_today_test">Take today</string>
+    <string name="today_test_taken">Test taken</string>
+
+    <string name="start">Start</string>
+    <string name="next">Next</string>
+    <string name="finish">Finish</string>
+    <string name="no_test">No Test Taken</string>
+    <string name="last_test">Last test</string>
+
 </resources>
