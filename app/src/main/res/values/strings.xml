@@ -177,4 +177,19 @@
     <string name="no_test">No Test Taken</string>
     <string name="last_test">Last test</string>
 
+    //Symptoms fragment info. To be sorted when new implementation is used
+    <string name="symptoms_attention">Seek immediate medical attention if you have serious symptoms. Call before visiting your doctor or health facility</string>
+    <string name="less_symptoms">Less common symptoms</string>
+    <string name="aches">Aches and pains</string>
+    <string name="sore_throat">Sore throat</string>
+    <string name="diarrhoea">Diarrhoea</string>
+    <string name="conjuctivitis">Conjuctivitis</string>
+    <string name="heachache">Heachache</string>
+    
+    <string name="serious_symptoms">Serious symptoms</string>
+    <string name="shortness_of_breath">Shortness of breath or difficulty breathing</string>
+    <string name="chest_pain">Chest pain or pressure</string>
+    <string name="loss_of_speeach">Loss of speeach or movement</string>
+    <string name="cough">Cough</string>
+    <string name="fever">High Fever</string>
 </resources>
