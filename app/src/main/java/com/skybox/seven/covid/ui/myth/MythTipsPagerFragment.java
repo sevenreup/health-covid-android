@@ -18,6 +18,7 @@ import com.skybox.seven.covid.data.entities.Myth;
 import com.skybox.seven.covid.epoxy.myth.MythController;
 import com.skybox.seven.covid.model.TipsChips;
 import com.skybox.seven.covid.ui.common.ImageViewerFragment;
+import com.skybox.seven.covid.ui.mythbusters.MythViewModel;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
 
 import java.util.ArrayList;
