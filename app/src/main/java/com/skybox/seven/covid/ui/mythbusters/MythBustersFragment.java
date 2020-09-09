@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.epoxy.mythbuster.MythBusterController;
-import com.skybox.seven.covid.ui.myth.MythViewModel;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
 
 public class MythBustersFragment extends Fragment {

@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.myth;
+package com.skybox.seven.covid.ui.mythbusters;
 
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
