@@ -176,5 +176,7 @@
     <string name="finish">Finish</string>
     <string name="no_test">No Test Taken</string>
     <string name="last_test">Last test</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
 </resources>
