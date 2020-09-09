@@ -6,7 +6,6 @@ import com.skybox.seven.covid.data.entities.Myth;
 import java.util.List;
 
 public class MythRepository {
-    private static MythRepository INSTANCE = null;
     private MythsDAO mythsDAO;
 
     public MythRepository(MythsDAO mythsDAO) {
@@ -19,14 +18,5 @@ public class MythRepository {
 
     public void addAllMyths(List<Myth> myths) {
         mythsDAO.insertAll(myths);
-    }
-
-    public static MythRepository getInstance(MythsDAO mythsDAO) {
-        if (INSTANCE == null) {
-            synchronized (MythRepository.class) {
-                INSTANCE = new MythRepository(mythsDAO);
-            }
-        }
-        return INSTANCE;
     }
 }
