@@ -31,4 +31,6 @@
     <color name="deaths">@color/reply_red_400</color>
     <color name="recovered">@color/reply_green_100</color>
     <color name="active">@color/reply_orange_400</color>
+
+    <color name="symptomCardRed">#D95A5B</color>
 </resources>

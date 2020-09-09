@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.symptoms.SymptomsFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/middle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="206dp" />
+
+    <ImageView
+        android:id="@+id/coughImageView"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mask"
+        android:layout_marginLeft="@dimen/menu_card_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/coughTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Cough"
+        app:layout_constraintTop_toBottomOf="@id/coughImageView"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <ImageView
+        android:id="@+id/feverImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/mask"
+        app:layout_constraintEnd_toStartOf="@id/middle"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        android:id="@+id/feverTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="High Fever"
+        app:layout_constraintEnd_toStartOf="@id/middle"
+        app:layout_constraintTop_toBottomOf="@+id/feverImageView" />
+
+    <ImageView
+        android:id="@+id/headImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/mask"
+        app:layout_constraintStart_toEndOf="@id/middle"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="8dp"/>
+
+    <TextView
+        android:id="@+id/headTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="8dp"
+        android:text="Headache"
+        app:layout_constraintStart_toEndOf="@id/middle"
+        app:layout_constraintTop_toBottomOf="@id/headImageView" />
+
+    <ImageView
+        android:id="@+id/soreImageView"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mask"
+        android:layout_marginEnd="@dimen/menu_card_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/soreTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:text="Sore Throat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/soreImageView" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/attention"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/coughTV"
+        android:layout_margin="@dimen/menu_card_margin"
+        app:cardCornerRadius="@dimen/menu_card_radius"
+        app:cardBackgroundColor="@color/symptomCardRed">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_error"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Seek immediate medical attention if you have serious symptoms. Call before visiting your doctor or health facility"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="8dp"
+        android:padding="5dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/lessSymptoms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/menu_card_margin"
+        app:cardCornerRadius="@dimen/menu_card_radius"
+        app:layout_constraintTop_toBottomOf="@id/attention">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/symptomsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="Less common symptoms" />
+
+        <TextView
+            android:id="@+id/symptom1"
+            app:layout_constraintTop_toBottomOf="@+id/symptomsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Aches and pains" />
+
+        <TextView
+            android:id="@+id/symptom2"
+            app:layout_constraintTop_toBottomOf="@+id/symptom1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Sore throat" />
+
+        <TextView
+            android:id="@+id/symptom3"
+            app:layout_constraintTop_toBottomOf="@+id/symptom2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Diarrhoea" />
+
+        <TextView
+            android:id="@+id/symptom4"
+            app:layout_constraintTop_toBottomOf="@+id/symptom3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Conjuctivitis" />
+
+        <TextView
+            android:id="@+id/symptom5"
+            app:layout_constraintTop_toBottomOf="@+id/symptom4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Heachache" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/menu_card_margin"
+        app:cardCornerRadius="@dimen/menu_card_radius"
+        app:layout_constraintTop_toBottomOf="@id/lessSymptoms">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/SeriousSymptomsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="Serious symptoms" />
+
+            <TextView
+                android:id="@+id/Ssymptom1"
+                app:layout_constraintTop_toBottomOf="@+id/SeriousSymptomsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Shortness of breath or difficulty breathing" />
+
+            <TextView
+                android:id="@+id/Ssymptom2"
+                app:layout_constraintTop_toBottomOf="@+id/Ssymptom1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Chest pain or pressure" />
+
+            <TextView
+                android:id="@+id/Ssymptom3"
+                app:layout_constraintTop_toBottomOf="@+id/Ssymptom2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Loss of speeach or movement" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
