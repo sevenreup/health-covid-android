@@ -28,8 +28,9 @@ public class MythBustersFragment extends Fragment implements MythBusterControlle
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        viewModel = new ViewModelProvider(requireActivity()).get(MythViewModel.class);
         controller = new MythBusterController(this);
-        viewModel.mythsList.observe(getViewLifecycleOwner(), mythbusterModel -> controller.setData(false,mythbusterModel));
+        viewModel.mythsList.observe(this, mythbusterModel -> controller.setData(false,mythbusterModel));
         viewModel.getAllMyths();
     }
 
@@ -38,9 +39,7 @@ public class MythBustersFragment extends Fragment implements MythBusterControlle
                              Bundle savedInstanceState) {
         View v =inflater.inflate(R.layout.fragment_myth_busters, container, false);
         EpoxyRecyclerView recyclerView = v.findViewById(R.id.MythRecyclerView);
-
-        viewModel = new ViewModelProvider(requireActivity()).get(MythViewModel.class);
-
+        
         recyclerView.addItemDecoration(new SpaceItemDecorator(20, true, false));
         recyclerView.setController(controller);
 
