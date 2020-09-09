@@ -39,7 +39,7 @@ public class MythBustersFragment extends Fragment implements MythBusterControlle
                              Bundle savedInstanceState) {
         View v =inflater.inflate(R.layout.fragment_myth_busters, container, false);
         EpoxyRecyclerView recyclerView = v.findViewById(R.id.MythRecyclerView);
-        
+
         recyclerView.addItemDecoration(new SpaceItemDecorator(20, true, false));
         recyclerView.setController(controller);
 
