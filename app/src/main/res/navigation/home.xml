@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home"
     app:startDestination="@id/homePageFragment">
+    <action
+        android:id="@+id/to_qna"
+        app:destination="@id/qnaFragment" />
     <fragment
         android:id="@+id/homePageFragment"
         android:name="com.skybox.seven.covid.ui.home.HomePageFragment"
@@ -34,4 +37,9 @@
         android:name="com.skybox.seven.covid.ui.symptoms.SymptomsFragment"
         android:label="fragment_symptoms"
         tools:layout="@layout/fragment_symptoms" />
+    <fragment
+        android:id="@+id/qnaFragment"
+        android:name="com.skybox.seven.covid.ui.qna.QnaFragment"
+        android:label="fragment_qna"
+        tools:layout="@layout/fragment_qna" />
 </navigation>

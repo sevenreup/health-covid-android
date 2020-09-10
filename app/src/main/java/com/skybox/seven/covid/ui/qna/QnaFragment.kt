@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.entities.Qna
@@ -52,7 +53,7 @@ class QnaFragment: Fragment() {
 
 
     fun onBackPressed(view: View) {
-       return Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.qna_to_homePageFragment)
+        findNavController().navigateUp()
     }
 
 

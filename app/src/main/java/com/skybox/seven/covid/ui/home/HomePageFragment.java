@@ -65,7 +65,7 @@ public class HomePageFragment extends Fragment {
                     break;
 
                 case R.id.qnaCard:
-                    Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.to_qnaFragment);
+                    Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.to_qna);
                     break;
 
                 default:
