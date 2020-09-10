@@ -86,11 +86,12 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <androidx.constraintlayout.widget.Guideline android:id="@+id/middle"
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/middle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5"/>
+                app:layout_constraintGuide_begin="206dp" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/preventionCard"
