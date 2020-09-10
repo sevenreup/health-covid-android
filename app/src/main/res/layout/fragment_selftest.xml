@@ -103,6 +103,52 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/disclaimer_title" />
 
+                <ImageView
+                    android:id="@+id/icon_steps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/steps_body"
+                    app:layout_constraintBottom_toBottomOf="@id/steps_body"
+                    app:srcCompat="@drawable/ic_bar_chart"
+                    android:background="@drawable/circle_drawable"
+                    android:backgroundTint="?colorPrimary"/>
+
+                <TextView
+                    android:id="@+id/steps_body"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="You will be required to answer a few questions about symptoms, travel, contact and your general health."
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/icon_steps"
+                    app:layout_constraintTop_toBottomOf="@id/disclaimer_body" />
+
+                <ImageView
+                    android:id="@+id/icon_privacy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/privacy_body"
+                    app:layout_constraintBottom_toBottomOf="@id/privacy_body"
+                    app:srcCompat="@drawable/ic_bar_chart"
+                    android:background="@drawable/circle_drawable"
+                    android:backgroundTint="?colorPrimary"/>
+
+                <TextView
+                    android:id="@+id/privacy_body"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="All your answers are store locally until you chose to Share them with the ministry"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/icon_privacy"
+                    app:layout_constraintTop_toBottomOf="@id/steps_body" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 

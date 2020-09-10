@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.FragmentSelftestBinding
 import com.skybox.seven.covid.epoxy.selftest.SelfTestController
@@ -33,6 +34,7 @@ class SelfTestFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.historyRecy.setController(controller)
+        binding.historyRecy.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
         viewModel.todayTest.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             if (it == null) binding.startTest.setOnClickListener {findNavController().navigate(R.id.start_self_test) }

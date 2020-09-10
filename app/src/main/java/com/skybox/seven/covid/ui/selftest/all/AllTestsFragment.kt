@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.skybox.seven.covid.databinding.FragmentAllTestsBinding
 import com.skybox.seven.covid.epoxy.selftest.SelfTestController
 import com.skybox.seven.covid.ui.selftest.SelfTestViewModel
