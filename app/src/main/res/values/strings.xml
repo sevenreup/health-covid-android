@@ -176,6 +176,8 @@
     <string name="finish">Finish</string>
     <string name="no_test">No Test Taken</string>
     <string name="last_test">Last test</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
     //Symptoms fragment info. To be sorted when new implementation is used
     <string name="symptoms_attention">Seek immediate medical attention if you have serious symptoms. Call before visiting your doctor or health facility</string>

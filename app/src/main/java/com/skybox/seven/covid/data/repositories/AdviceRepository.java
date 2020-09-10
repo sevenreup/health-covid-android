@@ -6,7 +6,6 @@ import com.skybox.seven.covid.data.entities.Advice;
 import java.util.List;
 
 public class AdviceRepository {
-    private static AdviceRepository INSTANCE = null;
     private AdviceDAO adviceDAO;
 
     public AdviceRepository(AdviceDAO adviceDAO) {
@@ -19,14 +18,5 @@ public class AdviceRepository {
 
     public void addAllAdvices(List<Advice> advice) {
         adviceDAO.insertAll(advice);
-    }
-
-    public static AdviceRepository getInstance(AdviceDAO adviceDAO) {
-        if (INSTANCE == null) {
-            synchronized (AdviceRepository.class) {
-                INSTANCE = new AdviceRepository(adviceDAO);
-            }
-        }
-        return INSTANCE;
     }
 }

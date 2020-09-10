@@ -17,6 +17,7 @@ import com.skybox.seven.covid.epoxy.prevention.PreventionEpoxyModel;
 public class MythBusterEpoxyModel extends EpoxyModelWithHolder<MythBusterEpoxyModel.MythBusterEpoxyViewHolder> {
     @EpoxyAttribute
     Myth mythbuster;
+    @EpoxyAttribute View.OnClickListener listener;
 
     @Override
     protected MythBusterEpoxyModel.MythBusterEpoxyViewHolder createNewHolder() {
@@ -27,12 +28,14 @@ public class MythBusterEpoxyModel extends EpoxyModelWithHolder<MythBusterEpoxyMo
         super.bind(holder);
         holder.mythRVCardTitle.setText(mythbuster.getTitle());
         holder.mythRVCardDescription.setText(mythbuster.getMyth());
+        holder.card.setOnClickListener(listener);
     }
 
     @Override
     protected int getDefaultLayout() { return R.layout.model_myth_buster; }
 
     static class MythBusterEpoxyViewHolder extends EpoxyHolder {
+        public View card;
         public TextView mythRVCardTitle;
         public TextView mythRVCardDescription;
 
@@ -41,6 +44,7 @@ public class MythBusterEpoxyModel extends EpoxyModelWithHolder<MythBusterEpoxyMo
         protected void bindView(@NonNull View itemView) {
             this.mythRVCardTitle = itemView.findViewById(R.id.mythRVCardTitle);
             this.mythRVCardDescription = itemView.findViewById(R.id.mythRVCardDescription);
+            card = itemView.findViewById(R.id.parent);
         }
 
     }
