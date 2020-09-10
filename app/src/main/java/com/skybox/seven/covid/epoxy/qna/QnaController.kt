@@ -15,7 +15,7 @@ class QnaController : Typed2EpoxyController<Boolean?, List<Qna>>() {
             QnaEpoxyModel_()
                     .id(question.question)
                     .questions(question)
-                    .expandListener { model, parentView, clickedView, position ->
+                    .expandListener { _, parentView, clickedView, _ ->
                         expandedModel = QnaEpoxyModel.QnaEpoxyViewHolder()
                         expandItem(parentView, true)
 
@@ -27,7 +27,7 @@ class QnaController : Typed2EpoxyController<Boolean?, List<Qna>>() {
                                     expandedModel = parentView
                                 }
                                 parentView -> {
-                                    unExpandedItems(parentView, true)
+                                    unExpandedItems(parentView)
                                     expandedModel = null
                                 }
                                 else -> {
@@ -52,7 +52,7 @@ class QnaController : Typed2EpoxyController<Boolean?, List<Qna>>() {
 
     }
 
-    private fun unExpandedItems(holder: QnaEpoxyModel.QnaEpoxyViewHolder, unExpanded: Boolean){
+    private fun unExpandedItems(holder: QnaEpoxyModel.QnaEpoxyViewHolder){
 
         holder.answerLayout?.visibility = View.GONE
         holder.arrow?.setImageResource(R.drawable.ic_keyboard_arrow)
