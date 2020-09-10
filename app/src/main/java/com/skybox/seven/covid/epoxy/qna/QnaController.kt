@@ -7,7 +7,7 @@ import com.skybox.seven.covid.data.entities.Qna
 
 class QnaController : Typed2EpoxyController<Boolean?, List<Qna>>() {
 
-    lateinit var expandedModel: QnaEpoxyModel.QnaEpoxyViewHolder
+     var expandedModel: QnaEpoxyModel.QnaEpoxyViewHolder? = null
 
     override fun buildModels(loading: Boolean?, questions: List<Qna>) {
 
@@ -28,10 +28,11 @@ class QnaController : Typed2EpoxyController<Boolean?, List<Qna>>() {
                                 }
                                 parentView -> {
                                     unExpandedItems(parentView, true)
+                                    expandedModel = null
                                 }
                                 else -> {
                                     expandItem(parentView, false)
-                                    expandItem(expandedModel, true)
+                                    expandItem(expandedModel!!, true)
                                     expandedModel = parentView
 
                                 }

@@ -8,6 +8,7 @@ import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyHolder
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
+import com.google.android.material.card.MaterialCardView
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.entities.Qna
 
@@ -29,7 +30,7 @@ abstract class QnaEpoxyModel : EpoxyModelWithHolder<QnaEpoxyModel.QnaEpoxyViewHo
         holder.answer!!.text = questions!!.answer
         holder.arrow!!.setImageResource(questions!!.arrow)
 
-        holder.arrow?.setOnClickListener(expandListener)
+        holder.card?.setOnClickListener(expandListener)
 
 
     }
@@ -42,6 +43,7 @@ abstract class QnaEpoxyModel : EpoxyModelWithHolder<QnaEpoxyModel.QnaEpoxyViewHo
 
         var question: TextView? = null
         var answer: TextView? = null
+        var card: MaterialCardView? = null
         var arrow: ImageView? = null
         var answerLayout: ConstraintLayout? = null
 
@@ -49,6 +51,7 @@ abstract class QnaEpoxyModel : EpoxyModelWithHolder<QnaEpoxyModel.QnaEpoxyViewHo
         override fun bindView(itemView: View) {
             question = itemView.findViewById(R.id.qnaQuestion)
             answer = itemView.findViewById(R.id.qnaAnswer)
+            card = itemView.findViewById(R.id.qnaModel)
             arrow = itemView.findViewById(R.id.qnaArrow)
             answerLayout = itemView.findViewById(R.id.answerLayout)
         }
