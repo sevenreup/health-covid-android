@@ -13,8 +13,7 @@
     <string name="title_contacts">Contacts</string>
     <string name="title_mythbusters">Myth Busters</string>
     <string name="title_news">News</string>
-    <string name="title_qna">Questions and Answers</string>
-
+    <string name="title_qna">Frequently Asked Questions</string>
     <string name="title_statistics">Statistics</string>
     <string name="title_cases">Statistics</string>
 
@@ -195,4 +194,13 @@
     <string name="loss_of_speeach">Loss of speeach or movement</string>
     <string name="cough">Cough</string>
     <string name="fever">High Fever</string>
+
+
+    <string name="sample_answer">
+        The COVID-19 virus spreads primarily through
+droplets of saliva or discharge from the nose
+when an infected person coughs or sneezes"
+
+    </string>
+    <string name="backpressed">backPressed</string>
 </resources>

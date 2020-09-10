@@ -18,6 +18,8 @@ import androidx.navigation.Navigation;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.databinding.FragmentHomepageBinding;
 
+import java.util.Objects;
+
 public class HomePageFragment extends Fragment {
 
     private FragmentHomepageBinding binding;
@@ -51,7 +53,7 @@ public class HomePageFragment extends Fragment {
             switch (view.getId())
             {
                 case R.id.preventionCard:
-                    Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.preventionFragment);
+                    Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.preventionFragment);
                 break;
 
                 case R.id.symptomsCard:
@@ -59,7 +61,18 @@ public class HomePageFragment extends Fragment {
                 break;
 
                 case R.id.mythCard:
-                    Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.mythBustersFragment);
+                    Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.mythBustersFragment);
+                    break;
+
+                case R.id.qnaCard:
+                    Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.to_qnaFragment);
+                    break;
+
+                default:
+                    Toast.makeText(requireActivity(), "Error in a card", Toast.LENGTH_SHORT).show();
+                    break;
+
+
             }
         }
 
