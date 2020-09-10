@@ -94,6 +94,47 @@
                 app:layout_constraintGuide_begin="206dp" />
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/attention"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/detailsCard"
+                android:layout_margin="@dimen/menu_card_margin"
+                app:cardCornerRadius="@dimen/menu_card_radius"
+                app:cardBackgroundColor="@color/symptomCardRed">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_error"
+                        android:layout_marginStart="5dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginLeft="5dp" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="This is a beta build. Bugs are to be expected."
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="8dp"
+                        android:padding="5dp"
+                        app:layout_constraintStart_toEndOf="@+id/imageView3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginLeft="8dp" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/preventionCard"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -102,7 +143,7 @@
                 app:cardCornerRadius="@dimen/menu_card_radius"
                 app:cardElevation="@dimen/card_elevation_small"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detailsCard"
+                app:layout_constraintTop_toBottomOf="@id/attention"
                 app:layout_constraintEnd_toStartOf="@id/middle">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -152,7 +193,7 @@
                 app:cardElevation="@dimen/card_elevation_small"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/middle"
-                app:layout_constraintTop_toBottomOf="@id/detailsCard">
+                app:layout_constraintTop_toBottomOf="@id/attention">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
