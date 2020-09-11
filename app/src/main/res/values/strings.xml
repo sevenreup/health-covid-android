@@ -160,4 +160,14 @@ when an infected person coughs or sneezes"
 
     </string>
     <string name="backpressed">backPressed</string>
+    <string name="contact_services">Contact Services</string>
+    <string name="national_helpline">National Helpline</string>
+    <string name="dummy_number">265 88 00 00 00</string>
+    <string name="platforms">Platforms</string>
+    <string name="whatsapp_chatbot">Whatsapp Chatbot</string>
+    <string name="tnm">TNM</string>
+    <string name="airtel">Airtel</string>
+    <string name="response_teams">Response teams</string>
+    <string name="lilongwe">Lilongwe</string>
+    <string name="mw">MW</string>
 </resources>

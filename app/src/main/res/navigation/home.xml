@@ -18,6 +18,9 @@
         <action
             android:id="@+id/to_qnaFragment"
             app:destination="@id/qnaFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/preventionFragment"
@@ -36,6 +39,15 @@
         tools:layout="@layout/fragment_qna" >
         <action
             android:id="@+id/qna_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.skybox.seven.covid.ui.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_detailsFragment_to_homePageFragment"
             app:destination="@id/homePageFragment" />
     </fragment>
 </navigation>
