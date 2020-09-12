@@ -6,6 +6,7 @@ import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyHolder
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
+import com.google.android.material.card.MaterialCardView
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.entities.DetailsPhoneNumbers
 
@@ -28,6 +29,7 @@ abstract class DetailsEpoxyModel : EpoxyModelWithHolder<DetailsEpoxyModel.QnaEpo
         holder.district!!.text = data!!.district
         holder.phoneNumber!!.text = data!!.phoneNumber
 
+        holder.card!!.setOnClickListener(cardClick)
     }
 
     override fun getDefaultLayout(): Int {
@@ -38,11 +40,13 @@ abstract class DetailsEpoxyModel : EpoxyModelWithHolder<DetailsEpoxyModel.QnaEpo
 
         var district: TextView? = null
         var phoneNumber: TextView? = null
+        var card: MaterialCardView? = null
 
         override fun bindView(itemView: View) {
 
             district = itemView.findViewById(R.id.district)
             phoneNumber = itemView.findViewById(R.id.district_phone)
+            card = itemView.findViewById(R.id.detailCard)
         }
 
     }

@@ -15,7 +15,6 @@ buildscript {
             lottieVersion: '3.4.1',
             epoxyVersion: '3.11.0',
             rxjava: '3.0.0'
-
     ]
     repositories {
         google()

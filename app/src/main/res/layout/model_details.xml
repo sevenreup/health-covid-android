@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     >
 
     <com.google.android.material.card.MaterialCardView
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/detailCard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -32,7 +34,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_margin="20dp"
                     android:text="@string/lilongwe"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true"
+                    tools:ignore="RelativeOverlap" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -40,7 +43,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:layout_margin="20dp"
-                    android:src="@drawable/ic_whatsapp_brown" />
+                    android:src="@drawable/ic_whatsapp_brown"
+                    android:layout_alignParentEnd="true" />
             </RelativeLayout>
 
             <RelativeLayout

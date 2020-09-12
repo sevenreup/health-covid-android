@@ -3,14 +3,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ConstraintSet android:id="@+id/start">
-        <Constraint android:id="@+id/widget" />
+        <Constraint android:id="@+id/titleContainer"
+            />
+        <Constraint android:id="@+id/responseContainer"
+            />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
-        <Constraint android:id="@id/widget" />
+        <Constraint android:id="@+id/titleContainer"
+            android:layout_marginEnd="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="160dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="match_parent"
+            android:layout_marginTop="1dp" />
+        <Constraint android:id="@+id/responseContainer"
+            />
+        <Constraint
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:id="@+id/detailsToHome" />
+        <Constraint
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/responseContainer"
+            android:id="@+id/detailsRecycler" />
     </ConstraintSet>
 
     <Transition
         app:constraintSetEnd="@id/end"
-        app:constraintSetStart="@+id/start" />
+        app:constraintSetStart="@id/start"
+        app:motionInterpolator="easeInOut">
+        <OnSwipe
+            app:dragDirection="dragUp"
+            app:touchAnchorId="@id/responseContainer" />
+        <KeyFrameSet >
+            <KeyAttribute
+                app:motionTarget="@+id/titleContainer"
+                app:framePosition="59"
+                android:alpha="0" />
+        </KeyFrameSet>
+    </Transition>
 </MotionScene>

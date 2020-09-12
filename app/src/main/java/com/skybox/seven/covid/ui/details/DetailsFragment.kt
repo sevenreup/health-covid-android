@@ -5,7 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.navigation.fragment.findNavController
+import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.entities.DetailsPhoneNumbers
 import com.skybox.seven.covid.data.entities.getDetailsData
 import com.skybox.seven.covid.databinding.FragmentDetailsBinding
@@ -30,9 +31,12 @@ class DetailsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        super.onCreate(savedInstanceState)
+
         val data = getDetailsData()
         bindEpoxyRecycler(data as MutableList<DetailsPhoneNumbers>)
     }
+
 
     private fun bindEpoxyRecycler(data: MutableList<DetailsPhoneNumbers>){
 
@@ -42,13 +46,15 @@ class DetailsFragment : Fragment() {
         controller.setData(false, data)
 
         recycler.apply {
-            layoutManager = LinearLayoutManager(requireContext())
+
             addItemDecoration(SpaceItemDecorator(20, true, false))
             setController(controller)
         }
 
-
     }
 
+    fun toHomePage(view: View){
+        findNavController().navigate(R.id.action_detailsFragment_to_homePageFragment)
+    }
 
 }

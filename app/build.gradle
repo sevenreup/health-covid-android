@@ -141,4 +141,5 @@ dependencies {
 
     //motion layout
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
+
 }
