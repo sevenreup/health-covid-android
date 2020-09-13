@@ -33,7 +33,7 @@ public class PreventionFragment extends Fragment implements PreventionController
         viewModel = new ViewModelProvider(requireActivity()).get(AdviceViewModel.class);
         controller = new PreventionController(this);
 
-        viewModel.adviceList.observe(getViewLifecycleOwner(), preventionModel -> controller.setData(false,preventionModel));
+        viewModel.adviceList.observe(this, preventionModel -> controller.setData(false,preventionModel));
 
         viewModel.getAdviceList();
     }
@@ -52,6 +52,6 @@ public class PreventionFragment extends Fragment implements PreventionController
 
     @Override
     public void preventionClick(Advice advice) {
-
+        PreventionDialog.newInstance(advice).show(getChildFragmentManager(), advice.getTitle());
     }
 }
