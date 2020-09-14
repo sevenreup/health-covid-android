@@ -1,15 +1,23 @@
 package com.skybox.seven.covid.util
 
+import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.net.Uri
+import android.os.Environment
 import android.util.AttributeSet
-import android.widget.FrameLayout
+import android.view.View
+import androidx.core.content.FileProvider
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.signature.ObjectKey
 import com.google.android.material.card.MaterialCardView
+import java.io.File
+import java.io.FileOutputStream
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.text.NumberFormat
@@ -25,7 +33,7 @@ fun Calendar.takeLast(days: Int) = run {
     return@run Date(timeInMillis)
 }
 
-fun String.convertZuluToTargetFormat(targetFormat : String): String = run {
+fun String.convertZuluToTargetFormat(targetFormat: String): String = run {
     val zuluTime = SimpleDateFormat(
             "yyyy-MM-dd'T'HH:mm:ss'Z'",
             Locale.getDefault()
@@ -69,4 +77,29 @@ fun RequestManager.loadImage(url: String, isPreloading: Boolean): RequestBuilder
 
 fun MaterialCardView.obtainStyledAttributes(attrsSet: AttributeSet?, attrsId: IntArray): TypedArray {
     return context.theme.obtainStyledAttributes(attrsSet, attrsId, 0, 0)
+}
+
+fun View.toImage(): Bitmap? {
+    val returnedBitmap = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888);
+    val canvas = Canvas(returnedBitmap)
+    val drawable = this.background;
+    if (drawable != null)  drawable.draw(canvas)
+    else canvas.drawColor(Color.WHITE)
+    this.draw(canvas)
+    return returnedBitmap
+}
+
+fun Bitmap.getLocalBitmapUri(context: Context): Uri {
+    var bitURI: Uri? = null
+    val file = File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_image_" + System.currentTimeMillis() + ".png")
+    val out = FileOutputStream(file)
+    this.compress(Bitmap.CompressFormat.PNG, 90, out)
+    out.close()
+
+    bitURI = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+        FileProvider.getUriForFile(context, context.applicationContext.opPackageName + ".provider", file)
+    } else {
+        Uri.fromFile(file);
+    }
+    return bitURI
 }

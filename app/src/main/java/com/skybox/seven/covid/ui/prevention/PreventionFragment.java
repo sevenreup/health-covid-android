@@ -14,6 +14,7 @@ import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.data.entities.Advice;
 import com.skybox.seven.covid.epoxy.prevention.PreventionController;
 import com.skybox.seven.covid.ui.advice.AdviceViewModel;
+import com.skybox.seven.covid.ui.common.ShareDialogDialog;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -52,6 +53,6 @@ public class PreventionFragment extends Fragment implements PreventionController
 
     @Override
     public void preventionClick(Advice advice) {
-        PreventionDialog.newInstance(advice).show(getChildFragmentManager(), advice.getTitle());
+        ShareDialogDialog.newInstance(advice).show(getChildFragmentManager(), advice.getTitle());
     }
 }
