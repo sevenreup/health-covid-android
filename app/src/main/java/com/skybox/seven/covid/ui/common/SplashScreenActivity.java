@@ -21,21 +21,16 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getApplication().getSharedPreferences(getApplication().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
 
-//        if (sharedPreferences.getBoolean(ONBOARDING, false)) {
-//            Intent intent = new Intent(this, HomeActivity.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(intent);
-//            finishAffinity();
-//        } else {
-//            Intent intent = new Intent(this, OnBoardingActivity.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//            startActivity(intent);
-//            finishAffinity();
-//        }
-
-        Intent intent = new Intent(this, HomeActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        finishAffinity();
+        if (sharedPreferences.getBoolean(ONBOARDING, false)) {
+            Intent intent = new Intent(this, HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finishAffinity();
+        } else {
+            Intent intent = new Intent(this, OnBoardingActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finishAffinity();
+        }
     }
 }

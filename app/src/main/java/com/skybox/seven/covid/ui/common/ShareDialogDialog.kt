@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
+import androidx.constraintlayout.widget.Constraints
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.entities.Advice
@@ -33,14 +36,17 @@ class ShareDialogDialog : BottomSheetDialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DialogPreventionViewBinding.inflate(inflater, container, false)
+        binding.title.visibility = View.GONE
         when(type) {
             0-> {
                 binding.preventionRVCardTitle.text = advice!!.title
                 binding.preventionRVCardDescription.text = advice!!.advice
+                binding.title.text = getString(R.string.prevention)
             }
             else -> {
                 binding.preventionRVCardTitle.text = myth!!.title
                 binding.preventionRVCardDescription.text = myth!!.myth
+                binding.title.text = getString(R.string.myth_advice)
             }
         }
 
@@ -51,6 +57,7 @@ class ShareDialogDialog : BottomSheetDialogFragment() {
 
     private fun shareAdvice() {
         hideContent()
+        binding.title.visibility = View.VISIBLE
         val image = binding.root.toImage()
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "image/jpeg"
@@ -69,11 +76,20 @@ class ShareDialogDialog : BottomSheetDialogFragment() {
     private fun hideContent() {
         binding.close.visibility = View.GONE
         binding.share.visibility = View.GONE
+        val constraint = ConstraintSet()
+        constraint.clone(binding.root)
+        constraint.connect(R.id.preventionRVCardTitle, ConstraintSet.TOP, R.id.title, ConstraintSet.BOTTOM)
+        constraint.applyTo(binding.root)
     }
 
     private fun showContent() {
         binding.close.visibility = View.VISIBLE
         binding.share.visibility = View.VISIBLE
+        binding.title.visibility = View.GONE
+        val constraint = ConstraintSet()
+        constraint.clone(binding.root)
+        constraint.connect(R.id.preventionRVCardTitle, ConstraintSet.TOP, R.id.close, ConstraintSet.BOTTOM)
+        constraint.applyTo(binding.root)
     }
     companion object {
         const val ADVICE = "ADVICE"
