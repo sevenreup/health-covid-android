@@ -14,6 +14,7 @@ import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.data.entities.Myth;
 import com.skybox.seven.covid.epoxy.mythbuster.MythBusterController;
+import com.skybox.seven.covid.ui.common.ShareDialogDialog;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
 
 public class MythBustersFragment extends Fragment implements MythBusterController.MythCallbacks {
@@ -48,6 +49,6 @@ public class MythBustersFragment extends Fragment implements MythBusterControlle
 
     @Override
     public void onMythClicked(Myth myth) {
-
+        ShareDialogDialog.newInstance(myth).show(getChildFragmentManager(), myth.getTitle());
     }
 }
