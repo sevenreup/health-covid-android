@@ -1,6 +1,8 @@
 package com.skybox.seven.covid.ui.stats.overview
 
+import android.content.ClipData
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,7 +22,10 @@ import com.github.mikephil.charting.data.PieEntry
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.StatsDirections
 import com.skybox.seven.covid.databinding.FragmentStatsBinding
+import com.skybox.seven.covid.databinding.LayoutTotalCasesBinding
 import com.skybox.seven.covid.model.WorldStats
+import com.skybox.seven.covid.util.getLocalBitmapUri
+import com.skybox.seven.covid.util.toImage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,6 +52,11 @@ class StatisticsFragment : Fragment() {
                 active = it.active.toString()
                 deaths = it.deaths.toString()
                 recovered = it.recovered.toString()
+                problems.visibility = View.VISIBLE
+                share.visibility = View.VISIBLE
+                share.setOnClickListener {
+                    shareShoot(this, requireContext())
+                }
             }
             worldChat(it)
         })
@@ -101,6 +111,24 @@ class StatisticsFragment : Fragment() {
             }
 
             return barData
+        }
+
+        fun shareShoot(binding: LayoutTotalCasesBinding, context: Context?) {
+            binding.share.visibility = View.GONE
+
+            val image = binding.root.toImage()
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                type = "image/jpeg"
+                if (image != null) {
+                    val uri = context?.let { image.getLocalBitmapUri(it) }
+                    putExtra(Intent.EXTRA_STREAM, uri)
+                    clipData = ClipData.newUri(context?.contentResolver, context?.getString(R.string.app_name), uri)
+                }
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+            context?.startActivity(Intent.createChooser(intent, null))
+
+            binding.share.visibility = View.VISIBLE
         }
     }
 

@@ -25,9 +25,9 @@ class CaseCardView @JvmOverloads constructor(context: Context, attrs: AttributeS
     init {
         handleAttrs(obtainStyledAttributes(attrs, R.styleable.CaseCardView))
 
-        binding.title.text = title
+        binding.partTitle.text = title
         binding.value.text = valueText
-        binding.title.setTextColor(textColor)
+        binding.partTitle.setTextColor(textColor)
     }
 
     private fun handleAttrs(typedArray: TypedArray) {

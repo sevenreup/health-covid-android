@@ -56,11 +56,16 @@ class CountryStatsChatFragment : Fragment() {
         }
         viewModel.countryStats.observe(viewLifecycleOwner, Observer {
            binding.countryTotals.apply {
-               title = getString(R.string.cases)
+               title =  "${args.country.country} ${getString(R.string.cases)}"
                cases = it.cases.toString()
                active = it.active.toString()
                deaths = it.deaths.toString()
                recovered = it.recovered.toString()
+               problems.visibility = View.VISIBLE
+               share.visibility = View.VISIBLE
+               share.setOnClickListener {
+                   StatisticsFragment.shareShoot(this, requireContext())
+               }
            }
             countryChat(it)
         })
