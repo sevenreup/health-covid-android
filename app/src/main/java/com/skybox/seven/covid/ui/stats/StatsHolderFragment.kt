@@ -24,6 +24,15 @@ class StatsHolderFragment : Fragment(), CircularSearchView.CircularCallbacks {
     private lateinit var binding: FragmentStatsHolderBinding
     private val viewModel: MainViewModel by activityViewModels()
     private val countriesModel: CountriesViewModel by activityViewModels()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.closeSearch.observe(this, Observer {
+            if (it) countriesModel.close.value = true
+        })
+        viewModel.searchOpened.observe(this, Observer {
+            if (!it) countriesModel.close.value = true
+        })
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

@@ -11,6 +11,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 class CountriesViewModel @ViewModelInject constructor(private val statsService: StatsService, private val compositeDisposable: CompositeDisposable) : ViewModel() {
     val allCountriesData = MutableLiveData<List<CountryStat>>()
+    val close = MutableLiveData<Boolean>()
     val searchText = MutableLiveData<String>()
     val rebuild = MutableLiveData<Boolean>()
     val filteredList = MutableLiveData<List<CountryStat>>()

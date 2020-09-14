@@ -39,6 +39,9 @@ class CountriesFragment : Fragment(), CountryCallbacks {
         viewModel.filteredList.observe(this, Observer {
             controller.setData(false, it)
         })
+        viewModel.close.observe(this, Observer {
+            viewModel.filteredList.value = viewModel.allCountriesData.value
+        })
         viewModel.getAllCountries()
     }
 
