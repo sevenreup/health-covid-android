@@ -19,6 +19,7 @@ import com.skybox.seven.covid.model.PreventionModel;
 public class PreventionEpoxyModel extends EpoxyModelWithHolder<PreventionEpoxyModel.PreventionEpoxyViewHolder> {
     @EpoxyAttribute
     Advice prevention;
+    @EpoxyAttribute View.OnClickListener listener;
 
     @Override
     protected PreventionEpoxyModel.PreventionEpoxyViewHolder createNewHolder() {
@@ -29,6 +30,7 @@ public class PreventionEpoxyModel extends EpoxyModelWithHolder<PreventionEpoxyMo
         super.bind(holder);
         holder.preventionRVCardTitle.setText(prevention.getShortTitle());
         holder.preventionRVCardDescription.setText(prevention.getTitle());
+        holder.card.setOnClickListener(listener);
     }
 
     @Override
@@ -40,12 +42,14 @@ public class PreventionEpoxyModel extends EpoxyModelWithHolder<PreventionEpoxyMo
 
         public TextView preventionRVCardTitle;
         public TextView preventionRVCardDescription;
+        public View card;
 
 
         @Override
         protected void bindView(@NonNull View itemView) {
             this.preventionRVCardTitle = itemView.findViewById(R.id.preventionRVCardTitle);
             this.preventionRVCardDescription = itemView.findViewById(R.id.preventionRVCardDescription);
+            card = itemView.findViewById(R.id.parent);
         }
     }
 }

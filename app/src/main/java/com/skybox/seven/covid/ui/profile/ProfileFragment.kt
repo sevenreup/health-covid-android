@@ -7,10 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.skybox.seven.covid.Covid
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.FragmentProfileBinding
 import com.skybox.seven.covid.ui.MainViewModel
 import com.skybox.seven.covid.util.Constants
+import com.yariksoffice.lingver.Lingver
+import org.ocpsoft.prettytime.PrettyTime
+import java.util.*
 
 
 class ProfileFragment : Fragment() {
@@ -35,10 +39,17 @@ class ProfileFragment : Fragment() {
     }
 
     fun navigateSelfTest() {
-        findNavController().navigate(R.id.to_selfTest_view)
+        findNavController().navigate(R.id.to_selfTest)
     }
 
-    fun getGreeting(): String {
-        return ""
+    fun getFormatDate(date: Date?): String {
+        return PrettyTime().format(date)
+    }
+
+    fun changelanguage() {
+        if (Lingver.getInstance().getLocale() != Locale("ny", "MW"))
+            Lingver.getInstance().setLocale(requireContext(), Locale("ny", "MW"))
+        else
+            Lingver.getInstance().setLocale(requireContext(), Locale(Covid.LANGUAGE_ENGLISH))
     }
 }

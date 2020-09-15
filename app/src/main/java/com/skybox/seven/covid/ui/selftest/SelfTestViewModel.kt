@@ -3,22 +3,12 @@ package com.skybox.seven.covid.ui.selftest
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.skybox.seven.covid.data.entities.SelfTestResult
-import com.skybox.seven.covid.data.repositories.SelfTestRepository
+import com.skybox.seven.covid.data.entities.SelfTestAnswer
+import com.skybox.seven.covid.data.repositories.SelfTestAnswersRepository
+import com.skybox.seven.covid.data.repositories.SelfTestQuestionsRepository
 
-class SelfTestViewModel @ViewModelInject constructor(private val selfTestRepository: SelfTestRepository) : ViewModel() {
-    var selfTestLiveData = MutableLiveData<List<SelfTestResult>>()
-    val allTests: Unit
-        get() {
-            selfTestLiveData.value = selfTestRepository.allTests
-        }
-
-    fun deleteTest(result: SelfTestResult?) {
-        selfTestRepository.deleteTest(result)
-    }
-
-    fun addTest(result: SelfTestResult?) {
-        selfTestRepository.addResults(result)
-    }
-
+class SelfTestViewModel @ViewModelInject constructor(private val selfTestAnswersRepository: SelfTestAnswersRepository) : ViewModel() {
+    var todayTest = selfTestAnswersRepository.getTodayTest()
+    var latestTest = selfTestAnswersRepository.getLastUpdate()
+    val topThree = selfTestAnswersRepository.getTopSelfTests()
 }

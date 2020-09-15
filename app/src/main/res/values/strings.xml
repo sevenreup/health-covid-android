@@ -29,7 +29,7 @@
     <string name="more">More</string>
     <string name="add_description_i_e_house_color">Add description i.e house #, color...</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="cases_disclamer">This page will hold case data. \n Coming soon..</string>
+    <string name="cases_disclamer">This page will hold case data.   Coming soon..</string>
 
     <string name="settings_notification">Change notifications</string>
     <string name="settings_language">Set the Current Language</string>
@@ -120,9 +120,9 @@
     <string name="sbt">Submit</string>
     <string name="clc">Cancel</string>
 
-    <string name="selftest_heading">Test for COVID19 against your symptoms</string>
-    <string name="button_start_test">Start a test</string>
-    <string name="previous">Previous tests</string>
+    <string name="selftest_heading">How are you feeling today?</string>
+    <string name="button_start_test">Take Self test</string>
+    <string name="previous_test">Last test:</string>
     <string name="reject">Reject</string>
     <string name="accept">Accept</string>
     <string name="advice_title_bt_health_tip">Health Tip: \n\n</string>
@@ -134,6 +134,10 @@
     <string name="recovered">Recovered</string>
     <string name="deaths">Deaths</string>
     <string name="active">Active</string>
+    <string name="all">All</string>
+    <string name="month">Month</string>
+    <string name="week">Week</string>
+    <string name="year">Year</string>
     <string name="total_confirmed"> Total Confirmed </string>
     <string name="total_recovered"> Total Recovered </string>
     <string name="total_deaths"> Total Deaths </string>
@@ -142,6 +146,10 @@
     <string name="stats_info_title"> Stay at home, Flatten the Curve </string>
     <string name="stats_info_content"> Stay safe and keep on social distancing </string>
     <string name="cases_worldwide"> Covid Cases World wide </string>
+    <string name="overview">Overview</string>
+    <string name="countries">Countries</string>
+    <string name="cases">Cases</string>
+    <string name="search_hint">Search Country</string>
 
     <string name="details_card_statement"> Have more questions on covid-19? Check out more official information </string>
 
@@ -151,6 +159,41 @@
     <string name="profile_greeting_title">Hello</string>
     <string name="profile_question_feelings">How are you feeling today?</string>
     <string name="profile_test_not_taken_prompt">Test not taken today,</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+
+    <string name="self_test_intro_title">Welcome to the Self Assessment</string>
+    <string name="self_test_intro_sub_title">We are going to ask you a few questions</string>
+    <string name="self_test_finish_title">Thank you for finishing</string>
+    <string name="self_test_finish_sub_title">A bunch of other stuff</string>
+
+    <string name="take_today_test">Take today</string>
+    <string name="today_test_taken">Test taken</string>
+
+    <string name="start">Start</string>
+    <string name="next">Next</string>
+    <string name="finish">Finish</string>
+    <string name="no_test">No Test Taken</string>
+    <string name="last_test">Last test</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="submit_tests">Submit tests</string>
+
+    //Symptoms fragment info. To be sorted when new implementation is used
+    <string name="symptoms_attention">Seek immediate medical attention if you have serious symptoms. Call before visiting your doctor or health facility</string>
+    <string name="less_symptoms">Less common symptoms</string>
+    <string name="aches">Aches and pains</string>
+    <string name="sore_throat">Sore throat</string>
+    <string name="diarrhoea">Diarrhoea</string>
+    <string name="conjuctivitis">Conjuctivitis</string>
+    <string name="heachache">Heachache</string>
+    
+    <string name="serious_symptoms">Serious symptoms</string>
+    <string name="shortness_of_breath">Shortness of breath or difficulty breathing</string>
+    <string name="chest_pain">Chest pain or pressure</string>
+    <string name="loss_of_speeach">Loss of speeach or movement</string>
+    <string name="cough">Cough</string>
+    <string name="fever">High Fever</string>
 
 
     <string name="sample_answer">

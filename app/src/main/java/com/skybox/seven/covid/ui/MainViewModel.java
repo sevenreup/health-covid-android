@@ -25,6 +25,8 @@ import retrofit2.Response;
 public class MainViewModel extends ViewModel {
     private String TAG = "MAINVIEWMODEL";
     private SharedPreferenceRepository preferenceRepository;
+    public MutableLiveData<Boolean> searchOpened = new MutableLiveData<>(false);
+    public MutableLiveData<Boolean> closeSearch = new MutableLiveData<>();
 
     public MutableLiveData<Boolean> showLoginNotification = new MutableLiveData<>(true);
     public MutableLiveData<Integer> status = new MutableLiveData<>(-1);

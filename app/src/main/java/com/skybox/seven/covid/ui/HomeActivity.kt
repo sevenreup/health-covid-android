@@ -105,6 +105,14 @@ class HomeActivity : AppCompatActivity() {
         Toast.makeText(this, "Activity restarted", Toast.LENGTH_SHORT).show()
     }
 
+    override fun onBackPressed() {
+        if (viewModel.searchOpened.value!!) {
+            viewModel.closeSearch.value = true
+        } else {
+            super.onBackPressed()
+        }
+    }
+
     companion object {
         const val NAME_MESSAGE = "userName"
         const val PHONE_MESSAGE = "userNumber"

@@ -33,3 +33,6 @@ class Covid : Application() {
         const val LANGUAGE_CHICHEWA_COUNTRY = "MW"
     }
 }
+
+// Todo: Dhaka changed strings
+// @string/selftest_heading, @string/previous_test, @string/button_start_test

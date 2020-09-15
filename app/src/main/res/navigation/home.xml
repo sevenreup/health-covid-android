@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home"
     app:startDestination="@id/homePageFragment">
+    <action
+        android:id="@+id/to_qna"
+        app:destination="@id/qnaFragment" />
     <fragment
         android:id="@+id/homePageFragment"
         android:name="com.skybox.seven.covid.ui.home.HomePageFragment"
@@ -16,11 +19,8 @@
             android:id="@+id/action_homePageFragment_to_mythBustersFragment"
             app:destination="@id/mythBustersFragment" />
         <action
-            android:id="@+id/to_qnaFragment"
-            app:destination="@id/qnaFragment" />
-        <action
-            android:id="@+id/action_homePageFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            android:id="@+id/action_homePageFragment_to_symptomsFragment"
+            app:destination="@id/symptomsFragment" />
     </fragment>
     <fragment
         android:id="@+id/preventionFragment"
@@ -32,6 +32,11 @@
         android:name="com.skybox.seven.covid.ui.mythbusters.MythBustersFragment"
         android:label="fragment_myth_busters"
         tools:layout="@layout/fragment_myth_busters" />
+    <fragment
+        android:id="@+id/symptomsFragment"
+        android:name="com.skybox.seven.covid.ui.symptoms.SymptomsFragment"
+        android:label="fragment_symptoms"
+        tools:layout="@layout/fragment_symptoms" />
     <fragment
         android:id="@+id/qnaFragment"
         android:name="com.skybox.seven.covid.ui.qna.QnaFragment"

@@ -54,16 +54,15 @@ public class HomePageFragment extends Fragment {
                 break;
 
                 case R.id.symptomsCard:
-                    Toast.makeText(requireActivity(), "Symptoms Card has been clicked", Toast.LENGTH_SHORT).show();
-
-                    break;
+                    Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.symptomsFragment);
+                break;
 
                 case R.id.mythCard:
                     Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.mythBustersFragment);
                     break;
 
                 case R.id.qnaCard:
-                    Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.to_qnaFragment);
+                    Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.to_qna);
                     break;
 
                 default:
