@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_homePageFragment_to_symptomsFragment"
             app:destination="@id/symptomsFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/preventionFragment"

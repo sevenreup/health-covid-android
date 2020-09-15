@@ -216,4 +216,5 @@ when an infected person coughs or sneezes"
     <string name="call">call</string>
     <string name="ussd_no">352</string>
     <string name="ussd">USSD</string>
+    <string name="chatbot">+265996659999</string>
 </resources>
