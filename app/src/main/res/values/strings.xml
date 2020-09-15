@@ -172,12 +172,17 @@
 
     <string name="start">Start</string>
     <string name="next">Next</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <string name="finish">Finish</string>
     <string name="no_test">No Test Taken</string>
     <string name="last_test">Last test</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="submit_tests">Submit tests</string>
+    <string name="text_survey_hint">Enter text response</string>
+    <string name="cancel_survey">Are you sure you want to cancel self assessment?</string>
 
     //Symptoms fragment info. To be sorted when new implementation is used
     <string name="symptoms_attention">Seek immediate medical attention if you have serious symptoms. Call before visiting your doctor or health facility</string>

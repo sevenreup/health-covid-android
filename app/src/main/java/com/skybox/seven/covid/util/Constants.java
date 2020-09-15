@@ -8,6 +8,6 @@ public class Constants {
 
     public final static String STATS_BASE_URL = "https://disease.sh/v3/covid-19/";
 
-    public final static int BOOLEAN = 223, ARRAY = 224;
+    public final static int BOOLEAN = 223, ARRAY = 224, TEXT = 225;
 
 }
