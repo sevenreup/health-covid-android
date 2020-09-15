@@ -170,4 +170,7 @@ when an infected person coughs or sneezes"
     <string name="response_teams">Response teams</string>
     <string name="lilongwe">Lilongwe</string>
     <string name="mw">MW</string>
+    <string name="call">call</string>
+    <string name="ussd_no">352</string>
+    <string name="ussd">USSD</string>
 </resources>

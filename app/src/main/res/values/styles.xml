@@ -19,4 +19,8 @@
 
     <style name="Widget.Covid.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
     </style>
+
+    <style name="BottomSheetDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
 </resources>
