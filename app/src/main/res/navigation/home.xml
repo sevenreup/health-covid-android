@@ -44,18 +44,10 @@
         android:id="@+id/qnaFragment"
         android:name="com.skybox.seven.covid.ui.qna.QnaFragment"
         android:label="fragment_qna"
-        tools:layout="@layout/fragment_qna" >
-        <action
-            android:id="@+id/qna_to_homePageFragment"
-            app:destination="@id/homePageFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_qna" />
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.skybox.seven.covid.ui.details.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" >
-        <action
-            android:id="@+id/action_detailsFragment_to_homePageFragment"
-            app:destination="@id/homePageFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_details" />
 </navigation>

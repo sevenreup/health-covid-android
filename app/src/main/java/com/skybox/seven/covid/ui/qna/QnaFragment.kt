@@ -11,8 +11,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.skybox.seven.covid.databinding.FragmentQnaBinding
 import com.skybox.seven.covid.epoxy.qna.QnaController
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class QnaFragment: Fragment() {
 
     private lateinit var binding: FragmentQnaBinding

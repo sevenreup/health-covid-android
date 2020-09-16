@@ -135,7 +135,7 @@ class DetailsFragment : Fragment() {
     }
 
     fun toHomePage(view: View){
-        findNavController().navigate(R.id.action_detailsFragment_to_homePageFragment)
+        findNavController().navigateUp()
     }
 
 }
