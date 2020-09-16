@@ -56,5 +56,9 @@
         <item name="strokeWidth">0dp</item>
         <item name="iconGravity">textStart</item>
         <item name="iconPadding">0dp</item>
+        </style>
+
+    <style name="BottomSheetDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 </resources>

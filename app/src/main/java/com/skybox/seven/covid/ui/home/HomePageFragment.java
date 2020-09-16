@@ -6,19 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.databinding.FragmentHomepageBinding;
-
-import java.util.Objects;
 
 public class HomePageFragment extends Fragment {
 
@@ -46,6 +39,10 @@ public class HomePageFragment extends Fragment {
 
         public ClickHandlers(Context context) {
             this.context = context;
+        }
+
+        public void detailsClick(View view){
+            Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.action_homePageFragment_to_detailsFragment);
         }
 
         public void onCardClick(View view)
