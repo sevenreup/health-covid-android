@@ -1,5 +1,6 @@
 package com.skybox.seven.covid.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.skybox.seven.covid.Covid
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.FragmentProfileBinding
+import com.skybox.seven.covid.ui.AuthActivity
 import com.skybox.seven.covid.ui.MainViewModel
 import com.skybox.seven.covid.util.Constants
 import com.yariksoffice.lingver.Lingver
@@ -42,14 +44,15 @@ class ProfileFragment : Fragment() {
         findNavController().navigate(R.id.to_selfTest)
     }
 
-    fun getFormatDate(date: Date?): String {
-        return PrettyTime().format(date)
+    fun goToLogin() {
+        startActivity(Intent(context, AuthActivity::class.java).apply { putExtra(AuthActivity.LOGIN, true) })
     }
 
-    fun changelanguage() {
-        if (Lingver.getInstance().getLocale() != Locale("ny", "MW"))
-            Lingver.getInstance().setLocale(requireContext(), Locale("ny", "MW"))
-        else
-            Lingver.getInstance().setLocale(requireContext(), Locale(Covid.LANGUAGE_ENGLISH))
+    fun goToRegister() {
+        startActivity(Intent(context, AuthActivity::class.java).apply { putExtra(AuthActivity.LOGIN, false) })
+    }
+
+    fun getFormatDate(date: Date?): String {
+        return PrettyTime().format(date)
     }
 }

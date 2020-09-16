@@ -9,7 +9,7 @@
         android:visible="true" />
     <item
         android:id="@+id/stats"
-        android:icon="@drawable/ic_stats_icon"
+        android:icon="@drawable/ic_bar_chart"
         android:title="Stats" />
 
     <item

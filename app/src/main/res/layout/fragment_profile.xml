@@ -182,6 +182,7 @@
                         android:layout_marginTop="8dp"
                         android:text="@string/login"
                         android:visibility="@{fragment.viewModel.isLoggedIn() ? View.GONE : View.VISIBLE}"
+                        android:onClick="@{()-> fragment.goToLogin()}"
                         app:layout_constraintEnd_toStartOf="@id/register"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/help_exp" />
@@ -191,6 +192,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/register"
+                        android:onClick="@{()-> fragment.goToRegister()}"
                         android:visibility="@{fragment.viewModel.isLoggedIn() ? View.GONE : View.VISIBLE}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/login"
