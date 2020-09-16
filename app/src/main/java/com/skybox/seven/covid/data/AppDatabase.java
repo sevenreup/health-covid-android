@@ -17,6 +17,7 @@ import com.skybox.seven.covid.data.daos.AdviceDAO;
 import com.skybox.seven.covid.data.daos.InfoGraphicDAO;
 import com.skybox.seven.covid.data.daos.LanguageDAO;
 import com.skybox.seven.covid.data.daos.MythsDAO;
+import com.skybox.seven.covid.data.daos.QnADAO;
 import com.skybox.seven.covid.data.daos.SelfTestAnswerDAO;
 import com.skybox.seven.covid.data.daos.SelfTestCompleteDAO;
 import com.skybox.seven.covid.data.daos.SelfTestQuestionDAO;
@@ -24,6 +25,7 @@ import com.skybox.seven.covid.data.entities.Advice;
 import com.skybox.seven.covid.data.entities.InfoGraphic;
 import com.skybox.seven.covid.data.entities.Language;
 import com.skybox.seven.covid.data.entities.Myth;
+import com.skybox.seven.covid.data.entities.Qna;
 import com.skybox.seven.covid.data.entities.SelfTestAnswer;
 import com.skybox.seven.covid.data.entities.SelfTestComplete;
 import com.skybox.seven.covid.data.entities.SelfTestQuestion;
@@ -32,7 +34,7 @@ import com.skybox.seven.covid.util.DataBaseInitWorker;
 
 import java.util.concurrent.Executors;
 
-@Database(entities = {SelfTestAnswer.class, SelfTestQuestion.class, SelfTestComplete.class, Myth.class, Advice.class, InfoGraphic.class, Language.class}, version = BuildConfig.HEALTH_DB_VERSION)
+@Database(entities = {SelfTestAnswer.class, SelfTestQuestion.class, SelfTestComplete.class, Myth.class, Advice.class, InfoGraphic.class, Language.class, Qna.class}, version = BuildConfig.HEALTH_DB_VERSION)
 @TypeConverters({RoomTypeConverters.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static final String TAG = "AppDatabase";
@@ -46,6 +48,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract LanguageDAO languageDAO();
     public abstract AdviceDAO adviceDAO();
     public abstract InfoGraphicDAO infoGraphicDAO();
+    public abstract QnADAO qnADAO();
 
     public static AppDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {

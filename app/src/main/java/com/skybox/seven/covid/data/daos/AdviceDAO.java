@@ -10,7 +10,7 @@ import java.util.List;
 
 @Dao
 public interface AdviceDAO {
-    @Query("SELECT * From advices WHERE languageOwnerId = :language")
+    @Query("SELECT * From advices WHERE locale = :language")
     List<Advice> getAllAdvices(Integer language);
 
     @Insert

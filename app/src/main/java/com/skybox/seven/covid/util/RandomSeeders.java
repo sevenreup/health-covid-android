@@ -150,7 +150,7 @@ public class RandomSeeders {
         questions.add(new SelfTestQuestion(4, "This is the quiestion 2", "This is the subtitle", Constants.ARRAY, answers));
         questions.add(new SelfTestQuestion(5, "This is the quiestion", "This is the subtitle", Constants.BOOLEAN, null));
         questions.add(new SelfTestQuestion(6, "This is the quiestion 2", "This is the subtitle", Constants.ARRAY, answers));
-        questions.add(new SelfTestQuestion(6, "This is the text 2", "This is the subtitle", Constants.TEXT, null));
+        questions.add(new SelfTestQuestion(7, "This is the text 2", "This is the subtitle", Constants.TEXT, null));
         return questions;
     }
 }

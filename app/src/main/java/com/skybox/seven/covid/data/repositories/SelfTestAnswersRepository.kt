@@ -6,7 +6,6 @@ import com.skybox.seven.covid.data.daos.SelfTestCompleteDAO
 import com.skybox.seven.covid.data.entities.SelfTestAnswer
 import com.skybox.seven.covid.data.entities.SelfTestComplete
 import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Single
 import java.util.*
 import javax.inject.Inject

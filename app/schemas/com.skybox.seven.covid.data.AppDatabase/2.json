@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "16c036d7c024294d1724c4b5c2b15bbd",
+    "identityHash": "dd9c1ce3206bc633838403555689337a",
     "entities": [
       {
         "tableName": "SelfTestAnswers",
@@ -144,7 +144,7 @@
       },
       {
         "tableName": "myths",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `title` TEXT, `myth` TEXT, `paragraph` TEXT, `languageOwnerId` INTEGER, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `title` TEXT, `myth` TEXT, `paragraph` TEXT, `locale` INTEGER)",
         "fields": [
           {
             "fieldPath": "id",
@@ -171,8 +171,8 @@
             "notNull": false
           },
           {
-            "fieldPath": "languageOwnerId",
-            "columnName": "languageOwnerId",
+            "fieldPath": "locale",
+            "columnName": "locale",
             "affinity": "INTEGER",
             "notNull": false
           }
@@ -181,14 +181,14 @@
           "columnNames": [
             "id"
           ],
-          "autoGenerate": false
+          "autoGenerate": true
         },
         "indices": [],
         "foreignKeys": []
       },
       {
         "tableName": "advices",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `shortTitle` TEXT, `title` TEXT, `advice` TEXT, `video` TEXT, `image` INTEGER NOT NULL, `hasVideo` INTEGER NOT NULL, `expanded` INTEGER NOT NULL, `languageOwnerId` INTEGER, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `shortTitle` TEXT, `title` TEXT, `advice` TEXT, `video` TEXT, `image` INTEGER NOT NULL, `hasVideo` INTEGER NOT NULL, `expanded` INTEGER NOT NULL, `locale` INTEGER)",
         "fields": [
           {
             "fieldPath": "id",
@@ -239,8 +239,8 @@
             "notNull": true
           },
           {
-            "fieldPath": "languageOwnerId",
-            "columnName": "languageOwnerId",
+            "fieldPath": "locale",
+            "columnName": "locale",
             "affinity": "INTEGER",
             "notNull": false
           }
@@ -249,14 +249,14 @@
           "columnNames": [
             "id"
           ],
-          "autoGenerate": false
+          "autoGenerate": true
         },
         "indices": [],
         "foreignKeys": []
       },
       {
         "tableName": "infoGraphics",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `image` TEXT, `type` INTEGER, `languageId` INTEGER, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `image` TEXT, `type` INTEGER, `locale` INTEGER, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -277,8 +277,8 @@
             "notNull": false
           },
           {
-            "fieldPath": "languageId",
-            "columnName": "languageId",
+            "fieldPath": "locale",
+            "columnName": "locale",
             "affinity": "INTEGER",
             "notNull": false
           }
@@ -329,12 +329,50 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "QuestinAndAnswer",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `question` TEXT NOT NULL, `answer` TEXT NOT NULL, `locale` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "question",
+            "columnName": "question",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "answer",
+            "columnName": "answer",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "locale",
+            "columnName": "locale",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '16c036d7c024294d1724c4b5c2b15bbd')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'dd9c1ce3206bc633838403555689337a')"
     ]
   }
 }

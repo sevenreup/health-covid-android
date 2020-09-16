@@ -10,12 +10,12 @@ import java.io.Serializable;
 @Entity(tableName = Myth.tableName)
 public class Myth implements Serializable {
     final static String tableName = "myths";
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private Integer id;
     private String title;
     private String myth;
     private String paragraph;
-    private Integer languageOwnerId;
+    private Integer locale;
 
     @Ignore
     public Myth(String title, String myth, String paragraph) {
@@ -26,12 +26,12 @@ public class Myth implements Serializable {
     }
 
     @Ignore
-    public Myth(Integer id, Integer languageOwnerId, String title, String myth, String paragraph) {
+    public Myth(Integer id, Integer locale, String title, String myth, String paragraph) {
         this.id = id;
         this.title = title;
         this.myth = myth;
         this.paragraph = paragraph;
-        this.languageOwnerId = languageOwnerId;
+        this.locale = locale;
     }
 
     public Myth() {
@@ -69,12 +69,12 @@ public class Myth implements Serializable {
         this.paragraph = paragraph;
     }
 
-    public Integer getLanguageOwnerId() {
-        return languageOwnerId;
+    public Integer getLocale() {
+        return locale;
     }
 
-    public void setLanguageOwnerId(Integer languageOwnerId) {
-        this.languageOwnerId = languageOwnerId;
+    public void setLocale(Integer locale) {
+        this.locale = locale;
     }
 
     @NonNull
