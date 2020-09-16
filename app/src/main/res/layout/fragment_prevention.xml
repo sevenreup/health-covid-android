@@ -9,15 +9,17 @@
     tools:context=".ui.prevention.PreventionFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/backBtnn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_arrow_back"
+        app:icon="@drawable/ic_arrow_back_24"
+        style="@style/Covid.Icon.Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp" />
     <TextView
         android:id="@+id/PreventionPageTitle"
         android:layout_width="wrap_content"
@@ -39,7 +41,6 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="20dp"
         android:src="@drawable/symptoms" />
-"
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
