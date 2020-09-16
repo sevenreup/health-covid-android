@@ -3,14 +3,20 @@ package com.skybox.seven.covid.di
 import android.content.Context
 import androidx.preference.PreferenceManager
 import com.google.gson.GsonBuilder
-import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.AppDatabase
 import com.skybox.seven.covid.data.daos.QnADAO
 import com.skybox.seven.covid.data.daos.SelfTestAnswerDAO
 import com.skybox.seven.covid.data.daos.SelfTestCompleteDAO
 import com.skybox.seven.covid.data.daos.SelfTestQuestionDAO
-import com.skybox.seven.covid.data.repositories.*
-import com.skybox.seven.covid.network.*
+import com.skybox.seven.covid.data.repositories.AdviceRepository
+import com.skybox.seven.covid.data.repositories.InfoGraphicRepository
+import com.skybox.seven.covid.data.repositories.LanguageRepository
+import com.skybox.seven.covid.data.repositories.MythRepository
+import com.skybox.seven.covid.network.HealthService
+import com.skybox.seven.covid.network.RetrofitFactory
+import com.skybox.seven.covid.network.RetrofitFactory.provideOfflineCacheInterceptor
+import com.skybox.seven.covid.network.RetrofitFactory.provideOnlineInterceptor
+import com.skybox.seven.covid.network.StatsService
 import com.skybox.seven.covid.repository.SharedPreferenceRepository
 import com.skybox.seven.covid.util.Constants
 import dagger.Module
@@ -19,9 +25,13 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import okhttp3.Cache
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.File
 import javax.inject.Singleton
 
 @Module
@@ -32,18 +42,21 @@ class AppModule {
     @Provides
     fun provideHealthApi(@ApplicationContext context: Context): HealthService =
             RetrofitFactory.getRetrofit(context).create(HealthService::class.java)
-    @Singleton
-    @Provides
-    fun providesNewsApi(@ApplicationContext context: Context): NewsService =
-            NewsFactory.getRetrofit(context).create(NewsService::class.java)
 
     @Singleton
     @Provides
     fun providesStatsApi(@ApplicationContext context: Context): StatsService {
         val gson = GsonBuilder().setLenient().create()
         val retrofit = Retrofit.Builder()
-                .client(NewsFactory.buildOkHttpClient(context))
-                .baseUrl(Constants.STATS_BASE_URL)
+                .client(
+                        OkHttpClient()
+                                .newBuilder()
+                                .cache(Cache(File(context.cacheDir, "offlineCache"), 10 * 1024 * 1024))
+                                .addInterceptor(HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) })
+                                .addNetworkInterceptor(provideOnlineInterceptor())
+                                .addNetworkInterceptor(provideOfflineCacheInterceptor())
+                                .build()
+                ).baseUrl(Constants.STATS_BASE_URL)
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
