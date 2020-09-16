@@ -55,4 +55,8 @@ class ProfileFragment : Fragment() {
     fun getFormatDate(date: Date?): String {
         return PrettyTime().format(date)
     }
+
+    fun goToSettings() {
+        findNavController().navigate(R.id.toSettings)
+    }
 }

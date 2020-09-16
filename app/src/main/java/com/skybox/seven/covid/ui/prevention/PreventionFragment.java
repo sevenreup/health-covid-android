@@ -13,7 +13,6 @@ import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.data.entities.Advice;
 import com.skybox.seven.covid.epoxy.prevention.PreventionController;
-import com.skybox.seven.covid.ui.advice.AdviceViewModel;
 import com.skybox.seven.covid.ui.common.ShareDialogDialog;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
 
@@ -24,14 +23,14 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class PreventionFragment extends Fragment implements PreventionController.PreventionCallback {
 
     private PreventionController controller;
-    private AdviceViewModel viewModel;
+    private PreventionViewModel viewModel;
 
     public PreventionFragment() { }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewModel = new ViewModelProvider(requireActivity()).get(AdviceViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(PreventionViewModel.class);
         controller = new PreventionController(this);
 
         viewModel.adviceList.observe(this, preventionModel -> controller.setData(false,preventionModel));

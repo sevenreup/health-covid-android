@@ -2,7 +2,10 @@ package com.skybox.seven.covid.repository;
 
 import android.content.SharedPreferences;
 
+import androidx.preference.Preference;
+
 import com.skybox.seven.covid.network.responses.AccessToken;
+import com.skybox.seven.covid.util.Constants;
 
 public class SharedPreferenceRepository {
     public static String TOKEN = "token", FIREBASE_MESSAGING = "firebase_message", ONBOARDING = "onboarding_status", LANGUAGE_INT = "language_int";
@@ -59,11 +62,11 @@ public class SharedPreferenceRepository {
     }
 
     public void setActiveLanguage(int id) {
-        editor.putInt(LANGUAGE_INT, id);
+        editor.putString(LANGUAGE_INT, Integer.toString(id));
         editor.apply();
     }
 
     public int getActiveLanguage() {
-        return sharedPreferences.getInt(LANGUAGE_INT, 1);
+        return Integer.parseInt(sharedPreferences.getString(LANGUAGE_INT, Integer.toString(Constants.ENGLISH)));
     }
 }

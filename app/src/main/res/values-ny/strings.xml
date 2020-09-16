@@ -128,4 +128,5 @@
     <string name="title_emergency">Manambala ofunika mwadzidzidzi</string>
     <string name="cases_disclamer">Tsambali liIzisunga case data.  Likubwera posachedwa...</string>
     <string name="title_self_test">Kuziyesa nokha</string>
+    <string name="language_header">Chiyankhulo</string>
 </resources>

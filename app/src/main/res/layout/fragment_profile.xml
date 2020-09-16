@@ -31,6 +31,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <com.google.android.material.button.MaterialButton
+                style="@style/Covid.Icon.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/settingsicon"
+                android:onClick="@{() -> fragment.goToSettings() }"
+                app:layout_constraintTop_toTopOf="@id/greeting"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/greeting"/>
+
             <ImageView
                 android:id="@+id/stay_at_home"
                 android:layout_width="wrap_content"

@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.ui.common;
+package com.skybox.seven.covid.ui;
 
 import android.content.Context;
 import android.content.Intent;

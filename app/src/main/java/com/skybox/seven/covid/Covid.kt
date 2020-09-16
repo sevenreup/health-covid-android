@@ -25,7 +25,7 @@ class Covid : Application(), Configuration.Provider {
         initialize(this, "prj_test_pk_7f75cb504e6e5d6262cc75012cdf1413abe8875e")
         setLogLevel(RadarLogLevel.DEBUG)
         val store = PreferenceLocaleStore(this, Locale(LANGUAGE_ENGLISH))
-        val lingver = Lingver.init(this, store)
+        Lingver.init(this, store)
     }
 
     companion object {

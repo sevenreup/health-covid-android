@@ -1,14 +1,14 @@
 const preventionData=[
     {
         
-        shortTitle:"Wash your hands",
+        shortTitle:"sambani manja",
         title:"Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash them with soap and water.",
         advice:"Washing your hands with soap and water or using alcohol-based hand rub kills viruses that may be on your hands."
     },
 
     {
         
-        shortTitle:"Social distancing",
+        shortTitle:"khalani patali",
         title:"Maintain at least 1 metre (3 feet) distance between yourself and others.",
         advice:"When someone coughs, sneezes, or speaks they spray small liquid droplets from their nose or mouth which may contain virus. If you are too close, you can breathe in the droplets, including the COVID-19 virus if the person has the disease."
     },

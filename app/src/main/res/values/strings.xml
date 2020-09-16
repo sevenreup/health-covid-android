@@ -192,7 +192,7 @@
     <string name="diarrhoea">Diarrhoea</string>
     <string name="conjuctivitis">Conjuctivitis</string>
     <string name="heachache">Heachache</string>
-    
+
     <string name="serious_symptoms">Serious symptoms</string>
     <string name="shortness_of_breath">Shortness of breath or difficulty breathing</string>
     <string name="chest_pain">Chest pain or pressure</string>
@@ -208,4 +208,9 @@ when an infected person coughs or sneezes"
 
     </string>
     <string name="backpressed">backPressed</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="general_header">General</string>
+    <string name="language_header">Language</string>
 </resources>

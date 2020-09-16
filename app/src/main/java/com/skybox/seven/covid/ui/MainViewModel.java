@@ -22,6 +22,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.skybox.seven.covid.model.OnBoardingItem.language;
+
 public class MainViewModel extends ViewModel {
     private String TAG = "MAINVIEWMODEL";
     private SharedPreferenceRepository preferenceRepository;
@@ -81,18 +83,11 @@ public class MainViewModel extends ViewModel {
         preferenceRepository.unRegisterOnChangeListener(listener);
     }
 
-    public int getLanguage() {
-        return preferenceRepository.getActiveLanguage();
-    }
-
-    public void setLanguage(int language) {
-        preferenceRepository.setActiveLanguage(language);
-        if (language == Constants.ENGLISH) {
-            status.setValue(0);
-            changeLanguage.setValue(new Locale("eng", "USA"));
+    public void setLanguage(Locale locale) {
+        if (locale.equals(new Locale("eng", "USA"))) {
+            preferenceRepository.setActiveLanguage(Constants.ENGLISH);
         } else {
-            status.setValue(1);
-            changeLanguage.setValue(new Locale("ny", "MW"));
+            preferenceRepository.setActiveLanguage(Constants.CHICHEWA);
         }
     }
 }
