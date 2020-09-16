@@ -5,7 +5,7 @@
             app:defaultValue="1"
             app:entries="@array/language_entries"
             app:entryValues="@array/language_values"
-            app:key="language_int"
+            app:key="@string/language_key"
             app:title="@string/language_header"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>

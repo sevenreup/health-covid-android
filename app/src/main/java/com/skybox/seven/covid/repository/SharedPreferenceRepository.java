@@ -1,9 +1,11 @@
 package com.skybox.seven.covid.repository;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.preference.Preference;
 
+import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.network.responses.AccessToken;
 import com.skybox.seven.covid.util.Constants;
 
@@ -12,9 +14,10 @@ public class SharedPreferenceRepository {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
-    public SharedPreferenceRepository(SharedPreferences sharedPreferences) {
+    public SharedPreferenceRepository(SharedPreferences sharedPreferences, Context context) {
         this.sharedPreferences = sharedPreferences;
         editor = sharedPreferences.edit();
+        LANGUAGE_INT = context.getString(R.string.language_key);
     }
 
     public void setToken(AccessToken response) {
@@ -62,8 +65,7 @@ public class SharedPreferenceRepository {
     }
 
     public void setActiveLanguage(int id) {
-        editor.putString(LANGUAGE_INT, Integer.toString(id));
-        editor.apply();
+        editor.putString(LANGUAGE_INT, Integer.toString(id)).commit();
     }
 
     public int getActiveLanguage() {

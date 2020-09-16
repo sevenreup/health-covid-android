@@ -213,4 +213,5 @@ when an infected person coughs or sneezes"
     <!-- Preference Titles -->
     <string name="general_header">General</string>
     <string name="language_header">Language</string>
+    <string name="language_key" translatable="false">language_int</string>
 </resources>

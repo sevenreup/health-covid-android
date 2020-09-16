@@ -1,6 +1,7 @@
 package com.skybox.seven.covid.di
 
 import android.content.Context
+import androidx.preference.PreferenceManager
 import com.google.gson.GsonBuilder
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.AppDatabase
@@ -65,7 +66,7 @@ class AppModule {
 
     // preferences
     @Singleton @Provides fun providesSharedPrefRepo(@ApplicationContext context: Context): SharedPreferenceRepository =
-            SharedPreferenceRepository(context.getSharedPreferences(context.getString(R.string.shared_preference_key), Context.MODE_PRIVATE))
+            SharedPreferenceRepository(PreferenceManager.getDefaultSharedPreferences(context), context)
 
     @Provides
     fun provideDisposable(): CompositeDisposable = CompositeDisposable()

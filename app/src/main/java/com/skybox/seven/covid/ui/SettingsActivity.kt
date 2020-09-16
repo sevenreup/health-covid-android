@@ -7,7 +7,6 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
 import com.skybox.seven.covid.R
-import com.skybox.seven.covid.repository.SharedPreferenceRepository
 import com.skybox.seven.covid.util.Constants
 import com.yariksoffice.lingver.Lingver
 
@@ -28,9 +27,10 @@ class SettingsActivity : AppCompatActivity() {
     class SettingsFragment : PreferenceFragmentCompat() {
         val listener = SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences: SharedPreferences, key: String ->
         when(key) {
-            SharedPreferenceRepository.LANGUAGE_INT -> {
+            getString(R.string.language_key) -> {
                 val locale = (sharedPreferences.getString(key, "0"))?.toInt()
-                Lingver.getInstance().setLocale(requireContext(), Constants.getLocale(locale!!))
+                Log.e(TAG, "$locale")
+                context?.let { Lingver.getInstance().setLocale(it, Constants.getLocale(locale!!)) }
                 restart()
             }
             else -> {
