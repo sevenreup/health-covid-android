@@ -76,8 +76,6 @@
                         android:onClick="@{clickHandler.detailsClick}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_phonee"
-                        android:drawableLeft="@drawable/ic_phonee"
                         style="@style/Widget.Covid.Button.White"
                         android:text="Details"
                         app:layout_constraintStart_toEndOf="@id/detailImage"

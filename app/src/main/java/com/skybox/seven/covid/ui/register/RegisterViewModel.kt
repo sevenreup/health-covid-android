@@ -77,19 +77,19 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
                     }
                 } else {
                     loading.value = false
-                    if (response.raw().code == 401) {
-                        authErrors.setValue("Phone number or password is invalid")
-                    } else {
-                        try {
-                            val responseTemp = response.errorBody()!!.string()
-                            if (responseTemp != null) {
-                                val errors = Gson().fromJson(responseTemp, ValidationErrors::class.java)
-                                validationErrors.value = errors
-                            }
-                        } catch (e: IOException) {
-                            e.printStackTrace()
-                        }
-                    }
+//                    if (response.raw().code == 401) {
+//                        authErrors.setValue("Phone number or password is invalid")
+//                    } else {
+//                        try {
+//                            val responseTemp = response.errorBody()!!.string()
+//                            if (responseTemp != null) {
+//                                val errors = Gson().fromJson(responseTemp, ValidationErrors::class.java)
+//                                validationErrors.value = errors
+//                            }
+//                        } catch (e: IOException) {
+//                            e.printStackTrace()
+//                        }
+//                    }
                 }
             }
 

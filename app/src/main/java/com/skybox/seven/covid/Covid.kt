@@ -1,10 +1,8 @@
 package com.skybox.seven.covid
 
-import android.app.Application
-import android.content.Context
 import androidx.hilt.work.HiltWorkerFactory
+import androidx.multidex.MultiDexApplication
 import androidx.work.Configuration
-import com.akexorcist.localizationactivity.core.LocalizationApplicationDelegate
 import com.skybox.seven.covid.data.entities.Language
 import com.yariksoffice.lingver.Lingver
 import com.yariksoffice.lingver.store.PreferenceLocaleStore
@@ -16,7 +14,7 @@ import java.util.*
 import javax.inject.Inject
 
 @HiltAndroidApp
-class Covid : Application(), Configuration.Provider {
+class Covid : MultiDexApplication(), Configuration.Provider {
     @Inject
     lateinit var workerFactory: HiltWorkerFactory
 
