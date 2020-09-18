@@ -24,7 +24,9 @@ public class PreventionController extends Typed2EpoxyController<Boolean, List<Ad
     protected void buildModels(Boolean loading, List<Advice> preventions) {
         listLoadingModel_.addIf(loading, this);
         for (Advice prevention : preventions) {
-            new PreventionEpoxyModel_().id(prevention.getTitle()).prevention(prevention).listener((model, parentView, clickedView, position) -> callback.preventionClick(prevention)).addTo(this);
+            new PreventionEpoxyModel_().id(prevention.getTitle())
+                    .prevention(prevention).listener((model, parentView, clickedView, position) -> callback.preventionClick(prevention))
+                    .addTo(this);
         }
     }
 

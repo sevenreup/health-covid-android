@@ -1,132 +1,237 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Umoyo pa Malawi</string>
-    <string name="add_location">Wonjezerani Malo</string>
-    <string name="name">Dzina</string>
-    <string name="search_location">Fufuzani Malo</string>
-    <string name="done">Maliza</string>
-    <string name="add_description_i_e_house_color">Wonjezerani zinthu i.e # ya nyumba, mtundu</string>
+
+    <string name="app_name">Covid</string>
+
+    <string name="shared_preference_key">com.skybox.seven.covid.shared.preference.random</string>
+
+
     <string name="title_activity_maps">Mapu</string>
-
-    <string name="title_health_tips">Malangizo azaumoyo</string>
-    <string name="title_contacts">Anzanu</string>
-    <string name="title_mythbusters">Kuswanya Mabodza</string>
+    <string name="title_settings">Zipangizo</string>
+    <string name="title_create_contacts">Pangani Kaundula wa Mayina</string>
+    <string name="title_health_tips">Malangizo a zaumoyo</string>
+    <string name="title_self_test">Kuziyesa Nokha</string>
+    <string name="title_contacts">Kaundula wa Mayina</string>
+    <string name="title_mythbusters">Kususana ndi zikhulupiliro</string>
     <string name="title_news">Nkhani</string>
-    <string name="title_qna">Manfunso ndi Mayankho</string>
-    <string name="title_testing_panel">Mbali yoyezera</string>
+    <string name="title_qna">Mafunso ofunsidwa mowilikiza</string>
+    <string name="title_statistics">Malipoti</string>
+    <string name="title_cases">Malipoti</string>
 
+    <string name="title_emergency">Omwe tingalumikizane nawo apafupi</string>
+    <string name="title_personal">Zokhudza Inu</string>
+    <string name="title_contact_request">Pempho la kaundula wa Mayina</string>
+    <string name="title_testing_panel">Poziyesa</string>
 
+    <string name="add_location">Ikani dela lanu</string>
+    <string name="name">Dzina</string>
+    <string name="search_location">Fufuzani dela</string>
+    <string name="done">Malizani</string>
+    <string name="more">Zambili</string>
+    <string name="add_description_i_e_house_color">Fotokozelani mopyola mwachitsanzo nambala ya nyumba yanu, mtundu wa nyumba yanu...</string>
+    <string name="hello_blank_fragment">Takulandilani</string>
+    <string name="cases_disclamer">Tsamba ili lizakhala ndi kawundula wa COVID-19.   Likuza posachedwa..</string>
 
-    <string name="selftest_heading">Ziyezeni Corona virus malingana ndimene mukumvera mthupi mwanu</string>
-    <string name="button_start_test">Yambani kuziyeza</string>
-    <string name="previous_test">Kuyezesa kwapitako</string>
-    <string name="title_settings">Zokonda</string>
-    <string name="title_create_contacts">Onjezelani Azanu</string>
-    <string name="title_statistics">Ziwerengero</string>
-    <string name="title_cases">Ziwerengero</string>
-    <string name="title_personal">Maonekedwe</string>
-    <string name="title_contact_request">Opempha kukhala nzanu</string>
-    <string name="more">Zina zambiri</string>
-    <string name="settings_notification">Sithani zidziwitso</string>
-    <string name="settings_language">Khazikitsani chiyankhulo</string>
-    <string name="contacts_title">Anzanu</string>
-    <string name="contacts_request_title">Opempha Kukhala Anzanu</string>
-    <string name="contacts_friends_family">Abale ndi Anzanu</string>
-    <string name="contacts_tap_add">Dinani kuti muwonjezele</string>
-    <string name="location_set_hint">Ikani dzina la malo</string>
-    <string name="location_save_button">Sungani malo</string>
+    <string name="settings_notification">Kusintha mauthenga</string>
+    <string name="settings_language">Sinthani chiyankhulo</string>
+
+    <string name="contacts_title">Kaundula wa mayina</string>
+    <string name="contacts_request_title"> Pempho la kaundula wa Mayina </string>
+    <string name="contacts_friends_family">Abale ndi anzanu</string>
+    <string name="contacts_tap_add">Ikani nkaundula</string>
+
+    <string name="location_set_hint">Ikani dzina la dela</string>
+    <string name="location_save_button">Simikizani dela lanu</string>
+
     <string name="health_advice">Malangizo</string>
-    <string name="myth_advice">Mabodza</string>
-    <string name="myth_info_graphic">Zambiri mojambulidwa</string>
+    <string name="health_info_graphic">Uthenga mu zinthunzi</string>
+
+    <string name="myth_advice">Zikhulupiliro</string>
+    <string name="myth_info_graphic"> Uthenga mu zinthunzi </string>
+
     <string name="input_first_name">Dzina Loyamba</string>
-    <string name="input_last_name">Dzina Lomaliza</string>
-    <string name="input_phone_number">Nambala ya Foni</string>
-    <string name="input_password">Lemba/Nambala ya Chinsinsi</string>
-    <string name="forgot_password">Mwayiwala Lemba/Nambala ya chinsinsi</string>
-    <string name="model_not_logged_prompt">Zikuwonetsa kuti simunalowe kuti muntha kuchitapo mbali yanu, chonde lowani kapena lembetsani</string>
-    <string name="greeting">Mwadzuka bwanji?</string>
-    <string name="text_location">Malo ayatsidwa</string>
-    <string name="text_contacts">Anzanu awiri</string>
-    <string name="main_sick_question">Mukumva kudwala?</string>
-    <string name="main_warning">Ngati mukumva kudwala, chonde imbani nambala zadzidzidzi</string>
-    <string name="button_save">Sungani</string>
+    <string name="input_last_name">Dzina Labambo</string>
+    <string name="input_phone_number">Nambala ya lamya</string>
+    <string name="input_password">Nambala ya chinsisi</string>
+
+    <string name="forgot_password">Mwayiwala nambala ya chinsisi?</string>
+
+    <string name="model_not_logged_prompt">Zikuoneka kuti simunalowe\nKuti mupange mbali yanu chonde lowani\nlowani kapena lembesani</string>
+    <string name="greeting">Mwadzuka bwanji</string>
+
+    <string name="text_location">Location On</string>
+    <string name="text_contacts">2 Kaundula wa Mayika</string>
+
+    <string name="main_sick_question">kodi Simukumva bwino nthupi?</string>
+    <string name="main_warning">Ngati simukumva bwino nthupi chonde imbani manambala awa kapena dziyeseni nokha</string>
+
+    <string name="button_save">Simikizani</string>
     <string name="button_login">Lowani</string>
-    <string name="button_register">Lembetsani</string>
-    <string name="button_submit">Pelekani</string>
-    <string name="button_save_changes">Sungani Zosintha</string>
-    <string name="button_add_contact">Wonjezelani Anzanu</string>
-    <string name="button_contact">Mzanu</string>
-    <string name="default_notification_channel_name">Umoyo</string>
-    <string name="one">1</string>
-    <string name="two">2</string>
-    <string name="three">3</string>
-    <string name="four">4</string>
-    <string name="five">5</string>
-    <string name="six">6</string>
-    <string name="seven">7</string>
-    <string name="eight">8</string>
-    <string name="nine">9</string>
-    <string name="ten">10</string>
-    <string name="twenty_three">23</string>
-    <string name="eleven">11</string>
-    <string name="twelve">12</string>
-    <string name="thirteen">13</string>
-    <string name="fourteen">14</string>
-    <string name="fifteen">15</string>
-    <string name="twenty_one">21</string>
-    <string name="twenty_two">22</string>
-    <string name="sixteen">16</string>
-    <string name="seventeen">17</string>
-    <string name="nineteen">19</string>
-    <string name="twenty">20</string>
-    <string name="eighteen">18</string>
-    <string name="response">Mwakwanilitsa kuziyesa nokha!</string>
-    <string name="button_create_account">Pangani Akaunti</string>
-    <string name="status">Podikilira</string>
-    <string name="tracked">Ndikufuna nditalondeledwa kuti ndi thandizile ziwerengero</string>
-    <string name="heading1">Mafunso okhudzana ndi thanzi lanu</string>
-    <string name="question_one">Ndili ndi vuto la Hypersensitivity monga Ziwengo</string>
-    <string name="question_two">Nthawi ina adandipezeka ndi matenda opuma i.e. Mphumu, chifuwa chachikulu, chifuwa</string>
-    <string name="heading2">Mafunso okhuzana ndi ndi zizindikiro za COVID19</string>
-    <string name="disclaimer1">Chongani pansipa motsutsana ndi zizindikiro zomwe mukukumana nazo</string>
+    <string name="button_register">Lembesani</string>
+    <string name="button_submit">Tumizani</string>
+    <string name="button_create_account">Sekulani akaunti</string>
+    <string name="button_save_changes">Simikizani kusintha</string>
+    <string name="button_add_contact">Ikani nkaundula</string>
+    <string name="button_contact">kaundula wa mayina</string>
+
+    <string name="default_notification_channel_name" translatable="true">Health</string>
+
+    <string name="one">1 </string>
+    <string name="two">2 </string>
+    <string name="three">3 </string>
+    <string name="four">4 </string>
+    <string name="five">5 </string>
+    <string name="six">6 </string>
+    <string name="seven">7 </string>
+    <string name="eight">8 </string>
+    <string name="nine">9 </string>
+    <string name="ten">10 </string>
+    <string name="twenty_three">23 </string>
+    <string name="eleven">11 </string>
+    <string name="twelve">12 </string>
+    <string name="thirteen">13 </string>
+    <string name="fourteen">14 </string>
+    <string name="fifteen">15 </string>
+    <string name="twenty_one">21 </string>
+    <string name="twenty_two">22 </string>
+    <string name="sixteen">16 </string>
+    <string name="seventeen">17 </string>
+    <string name="nineteen">19 </string>
+    <string name="twenty">20 </string>
+    <string name="eighteen">18 </string>
+
+    <string name="response">mwakwanitsa kudziyesa nokha!</string>
+    <string name="status">Kudikila chisimikizo</string>
+    <string name="tracked">ndikufuna kuti ndipezedwe kuti ndifufuzidwe</string>
+    <string name="heading1">Mafunso a mbiri ya umoyo wanu</string>
+    <string name="question_one">sindichedwa kukhumudwa</string>
+    <string name="question_two">Ndinapezedwapo ndi matenda okhudza mapapo monga mphumu, chifukwa chachikulu</string>
+    <string name="heading2">Mafunso ohudza zizindikiro za CIVID-19</string>
+    <string name="disclaimer1">Sankhani mmusimu zizindikiro zomwe muli nazo</string>
     <string name="symptom1">Chizungulire</string>
-    <string name="symptom2">Kutsekula m\'mimba</string>
-    <string name="symptom3">Chikhure</string>
-    <string name="symptom4">Kuchulukana kwa m\'phuno</string>
-    <string name="symptom5">Zowawa ndi zopweteka</string>
+    <string name="symptom2">kutsegula mmimba</string>
+    <string name="symptom3">Zilonda za pakhosi</string>
+    <string name="symptom4">kuchuluka kwa mamina mu mphuno</string>
+    <string name="symptom5">kumva kupweteka a</string>
     <string name="symptom6">Kutopa</string>
-    <string name="heading3">Kufotokozera</string>
-    <string name="option">Chonde fotokozerani mwapafupi m\'mene mukuvera m\'mawu anu</string>
-    <string name="disclaimer2">Chonde vomelezani zogwirizana ndi zokwaniritsa zanthu    1. Njira iliyonse yosocheretsa...</string>
-    <string name="agreement">"Ndikuvomeleza vomelezani zogwirizana ndi zokwaniritsa zomwe zakhazikitsidwa "</string>
-    <string name="sbt">Pelekani</string>
-    <string name="clc">Letsani</string>
+    <string name="heading3">kufotokoza</string>
+    <string name="option"> Chonde fotokozani mwachidule mmene mukumvera </string>
+    <string name="disclaimer2">Chonde vomerezani ndondomeko zathu  \n 1.Kunena mosalondora...</string>
+    <string name="agreement">Ndikuvomereza ndondomeko zonse zomwe zinayikidwa ndi adindo</string>
+    <string name="sbt">Tumizani</string>
+    <string name="clc">Kanani</string>
+
+    <string name="selftest_heading">Mukupeza bwanj lero?</string>
+    <string name="button_start_test">Kudziyesa wekha</string>
+    <string name="previous_test">LKuyesa komaliza:</string>
     <string name="reject">Kanani</string>
-    <string name="accept">Vomelezani</string>
-    <string name="advice_title_bt_health_why">Chifukwa:</string>
-    <string name="advice_title_bt_health_tip">Nsonga yazaumoyo:</string>
-    <string name="mw_situation">Zinthu ku Malawi</string>
-    <string name="confirmed">Otsimikizidwa</string>
+    <string name="accept">Vomerezani</string>
+    <string name="advice_title_bt_health_tip">Malangizo a za umoyo: \n\n</string>
+    <string name="advice_title_bt_health_why">\n\nChifukwa: \n\n</string>
+
+
+    <string name="mw_situation">Mmene Ziliri M’Malawi</string>
+    <string name="confirmed">Opezeka nako</string>
     <string name="recovered">Ochira</string>
-    <string name="deaths">Amwalira</string>
-    <string name="active">Alinayo</string>
-    <string name="total_confirmed">Onse atsimikiziwa</string>
-    <string name="total_recovered">Onse ochira</string>
-    <string name="total_deaths">Onse amwalira</string>
-    <string name="total_active">Onse anakalinayo</string>
-    <string name="cases_confirmed">Matenda atsimikirizidwa</string>
-    <string name="stats_info_title">Khalani ku nyumba, muthandizile kuchepetsa matenda</string>
-    <string name="stats_info_content">Khalani oziteteza ndi kutsatila kutalikilana ndi anthu</string>
-    <string name="cases_worldwide">Matenda a COVID padziko lonse lapansi</string>
-    <string name="details_card_statement">Muli ndi mafunso ena okhudzana ndi covid-19? Onani zina zambiri zovomerezeka</string>
-    <string name="prevention">Kupewa</string>
+    <string name="deaths">Omwalira</string>
+    <string name="active">Omwe akudwalabe</string>
+    <string name="all">Chiwerengero chonse</string>
+    <string name="month">Mwezi</string>
+    <string name="week">Sabata</string>
+    <string name="year">Chaka</string>
+    <string name="total_confirmed"> Onse opezeka nako </string>
+    <string name="total_recovered"> Onse ochira </string>
+    <string name="total_deaths"> Onse omwalira </string>
+    <string name="total_active"> Onse akudwalabe </string>
+    <string name="cases_confirmed">omwe apezeka nako</string>
+    <string name="stats_info_title"> khalani ku Nyumba , Chepetsani Chiwerengero </string>
+    <string name="stats_info_content"> Khalani otetezeka ndi kutalikira wina ndi mzake</string>
+    <string name="cases_worldwide"> Mmene zilili dziko lonse </string>
+    <string name="overview">Mwachidule</string>
+    <string name="countries">Mayiko</string>
+    <string name="cases">MMmene ziliri</string>
+    <string name="search_hint">Fufuzani Dziko</string>
+
+    <string name="details_card_statement"> Kodi muli ndi mafunso okhudza covid-19? Fufuzani zambiri </string>
+
+    <string name="prevention">Kapewedwe</string>
     <string name="symptom">Zizindikiro</string>
-    <string name="profile_greeting_title">Moni</string>
-    <string name="profile_question_feelings">Mukumva bwanji lero?</string>
-    <string name="profile_test_not_taken_prompt">Simunaziyese nokha lero</string>
-    <string name="health_info_graphic">Zambiri mojambulidwa</string>
-    <string name="title_emergency">Manambala ofunika mwadzidzidzi</string>
-    <string name="cases_disclamer">Tsambali liIzisunga case data.  Likubwera posachedwa...</string>
-    <string name="title_self_test">Kuziyesa nokha</string>
+
+    <string name="profile_greeting_title">Muli bwanji?</string>
+    <string name="profile_question_feelings">Mukupeza bwanj lero?</string>
+    <string name="profile_test_not_taken_prompt">Simunadziyese lero,</string>
+    <string name="register">Dzilembetseni</string>
+    <string name="login">Lowani</string>
+
+    <string name="self_test_intro_title">Takulandirani pofuna  podziyesa nokha</string>
+    <string name="self_test_intro_sub_title">Tikufunsani mafunso angapo </string>
+    <string name="self_test_finish_title">Zikomo pomaliza zonse</string>
+    <string name="self_test_finish_sub_title">Zinthu zina</string>
+
+    <string name="take_today_test">Kudziyesa kwa lero </string>
+    <string name="today_test_taken"> Kuyesedwa kwachitika</string>
+
+    <string name="start">Yambani</string>
+    <string name="next">Chotsatira</string>
+    <string name="cancel">Kanani</string>
+    <string name="yes">Eya</string>
+    <string name="no">Ayi</string>
+    <string name="finish">Kumaliza</string>
+    <string name="no_test">Kuyesedwa sikunachitike</string>
+    <string name="last_test">Kuyesedwa komaliza</string>
+    <string name="appwidget_text">CHITSANZO</string>
+    <string name="add_widget">Add widget</string>
+    <string name="submit_tests">Tumizani zomwe mwaziyesa</string>
+    <string name="text_survey_hint">Yankho pakusededwa kwanu</string>
+    <string name="cancel_survey">MUufunadi kuti musapitilize kudziyesa nokha?</string>
+
+    //Symptoms fragment info. To be sorted when new implementation is used
+    <string name="symptoms_attention">Kaonaneni ndi adotolo ngati muli ndi zizindikiro.
+Yambani mwaimba lamya musanakomane ndi adotolo</string>
+    <string name="less_symptoms">Zizindikiro zosakhal zazikulu</string>
+    <string name="aches">kumwa kupweteka</string>
+    <string name="sore_throat">Zilonda za pakhosi</string>
+    <string name="diarrhoea">Kutsegula mmimba</string>
+    <string name="conjuctivitis">Conjunctivitis</string>
+    <string name="heachache">Mutu kupweteka</string>
+
+    <string name="serious_symptoms">Zizindikiro zikuluzikulu</string>
+    <string name="shortness_of_breath">Kupuma mobanika kapena kuvutika popuma</string>
+    <string name="chest_pain">kupweteka kwa pamtima</string>
+    <string name="loss_of_speeach">Kulephera kuyan*khula kapena kuyenda</string>
+    <string name="cough">Kukhosomola</string>
+    <string name="fever">Kutentha thupi</string>
+
+
+    <string name="sample_answer">
+        Kachilombo ka COVID-19 kamafaala podzera mu malovu kapena mamina ochokera kwa munthu odwala akakhosomola kapena kumina"
+
+    </string>
+    <string name="backpressed">Bwelerani mmbuyo</string>
+    <string name="title_activity_settings">Zokhuza dongosolo</string>
+
+    <!-- Preference Titles -->
+    <string name="general_header">Zambili</string>
     <string name="language_header">Chiyankhulo</string>
+    
+    <string name="language_key" translatable="false">language_int</string>
+    <string name="contact_services">Pezani zithandizo</string>
+    <string name="national_helpline">Komwe mungathandizidwe</string>
+    <string name="dummy_number">265 88 00 00 00</string>
+    <string name="platforms">Nsanja</string>
+    <string name="whatsapp_chatbot">Mauthenga apa WhatsApp</string>
+    <string name="tnm">TNM</string>
+    <string name="airtel">Airtel</string>
+    <string name="response_teams">Gulu lokuthandizani</string>
+    <string name="lilongwe">Lilongwe</string>
+    <string name="mw">MW</string>
+    <string name="call">call</string>
+    <string name="ussd_no">352</string>
+    <string name="ussd">USSD</string>
+    <string name="chatbot">+265996659999</string>
+
+    <string name="good_morning">Mwadzuka bwanji</string>
+    <string name="good_afternoon">Mwaswela bwanji</string>
+    <string name="good_evening">Madzulo abwino</string>
+    <string name="good_night">Usiku wabwino</string>
+    <string name="no_available_phone_numbers">Palibepo manambala a foni amwe alipo</string>
 </resources>

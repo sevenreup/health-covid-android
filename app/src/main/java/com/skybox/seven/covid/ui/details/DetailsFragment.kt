@@ -12,7 +12,6 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.entities.DetailsPhoneNumbers
 import com.skybox.seven.covid.data.entities.getDetailsData
 import com.skybox.seven.covid.databinding.FragmentDetailsBinding
@@ -54,11 +53,21 @@ class DetailsFragment : Fragment() {
         binding.chatbotContainer.setOnClickListener {
             openWhatsApp(binding.WhatsAppNumber.text as String)
         }
-        binding.tnmUSSD.setOnClickListener {
-            callUSSD(binding.tnmUSSD.text.toString())
+        binding.tnmUSSDone.setOnClickListener {
+            callUSSD(binding.tnmUSSDone.text.toString())
         }
-        binding.airtelUSSD.setOnClickListener {
-            callUSSD(binding.airtelUSSD.text.toString())
+        binding.tnmUSSDtwo.setOnClickListener {
+            callUSSD(binding.tnmUSSDtwo.text.toString())
+        }
+        binding.airtelUSSDone.setOnClickListener {
+            callUSSD(binding.airtelUSSDone.text.toString())
+        }
+        binding.airtelUSSDtwo.setOnClickListener {
+            callUSSD(binding.airtelUSSDtwo.text.toString())
+        }
+
+        binding.nationalHelpline.setOnClickListener {
+            callNumber(binding.nationalHelpline.text.toString())
         }
 
     }
@@ -77,6 +86,11 @@ class DetailsFragment : Fragment() {
 
     }
 
+    private fun callNumber(number: String){
+        val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$number"))
+        startActivity(intent)
+    }
+
     private fun callUSSD(code: String){
 
 
@@ -84,7 +98,7 @@ class DetailsFragment : Fragment() {
             ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.CALL_PHONE, Manifest.permission.CALL_PHONE), REQUEST_CALL)
         }else{
 
-            val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:*$code"+Uri.encode("#")))
+            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:*$code"+Uri.encode("#")))
             startActivity(intent)
         }
 
