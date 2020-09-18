@@ -42,6 +42,8 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
+            android:maxLines="2"
+            android:ellipsize="end"
             android:text="Again i have to type some fake description just to see how this looks. im making a mistake by hardcoding though. well that was stupid."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView2"

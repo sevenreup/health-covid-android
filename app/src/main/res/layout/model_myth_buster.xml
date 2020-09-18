@@ -40,6 +40,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Again i have to type some fake description just to see how this looks. im making a mistake by hardcoding though. well that was stupid."
+            android:maxLines="2"
+            android:ellipsize="end"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/mythimageView"
             android:layout_marginStart="5dp"

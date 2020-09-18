@@ -45,7 +45,7 @@ class ShareDialogDialog : BottomSheetDialogFragment() {
             }
             else -> {
                 binding.preventionRVCardTitle.text = myth!!.title
-                binding.preventionRVCardDescription.text = myth!!.myth
+                binding.preventionRVCardDescription.text = myth!!.paragraph
                 binding.title.text = getString(R.string.myth_advice)
             }
         }

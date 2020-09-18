@@ -20,7 +20,7 @@ public class MythBusterController extends Typed2EpoxyController<Boolean, List<My
     protected void buildModels(Boolean loading, List<Myth> mythbusters) {
         listLoadingModel_.addIf(loading, this);
         for (Myth mythbuster: mythbusters) {
-            new MythBusterEpoxyModel_().id(mythbuster.getTitle())
+            new MythBusterEpoxyModel_().id(mythbuster.getMyth())
                     .listener((model, parentView, clickedView, position) -> callbacks.onMythClicked(mythbuster))
                     .mythbuster(mythbuster).addTo(this);
         }
