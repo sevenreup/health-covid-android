@@ -12,7 +12,6 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.entities.DetailsPhoneNumbers
 import com.skybox.seven.covid.data.entities.getDetailsData
 import com.skybox.seven.covid.databinding.FragmentDetailsBinding
