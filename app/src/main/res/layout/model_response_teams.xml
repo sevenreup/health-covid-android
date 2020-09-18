@@ -7,7 +7,18 @@
     android:layout_marginBottom="4dp"
     >
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_available_phone_numbers"
+        android:textSize="17sp"
+        android:layout_margin="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
     <com.google.android.material.card.MaterialCardView
+        android:visibility="gone"
         android:id="@+id/responseCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

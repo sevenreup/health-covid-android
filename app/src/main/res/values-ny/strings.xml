@@ -13,7 +13,6 @@
     <string name="title_contacts">Kaundula wa Mayina</string>
     <string name="title_mythbusters">Kususana ndi zikhulupiliro</string>
     <string name="title_news">Nkhani</string>
-<<<<<<< Updated upstream
     <string name="title_qna">Mafunso ofunsidwa mowilikiza</string>
     <string name="title_statistics">Malipoti</string>
     <string name="title_cases">Malipoti</string>
@@ -43,31 +42,6 @@
     <string name="location_set_hint">Ikani dzina la dela</string>
     <string name="location_save_button">Simikizani dela lanu</string>
 
-=======
-    <string name="title_qna">Manfunso ndi Mayankho</string>
-    <string name="title_testing_panel">Mbali yoyezera</string>
-
-
-
-    <string name="selftest_heading">Ziyezeni Corona virus malingana ndimene mukumvera mthupi mwanu</string>
-    <string name="button_start_test">Yambani kuziyeza</string>
-    <string name="previous_test">Kuyezesa kwapitako</string>
-    <string name="title_settings">Zokonda</string>
-    <string name="title_create_contacts">Onjezelani Anzanu</string>
-    <string name="title_statistics">Ziwerengero</string>
-    <string name="title_cases">Ziwerengero</string>
-    <string name="title_personal">Maonekedwe</string>
-    <string name="title_contact_request">Opempha kukhala nzanu</string>
-    <string name="more">Zina zambiri</string>
-    <string name="settings_notification">Sithani zidziwitso</string>
-    <string name="settings_language">Khazikitsani chiyankhulo</string>
-    <string name="contacts_title">Anzanu</string>
-    <string name="contacts_request_title">Opempha Kukhala Anzanu</string>
-    <string name="contacts_friends_family">Abale ndi Anzanu</string>
-    <string name="contacts_tap_add">Dinani kuti muwonjezele</string>
-    <string name="location_set_hint">Ikani dzina la malo</string>
-    <string name="location_save_button">Sungani malo</string>
->>>>>>> Stashed changes
     <string name="health_advice">Malangizo</string>
     <string name="health_info_graphic">Uthenga mu zinthunzi</string>
 
@@ -238,6 +212,7 @@ Yambani mwaimba lamya musanakomane ndi adotolo</string>
     <!-- Preference Titles -->
     <string name="general_header">Zambili</string>
     <string name="language_header">Chiyankhulo</string>
+    
     <string name="language_key" translatable="false">language_int</string>
     <string name="contact_services">Pezani zithandizo</string>
     <string name="national_helpline">Komwe mungathandizidwe</string>
@@ -253,6 +228,10 @@ Yambani mwaimba lamya musanakomane ndi adotolo</string>
     <string name="ussd_no">352</string>
     <string name="ussd">USSD</string>
     <string name="chatbot">+265996659999</string>
+
+    <string name="good_morning">Mwadzuka bwanji</string>
+    <string name="good_afternoon">Mwaswela bwanji</string>
+    <string name="good_evening">Madzulo abwino</string>
+    <string name="good_night">Usiku wabwino</string>
+    <string name="no_available_phone_numbers">Palibepo manambala a foni amwe alipo</string>
 </resources>
-
-
