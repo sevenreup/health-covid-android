@@ -13,6 +13,8 @@ import androidx.navigation.Navigation;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.databinding.FragmentHomepageBinding;
 
+import java.util.Calendar;
+
 public class HomePageFragment extends Fragment {
 
     private FragmentHomepageBinding binding;
@@ -32,7 +34,29 @@ public class HomePageFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
+        setGreetings();
+    }
+
+    public void setGreetings(){
+
+        Calendar cal = Calendar.getInstance();
+
+        int timeOfDay = cal.get(Calendar.HOUR_OF_DAY);
+
+        if (timeOfDay < 12){
+            binding.greetingView.setText(getResources().getText(R.string.good_morning));
+        }else if (timeOfDay < 16){
+            binding.greetingView.setText(getResources().getText(R.string.good_afternoon));
+        }else if (timeOfDay < 21){
+            binding.greetingView.setText(getResources().getText(R.string.good_evening));
+        } else {
+        binding.greetingView.setText(getResources().getText(R.string.good_night));
+    }
+    }
 
     public class ClickHandlers{
         Context context;
