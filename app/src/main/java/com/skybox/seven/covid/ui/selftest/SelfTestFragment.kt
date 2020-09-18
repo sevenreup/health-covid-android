@@ -49,4 +49,8 @@ class SelfTestFragment : Fragment() {
     fun all() {
         findNavController().navigate(R.id.to_all_test)
     }
+
+    fun back() {
+        findNavController().navigateUp()
+    }
 }

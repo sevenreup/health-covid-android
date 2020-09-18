@@ -11,7 +11,7 @@ import java.util.List;
 @Dao
 public interface MythsDAO {
 
-    @Query("SELECT * From myths WHERE languageOwnerId = :id")
+    @Query("SELECT * From myths WHERE locale = :id")
     List<Myth> getAllLanguagesMyth(Integer id);
 
     @Insert

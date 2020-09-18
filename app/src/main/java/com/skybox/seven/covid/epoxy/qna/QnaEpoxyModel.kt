@@ -28,7 +28,6 @@ abstract class QnaEpoxyModel : EpoxyModelWithHolder<QnaEpoxyModel.QnaEpoxyViewHo
         super.bind(holder)
         holder.question!!.text = questions!!.question
         holder.answer!!.text = questions!!.answer
-        holder.arrow!!.setImageResource(questions!!.arrow)
 
         holder.card?.setOnClickListener(expandListener)
 

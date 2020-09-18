@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.entities.SelfTestAnswer
 import com.skybox.seven.covid.databinding.ActivitySelfTestQuestionareBinding
@@ -46,6 +47,15 @@ class SelfTestQuestionnaireActivity: AppCompatActivity(), SurveyCallbacks {
                                     quest.arrays!!
                             )
                     )
+                    Constants.TEXT -> steps.add(
+                            TextStep(
+                                    quest.id,
+                                    quest.question,
+                                    quest.subTitle,
+                                    true,
+                                    getString(R.string.text_survey_hint)
+                            )
+                    )
                     else ->
                         steps.add(BooleanStep(quest.id,
                                 quest.question,
@@ -60,7 +70,7 @@ class SelfTestQuestionnaireActivity: AppCompatActivity(), SurveyCallbacks {
                     )
             )
 
-            val config = UtilityText("Next", "Cancel")
+            val config = UtilityText( getString(R.string.next), getString(R.string.cancel), getString(R.string.yes), getString(R.string.no))
             val fragment = SurveyView.newInstance(steps, config)
             supportFragmentManager.beginTransaction().add(R.id.survey_view, fragment).commit()
         })
@@ -102,6 +112,14 @@ class SelfTestQuestionnaireActivity: AppCompatActivity(), SurveyCallbacks {
             }
         }
         viewModel.submit(answers)
+    }
+
+    override fun surveyClosed() {
+        MaterialAlertDialogBuilder(this)
+                .setTitle(getString(R.string.cancel_survey))
+                .setNeutralButton(getString(R.string.no)) { _, _ -> }
+                .setPositiveButton(getString(R.string.yes)) {_, _ -> finish()}
+                .show()
     }
 
 }

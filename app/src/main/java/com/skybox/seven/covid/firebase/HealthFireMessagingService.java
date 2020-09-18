@@ -65,7 +65,7 @@ public class HealthFireMessagingService extends com.google.firebase.messaging.Fi
     private void registerToServer(String message) {
 
         Log.d(TAG, "registerToServer: " + message);
-        SharedPreferenceRepository repository = new SharedPreferenceRepository(getSharedPreferences(getApplication().getString(R.string.shared_preference_key), Context.MODE_PRIVATE));
+        SharedPreferenceRepository repository = new SharedPreferenceRepository(getSharedPreferences(getApplication().getString(R.string.shared_preference_key), Context.MODE_PRIVATE), getApplicationContext());
         repository.setFirebaseMessagingToken(message);
         String token = repository.getToken();
         if (token != null) {

@@ -14,13 +14,14 @@
         android:layout_height="wrap_content">
 
 
-    <TextView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/backBtnnn"
         android:layout_width="14dp"
         android:layout_height="18dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:drawableStart="@drawable/ic_arrow_back"
+        app:icon="@drawable/ic_arrow_back_24"
+        style="@style/Covid.Icon.Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

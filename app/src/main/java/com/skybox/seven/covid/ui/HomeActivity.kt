@@ -82,6 +82,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setNewLocale(locale: Locale) {
+        viewModel.setLanguage(locale)
         Lingver.getInstance().setLocale(this, locale)
         restart()
     }
@@ -101,8 +102,6 @@ class HomeActivity : AppCompatActivity() {
     private fun restart() {
         val i = Intent(this, HomeActivity::class.java)
         startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
-
-        Toast.makeText(this, "Activity restarted", Toast.LENGTH_SHORT).show()
     }
 
     override fun onBackPressed() {

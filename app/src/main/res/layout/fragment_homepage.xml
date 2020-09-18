@@ -301,6 +301,7 @@
                 android:layout_height="100dp"
                 android:layout_margin="@dimen/menu_card_margin"
                 app:cardElevation="@dimen/card_elevation_small"
+                android:onClick="@{clickHandler::onCardClick}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mythCard"

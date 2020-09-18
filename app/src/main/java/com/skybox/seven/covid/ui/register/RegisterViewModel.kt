@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.preference.PreferenceManager
 import com.google.android.gms.tasks.Task
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.iid.InstanceIdResult
@@ -135,7 +136,7 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
     }
 
     init {
-        preferenceRepository = SharedPreferenceRepository(application.getSharedPreferences(application.getString(R.string.shared_preference_key), Context.MODE_PRIVATE))
+        preferenceRepository = SharedPreferenceRepository(PreferenceManager.getDefaultSharedPreferences(application), application)
         retrofit = RetrofitFactory.getRetrofit(application)
     }
 }

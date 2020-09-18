@@ -8,11 +8,12 @@
     tools:context=".ui.mythbusters.MythBustersFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/backBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_arrow_back"
+        app:icon="@drawable/ic_arrow_back_24"
+        style="@style/Covid.Icon.Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="16dp"

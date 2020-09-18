@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Entity(tableName = Advice.tableName)
 public class Advice implements Serializable {
     final static String tableName = "advices";
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private Integer id;
     private String shortTitle;
     private String title;
@@ -19,13 +19,13 @@ public class Advice implements Serializable {
     private int image;
     private boolean hasVideo;
     private boolean expanded = false;
-    private Integer languageOwnerId;
+    private Integer locale;
 
     public Advice() {
     }
 
     @Ignore
-    public Advice(Integer id, Integer languageOwnerId, String shortTitle, String title, String advice, int image) {
+    public Advice(Integer id, Integer locale, String shortTitle, String title, String advice, int image) {
         super();
         this.id = id;
         this.shortTitle = shortTitle;
@@ -34,7 +34,7 @@ public class Advice implements Serializable {
         this.video = null;
         this.hasVideo = false;
         this.image = image;
-        this.languageOwnerId = languageOwnerId;
+        this.locale = locale;
     }
 
     public Integer getId() {
@@ -101,12 +101,12 @@ public class Advice implements Serializable {
         this.expanded = expanded;
     }
 
-    public Integer getLanguageOwnerId() {
-        return languageOwnerId;
+    public Integer getLocale() {
+        return locale;
     }
 
-    public void setLanguageOwnerId(Integer languageOwnerId) {
-        this.languageOwnerId = languageOwnerId;
+    public void setLocale(Integer locale) {
+        this.locale = locale;
     }
 
     @NonNull

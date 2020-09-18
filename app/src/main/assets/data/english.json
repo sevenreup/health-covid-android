@@ -1,0 +1,170 @@
+{
+    "prevention": [{
+        "shortTitle": "Wash your hands",
+        "title": "Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash them with soap and water.",
+        "advice": "Washing your hands with soap and water or using alcohol-based hand rub kills viruses that may be on your hands.",
+        "locale": 1
+    }, {
+        "shortTitle": "Social distancing",
+        "title": "Maintain at least 1 metre (3 feet) distance between yourself and others.",
+        "advice": "When someone coughs, sneezes, or speaks they spray small liquid droplets from their nose or mouth which may contain virus. If you are too close, you can breathe in the droplets, including the COVID-19 virus if the person has the disease.",
+        "locale": 1
+    }, {
+        "shortTitle": "Avoid going to crowded places.",
+        "title": "Avoid going to crowded places.",
+        "advice": "Where people come together in crowds, you are more likely to come into close contact with someone that has COIVD-19 and it is more difficult to maintain physical distance of 1 metre (3 feet).",
+        "locale": 1
+    }, {
+        "shortTitle": "Avoid touching eyes, nose and mouth.",
+        "title": "Avoid touching eyes, nose and mouth.",
+        "advice": "Hands touch many surfaces and can pick up viruses. Once contaminated, hands can transfer the virus to your eyes, nose or mouth. From there, the virus can enter your body and infect you.",
+        "locale": 1
+    }, {
+        "shortTitle": "Make sure you, and the people around you, follow good respiratory hygiene.",
+        "title": "Make sure you, and the people around you, follow good respiratory hygiene. This means covering your mouth and nose with your bent elbow or tissue when you cough or sneeze. Then dispose of the used tissue immediately and wash your hands",
+        "advice": "Droplets spread virus. By following good respiratory hygiene, you protect the people around you from viruses such as cold, flu and COVID-19.",
+        "locale": 1
+    }, {
+        "shortTitle": "Stay home and self-isolate",
+        "title": "Stay home and self-isolate even with minor symptoms such as cough, headache, mild fever, until you recover. Have someone bring you supplies. If you need to leave your house, wear a mask to avoid infecting others.",
+        "advice": "Avoiding contact with others will protect them from possible COVID-19 and other viruses.",
+        "locale": 1
+    }, {
+        "shortTitle": "Seek medical attention",
+        "title": "If you have a fever, cough and difficulty breathing, seek medical attention, but call by telephone in advance if possible and follow the directions of your local health authority.",
+        "advice": "Washing your hands with soap and water or using alcohol-based hand rub kills viruses that may be on your hands.",
+        "locale": 1
+    }, {
+        "shortTitle": "Keep up to date",
+        "title": "Keep up to date on the latest information from trusted sources, such as WHO or your local and national health authorities.",
+        "advice": "Local and national authorities are best placed to advise on what people in your area should be doing to protect themselves.",
+        "locale": 1
+    }],
+    "myth": [{
+        "title": "5G mobile networks DO NOT spread COVID-19",
+        "myth": "5G mobile networks DO NOT spread COVID-19",
+        "paragraph": "Viruses cannot travel on radio waves/mobile networks. COVID-19 is spreading in many countries that do not have 5G mobile networks COVID-19 is spread through respiratory droplets when an infected person coughs, sneezes or speaks. People can also be infected by touching a contaminated surface and then their eyes, mouth or nose.",
+        "locale": 1
+    }, {
+        "title": "Exposing yourself to the sun or to temperatures higher than 25C degrees DOES NOT prevent the coronavirus disease (COVID-19)",
+        "myth": "Exposing yourself to the sun or to temperatures higher than 25C degrees DOES NOT prevent the coronavirus disease (COVID-19)",
+        "paragraph": "You can catch COVID-19, no matter how sunny or hot the weather is. Countries with hot weather have reported cases of COVID-19. To protect yourself, make sure you clean your hands frequently and thoroughly and avoid touching your eyes, mouth, and nose. ",
+        "locale": 1
+    }, {
+        "title": "You can recover from the coronavirus disease (COVID-19). Catching the new coronavirus DOES NOT mean you will have it for life",
+        "myth": "You can recover from the coronavirus disease (COVID-19). Catching the new coronavirus DOES NOT mean you will have it for life.",
+        "paragraph": "Most of the people who catch COVID-19 can recover and eliminate the virus from their bodies. If you catch the disease, make sure you treat your symptoms. If you have cough, fever, and difficulty breathing, seek medical care early – but call your health facility by telephone first. Most patients recover thanks to supportive care.",
+        "locale": 1
+    }, {
+        "title": "Being able to hold your breath for 10 seconds or more without coughing or feeling discomfort DOES NOT mean you are free from the coronavirus disease (COVID-19) or any other lung disease.",
+        "myth": "Being able to hold your breath for 10 seconds or more without coughing or feeling discomfort DOES NOT mean you are free from the coronavirus disease (COVID-19) or any other lung disease.",
+        "paragraph": "The most common symptoms of COVID-19 are dry cough, tiredness and fever. Some people may develop more severe forms of the disease, such as pneumonia. The best way to confirm if you have  the virus producing COVID-19 disease is with a laboratory test.  You cannot confirm it with this breathing exercise, which can even be dangerous",
+        "locale": 1
+    }, {
+        "title": "Drinking alcohol does not protect you against COVID-19 and can be dangerous",
+        "myth": "Drinking alcohol does not protect you against COVID-19 and can be dangerous",
+        "paragraph": "Frequent or excessive alcohol consumption can increase your risk of health problems..",
+        "locale": 1
+    }, {
+        "title": "COVID-19 virus can be transmitted in areas with hot and humid climates",
+        "myth": "COVID-19 virus can be transmitted in areas with hot and humid climates",
+        "paragraph": "From the evidence so far, the COVID-19 virus can be transmitted in ALL AREAS, including areas with hot and humid weather. Regardless of climate, adopt protective measures if you live in, or travel to an area reporting COVID-19. The best way to protect yourself against COVID-19 is by frequently cleaning your hands. By doing this you eliminate viruses that may be on your hands and avoid infection that could occur by then touching your eyes, mouth, and nose.",
+        "locale": 1
+    }],
+    "symptoms": [{
+        "commonSymptoms": [{
+            "title": "Cough",
+            "top": 20
+        }, {
+            "title": "High Fever",
+            "top": 0
+        }, {
+            "title": "Headache",
+            "top": 0
+        }, {
+            "title": "Sore Throat",
+            "top": 20
+        }],
+        "lessCommonSymptoms": [{
+            "title": "Aches and pains"
+        }, {
+            "title": "Sore Throat"
+        }, {
+            "title": "Diarrhoea"
+        }, {
+            "title": "Conjunctivitis"
+        }, {
+            "title": "Headache"
+        }],
+        "seriousymptoms": [{
+            "title": "Difficulty breathing or shortness of breath"
+        }, {
+            "title": "Chest pain or pressure"
+        }, {
+            "title": "Loss of speech or movement"
+        }]
+    }],
+    "questions": [{
+        "question": "What is coronavirus disease 2019 (COVID-19)?",
+        "answer": "Coronavirus disease 2019 (COVID-19) is a respiratory illness that can spread from person to person. CDC has information on COVID-19 symptoms and caring for yourself and others. COVID-19 is a new disease, caused by a novel (or new) coronavirus that has not previously been seen in humans.",
+        "locale": 1
+    }, {
+        "question": "How does COVID-19 spread?",
+        "answer": " COVID-19 is thought to spread mainly through close contact from person-to-person. Some people without symptoms may be able to spread the virus. We are still learning about how the virus spreads and the severity of illness it causes. The CDC has additional information on how COVID-19 spreads",
+        "locale": 1
+    }, {
+        "question": "What treatments are available for COVID-19?",
+        "answer": "Currently there are no FDA-approved medicines specifically for COVID-19. However, the FDA has granted emergency use authorizations for some medicines to be used for certain patients hospitalized with COVID-19. The National Institutes of Health provides more information about treatment options.",
+        "locale": 1
+    }, {
+        "question": "Is hand sanitizer effective against COVID-19?",
+        "answer": "The best way to prevent the spread of infections and decrease the risk of getting sick is by washing your hands with plain soap and water, advises the CDC. Washing hands often with soap and water for at least 20 seconds is essential, especially after going to the bathroom; before eating; and after coughing, sneezing, or blowing one’s nose. If soap and water are not available, CDC recommends consumers use an alcohol-based hand sanitizer that contains at least 60% alcohol. ",
+        "locale": 1
+    }],
+    "contacts": {
+        "helpline": "265 88 00 00",
+        "platforms": {
+            "whatsAppChatbot": "265 88 00 00",
+            "tnm": "265 88 00 00",
+            "airtel": "265 99 00 00"
+        },
+        "responseTeams": [{
+            "district": "Lilongwe",
+            "number": "265 88 00 00",
+            "teams": [{
+                "name": "Area 25",
+                "number": "265 88 88 00"
+            }, {
+                "name": "North East",
+                "number": "265 88 88 00"
+            }]
+        }, {
+            "district": "Balaka",
+            "number": "265 88 88 00",
+            "teams": [{
+                "name": "Balaka DHO",
+                "number": "265 88 88 00"
+            }, {
+                "name": "Balaka DHO2",
+                "number": "265 88 88 00"
+            }, {
+                "name": "Balaka DHO3",
+                "number": "265 88 88 00"
+            }]
+        }, {
+            "district": "Mangochi",
+            "number": "265 88 88 00",
+            "teams": [{
+                "name": "Mangochi DMI",
+                "number": "265 88 88 00"
+            }]
+        }, {
+            "district": "Machinga",
+            "number": "265 88 88 00",
+            "teams": [{
+                "name": "Kaphiri",
+                "number": "265 88 88 00"
+            }]
+        }]
+    }
+}

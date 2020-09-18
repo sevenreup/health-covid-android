@@ -11,17 +11,17 @@ public class InfoGraphic {
     private Integer id;
     private String image;
     private Integer type;
-    private Integer languageId;
+    private Integer locale;
 
     public InfoGraphic() {
     }
 
     @Ignore
-    public InfoGraphic(Integer id, String image, Integer type, Integer languageId) {
+    public InfoGraphic(Integer id, String image, Integer type, Integer locale) {
         this.id = id;
         this.image = image;
         this.type = type;
-        this.languageId = languageId;
+        this.locale = locale;
     }
 
     public Integer getId() {
@@ -48,11 +48,11 @@ public class InfoGraphic {
         this.type = type;
     }
 
-    public Integer getLanguageId() {
-        return languageId;
+    public Integer getLocale() {
+        return locale;
     }
 
-    public void setLanguageId(Integer languageId) {
-        this.languageId = languageId;
+    public void setLocale(Integer locale) {
+        this.locale = locale;
     }
 }

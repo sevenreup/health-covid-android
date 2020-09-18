@@ -4,196 +4,215 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="fragment"
             type="com.skybox.seven.covid.ui.selftest.SelfTestFragment" />
-        <import type="com.skybox.seven.covid.R"/>
+
+        <import type="com.skybox.seven.covid.R" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/page_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/title_self_test"
-            android:textAppearance="?textAppearanceHeadline4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/start_test"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/page_title">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/close"
+                style="@style/Covid.Icon.Button"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="16dp">
+                app:icon="@drawable/ic_arrow_back_24"
+                android:onClick="@{() -> fragment.back()}"
+                app:layout_constraintBottom_toBottomOf="@id/page_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/page_title" />
 
-                <TextView
-                    android:id="@+id/test_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{fragment.viewModel.todayTest == null ? fragment.getString(R.string.take_today_test) : fragment.getString(R.string.today_test_taken)}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/last_test_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/last_test"
-                    app:layout_constraintBottom_toBottomOf="@id/last_test"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/last_test" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/last_test"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:clickable="false"
-                    android:text="@{fragment.viewModel.latestTest == null ? fragment.getString(R.string.no_test) : fragment.formatDate(fragment.viewModel.latestTest)}"
-                    app:layout_constraintStart_toEndOf="@id/last_test_title"
-                    app:layout_constraintTop_toBottomOf="@id/test_title"
-                    tools:text="Yesterday" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/disclaimer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/start_test">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/page_title"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="16dp">
+                android:text="@string/title_self_test"
+                android:textAppearance="?textAppearanceHeadline4"
+                app:layout_constraintStart_toEndOf="@id/close"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/disclaimer_title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="How this Self assessment tool works"
-                    android:textAppearance="?textAppearanceHeadline6"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/disclaimer_body"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="This tool can help you understand what to do nest about Covid-19. It helps you to keep daily logs of your health."
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/disclaimer_title" />
-
-                <ImageView
-                    android:id="@+id/icon_steps"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/steps_body"
-                    app:layout_constraintBottom_toBottomOf="@id/steps_body"
-                    app:srcCompat="@drawable/ic_bar_chart"
-                    android:background="@drawable/circle_drawable"
-                    android:backgroundTint="?colorPrimary"/>
-
-                <TextView
-                    android:id="@+id/steps_body"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="You will be required to answer a few questions about symptoms, travel, contact and your general health."
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/icon_steps"
-                    app:layout_constraintTop_toBottomOf="@id/disclaimer_body" />
-
-                <ImageView
-                    android:id="@+id/icon_privacy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/privacy_body"
-                    app:layout_constraintBottom_toBottomOf="@id/privacy_body"
-                    app:srcCompat="@drawable/ic_bar_chart"
-                    android:background="@drawable/circle_drawable"
-                    android:backgroundTint="?colorPrimary"/>
-
-                <TextView
-                    android:id="@+id/privacy_body"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="All your answers are store locally until you chose to Share them with the ministry"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/icon_privacy"
-                    app:layout_constraintTop_toBottomOf="@id/steps_body" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:cardUseCompatPadding="true"
-            android:onClick="@{() -> fragment.all()}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/disclaimer">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/start_test"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="16dp">
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/page_title">
 
-                <TextView
-                    android:id="@+id/history_title"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Assessment History"
-                    android:textAppearance="?textAppearanceHeadline6"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:padding="16dp">
 
-                <com.airbnb.epoxy.EpoxyRecyclerView
-                    android:id="@+id/history_recy"
-                    android:layout_width="0dp"
+                    <TextView
+                        android:id="@+id/test_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{fragment.viewModel.todayTest == null ? fragment.getString(R.string.take_today_test) : fragment.getString(R.string.today_test_taken)}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/last_test_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/last_test"
+                        app:layout_constraintBottom_toBottomOf="@id/last_test"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/last_test" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/last_test"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:clickable="false"
+                        android:text="@{fragment.viewModel.latestTest == null ? fragment.getString(R.string.no_test) : fragment.formatDate(fragment.viewModel.latestTest)}"
+                        app:layout_constraintStart_toEndOf="@id/last_test_title"
+                        app:layout_constraintTop_toBottomOf="@id/test_title"
+                        tools:text="Yesterday" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/disclaimer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/start_test">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/history_title" />
+                    android:padding="16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/disclaimer_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="How this Self assessment tool works"
+                        android:textAppearance="?textAppearanceHeadline6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/disclaimer_body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="This tool can help you understand what to do nest about Covid-19. It helps you to keep daily logs of your health."
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/disclaimer_title" />
+
+                    <ImageView
+                        android:id="@+id/icon_steps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/circle_drawable"
+                        android:backgroundTint="?colorPrimary"
+                        android:padding="4dp"
+                        app:layout_constraintBottom_toBottomOf="@id/steps_body"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/steps_body"
+                        app:srcCompat="@drawable/ic_bar_chart" />
+
+                    <TextView
+                        android:id="@+id/steps_body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:padding="8dp"
+                        android:text="You will be required to answer a few questions about symptoms, travel, contact and your general health."
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/icon_steps"
+                        app:layout_constraintTop_toBottomOf="@id/disclaimer_body" />
+
+                    <ImageView
+                        android:id="@+id/icon_privacy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/circle_drawable"
+                        android:backgroundTint="?colorPrimary"
+                        android:padding="4dp"
+                        app:layout_constraintBottom_toBottomOf="@id/privacy_body"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/privacy_body"
+                        app:srcCompat="@drawable/ic_bar_chart" />
+
+                    <TextView
+                        android:id="@+id/privacy_body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:padding="8dp"
+                        android:text="All your answers are store locally until you chose to Share them with the ministry"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/icon_privacy"
+                        app:layout_constraintTop_toBottomOf="@id/steps_body" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> fragment.all()}"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/disclaimer">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="More"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/history_recy" />
+                    android:padding="16dp">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:id="@+id/history_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Assessment History"
+                        android:textAppearance="?textAppearanceHeadline6"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <com.airbnb.epoxy.EpoxyRecyclerView
+                        android:id="@+id/history_recy"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/history_title" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="More"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/history_recy" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 </layout>

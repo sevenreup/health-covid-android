@@ -1,15 +1,13 @@
-package com.skybox.seven.covid.ui.common;
+package com.skybox.seven.covid.ui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
-import com.skybox.seven.covid.R;
-import com.skybox.seven.covid.ui.HomeActivity;
 import com.skybox.seven.covid.ui.onboarding.OnBoardingActivity;
 
 import static com.skybox.seven.covid.repository.SharedPreferenceRepository.ONBOARDING;
@@ -19,7 +17,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SharedPreferences sharedPreferences = getApplication().getSharedPreferences(getApplication().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         if (sharedPreferences.getBoolean(ONBOARDING, false)) {
             Intent intent = new Intent(this, HomeActivity.class);

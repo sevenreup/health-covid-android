@@ -31,6 +31,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <com.google.android.material.button.MaterialButton
+                style="@style/Covid.Icon.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/settingsicon"
+                android:onClick="@{() -> fragment.goToSettings() }"
+                app:layout_constraintTop_toTopOf="@id/greeting"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/greeting"/>
+
             <ImageView
                 android:id="@+id/stay_at_home"
                 android:layout_width="wrap_content"
@@ -60,6 +70,9 @@
                         android:id="@+id/self_test_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
                         android:text="@string/selftest_heading"
                         android:textAppearance="?textAppearanceSubtitle1"
                         app:layout_constraintStart_toStartOf="parent"
@@ -69,6 +82,8 @@
                         android:id="@+id/test_time_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
                         android:text="@string/previous_test"
                         app:layout_constraintBottom_toBottomOf="@id/test_time"
                         app:layout_constraintStart_toStartOf="parent"
@@ -100,8 +115,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="@string/button_start_test"
+                        android:layout_marginBottom="8dp"
                         android:onClick="@{() -> fragment.navigateSelfTest()}"
+                        android:text="@string/button_start_test"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/separator" />
@@ -175,6 +192,7 @@
                         android:layout_marginTop="8dp"
                         android:text="@string/login"
                         android:visibility="@{fragment.viewModel.isLoggedIn() ? View.GONE : View.VISIBLE}"
+                        android:onClick="@{()-> fragment.goToLogin()}"
                         app:layout_constraintEnd_toStartOf="@id/register"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/help_exp" />
@@ -184,6 +202,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/register"
+                        android:onClick="@{()-> fragment.goToRegister()}"
                         android:visibility="@{fragment.viewModel.isLoggedIn() ? View.GONE : View.VISIBLE}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/login"
