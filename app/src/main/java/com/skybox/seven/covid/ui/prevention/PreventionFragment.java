@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
@@ -20,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 
 
 @AndroidEntryPoint
-public class PreventionFragment extends Fragment implements PreventionController.PreventionCallback {
+public class PreventionFragment extends Fragment implements PreventionController.PreventionCallback, View.OnClickListener {
 
     private PreventionController controller;
     private PreventionViewModel viewModel;
@@ -47,11 +49,19 @@ public class PreventionFragment extends Fragment implements PreventionController
 
         recyclerView.addItemDecoration(new SpaceItemDecorator(20, true, false));
         recyclerView.setController(controller);
+
+        Button backBtn = v.findViewById(R.id.backBtnn);
+        backBtn.setOnClickListener((View.OnClickListener) this);
+
         return v;
     }
 
     @Override
     public void preventionClick(Advice advice) {
         ShareDialogDialog.newInstance(advice).show(getChildFragmentManager(), advice.getTitle());
+    }
+
+    public void onClick(View view){
+        Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigateUp();
     }
 }

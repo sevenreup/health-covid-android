@@ -27,7 +27,7 @@ public class MythBusterEpoxyModel extends EpoxyModelWithHolder<MythBusterEpoxyMo
     public void bind(@NonNull MythBusterEpoxyModel.MythBusterEpoxyViewHolder holder) {
         super.bind(holder);
         holder.mythRVCardTitle.setText(mythbuster.getTitle());
-        holder.mythRVCardDescription.setText(mythbuster.getMyth());
+        holder.mythRVCardDescription.setText(mythbuster.getParagraph());
         holder.card.setOnClickListener(listener);
     }
 

@@ -23,6 +23,7 @@ public class MythViewModel extends ViewModel {
     }
 
     public void getAllMyths() {
+        int locale = repository.getActiveLanguage();
         mythsList.setValue(mythRepository.getAllMyths(repository.getActiveLanguage()));
     }
 
