@@ -42,24 +42,24 @@ class SelfTestQuestionnaireActivity: AppCompatActivity(), SurveyCallbacks {
                 when (quest.type) {
                     Constants.ARRAY -> steps.add(
                             MultiSelectionStep(quest.questionID,
-                                    quest.question!!,
-                                    quest.subTitle!!,
+                                    quest.question ?: "",
+                                    quest.subTitle ?: "",
                                     quest.arrays!!
                             )
                     )
                     Constants.TEXT -> steps.add(
                             TextStep(
                                     quest.questionID,
-                                    quest.question!!,
-                                    quest.subTitle!!,
+                                    quest.question ?: "",
+                                    quest.subTitle ?: "",
                                     true,
                                     getString(R.string.text_survey_hint)
                             )
                     )
                     else ->
                         steps.add(BooleanStep(quest.questionID,
-                                quest.question!!,
-                                quest.subTitle!!))
+                                quest.question ?: "",
+                                quest.subTitle ?: ""))
                 }
             }
             steps.add(
@@ -120,6 +120,10 @@ class SelfTestQuestionnaireActivity: AppCompatActivity(), SurveyCallbacks {
                 .setNeutralButton(getString(R.string.no)) { _, _ -> }
                 .setPositiveButton(getString(R.string.yes)) {_, _ -> finish()}
                 .show()
+    }
+
+    override fun onBackPressed() {
+        surveyClosed()
     }
 
 }
