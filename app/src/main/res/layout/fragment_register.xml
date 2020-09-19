@@ -163,6 +163,7 @@
                 android:layout_height="wrap_content"
                 android:padding="12dp"
                 android:text="@string/button_login"
+                android:onClick="@{() -> fragment.goLogin()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -2,14 +2,12 @@ package com.skybox.seven.covid.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.ActivityAuthBinding
 import kotlinx.android.synthetic.main.activity_auth.*
 
 class AuthActivity : AppCompatActivity() {
-    var auth = true
     lateinit var binding: ActivityAuthBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +22,10 @@ class AuthActivity : AppCompatActivity() {
 
         navGraph.startDestination = destination
         fragment.navController.graph = navGraph
+
+        binding.close.setOnClickListener {
+            finish()
+        }
     }
 
     companion object {
