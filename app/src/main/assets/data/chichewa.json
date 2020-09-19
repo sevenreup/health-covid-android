@@ -1,28 +1,28 @@
 {
     "prevention": [{
         "shortTitle": "Sambani mmanja",
-        "title": "Sambani mmanja pafupipafupi komanso moyenera pogwiritsa     ntchito sopo nd madzi kapena mankhwala opha tizilombo.",
+        "title": "Sambani mmanja pafupipafupi komanso moyenelera pogwiritsa ntchito sopo ndi madzi kapena mankhwala opha tizilombo.",
         "advice": "Kusamba mmanja ndi sopo komanso madzi kapena mankhwala opha tizilombo zimathandiza kupha tizilombo mmanja mwanu.",
         "locale": 0
     }, {
-        "shortTitle": "khalani patali",
-        "title": "Khalani motalikana ndi anthu ena osachepela mitala imodzi.",
-        "advice": "Pamene munthu wasokomola, kuyesemula kapena kuyankhula amatulusa timalovu kuchokela mkamwa kapena mphuno mwawo tomwe titha kukhala ndi tizilombo. Ngat mwakhala moyandikana ndi munthu ameneyi mutha kupuma timalovu timeneti kuphatikizapo kachilombo koyambisa COVID-19 ngati munthuyo ali nako.",
+        "shortTitle": "khalani motalikilana",
+        "title": "Khalani motalikana ndi anthu ena mosachepela mitala imodzi.",
+        "advice": "Pamene munthu wasokomola, kuyesemula kapena kuyankhula amatulusa timalovu kuchokela mkamwa kapena mphuno mwawo tomwe titha kukhala ndi tizilombo. Ngati mwakhala moyandikana ndi munthu ameneyi mutha kupuma timalovu timeneti kuphatikizapo kachilombo koyambisa COVID-19 ngati munthuyo ali nako.",
         "locale": 0
     }, {
-        "shortTitle": "Pewani kukhala malo ochulukana.",
+        "shortTitle": "Pewani kukhala m'malo amene pali anthu ochulukana.",
         "title": " Pewani kupita malo a anthu ochuluka.",
-        "advice": "Pamene anthu akhala ochulukana kwambili ndisozavuta kuyandikana ndi munthu amene ali ndi kachilombo koyambisa COVID-19.Komanso kukhala motalikana mitala limodzi ndikovuta mukachulukana.",
+        "advice": "Pamene anthu akhala ochulukana kwambili ndisozavuta kuyandikana ndi munthu amene ali ndi kachilombo koyambisa COVID-19. Komanso kukhala motalikana mitala limodzi ndikovuta mukachulukana.",
         "locale": 0
     }, {
-        "shortTitle": "Pewani kugwila  mmaso, mfuno komanso pakamwa.",
-        "title": "Pewani kugwila mmaso, mfuno komanso pakamwa.",
-        "advice": "Manja amagwila malo amene patha kukhala kachilombo koyambisa COVID-19. Pamene takatenga kachilomboka titha kukasiya mmaso, mfuno komanso pakamwa pathu.Kenako kachilomboka katha kulowa nthupi mwathu ndikuyambisa COVID-19.",
+        "shortTitle": "Pewani kugwila m'maso, m'phuno komanso pakamwa.",
+        "title": "Pewani kugwila m'maso, mphuno komanso pakamwa.",
+        "advice": "Manja amagwila malo ambiri ndipo zikhoza kutheka kugwira m'malo okhala ndikachilombo koyambisa COVID-19. Pamene takatenga kachilomboka titha kukasiya m'maso, m'phuno komanso pakamwa pathu. Kenako kachilomboka katha kulowa m'nthupi mwathu ndikuyambisa COVID-19.",
         "locale": 0
     }, {
-        "shortTitle": "Onesesani kuti anthu omwe mmakhala  nawo pafupi akusatila moyenela malangizo a kapumidwe kaukhondo.",
-        "title": " Onesesani kuti anthu omwe mwayandikana nawo akusatila moyenela malangizo a kapumidwe kaukhondo. Tingachite izi poseka pakamwa komanso kusokomolela kapena kuyesemulila kuchigongono kapena pogwilisa ntchito kapepala. Kenako tayani kapepalaka ndikusamba mmanja nthawi yomweyo",
-        "advice": "Timalovu timafalisa kachilomboka. Posatila malangizo a kapumidwe kabwno titha kuteteza anthu omwe timakhala nawo kunthenda monga chimfine komanso COVID-19.",
+        "shortTitle": "Onesesani kuti anthu omwe mwakhala nawo pafupi akutsatila moyenelera malangizo a kapumidwe kaukhondo.",
+        "title": " Onesesani kuti anthu omwe mwayandikilana nawo akusatila moyenelera malangizo a kapumidwe kaukhondo. Tingachite izi poseka pakamwa komanso kusokomolela kapena kuyesemulila kuchigongono kapena pogwilisa ntchito kapepala. Kenako tayani kapepalaka ndikusamba mmanja nthawi yomweyo",
+        "advice": "Timalovu timafalisa kachilomboka. Posatila malangizo a kapumidwe kabwino titha kuteteza anthu omwe timakhala nawo ku nthenda monga chimfine komanso COVID-19.",
         "locale": 0
     }, {
         "shortTitle": "Khalani pakhomo komanso khalani kwanokha",
@@ -36,29 +36,29 @@
         "locale": 0
     }, {
         "shortTitle": "Satilani mauthenga a tsopano okhuza COVID-19",
-        "title": " Satilani mauthenga a tsopano okhuza COVID-19 kuchokela kwa anthu oyenela, monga bungwe lowona za umoyo pa dziko lonse kapena a zaumoyo mdera mwanu.",
+        "title": " Satilani mauthenga a tsopano okhuza COVID-19 kuchokela ku magwero olondola, monga bungwe lowona za umoyo pa dziko lonse kapena a zaumoyo m'dera lanu.",
         "advice": "A zaumoyo omwe amayikidwa mdera lanu amagwila ntchito yolangiza anthu mmene angazitetezela ku COVID-19.",
         "locale": 0
     }],
     "myth": [{
         "title": "Netiweki ya lamya ya 5G simafalisa  COVID-19",
         "myth": " Netiweki ya lamya 5G simafalisa  COVID-19",
-        "paragraph": "Tizilombo toyambisa matenda sitingayende mmanetiweki a lamya. COVID-19 ikufalikila mmayiko ambili omwe alibe netiweki ya lamya ya 5G. COVID-19 ikufalikila kuzela ntimalovu tomwe munthu yemwe ali ndi kachilomboka amatuluka akasomokola, kuyesemula kapena kuyankhula. Anthu athanso kutenga kachilomboka akagwila malo omwe pali kachilomboka kenako ndikugwila mmaso, pakamwa komanso mfuno.",
+        "paragraph": "Tizilombo toyambisa matenda sitingayende mmanetiweki a lamya. COVID-19 ikufalikila mmayiko ambili omwe alibe netiweki ya lamya ya 5G. COVID-19 imafalikila kuzela ntimalovu tomwe munthu yemwe ali ndi kachilomboka amatuluka akasomokola, kuyesemula kapena kuyankhula. Anthu athanso kutenga kachilomboka akagwila malo omwe pali kachilomboka kenako ndikugwila mmaso, pakamwa komanso mfuno.",
         "locale": 0
     }, {
-        "title": "Kukhala pa dzuwa kapena malo omwe akutentha kuposela kwambili SIKUMATHANDIZA mayenda a COVID-19",
-        "myth": "Kukhala pa dzuwa kapena malo omwe akutentha kuposela kwambili SIKUMATHANDIZA mayenda a COVID-19.",
-        "paragraph": "Mutha kutenga mliri wa COVD-19, posatengela kuti kwatentha kwambili. Mayiko omwe kumatentha akhuzidwanso ndi  COVID-19. Pofuna kuziteteza sambani mmanja pafupipafupi ndi kupewa kugwila mmaso, pakamwa komanso mfuno. ",
+        "title": "Kukhala pa dzuwa kapena malo omwe akutentha koposela kwambili SIKUMATHANDIZA mayenda a COVID-19",
+        "myth": "Kukhala pa dzuwa kapena malo omwe akutentha koposela kwambili SIKUMATHANDIZA mayenda a COVID-19.",
+        "paragraph": "Mutha kutenga mliri wa COVID-19 posatengela kuti kwatentha kwambili. Mayiko omwe kumatentha akhuzidwanso ndi COVID-19. Pofuna kuziteteza sambani mmanja pafupipafupi ndi kupewa kugwila mmaso, pakamwa komanso m'phuno. ",
         "locale": 0
     }, {
-        "title": "Mliri wa COVD-19 ndiwochizika. Kugwidwa ndi mliri wa COVD-19 SIZITANTHAUZA kuti mukhala ndi nthendayi moyo wanu onse.",
-        "myth": "Mliri wa COVD-19 ndiwochizika. Kugwidwa ndi mliri wa COVD-19 SIZITANTHAUZA kuti mukhala ndi nthendayi moyo wanu onse.",
-        "paragraph": "Anthu ambili omwe agwidwa ndi kachilomboka atha kuchila ndikuthanilatu ndi kachilomboka nthupi mwawo. Mukagwidwa nd kachilomboka onesesani mwachila kuzizindikilo zonse.Ngati mwatentha thupi, mukusokomola kapena kupuma mobanika, pezani thandizo la chipatala koma tchayilani lamya kuchipatalako choyamba.Odwala ambili akuchila tithokoze aza chipatala.",
+        "title": "Mliri wa COVD-19 ndiwochizika. Kugwidwa ndi mliri wa COVID-19 SIZITANTHAUZA kuti mukhala ndi nthendayi moyo wanu onse.",
+        "myth": "Mliri wa COVD-19 ndiwochizika. Kugwidwa ndi mliri wa COVID-19 SIZITANTHAUZA kuti mukhala ndi nthendayi moyo wanu onse.",
+        "paragraph": "Anthu ambili omwe agwidwa ndi kachilomboka atha kuchila ndikuthanilatu ndi kachilomboka nthupi mwawo. Mukagwidwa nd kachilomboka onesesani mwachila kuzizindikilo zonse.Ngati mwatentha thupi, mukusokomola kapena kupuma mobanika, pezani thandizo la chipatala koma tchayilani lamya kuchipatalako choyamba. Odwala ambili akuchila tithokoze aza chipatala.",
         "locale": 0
     }, {
         "title": "Kukwanisa kuzipana osapuma kwa phindi khumi kapena kuposela apo osasokomola kapena kubanika sizikutanthauza kuti mulibe COVID-19 kapena matenda ena a mmapapo.",
         "myth": " Kukwanisa kuzipana osapuma kwa phindi khumi kapena kuposela apo osasokomola kapena kubanika sizikutanthauza kuti mulibe COVID-19 kapena matenda ena a mmapapo..",
-        "paragraph": "Zizindikilo zomwe zikusogola za COVID-19 ndi monga chifukwa chopanda makhololo, kutopatopa komanso kutentha thupi. Anthu ena amatha kuyambanso matenda ena monga chibayo. Jira yabwino yoziwila ngati tili ndi COVID-19 ndikuyezedwa ndi achipatala.  Sungazimikize ndi kuzipana popuma zomwenso zili zoopsa pa umoyo wamunthu.",
+        "paragraph": "Zizindikilo zomwe zikusogola za COVID-19 ndi monga chifuwa chopanda makhololo, kutopatopa komanso kutentha thupi. Anthu ena amatha kuyambanso matenda ena monga chibayo. Njira yabwino yodziwila ngati tili ndi COVID-19 ndikuyezedwa ndi a chipatala. Sungatsimikize ndi kuzipana popuma, zomwenso zili zoopsa pa umoyo wamunthu.",
         "locale": 0
     }, {
         "title": "Kumwa Mowa kapena chakumwa cha ukali sikungatiteteze ku Mliri wa Covid-19 komanso kutha kuika moyo pachiswe",
@@ -106,11 +106,11 @@
     }],
     "questions": [{
         "question": "Kodi matenda a COVID-19 Ndi chani?",
-        "answer": "Matenda a COVID-19 ndi matenda omwe amakhudza njira yopumira  omwe amafala kuchokera mwa munthu wina kupita kwa munthu wina.  CDC ali ndi zambiri za zindikiro za matendawa komanso mmene tingazitetezere tokha komanso anzathu, COVID-19 ndi nthenda yatsopano imene sinapezekepo mwa anthu mbuyomu. ",
+        "answer": "Matenda a COVID-19 ndi matenda omwe amakhudza njira yopumira omwe amafala kuchokera mwa munthu wina kupita kwa munthu wina.  CDC ali ndi zambiri za zindikiro za matendawa komanso mmene tingazitetezere tokha komanso anzathu, COVID-19 ndi nthenda yatsopano imene sinapezekepo mwa anthu mbuyomu. ",
         "locale": 0
     }, {
         "question": "Kodi kachilombo ka COVID-19 Kamafala bwanji? ",
-        "answer": " COVID-19 imafala kuchoka kwa munthu wina kupita kwa wina poyandikana ndi Munthu amene ali ndi nthendayi. Anthu ena akhonza kufalitsa nthendayi angakhale asakuonetsa chizindikiro chilichonse cha kachilomboka. Tikadamphunzirabe mmene kachilomboka kamafalira matenda omwe kamayambitsa. CDC ali ndi zambiri zokhudza mmene nthendayi imafalira. ",
+        "answer": "COVID-19 imafala kuchoka kwa munthu wina kupita kwa wina poyandikana ndi Munthu amene ali ndi nthendayi. Anthu ena akhonza kufalitsa nthendayi angakhale asakuonetsa chizindikiro chilichonse cha kachilomboka. Tikadamphunzirabe mmene kachilomboka kamafalira matenda omwe kamayambitsa. CDC ali ndi zambiri zokhudza mmene nthendayi imafalira. ",
         "locale": 0
     }, {
         "question": "Ndi mankhwala ati omwe amachiza COVID-19?",
