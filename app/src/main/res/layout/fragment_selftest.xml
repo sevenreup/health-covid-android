@@ -82,6 +82,7 @@
                         android:text="@{fragment.viewModel.latestTest == null ? fragment.getString(R.string.no_test) : fragment.formatDate(fragment.viewModel.latestTest)}"
                         app:layout_constraintStart_toEndOf="@id/last_test_title"
                         app:layout_constraintTop_toBottomOf="@id/test_title"
+                        app:layout_constraintEnd_toEndOf="parent"
                         tools:text="Yesterday" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

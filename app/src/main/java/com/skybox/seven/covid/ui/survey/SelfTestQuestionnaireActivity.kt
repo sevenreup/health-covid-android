@@ -44,7 +44,7 @@ class SelfTestQuestionnaireActivity: AppCompatActivity(), SurveyCallbacks {
                             MultiSelectionStep(quest.questionID,
                                     quest.question ?: "",
                                     quest.subTitle ?: "",
-                                    quest.arrays!!
+                                    quest.arrays ?: ArrayList()
                             )
                     )
                     Constants.TEXT -> steps.add(
@@ -55,6 +55,12 @@ class SelfTestQuestionnaireActivity: AppCompatActivity(), SurveyCallbacks {
                                     true,
                                     getString(R.string.text_survey_hint)
                             )
+                    )
+                    Constants.ARRAYBOOLEAN -> steps.add(
+                            ArrayBooleanStep(quest.questionID,
+                                    quest.question ?: "",
+                                    quest.subTitle ?: "",
+                                    quest.arrays ?: ArrayList())
                     )
                     else ->
                         steps.add(BooleanStep(quest.questionID,
