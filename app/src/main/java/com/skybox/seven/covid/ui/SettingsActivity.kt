@@ -27,7 +27,7 @@ class SettingsActivity : AppCompatActivity() {
     class SettingsFragment : PreferenceFragmentCompat() {
         val listener = SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences: SharedPreferences, key: String ->
         when(key) {
-            getString(R.string.language_key) -> {
+            "language_int" -> {
                 val locale = (sharedPreferences.getString(key, "0"))?.toInt()
                 Log.e(TAG, "$locale")
                 context?.let { Lingver.getInstance().setLocale(it, Constants.getLocale(locale!!)) }

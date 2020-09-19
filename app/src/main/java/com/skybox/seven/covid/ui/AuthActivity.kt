@@ -1,5 +1,6 @@
 package com.skybox.seven.covid.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -7,8 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.work.OneTimeWorkRequest
-import androidx.work.WorkManager
+import androidx.work.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.ActivityAuthBinding
@@ -42,9 +42,16 @@ class AuthActivity : AppCompatActivity() {
         }
 
         viewModel.firebaseToken.observe(this, Observer {
-            val worker = OneTimeWorkRequest.from(TokenWorker::class.java)
+            val constraints = Constraints.Builder()
+                    .setRequiredNetworkType(NetworkType.CONNECTED)
+                    .build()
+            val worker = OneTimeWorkRequest.Builder(TokenWorker::class.java)
+                    .setConstraints(constraints)
+                    .build()
             WorkManager.getInstance(this).enqueue(worker)
-            Toast.makeText(this, R.string.login, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.login, Toast.LENGTH_LONG).show()
+            val i = Intent(this, HomeActivity::class.java)
+            startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
             finish()
         })
 

@@ -35,7 +35,7 @@ class TokenWorker @WorkerInject constructor(@Assisted private val context: Conte
                 }
             }
             latch.await()
-            Log.e(TAG, "doWork: $token")
+            Log.e(TAG, "doWork: $outWard")
             val result =  healthService.pushToken(preferenceRepository.token, outWard).execute()
             return if (result.isSuccessful)
                 Result.success()

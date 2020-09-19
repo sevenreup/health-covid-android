@@ -35,6 +35,7 @@ public class SharedPreferenceRepository {
 
     public void deleteToken() {
         editor.remove(TOKEN);
+        editor.remove(FIREBASE_MESSAGING);
         editor.apply();
     }
 

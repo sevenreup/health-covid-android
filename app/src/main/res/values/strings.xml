@@ -242,4 +242,5 @@ when an infected person coughs or sneezes"
     <string name="please_login_to_your_account">Please login to your account</string>
     <string name="logged_in_title">You have succeful created an account</string>
     <string name="logged_in_text">Please log in</string>
+    <string name="log_out">Log out</string>
 </resources>

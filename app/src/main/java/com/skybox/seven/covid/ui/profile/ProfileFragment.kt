@@ -12,6 +12,7 @@ import com.skybox.seven.covid.Covid
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.FragmentProfileBinding
 import com.skybox.seven.covid.ui.AuthActivity
+import com.skybox.seven.covid.ui.HomeActivity
 import com.skybox.seven.covid.ui.MainViewModel
 import com.skybox.seven.covid.util.Constants
 import com.yariksoffice.lingver.Lingver
@@ -22,6 +23,14 @@ import java.util.*
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     val viewModel: ProfileViewModel by activityViewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.logout.observe(this, androidx.lifecycle.Observer {
+            val i = Intent(context, HomeActivity::class.java)
+            startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
+        })
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

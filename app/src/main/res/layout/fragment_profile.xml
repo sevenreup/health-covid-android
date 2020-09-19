@@ -133,6 +133,7 @@
                 android:layout_marginTop="16dp"
                 app:cardUseCompatPadding="true"
                 app:cardElevation="@dimen/card_elevation_large"
+                android:visibility="@{fragment.viewModel.isLoggedIn() ? View.GONE : View.VISIBLE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/test_holder">
@@ -163,35 +164,11 @@
                         app:layout_constraintTop_toBottomOf="@id/help_header" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/view_contacts_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:onClick="@{() -> fragment.navigateContacts()}"
-                        android:text="View Contacts"
-                        android:visibility="@{fragment.viewModel.isLoggedIn() ? View.VISIBLE : View.GONE}"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/help_exp"
-                        tools:visibility="gone" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="@{() -> fragment.navigateAddContacts()}"
-                        android:text="Add Contacts"
-                        android:visibility="@{fragment.viewModel.isLoggedIn() ? View.VISIBLE : View.GONE}"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/view_contacts_btn"
-                        app:layout_constraintTop_toTopOf="@id/view_contacts_btn"
-                        tools:visibility="gone" />
-
-                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/login"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="@string/login"
-                        android:visibility="@{fragment.viewModel.isLoggedIn() ? View.GONE : View.VISIBLE}"
                         android:onClick="@{()-> fragment.goToLogin()}"
                         app:layout_constraintEnd_toStartOf="@id/register"
                         app:layout_constraintStart_toStartOf="parent"
@@ -203,13 +180,23 @@
                         android:layout_height="wrap_content"
                         android:text="@string/register"
                         android:onClick="@{()-> fragment.goToRegister()}"
-                        android:visibility="@{fragment.viewModel.isLoggedIn() ? View.GONE : View.VISIBLE}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/login"
                         app:layout_constraintTop_toTopOf="@id/login" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/log_out"
+                android:visibility="@{fragment.viewModel.isLoggedIn() ? View.VISIBLE : View.GONE}"
+                android:onClick="@{() -> fragment.viewModel.logout()}"
+                app:layout_constraintTop_toBottomOf="@id/test_holder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>
