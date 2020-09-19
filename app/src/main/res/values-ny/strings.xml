@@ -129,4 +129,9 @@
     <string name="cases_disclamer">Tsambali liIzisunga case data.  Likubwera posachedwa...</string>
     <string name="title_self_test">Kuziyesa nokha</string>
     <string name="language_header">Chiyankhulo</string>
+    <string name="good_morning">Mwadzuka bwanji</string>
+    <string name="good_afternoon">Mwaswela bwanji</string>
+    <string name="good_evening">Madzulo abwino</string>
+    <string name="good_night">Usiku wabwino</string>
+    <string name="no_available_phone_numbers">Palibepo manambala a foni amwe alipo</string>
 </resources>
