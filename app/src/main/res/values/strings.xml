@@ -161,6 +161,7 @@
     <string name="profile_test_not_taken_prompt">Test not taken today,</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
+    <string name="login_successful">Login Successful</string>
 
     <string name="self_test_intro_title">Welcome to the Self Assessment</string>
     <string name="self_test_intro_sub_title">We are going to ask you a few questions</string>
@@ -237,4 +238,8 @@ when an infected person coughs or sneezes"
     <string name="_321">321</string>
     <string name="_54747">54747</string>
     <string name="no_available_phone_numbers">No available phone numbers</string>
+    <string name="don_t_have_and_account">Don\'t have and account?</string>
+    <string name="please_login_to_your_account">Please login to your account</string>
+    <string name="logged_in_title">You have succeful created an account</string>
+    <string name="logged_in_text">Please log in</string>
 </resources>

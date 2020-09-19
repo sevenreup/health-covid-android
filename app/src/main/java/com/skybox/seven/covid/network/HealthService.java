@@ -24,7 +24,7 @@ public interface HealthService {
     @Headers({"Accept: application/json"})
     @FormUrlEncoded
     @POST("auth/login")
-    Call<AccessToken> loginUser(@Field("phone") String phone, @Field("password") String password);
+    Single<AccessToken> loginUser(@Field("phone") String phone, @Field("password") String password);
 
     @Headers({"Accept: application/json"})
     @FormUrlEncoded
@@ -34,7 +34,7 @@ public interface HealthService {
     @Headers({"Accept: application/json"})
     @FormUrlEncoded
     @POST("auth/register")
-    Call<GenericResponse> register(@Field("first_name")String fname, @Field("last_name")String lname, @Field("phone")String number, @Field("password")String gender);
+    Single<GenericResponse> register(@Field("first_name")String fname, @Field("last_name")String lname, @Field("phone")String number, @Field("password")String password);
 
     @Headers({"Accept: application/json"})
     @POST("contact/add")

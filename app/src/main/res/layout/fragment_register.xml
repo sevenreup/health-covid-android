@@ -7,13 +7,13 @@
 
         <variable
             name="fragment"
-            type="com.skybox.seven.covid.ui.register.RegisterFragment" />
+            type="com.skybox.seven.covid.ui.auth.RegisterFragment" />
     </data>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.register.RegisterFragment">
+        tools:context=".ui.auth.RegisterFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Login"
+                android:text="@string/register"
                 android:textAppearance="?textAppearanceHeadline5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Please login to your account"
+                android:text="Create a new account"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/page_title" />
 
@@ -60,6 +60,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
+                        android:text="@={fragment.viewModel.fname}"
                         android:hint="@string/input_first_name"
                         android:inputType="textPersonName" />
 
@@ -79,6 +80,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
+                        android:text="@={fragment.viewModel.lname}"
                         android:hint="@string/input_last_name"
                         android:inputType="textPersonName" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -96,6 +98,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
+                        android:text="@={fragment.viewModel.number}"
                         android:hint="@string/input_phone_number"
                         android:inputType="phone" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -114,25 +117,9 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="@string/input_password"
+                        android:text="@={fragment.viewModel.password}"
                         android:inputType="textPassword" />
                 </com.google.android.material.textfield.TextInputLayout>
-
-                <ProgressBar
-                    android:id="@+id/loading_progress"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:indeterminate="true"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toTopOf="@id/submitButton"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/userPassword" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/submitButton"
@@ -141,6 +128,7 @@
                     android:layout_marginTop="32dp"
                     android:padding="12dp"
                     android:text="@string/button_submit"
+                    android:onClick="@{() -> fragment.viewModel.register()}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/userPassword" />
@@ -151,7 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?textAppearanceSubtitle2"
-                android:text="Don't have and account?"
+                android:text="Already have an account?"
                 android:layout_marginTop="12dp"
                 app:layout_constraintTop_toBottomOf="@id/form_holder"
                 app:layout_constraintStart_toStartOf="parent"
