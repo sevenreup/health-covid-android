@@ -14,6 +14,7 @@ import com.skybox.seven.survey.SurveyView
 import com.skybox.seven.survey.answer.BooleanResult
 import com.skybox.seven.survey.answer.MultiChoiceResult
 import com.skybox.seven.survey.answer.Result
+import com.skybox.seven.survey.answer.TextResult
 import com.skybox.seven.survey.config.UtilityText
 import com.skybox.seven.survey.helper.SurveyCallbacks
 import com.skybox.seven.survey.model.*
@@ -101,7 +102,21 @@ class SelfTestQuestionnaireActivity: AppCompatActivity(), SurveyCallbacks {
                             answer.id,
                             selections,
                             null,
+                            null,
                             answer.endDate)
+                }
+                Result.TEXT -> {
+                    val answer = it.value as TextResult
+                    answerList += SelfTestAnswer(
+                            null,
+                            Constants.BOOLEAN,
+                            0,
+                            answer.id,
+                            null,
+                            null,
+                            answer.text,
+                            answer.endDate
+                    )
                 }
                 else -> {
                     val answer = it.value as BooleanResult
@@ -112,6 +127,7 @@ class SelfTestQuestionnaireActivity: AppCompatActivity(), SurveyCallbacks {
                             answer.id,
                             null,
                             answer.answer,
+                            null,
                             answer.endDate
                     )
                 }

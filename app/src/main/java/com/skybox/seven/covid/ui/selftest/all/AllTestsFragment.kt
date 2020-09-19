@@ -8,9 +8,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.work.Constraints
+import androidx.work.NetworkType
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import com.skybox.seven.covid.databinding.FragmentAllTestsBinding
 import com.skybox.seven.covid.epoxy.selftest.SelfTestController
 import com.skybox.seven.covid.ui.selftest.SelfTestViewModel
+import com.skybox.seven.covid.work.SubmitSelfTests
+import com.skybox.seven.covid.work.TokenWorker
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,6 +36,16 @@ class AllTestsFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         binding = FragmentAllTestsBinding.inflate(inflater, container, false)
         binding.recycler.setController(controller)
+        binding.submit.setOnClickListener {
+            // todo: Fix this, this is gay
+            val constraints = Constraints.Builder()
+                    .setRequiredNetworkType(NetworkType.CONNECTED)
+                    .build()
+            val worker = OneTimeWorkRequest.Builder(SubmitSelfTests::class.java)
+                    .setConstraints(constraints)
+                    .build()
+            WorkManager.getInstance(requireContext()).enqueue(worker);
+        }
         return binding.root
     }
 }

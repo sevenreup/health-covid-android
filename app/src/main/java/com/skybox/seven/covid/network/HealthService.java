@@ -60,6 +60,6 @@ public interface HealthService {
     @Headers({"Accept: application/json"})
     @FormUrlEncoded
     @POST("selftest/answers")
-    Single<GenericResponse> insertSelfTestAnswer(@Header("Authorization") String Authtoken, @Field("question_id") int id, @Field("answer_array") List<Integer> array,
+    Call<GenericResponse> insertSelfTestAnswer(@Header("Authorization") String Authtoken, @Field("question_id") int id, @Field("answer_array") List<Integer> array,
                                                  @Field("answer_boolean") Boolean answerBoolean, @Field("long_answer") String longAnswer);
 }

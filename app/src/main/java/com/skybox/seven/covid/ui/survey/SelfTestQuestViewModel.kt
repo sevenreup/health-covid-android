@@ -12,6 +12,7 @@ import com.skybox.seven.covid.util.Constants
 import com.skybox.seven.survey.answer.BooleanResult
 import com.skybox.seven.survey.answer.MultiChoiceResult
 import com.skybox.seven.survey.answer.Result
+import com.skybox.seven.survey.answer.TextResult
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -41,8 +42,21 @@ class SelfTestQuestViewModel @ViewModelInject constructor(questionsRepository: S
                                                 id,
                                                 answer.id,
                                                 selections,
-                                                null,
+                                                null, null,
                                                 answer.endDate)
+                                    }
+                                    Result.TEXT -> {
+                                        val answer = it.value as TextResult
+                                        answerList += SelfTestAnswer(
+                                                null,
+                                                Constants.BOOLEAN,
+                                                id,
+                                                answer.id,
+                                                null,
+                                                null,
+                                                answer.text,
+                                                answer.endDate
+                                        )
                                     }
                                     else -> {
                                         val answer = it.value as BooleanResult
@@ -52,7 +66,7 @@ class SelfTestQuestViewModel @ViewModelInject constructor(questionsRepository: S
                                                 id,
                                                 answer.id,
                                                 null,
-                                                answer.answer,
+                                                answer.answer,null,
                                                 answer.endDate
                                         )
                                     }

@@ -40,4 +40,6 @@ class SelfTestAnswersRepository @Inject constructor(private val selfTestAnswerDA
     fun getTopSelfTests() = selfTestCompleteDAO.getLatestThree()
 
     fun getAllTest() = selfTestCompleteDAO.getAll()
+
+    fun getUnUploaded() = selfTestCompleteDAO.getUnUploaded(false)
 }

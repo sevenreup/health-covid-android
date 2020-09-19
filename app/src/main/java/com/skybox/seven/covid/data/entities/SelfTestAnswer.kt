@@ -12,4 +12,5 @@ data class SelfTestAnswer(@PrimaryKey(autoGenerate = true) var id: Int?,
                           var questionID: Int,
                           var answerArray: List<Int>?,
                           var answerBoolean: Boolean?,
+                          var longAnswer: String?,
                           val createdAt: Date)

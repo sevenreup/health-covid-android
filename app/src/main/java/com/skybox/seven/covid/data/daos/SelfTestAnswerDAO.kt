@@ -9,6 +9,7 @@ import com.skybox.seven.covid.data.entities.SelfTestAnswer
 import com.skybox.seven.covid.data.entities.SelfTestComplete
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Maybe
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import java.util.*
 
@@ -24,6 +25,9 @@ interface SelfTestAnswerDAO {
 
     @Query("SELECT createdAt FROM $TABLE_NAME ORDER BY createdAt LIMIT 1")
     fun getLatest(): LiveData<Date>
+
+    @Query("SELECT * FROM $TABLE_NAME WHERE completeID = :complete")
+    fun get(complete: Long): List<SelfTestAnswer>
 
     @Insert
     fun insertAll(tests: List<SelfTestAnswer>): Completable

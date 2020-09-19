@@ -9,4 +9,4 @@ import java.util.*
 data class SelfTestComplete(@PrimaryKey(autoGenerate = true) var id: Long?,
                             val title: String,
                             val date: Date,
-                            val submitted: Boolean)
+                            var submitted: Boolean)

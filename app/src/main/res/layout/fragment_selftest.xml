@@ -68,9 +68,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/last_test"
-                        app:layout_constraintBottom_toBottomOf="@id/last_test"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/last_test" />
+                        app:layout_constraintTop_toBottomOf="@id/test_title"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/last_test"
@@ -80,8 +79,8 @@
                         android:layout_marginLeft="16dp"
                         android:clickable="false"
                         android:text="@{fragment.viewModel.latestTest == null ? fragment.getString(R.string.no_test) : fragment.formatDate(fragment.viewModel.latestTest)}"
-                        app:layout_constraintStart_toEndOf="@id/last_test_title"
-                        app:layout_constraintTop_toBottomOf="@id/test_title"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/last_test_title"
                         app:layout_constraintEnd_toEndOf="parent"
                         tools:text="Yesterday" />
 
