@@ -5,6 +5,7 @@ import com.skybox.seven.covid.network.responses.ContactRequest;
 import com.skybox.seven.covid.network.responses.GenericResponse;
 import com.skybox.seven.covid.model.ContactModel;
 import com.skybox.seven.covid.model.ContactRequestModel;
+import com.skybox.seven.covid.network.responses.selftest.SelfTestResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,4 +52,14 @@ public interface HealthService {
     @FormUrlEncoded
     @POST("contact/verify/user")
     Single<GenericResponse> verifyContact(@Header("Authorization") String Authtoken, @Field("id") int id, @Field("status") String status);
+
+    @Headers({"Accept: application/json"})
+    @GET("selftest/questions")
+    Call<SelfTestResponse> getSelfTests(@Header("Authorization") String Authtoken);
+
+    @Headers({"Accept: application/json"})
+    @FormUrlEncoded
+    @POST("selftest/answers")
+    Single<GenericResponse> insertSelfTestAnswer(@Header("Authorization") String Authtoken, @Field("question_id") int id, @Field("answer_array") List<Integer> array,
+                                                 @Field("answer_boolean") Boolean answerBoolean, @Field("long_answer") String longAnswer);
 }

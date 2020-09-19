@@ -3,6 +3,7 @@ package com.skybox.seven.covid
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.multidex.MultiDexApplication
 import androidx.work.Configuration
+import com.facebook.stetho.Stetho
 import com.skybox.seven.covid.data.entities.Language
 import com.yariksoffice.lingver.Lingver
 import com.yariksoffice.lingver.store.PreferenceLocaleStore
@@ -24,6 +25,9 @@ class Covid : MultiDexApplication(), Configuration.Provider {
         setLogLevel(RadarLogLevel.DEBUG)
         val store = PreferenceLocaleStore(this, Locale(LANGUAGE_ENGLISH))
         Lingver.init(this, store)
+        if(BuildConfig.DEBUG) {
+            Stetho.initializeWithDefaults(this)
+        }
     }
 
     companion object {

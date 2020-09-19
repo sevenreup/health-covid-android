@@ -52,7 +52,7 @@ class AppModule {
                         OkHttpClient()
                                 .newBuilder()
                                 .cache(Cache(File(context.cacheDir, "offlineCache"), 10 * 1024 * 1024))
-                                .addInterceptor(HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) })
+                                .addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY })
                                 .addNetworkInterceptor(provideOnlineInterceptor())
                                 .addNetworkInterceptor(provideOfflineCacheInterceptor())
                                 .build()
@@ -65,13 +65,12 @@ class AppModule {
     // Databases
     @Singleton
     @Provides
-    fun provideDataBase(@ApplicationContext context: Context): AppDatabase =
-            AppDatabase.getDatabase(context)
+    fun provideDataBase(@ApplicationContext context: Context): AppDatabase = AppDatabase.getDatabase(context)
+
     @Singleton @Provides fun providesAdviceRepo(db: AppDatabase): AdviceRepository = AdviceRepository(db.adviceDAO())
     @Singleton @Provides fun providesInfoRepo(db: AppDatabase): InfoGraphicRepository = InfoGraphicRepository(db.infoGraphicDAO())
     @Singleton @Provides fun providesLanguageRepo(db: AppDatabase): LanguageRepository = LanguageRepository(db.languageDAO())
     @Singleton @Provides fun providesMythsRepo(db: AppDatabase): MythRepository = MythRepository(db.mythsDAO())
-
     @Singleton @Provides fun providesSelfTestQuestions(db: AppDatabase): SelfTestQuestionDAO = db.selfTestQuestionDAO()
     @Singleton @Provides fun providesSelfTestAnswers(db: AppDatabase): SelfTestAnswerDAO = db.selfTestAnswerDAO()
     @Singleton @Provides fun providesSelfTestComplete(db: AppDatabase): SelfTestCompleteDAO = db.selfTestCompleteDAO()

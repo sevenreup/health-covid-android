@@ -1,4 +1,4 @@
-package com.skybox.seven.covid.util
+package com.skybox.seven.covid.work
 
 import android.content.Context
 import android.util.Log
@@ -9,6 +9,7 @@ import androidx.work.WorkerParameters
 import com.google.gson.Gson
 import com.skybox.seven.covid.data.AppDatabase
 import com.skybox.seven.covid.model.RawData
+import com.skybox.seven.covid.util.RandomSeeders
 
 private const val TAG = "DataBaseInitWorker"
 class DataBaseInitWorker @WorkerInject constructor(@Assisted private val context: Context,
@@ -32,8 +33,6 @@ class DataBaseInitWorker @WorkerInject constructor(@Assisted private val context
         db.adviceDAO().insertAll(chichewa.prevention)
         db.mythsDAO().insertAll(chichewa.myth)
         db.qnADAO().insertAll(chichewa.questions)
-
-        db.selfTestQuestionDAO().insertAll(RandomSeeders.setUpQuestions())
 
         db.languageDAO().insertAll(RandomSeeders.setUpLanguages())
 

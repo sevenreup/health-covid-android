@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "dd9c1ce3206bc633838403555689337a",
+    "identityHash": "155954624a6ad8e750a618e03962b01c",
     "entities": [
       {
         "tableName": "SelfTestAnswers",
@@ -62,11 +62,17 @@
       },
       {
         "tableName": "SelfTestQuestions",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `question` TEXT NOT NULL, `subTitle` TEXT NOT NULL, `type` INTEGER NOT NULL, `arrays` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `questionID` INTEGER NOT NULL, `question` TEXT, `subTitle` TEXT, `type` INTEGER NOT NULL, `locale` INTEGER NOT NULL, `arrays` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "questionID",
+            "columnName": "questionID",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -74,17 +80,23 @@
             "fieldPath": "question",
             "columnName": "question",
             "affinity": "TEXT",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "subTitle",
             "columnName": "subTitle",
             "affinity": "TEXT",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "type",
             "columnName": "type",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "locale",
+            "columnName": "locale",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -372,7 +384,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'dd9c1ce3206bc633838403555689337a')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '155954624a6ad8e750a618e03962b01c')"
     ]
   }
 }

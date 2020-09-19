@@ -7,6 +7,7 @@ import com.skybox.seven.covid.data.entities.SelfTestAnswer
 import com.skybox.seven.covid.data.entities.SelfTestComplete
 import com.skybox.seven.covid.data.repositories.SelfTestAnswersRepository
 import com.skybox.seven.covid.data.repositories.SelfTestQuestionsRepository
+import com.skybox.seven.covid.repository.SharedPreferenceRepository
 import com.skybox.seven.covid.util.Constants
 import com.skybox.seven.survey.answer.BooleanResult
 import com.skybox.seven.survey.answer.MultiChoiceResult
@@ -18,8 +19,9 @@ import java.util.*
 
 class SelfTestQuestViewModel @ViewModelInject constructor(questionsRepository: SelfTestQuestionsRepository,
                                                           private val compositeDisposable: CompositeDisposable,
+                                                          preferenceRepository: SharedPreferenceRepository,
                                                           private val selfTestAnswersRepository: SelfTestAnswersRepository) : ViewModel() {
-    val questions = questionsRepository.getAll()
+    val questions = questionsRepository.getAll(preferenceRepository.activeLanguage)
     val finished = MutableLiveData<Boolean>()
 
     fun submit(answers: HashMap<Int, Result>?) {

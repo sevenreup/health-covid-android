@@ -41,25 +41,25 @@ class SelfTestQuestionnaireActivity: AppCompatActivity(), SurveyCallbacks {
             it.forEach { quest ->
                 when (quest.type) {
                     Constants.ARRAY -> steps.add(
-                            MultiSelectionStep(quest.id,
-                                    quest.question,
-                                    quest.subTitle,
+                            MultiSelectionStep(quest.questionID,
+                                    quest.question!!,
+                                    quest.subTitle!!,
                                     quest.arrays!!
                             )
                     )
                     Constants.TEXT -> steps.add(
                             TextStep(
-                                    quest.id,
-                                    quest.question,
-                                    quest.subTitle,
+                                    quest.questionID,
+                                    quest.question!!,
+                                    quest.subTitle!!,
                                     true,
                                     getString(R.string.text_survey_hint)
                             )
                     )
                     else ->
-                        steps.add(BooleanStep(quest.id,
-                                quest.question,
-                                quest.subTitle))
+                        steps.add(BooleanStep(quest.questionID,
+                                quest.question!!,
+                                quest.subTitle!!))
                 }
             }
             steps.add(
