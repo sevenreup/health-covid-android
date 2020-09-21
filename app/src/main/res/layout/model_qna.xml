@@ -38,7 +38,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_margin="10dp"
-                android:src="@drawable/ic_keyboard_arrow"/>
+                app:srcCompat="@drawable/ic_keyboard_arrow"/>
 
         </RelativeLayout>
 

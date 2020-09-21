@@ -53,7 +53,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:layout_margin="20dp"
-                    android:src="@drawable/ic_whatsapp_brown"
+                    app:srcCompat="@drawable/ic_whatsapp_brown"
                     android:layout_alignParentEnd="true"
                     android:contentDescription="@string/call" />
             </RelativeLayout>
