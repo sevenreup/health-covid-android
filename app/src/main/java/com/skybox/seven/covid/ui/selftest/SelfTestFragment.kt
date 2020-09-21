@@ -23,9 +23,6 @@ class SelfTestFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.topThree.observe(this, androidx.lifecycle.Observer {
-            controller.setData(false, it)
-        })
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -39,6 +36,10 @@ class SelfTestFragment : Fragment() {
         viewModel.todayTest.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             if (it == null) binding.startTest.setOnClickListener {findNavController().navigate(R.id.start_self_test) }
             else binding.startTest.setOnClickListener(null)
+        })
+        viewModel.topThree.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            controller.setData(false, it)
+            if (it.isNotEmpty()) binding.allTestHolder.setOnClickListener { all() }
         })
         return binding.root
     }
