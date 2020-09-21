@@ -243,4 +243,12 @@ when an infected person coughs or sneezes"
     <string name="logged_in_title">You have succeful created an account</string>
     <string name="logged_in_text">Please log in</string>
     <string name="log_out">Log out</string>
+    <string name="self">Self</string>
+    <string name="self_test_dialog_title">Before you continue</string>
+    <string name="sel_test_supporting_text">We need to know a few things about you before you can start submitting your self assessments. If you already used this application and register, please Log in. If you have never registered please register.</string>
+    <string name="how_this_self_assessment_works">How this Self assessment tool works</string>
+    <string name="self_assessment_explanation">This tool can help you understand what to do nest about Covid-19. It helps you to keep daily logs of your health.</string>
+    <string name="self_assessment_list_explanation">You will be required to answer a few questions about symptoms, travel, contact and your general health.</string>
+    <string name="self_assessment_privacy_explanation">All your answers are store locally until you chose to Share them with the ministry</string>
+    <string name="assessment_history">Assessment History</string>
 </resources>

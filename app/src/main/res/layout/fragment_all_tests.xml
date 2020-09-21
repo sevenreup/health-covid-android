@@ -7,13 +7,14 @@
     tools:context=".ui.selftest.all.AllTestsFragment"
     android:padding="16dp">
 
-    <ImageView android:id="@+id/back"
+    <com.google.android.material.button.MaterialButton android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/page_title"
         app:layout_constraintBottom_toBottomOf="@id/page_title"
-        app:srcCompat="@drawable/ic_arrow_back_24" />
+        app:icon="@drawable/ic_arrow_back_24"
+        style="@style/Covid.Icon.Button"/>
 
     <TextView
         android:id="@+id/page_title"

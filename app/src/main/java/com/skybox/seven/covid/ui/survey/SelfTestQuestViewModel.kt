@@ -25,8 +25,8 @@ class SelfTestQuestViewModel @ViewModelInject constructor(questionsRepository: S
     val questions = questionsRepository.getAll(preferenceRepository.activeLanguage)
     val finished = MutableLiveData<Boolean>()
 
-    fun submit(answers: HashMap<Int, Result>?) {
-        val complete = SelfTestComplete(null, "", Date(), false)
+    fun submit(answers: HashMap<Int, Result>?, string: String) {
+        val complete = SelfTestComplete(null, "", Date(), false, string)
         compositeDisposable.add(
                 selfTestAnswersRepository.insertComplete(complete)
                         .flatMap {id ->
