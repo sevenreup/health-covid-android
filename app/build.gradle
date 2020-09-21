@@ -138,7 +138,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics:17.2.1'
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
-    implementation 'com.github.sevenreup:survey-library:2d80231d1d'
+    implementation 'com.github.sevenreup:survey-library:5debd8bab0'
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.5.Final'
 
     testImplementation 'junit:junit:4.12'
