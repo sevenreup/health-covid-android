@@ -89,7 +89,9 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".ui.HomeActivity" />
+        <activity android:name=".ui.HomeActivity">
+            <nav-graph android:value="@navigation/profile" />
+        </activity>
         <activity
             android:name=".ui.common.LocationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -108,6 +110,14 @@
             android:name="androidx.work.impl.WorkManagerInitializer"
             android:authorities="${applicationId}.workmanager-init"
             tools:node="remove" />
+
+
+        <receiver android:name=".receivers.NotificationReceiver"/>
+        <receiver android:name=".receivers.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

@@ -9,7 +9,9 @@ import android.net.Uri
 import android.os.Environment
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.core.graphics.createBitmap
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -102,4 +104,13 @@ fun Bitmap.getLocalBitmapUri(context: Context): Uri {
         Uri.fromFile(file);
     }
     return bitURI
+}
+
+fun Context.vectorToBitmap(drawableID: Int): Bitmap? {
+    val drawable = ContextCompat.getDrawable(this, drawableID) ?: return null
+    val bitmap = createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888) ?: return null
+    val canvas = Canvas(bitmap)
+    drawable.setBounds(0, 0, canvas.width, canvas.height)
+    drawable.draw(canvas)
+    return bitmap
 }

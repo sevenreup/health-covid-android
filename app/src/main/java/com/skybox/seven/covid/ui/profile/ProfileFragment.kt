@@ -8,14 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.skybox.seven.covid.Covid
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.FragmentProfileBinding
 import com.skybox.seven.covid.ui.AuthActivity
 import com.skybox.seven.covid.ui.HomeActivity
-import com.skybox.seven.covid.ui.MainViewModel
-import com.skybox.seven.covid.util.Constants
-import com.yariksoffice.lingver.Lingver
 import org.ocpsoft.prettytime.PrettyTime
 import java.util.*
 

@@ -20,6 +20,9 @@ interface SelfTestCompleteDAO {
     @Query("SELECT * FROM $TABLE_NAME WHERE date BETWEEN :start AND :end")
     fun getTodayResults(start: Date, end: Date): LiveData<SelfTestComplete?>
 
+    @Query("SELECT * FROM $TABLE_NAME WHERE date BETWEEN :start AND :end")
+    fun getTodayResultsSync(start: Date, end: Date): SelfTestComplete?
+
     @Query("SELECT date FROM $TABLE_NAME ORDER BY date DESC LIMIT 1")
     fun getLatest(): LiveData<Date?>
 

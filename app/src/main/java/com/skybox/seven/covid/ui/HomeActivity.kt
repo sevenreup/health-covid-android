@@ -2,32 +2,23 @@ package com.skybox.seven.covid.ui
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.content.Intent
-import android.content.SharedPreferences
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.ActivityHomeBinding
-import com.skybox.seven.covid.repository.SharedPreferenceRepository
 import com.skybox.seven.covid.util.setupWithNavController
-import com.yariksoffice.lingver.Lingver
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
 
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()
     private lateinit var binding: ActivityHomeBinding
-    private var changeListener: OnSharedPreferenceChangeListener? = null
     private var currentNavController: LiveData<NavController>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +30,7 @@ class HomeActivity : AppCompatActivity() {
             val channelId = getString(R.string.default_notification_channel_name)
             val channelName = getString(R.string.default_notification_channel_name)
             val notificationManager = getSystemService(NotificationManager::class.java)
-            notificationManager.createNotificationChannel(NotificationChannel(channelId,
+            notificationManager?.createNotificationChannel(NotificationChannel(channelId,
                     channelName, NotificationManager.IMPORTANCE_HIGH))
         }
         if (intent.extras != null) {
@@ -49,19 +40,10 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
-        changeListener = OnSharedPreferenceChangeListener { sharedPreferences: SharedPreferences, key: String ->
-            if (key == SharedPreferenceRepository.TOKEN) {
-                if (sharedPreferences.getString(SharedPreferenceRepository.TOKEN, null) == null) {
-                    recreate()
-                }
-            }
-        }
-        viewModel.registerPreferenceChangeListener(changeListener)
-        viewModel.changeLanguage.observe(this, Observer { locale: Locale? -> setNewLocale(locale!!) })
-
         if (savedInstanceState == null) {
             setUpBottomNavigation()
         }
+        viewModel.setUpWorker(this)
     }
 
     private fun setUpBottomNavigation() {
@@ -76,17 +58,6 @@ class HomeActivity : AppCompatActivity() {
         currentNavController = controllers
     }
 
-    override fun onDestroy() {
-        viewModel.removePreferenceChangeListener(changeListener)
-        super.onDestroy()
-    }
-
-    private fun setNewLocale(locale: Locale) {
-        viewModel.setLanguage(locale)
-        Lingver.getInstance().setLocale(this, locale)
-        restart()
-    }
-
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
         // Now that BottomNavigationBar has restored its instance state
@@ -97,11 +68,6 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return currentNavController?.value?.navigateUp() ?: false
-    }
-
-    private fun restart() {
-        val i = Intent(this, HomeActivity::class.java)
-        startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
     }
 
     override fun onBackPressed() {
