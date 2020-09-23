@@ -88,7 +88,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
                             android:layout_margin="10dp"
-                            android:src="@drawable/ic_whatsapp_brown" />
+                            app:srcCompat="@drawable/ic_whatsapp_brown" />
                     </RelativeLayout>
 
                     <TextView
@@ -151,7 +151,7 @@
                                 android:layout_alignParentEnd="true"
                                 android:layout_alignParentRight="true"
                                 android:layout_margin="10dp"
-                                android:src="@drawable/ic_whatsapp_green"
+                                app:srcCompat="@drawable/ic_whatsapp_green"
                                 tools:ignore="ContentDescription" />
                         </RelativeLayout>
 
@@ -211,7 +211,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_centerInParent="true"
-                                        android:src="@drawable/ic_google_mobile" />
+                                        app:srcCompat="@drawable/ic_google_mobile" />
                                 </RelativeLayout>
                             </RelativeLayout>
 
@@ -278,7 +278,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_centerInParent="true"
-                                        android:src="@drawable/ic_google_mobile" />
+                                        app:srcCompat="@drawable/ic_google_mobile" />
                                 </RelativeLayout>
                             </RelativeLayout>
 

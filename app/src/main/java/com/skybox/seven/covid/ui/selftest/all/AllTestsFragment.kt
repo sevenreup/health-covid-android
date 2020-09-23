@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.work.Constraints
 import androidx.work.NetworkType
@@ -50,6 +51,7 @@ class AllTestsFragment : Fragment() {
                     .build()
             WorkManager.getInstance(requireContext()).enqueue(worker);
         }
+        binding.back.setOnClickListener { findNavController().navigateUp() }
         return binding.root
     }
 

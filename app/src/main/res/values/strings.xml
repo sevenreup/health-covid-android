@@ -251,5 +251,4 @@ when an infected person coughs or sneezes"
     <string name="self_assessment_list_explanation">You will be required to answer a few questions about symptoms, travel, contact and your general health.</string>
     <string name="self_assessment_privacy_explanation">All your answers are store locally until you chose to Share them with the ministry</string>
     <string name="assessment_history">Assessment History</string>
-    <string name="no_self_assess">No Self assessments available</string>
 </resources>
