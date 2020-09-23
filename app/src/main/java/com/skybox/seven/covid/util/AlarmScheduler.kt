@@ -11,15 +11,22 @@ object AlarmScheduler {
     fun createAlarms(context: Context) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
-        val date = Calendar.getInstance()
-        date.set(Calendar.HOUR_OF_DAY, 12)
-        date.set(Calendar.MINUTE, 0)
+        val morning = Calendar.getInstance()
+        morning.set(Calendar.HOUR_OF_DAY, 12)
+        morning.set(Calendar.MINUTE, 0)
 
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, date.timeInMillis, AlarmManager.INTERVAL_DAY, createPendingIntent(context))
+        val evening = Calendar.getInstance()
+        evening.set(Calendar.HOUR_OF_DAY, 17)
+        evening.set(Calendar.MINUTE, 0)
+
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, morning.timeInMillis, AlarmManager.INTERVAL_DAY, createPendingMorningIntent(context, 0))
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, evening.timeInMillis, AlarmManager.INTERVAL_DAY, createPendingMorningIntent(context, 1))
     }
 
-    private fun createPendingIntent(context: Context): PendingIntent? {
-        val intent = Intent(context.applicationContext, NotificationReceiver::class.java)
-        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    private fun createPendingMorningIntent(context: Context, time: Int): PendingIntent? {
+        val intent = Intent(context.applicationContext, NotificationReceiver::class.java).apply {
+            putExtra("TIME", time)
+        }
+        return PendingIntent.getBroadcast(context, time, intent, PendingIntent.FLAG_UPDATE_CURRENT)
     }
 }
