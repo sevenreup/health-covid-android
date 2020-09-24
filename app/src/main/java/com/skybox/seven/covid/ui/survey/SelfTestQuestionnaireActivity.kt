@@ -133,7 +133,7 @@ class SelfTestQuestionnaireActivity: AppCompatActivity(), SurveyCallbacks {
                 }
             }
         }
-        viewModel.submit(answers)
+        viewModel.submit(answers, getString(R.string.self))
     }
 
     override fun surveyClosed() {

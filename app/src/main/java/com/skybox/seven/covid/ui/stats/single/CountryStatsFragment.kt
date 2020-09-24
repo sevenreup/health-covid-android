@@ -35,6 +35,7 @@ class CountryStatsChatFragment : Fragment() {
     private lateinit var binding: FragmentStatsBarChatBinding
     private lateinit var args: CountryStatsChatFragmentArgs
     val viewModel: CountryStatsViewModel by viewModels()
+    private var active = WEEK
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,18 +56,18 @@ class CountryStatsChatFragment : Fragment() {
 
         }
         viewModel.countryStats.observe(viewLifecycleOwner, Observer {
-           binding.countryTotals.apply {
-               title =  "${args.country.country} ${getString(R.string.cases)}"
-               cases = it.cases.toString()
-               active = it.active.toString()
-               deaths = it.deaths.toString()
-               recovered = it.recovered.toString()
-               problems.visibility = View.VISIBLE
-               share.visibility = View.VISIBLE
-               share.setOnClickListener {
-                   StatisticsFragment.shareShoot(this, requireContext())
-               }
-           }
+            binding.countryTotals.apply {
+                title = "${args.country.country} ${getString(R.string.cases)}"
+                cases = it.cases.toString()
+                active = it.active.toString()
+                deaths = it.deaths.toString()
+                recovered = it.recovered.toString()
+                problems.visibility = View.VISIBLE
+                share.visibility = View.VISIBLE
+                share.setOnClickListener {
+                    StatisticsFragment.shareShoot(this, requireContext())
+                }
+            }
             countryChat(it)
         })
         binding.timeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -79,6 +80,8 @@ class CountryStatsChatFragment : Fragment() {
 
         }
         viewModel.allStats.observe(viewLifecycleOwner, Observer {
+            binding.refresh.isRefreshing = false
+
             when (it.dataState) {
                 DataState.SUCCESS -> {
                     if (binding.chartType.checkedButtonId == R.id.bar) showBar(it.data!!) else showLine(it.data!!)
@@ -91,10 +94,17 @@ class CountryStatsChatFragment : Fragment() {
                     // todo: show error
                 }
             }
-
         })
         initBar()
         initLine()
+
+        binding.refresh.setOnRefreshListener {
+            when(active) {
+                ALL -> viewModel.getYearData(args.country.country)
+                WEEK -> viewModel.getWeekData(args.country.country)
+                else -> viewModel.getWeekData(args.country.country)
+            }
+        }
         return binding.root
     }
 
@@ -108,13 +118,18 @@ class CountryStatsChatFragment : Fragment() {
 
     fun onTimelineChanged() {
         when (binding.timeSpinner.selectedItem as String) {
-            getString(R.string.week) ->
+            getString(R.string.week) -> {
                 viewModel.getWeekData(args.country.country)
-            getString(R.string.month) ->
+                active = WEEK
+            }
+            getString(R.string.month) -> {
                 viewModel.getMothData(args.country.country)
-            else ->
+                active = MONTH
+            }
+            else -> {
                 viewModel.getYearData(args.country.country)
-
+                active = ALL
+            }
         }
     }
 
@@ -250,16 +265,16 @@ class CountryStatsChatFragment : Fragment() {
 
     }
 
-   fun countryChat(countryStat: CountryStat) {
-       val barDataSet = PieDataSet(
-               listOf(
-                       PieEntry(countryStat.deaths.toFloat(), requireContext().getString(R.string.deaths)),
-                       PieEntry(countryStat.active.toFloat(), requireContext().getString(R.string.active)),
-                       PieEntry(countryStat.recovered.toFloat(), requireContext().getString(R.string.recovered))
-               ),
-               "key"
-       )
-       StatisticsFragment.setUpBar(barDataSet, requireContext(), binding.countryTotals.worldChat)
+    fun countryChat(countryStat: CountryStat) {
+        val barDataSet = PieDataSet(
+                listOf(
+                        PieEntry(countryStat.deaths.toFloat(), requireContext().getString(R.string.deaths)),
+                        PieEntry(countryStat.active.toFloat(), requireContext().getString(R.string.active)),
+                        PieEntry(countryStat.recovered.toFloat(), requireContext().getString(R.string.recovered))
+                ),
+                "key"
+        )
+        StatisticsFragment.setUpBar(barDataSet, requireContext(), binding.countryTotals.worldChat)
     }
 
     fun goBack() {
@@ -268,6 +283,9 @@ class CountryStatsChatFragment : Fragment() {
 
     companion object {
         private const val DATE_FORMAT = "dd/MM"
+        private const val WEEK = 0
+        private val ALL = 1
+        private val MONTH = 2
     }
 }
 

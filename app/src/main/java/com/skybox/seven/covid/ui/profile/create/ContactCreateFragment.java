@@ -12,14 +12,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.network.responses.ContactRequest;
 import com.skybox.seven.covid.ui.common.LocationActivity;
-import com.skybox.seven.covid.ui.MainViewModel;
 
 import java.util.ArrayList;
 
@@ -30,7 +28,7 @@ public class ContactCreateFragment extends Fragment {
     LayoutInflater inflater;
     LinearLayout membersView;
     ArrayList<ContactRequest> members = new ArrayList<>();
-    MainViewModel viewModel;
+//    MainViewModel viewModel;
     LatLng userLocation;
     Button saveButton;
     public ContactCreateFragment() {
@@ -43,7 +41,7 @@ public class ContactCreateFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_contact_create, container, false);
-        viewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
+//        viewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
         membersView = v.findViewById(R.id.membersParent);
         RelativeLayout addPersonView = v.findViewById(R.id.addPerson);
         RelativeLayout addLocView = v.findViewById(R.id.addLocation);
@@ -74,7 +72,7 @@ public class ContactCreateFragment extends Fragment {
         });
 
         saveButton.setOnClickListener(v1 -> {
-            viewModel.saveContacts(members, userLocation);
+//            viewModel.saveContacts(members, userLocation);
         });
 
 

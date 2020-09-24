@@ -10,205 +10,211 @@
             type="com.skybox.seven.covid.ui.stats.overview.StatisticsFragment" />
     </data>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scrollable"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+       android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView android:id="@+id/scrollable"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:padding="16dp">
 
             <LinearLayout
-                android:id="@+id/mw_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_purple"
-                android:onClick="@{() -> fragment.toMWStats()}"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <TextView
-                    android:id="@+id/mw_situation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:text="@string/mw_situation"
-                    android:textColor="?colorOnPrimary" />
+                android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/mw_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/background_black"
-                    android:weightSum="4">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_margin="10dp"
-                            android:text="@{fragment.viewModel.malawiData.cases.toString()}"
-                            android:textColor="?colorError"
-                            android:textSize="15sp"
-                            tools:text="4, 361" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/confirmed"
-                            android:textColor="?colorError"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_margin="10dp"
-                            android:text="@{fragment.viewModel.malawiData.deaths.toString()}"
-                            android:textColor="@android:color/white"
-                            android:textSize="15sp"
-                            tools:text="128" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/deaths"
-                            android:textColor="@android:color/white"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_margin="10dp"
-                            android:text="@{fragment.viewModel.malawiData.recovered.toString()}"
-                            android:textColor="?badgeTextColor"
-                            android:textSize="15sp"
-                            tools:text="4, 361" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/recovered"
-                            android:textColor="?badgeTextColor"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_margin="10dp"
-                            android:text="@{fragment.viewModel.malawiData.active.toString()}"
-                            android:textColor="?colorSecondary"
-                            android:textSize="15sp"
-                            tools:text="4, 361" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/active"
-                            android:textColor="?colorSecondary"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/stat_info_banner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/background_purple"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mw_container">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:src="@drawable/relax_clip" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:background="@drawable/background_purple"
+                    android:onClick="@{() -> fragment.toMWStats()}"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
 
                     <TextView
+                        android:id="@+id/mw_situation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="@string/stats_info_title"
+                        android:layout_margin="20dp"
+                        android:text="@string/mw_situation"
                         android:textColor="?colorOnPrimary" />
 
-                    <TextView
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/background_black"
+                        android:weightSum="4">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:text="@{fragment.viewModel.malawiData.cases.toString()}"
+                                android:textColor="?colorError"
+                                android:textSize="15sp"
+                                tools:text="4, 361" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:text="@string/confirmed"
+                                android:textColor="?colorError"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:text="@{fragment.viewModel.malawiData.deaths.toString()}"
+                                android:textColor="@android:color/white"
+                                android:textSize="15sp"
+                                tools:text="128" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:text="@string/deaths"
+                                android:textColor="@android:color/white"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:text="@{fragment.viewModel.malawiData.recovered.toString()}"
+                                android:textColor="?badgeTextColor"
+                                android:textSize="15sp"
+                                tools:text="4, 361" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:text="@string/recovered"
+                                android:textColor="?badgeTextColor"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:text="@{fragment.viewModel.malawiData.active.toString()}"
+                                android:textColor="?colorSecondary"
+                                android:textSize="15sp"
+                                tools:text="4, 361" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:text="@string/active"
+                                android:textColor="?colorSecondary"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/stat_info_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/background_purple"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mw_container">
+
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="20dp"
-                        android:text="@string/stats_info_content"
-                        android:textColor="?colorOnPrimary"
-                        android:textSize="14sp" />
+                        android:layout_margin="20dp"
+                        android:src="@drawable/relax_clip" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/stats_info_title"
+                            android:textColor="?colorOnPrimary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:text="@string/stats_info_content"
+                            android:textColor="?colorOnPrimary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
                 </LinearLayout>
+
+                <include
+                    android:id="@+id/world_container"
+                    layout="@layout/layout_total_cases"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/background_purple"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/stat_info_banner" />
             </LinearLayout>
 
-            <include
-                android:id="@+id/world_container"
-                layout="@layout/layout_total_cases"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/background_purple"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/stat_info_banner"/>
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

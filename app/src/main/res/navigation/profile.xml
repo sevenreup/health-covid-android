@@ -35,7 +35,11 @@
         android:id="@+id/selfTest_view"
         android:name="com.skybox.seven.covid.ui.selftest.SelfTestFragment"
         android:label="fragment_self_test"
-        tools:layout="@layout/fragment_selftest"/>
+        tools:layout="@layout/fragment_selftest">
+        <deepLink
+            android:id="@+id/selftest_deepLink"
+            app:uri="https://www.malawi.health.mw/selftest" />
+    </fragment>
     <activity
         android:id="@+id/selfTestQuestionareActivity"
         android:name="com.skybox.seven.covid.ui.survey.SelfTestQuestionnaireActivity"
