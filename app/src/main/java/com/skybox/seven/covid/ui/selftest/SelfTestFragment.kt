@@ -75,4 +75,8 @@ class SelfTestFragment : Fragment() {
     fun back() {
         findNavController().navigateUp()
     }
+
+    fun reFetchData() {
+        viewModel.reFetchData(requireContext(), viewLifecycleOwner)
+    }
 }

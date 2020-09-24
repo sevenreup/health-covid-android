@@ -10,6 +10,7 @@
             type="com.skybox.seven.covid.ui.selftest.SelfTestFragment" />
 
         <import type="com.skybox.seven.covid.R" />
+        <import type="android.view.View"/>
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -53,7 +54,9 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    tools:visibility="gone"
+                    android:visibility="@{fragment.viewModel.selfTestsDownloaded ? View.VISIBLE : View.GONE}">
 
                     <TextView
                         android:id="@+id/test_title"
@@ -85,6 +88,81 @@
                         tools:text="Yesterday" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:visibility="@{fragment.viewModel.selfTestsDownloaded ? View.GONE : View.VISIBLE}">
+
+                    <ProgressBar android:id="@+id/loading"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:indeterminate="true"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:visibility="@{fragment.viewModel.active ? View.GONE : View.VISIBLE}"
+                        tools:visibility="gone"/>
+
+                    <ImageView android:id="@+id/error_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@id/error_body"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/error_body"
+                        app:srcCompat="@drawable/ic_error" />
+
+                    <TextView
+                        android:id="@+id/error_body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:padding="8dp"
+                        android:text="@string/self_test_not_loaded"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/error_image"
+                        app:layout_constraintTop_toBottomOf="@id/loading" />
+
+                    <RelativeLayout
+                        android:id="@+id/error_failed"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/button_rectangle_pink"
+                        android:padding="8dp"
+                        tools:visibility="visible"
+                        android:visibility="@{fragment.viewModel.failed ? View.VISIBLE : View.GONE}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/error_body">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:text="@string/self_test_failded_fetch"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/white" />
+
+                    </RelativeLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/retry"
+                        app:icon="@drawable/ic_refresh"
+                        android:enabled="@{fragment.viewModel.active}"
+                        android:onClick="@{() -> fragment.reFetchData()}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/error_failed" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView

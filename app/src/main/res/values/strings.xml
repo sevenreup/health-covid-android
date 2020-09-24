@@ -254,4 +254,7 @@ when an infected person coughs or sneezes"
     <string name="no_self_assess">No Self assessments available</string>
     <string name="self_notification_title">Take your daily self test</string>
     <string name="self_notification_body">Take your daily self test. This helps to keep track of your health.</string>
+    <string name="self_test_not_loaded">It is seems the self test questions did not download. Please connect to the internet and press retry.</string>
+    <string name="retry">Retry</string>
+    <string name="self_test_failded_fetch">Failed to fetch questions.</string>
 </resources>

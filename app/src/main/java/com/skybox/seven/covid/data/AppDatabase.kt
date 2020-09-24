@@ -6,8 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
-import androidx.work.OneTimeWorkRequest
-import androidx.work.WorkManager
+import androidx.work.*
 import com.skybox.seven.covid.BuildConfig
 import com.skybox.seven.covid.data.daos.*
 import com.skybox.seven.covid.data.entities.*
@@ -15,6 +14,7 @@ import com.skybox.seven.covid.helpers.RoomTypeConverters
 import com.skybox.seven.covid.work.DataBaseInitWorker
 import com.skybox.seven.covid.work.GrabSelfTestsWorker
 import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 @Database(entities = [SelfTestAnswer::class, SelfTestQuestion::class, SelfTestComplete::class, Myth::class, Advice::class, InfoGraphic::class, Language::class, Qna::class], version = BuildConfig.HEALTH_DB_VERSION)
 @TypeConverters(RoomTypeConverters::class)
@@ -38,7 +38,20 @@ abstract class AppDatabase : RoomDatabase() {
                                     super.onCreate(db)
                                     Executors.newSingleThreadExecutor().execute {
                                         val workRequest = OneTimeWorkRequest.Builder(DataBaseInitWorker::class.java).build()
-                                        val selfTest = OneTimeWorkRequest.Builder(GrabSelfTestsWorker::class.java).build()
+
+                                        val constraints = Constraints.Builder()
+                                                .setRequiredNetworkType(NetworkType.CONNECTED)
+                                                .build()
+
+                                        val selfTest = OneTimeWorkRequest.Builder(GrabSelfTestsWorker::class.java)
+                                                .addTag(GrabSelfTestsWorker.TAG)
+                                                .setConstraints(constraints)
+                                                .setBackoffCriteria(
+                                                        BackoffPolicy.LINEAR,
+                                                        OneTimeWorkRequest.MIN_BACKOFF_MILLIS,
+                                                        TimeUnit.MILLISECONDS
+                                                )
+                                                .build()
                                         WorkManager.getInstance(context).enqueue(arrayListOf(workRequest, selfTest))
                                     }
                                 }

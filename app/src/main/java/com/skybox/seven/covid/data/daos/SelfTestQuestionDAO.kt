@@ -16,6 +16,9 @@ interface SelfTestQuestionDAO {
     @Insert
     fun insertAll(question: List<SelfTestQuestion>)
 
+    @Query("DELETE FROM $TABLE_NAME")
+    fun deleteAll()
+
     @Delete
     fun delete(question: SelfTestQuestion)
 
