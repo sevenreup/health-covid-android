@@ -1,19 +1,24 @@
 package com.skybox.seven.covid.widget
 
+import android.app.Service
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.content.Intent
+import android.os.IBinder
+import android.util.Log
 import android.widget.RemoteViews
 import com.skybox.seven.covid.R
-import dagger.hilt.android.AndroidEntryPoint
 
-
-@AndroidEntryPoint
 class MWCovidWidget : AppWidgetProvider() {
+
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         // There may be multiple widgets active, so update all of them
         for (appWidgetId in appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId)
+            val intent = Intent(context, MWCovidService::class.java)
+            intent.action = "refresh"
+            intent.putExtra("widgetId", appWidgetId)
+            context.startService(intent)
         }
     }
 
@@ -24,14 +29,31 @@ class MWCovidWidget : AppWidgetProvider() {
     override fun onDisabled(context: Context) {
         // Enter relevant functionality for when the last widget is disabled
     }
+
+
 }
 
-internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {
-    val widgetText = context.getString(R.string.appwidget_text)
-    // Construct the RemoteViews object
-    val views = RemoteViews(context.packageName, R.layout.m_w_covid_widget)
-//    views.setTextViewText(R.id.appwidget_text, widgetText)
+private const val TAG = "MWCovidService"
+class MWCovidService : Service() {
+    override fun onBind(intent: Intent?): IBinder? {
+        return null
+    }
 
-    // Instruct the widget manager to update the widget
-    appWidgetManager.updateAppWidget(appWidgetId, views)
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        if (intent != null && intent.hasExtra("widgetId")) {
+            val appWidgetId = intent.getIntExtra("widgetId", 0);
+            Log.d(TAG, "onStartCommand($appWidgetId)");
+            updateWidget(appWidgetId)
+        } else {
+            Log.e(TAG, "onStartCommand(<no widgetId>)");
+        }
+        return super.onStartCommand(intent, flags, startId)
+    }
+
+    private fun updateWidget(widgetId: Int) {
+        val appWidgetManager = AppWidgetManager.getInstance(applicationContext)
+        val views = RemoteViews(application.packageName, R.layout.m_w_covid_widget)
+
+        appWidgetManager.updateAppWidget(widgetId, views)
+    }
 }
