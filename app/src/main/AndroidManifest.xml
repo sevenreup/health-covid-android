@@ -20,9 +20,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Covid.DayNight"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".ui.SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings"/>
 
         <receiver android:name=".widget.MWCovidWidget">
             <intent-filter>
@@ -99,7 +100,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.provider"
+            android:authorities="${applicationId}.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

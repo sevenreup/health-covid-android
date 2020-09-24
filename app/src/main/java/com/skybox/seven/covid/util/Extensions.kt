@@ -98,8 +98,8 @@ fun Bitmap.getLocalBitmapUri(context: Context): Uri {
     this.compress(Bitmap.CompressFormat.PNG, 90, out)
     out.close()
 
-    bitURI = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-        FileProvider.getUriForFile(context, context.applicationContext.opPackageName + ".provider", file)
+    bitURI = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+        FileProvider.getUriForFile(context, "com.skybox.seven.covid.fileprovider", file)
     } else {
         Uri.fromFile(file);
     }
