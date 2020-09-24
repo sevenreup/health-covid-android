@@ -59,7 +59,14 @@ class StatisticsFragment : Fragment() {
                 }
             }
             worldChat(it)
+            binding.refresh.isRefreshing = false
         })
+
+        binding.refresh.setOnRefreshListener {
+            viewModel.getMalawiData()
+            viewModel.getWorldData()
+        }
+
         return binding.root
     }
 

@@ -90,27 +90,32 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="2dp">
 
                         <TextView
                             android:id="@+id/confirmed_cases"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@{cases}"
+                            android:textAlignment="center"
                             android:textColor="@android:color/white"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            tools:text="83,700" />
+                            tools:text="83,700"
+                            android:gravity="center_horizontal" />
 
                         <TextView android:id="@+id/problems"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/cases_confirmed"
                             android:textColor="@android:color/white"
+                            android:textAlignment="center"
                             android:visibility="gone"
                             tools:visibility="visible"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:gravity="center_horizontal" />
 
                     </LinearLayout>
 
@@ -136,18 +141,20 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:textAlignment="center"
                             android:layout_marginTop="5dp"
                             android:text="@string/total_active"
                             android:textColor="?colorError"
                             android:textSize="13sp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:textAlignment="center"
                             android:layout_margin="5dp"
                             android:text="@{active}"
                             android:textColor="?colorOnPrimary"
@@ -162,20 +169,22 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
                             android:text="@string/total_recovered"
+                            android:textAlignment="center"
                             android:textColor="?colorSecondary"
                             android:textSize="13sp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_margin="5dp"
                             android:text="@{recovered}"
+                            android:textAlignment="center"
                             android:textColor="?colorOnPrimary"
                             tools:text="3, 473" />
                     </LinearLayout>
@@ -188,20 +197,22 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
                             android:text="@string/total_deaths"
+                            android:textAlignment="center"
                             android:textColor="?badgeTextColor"
                             android:textSize="13sp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_margin="5dp"
                             android:text="@{deaths}"
+                            android:textAlignment="center"
                             android:textColor="?colorOnPrimary"
                             tools:text="3, 473" />
                     </LinearLayout>

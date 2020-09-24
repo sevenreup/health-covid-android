@@ -36,9 +36,6 @@ class CountriesFragment : Fragment(), CountryCallbacks {
         viewModel.allCountriesData.observe(this, Observer {
             viewModel.filteredList.value = it
         })
-        viewModel.filteredList.observe(this, Observer {
-            controller.setData(false, it)
-        })
         viewModel.close.observe(this, Observer {
             viewModel.filteredList.value = viewModel.allCountriesData.value
         })
@@ -71,6 +68,15 @@ class CountriesFragment : Fragment(), CountryCallbacks {
         viewModel.rebuild.observe(viewLifecycleOwner, Observer {
             viewModel.filteredList.value = viewModel.allCountriesData.value
         })
+
+        viewModel.filteredList.observe(viewLifecycleOwner, Observer {
+            controller.setData(false, it)
+            binding.refresh.isRefreshing = false
+        })
+
+        binding.refresh.setOnRefreshListener {
+            viewModel.getAllCountries()
+        }
         return binding.root
     }
 
