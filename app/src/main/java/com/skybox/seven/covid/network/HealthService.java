@@ -59,7 +59,6 @@ public interface HealthService {
     Call<SelfTestResponse> getSelfTests(@Header("Authorization") String Authtoken);
 
     @Headers({"Accept: application/json"})
-    @FormUrlEncoded
     @POST("selftest/answers")
     Call<GenericResponse> insertSelfTestAnswer(@Header("Authorization") String Authtoken, @Body List<SelfTestAnswer> answers);
 }

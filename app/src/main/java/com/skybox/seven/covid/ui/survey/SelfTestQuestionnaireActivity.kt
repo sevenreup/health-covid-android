@@ -88,51 +88,6 @@ class SelfTestQuestionnaireActivity: AppCompatActivity(), SurveyCallbacks {
     }
 
     override fun finished(answers: HashMap<Int, Result>?) {
-        val answerList: MutableList<SelfTestAnswer> = ArrayList()
-        answers?.forEach {
-            when(it.value.type) {
-                Result.MULTI ->
-                {
-                    val answer = it.value as MultiChoiceResult
-                    val selections = answer.answers.keys.toList()
-                    answerList += SelfTestAnswer(
-                            null,
-                            Constants.ARRAY,
-                            0,
-                            answer.id,
-                            selections,
-                            null,
-                            null,
-                            answer.endDate)
-                }
-                Result.TEXT -> {
-                    val answer = it.value as TextResult
-                    answerList += SelfTestAnswer(
-                            null,
-                            Constants.BOOLEAN,
-                            0,
-                            answer.id,
-                            null,
-                            null,
-                            answer.text,
-                            answer.endDate
-                    )
-                }
-                else -> {
-                    val answer = it.value as BooleanResult
-                    answerList += SelfTestAnswer(
-                            null,
-                            Constants.BOOLEAN,
-                            0,
-                            answer.id,
-                            null,
-                            answer.answer,
-                            null,
-                            answer.endDate
-                    )
-                }
-            }
-        }
         viewModel.submit(answers, getString(R.string.self))
     }
 
