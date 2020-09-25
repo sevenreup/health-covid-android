@@ -26,13 +26,16 @@ class SubmitSelfTests @WorkerInject constructor(@Assisted private val context: C
             val answers = db.selfTestAnswerDAO().get(it.id!!)
             list.addAll(answers)
         }
-        list.forEach {
-            Log.e(TAG, "doWork: $it")
-            healthService.insertSelfTestAnswer(preferenceRepository.token, it.questionID, it.answerArray, it.answerBoolean, it.longAnswer).execute()
+
+        val response = healthService.insertSelfTestAnswer(preferenceRepository.token, list).execute()
+
+        return if (response.isSuccessful) {
+            completeList.forEach {
+                db.selfTestCompleteDAO().update(it.apply { this.submitted = true })
+            }
+            Result.success()
+        } else {
+            Result.retry()
         }
-        completeList.forEach {
-            db.selfTestCompleteDAO().update(it.apply { this.submitted = true })
-        }
-        return Result.success()
     }
 }
