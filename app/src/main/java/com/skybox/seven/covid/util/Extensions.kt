@@ -120,7 +120,7 @@ fun Context.vectorToBitmap(drawableID: Int): Bitmap? {
 fun String.toDate():String {
     return try {
         val number = this.toLong()
-        val date = Date(number * 1000L)
+        val date = Date(number)
         PrettyTime().format(date)
     } catch (e: NumberFormatException) {
         "Unknown"
