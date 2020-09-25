@@ -257,4 +257,5 @@ when an infected person coughs or sneezes"
     <string name="self_test_not_loaded">It is seems the self test questions did not download. Please connect to the internet and press retry.</string>
     <string name="retry">Retry</string>
     <string name="self_test_failded_fetch">Failed to fetch questions.</string>
+    <string name="last_update">Last Update:</string>
 </resources>

@@ -117,18 +117,18 @@ class CountryStatsChatFragment : Fragment() {
     }
 
     fun onTimelineChanged() {
-        when (binding.timeSpinner.selectedItem as String) {
+        active = when (binding.timeSpinner.selectedItem as String) {
             getString(R.string.week) -> {
                 viewModel.getWeekData(args.country.country)
-                active = WEEK
+                WEEK
             }
             getString(R.string.month) -> {
                 viewModel.getMothData(args.country.country)
-                active = MONTH
+                MONTH
             }
             else -> {
                 viewModel.getYearData(args.country.country)
-                active = ALL
+                ALL
             }
         }
     }

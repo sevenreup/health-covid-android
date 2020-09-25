@@ -18,8 +18,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.signature.ObjectKey
 import com.google.android.material.card.MaterialCardView
+import org.ocpsoft.prettytime.PrettyTime
 import java.io.File
 import java.io.FileOutputStream
+import java.lang.NumberFormatException
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.text.NumberFormat
@@ -113,4 +115,14 @@ fun Context.vectorToBitmap(drawableID: Int): Bitmap? {
     drawable.setBounds(0, 0, canvas.width, canvas.height)
     drawable.draw(canvas)
     return bitmap
+}
+
+fun String.toDate():String {
+    return try {
+        val number = this.toLong()
+        val date = Date(number * 1000L)
+        PrettyTime().format(date)
+    } catch (e: NumberFormatException) {
+        "Unknown"
+    }
 }
