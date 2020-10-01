@@ -68,7 +68,7 @@
 
                     <TextView
                         android:id="@+id/self_test_title"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
@@ -76,18 +76,24 @@
                         android:text="@string/selftest_heading"
                         android:textAppearance="?textAppearanceSubtitle1"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textAlignment="center"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:gravity="center_horizontal" />
 
                     <TextView
                         android:id="@+id/test_time_title"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_horizontal"
                         android:text="@string/previous_test"
-                        app:layout_constraintBottom_toBottomOf="@id/test_time"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/test_time" />
+                        app:layout_constraintTop_toBottomOf="@id/self_test_title" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/test_time"
@@ -95,11 +101,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="8dp"
                         android:clickable="false"
-                        tools:text="Yesterday"
                         android:text="@{fragment.getFormatDate(fragment.viewModel.lastTest)}"
-                        app:layout_constraintStart_toEndOf="@id/test_time_title"
-                        app:layout_constraintTop_toBottomOf="@id/self_test_title" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/test_time_title"
+                        tools:text="Yesterday" />
 
                     <View
                         android:id="@+id/separator"

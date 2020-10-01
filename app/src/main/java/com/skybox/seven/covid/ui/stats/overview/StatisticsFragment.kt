@@ -16,6 +16,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
@@ -23,6 +24,7 @@ import com.skybox.seven.covid.R
 import com.skybox.seven.covid.StatsDirections
 import com.skybox.seven.covid.databinding.FragmentStatsBinding
 import com.skybox.seven.covid.databinding.LayoutTotalCasesBinding
+import com.skybox.seven.covid.helpers.TextFormatter.formatNumber
 import com.skybox.seven.covid.model.WorldStats
 import com.skybox.seven.covid.util.getLocalBitmapUri
 import com.skybox.seven.covid.util.toImage
@@ -48,10 +50,10 @@ class StatisticsFragment : Fragment() {
         viewModel.worldData.observe(viewLifecycleOwner, Observer {
             binding.worldContainer.apply {
                 title = getString(R.string.cases_worldwide)
-                cases = it.cases.toString()
-                active = it.active.toString()
-                deaths = it.deaths.toString()
-                recovered = it.recovered.toString()
+                cases = it.cases.toString().formatNumber()
+                active = it.active.toString().formatNumber()
+                deaths = it.deaths.toString().formatNumber()
+                recovered = it.recovered.toString().formatNumber()
                 problems.visibility = View.VISIBLE
                 share.visibility = View.VISIBLE
                 share.setOnClickListener {
@@ -92,7 +94,7 @@ class StatisticsFragment : Fragment() {
 
     companion object {
         private const val PIE_ANIMATION_DURATION = 1500
-        private const val PIE_RADIUS = 75f
+        private const val PIE_RADIUS = 40f
 
         fun setUpBar(barDataSet: PieDataSet, context: Context, pieChart: PieChart): PieData {
             barDataSet.colors = arrayListOf(
@@ -112,7 +114,7 @@ class StatisticsFragment : Fragment() {
                 description = null
                 holeRadius = PIE_RADIUS
                 setDrawEntryLabels(false)
-                setHoleColor(ContextCompat.getColor(context, R.color.background_purple))
+                setHoleColor(ContextCompat.getColor(context, R.color.color_background))
                 animateY(PIE_ANIMATION_DURATION, Easing.EaseInOutQuart)
                 invalidate()
             }
