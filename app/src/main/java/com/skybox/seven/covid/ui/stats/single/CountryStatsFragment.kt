@@ -17,6 +17,7 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.FragmentStatsBarChatBinding
 import com.skybox.seven.covid.helpers.DataState
+import com.skybox.seven.covid.helpers.TextFormatter.formatNumber
 import com.skybox.seven.covid.model.CountryStat
 import com.skybox.seven.covid.model.HistoricalResult
 import com.skybox.seven.covid.ui.stats.overview.StatisticsFragment
@@ -58,10 +59,10 @@ class CountryStatsChatFragment : Fragment() {
         viewModel.countryStats.observe(viewLifecycleOwner, Observer {
             binding.countryTotals.apply {
                 title = "${args.country.country} ${getString(R.string.cases)}"
-                cases = it.cases.toString()
-                active = it.active.toString()
-                deaths = it.deaths.toString()
-                recovered = it.recovered.toString()
+                cases = it.cases.formatNumber()
+                active = it.active.formatNumber()
+                deaths = it.deaths.formatNumber()
+                recovered = it.recovered.formatNumber()
                 problems.visibility = View.VISIBLE
                 share.visibility = View.VISIBLE
                 share.setOnClickListener {

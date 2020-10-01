@@ -4,12 +4,12 @@ import java.text.NumberFormat
 import java.util.*
 
 object TextFormatter {
-    fun String.formatNumber(): String? {
+    fun Int?.formatNumber(): String? {
         return try {
             NumberFormat.getNumberInstance(Locale.US).format(this)
         } catch (ex: IllegalArgumentException) {
-            this
+            ex.printStackTrace()
+            this?.toString()
         }
-
     }
 }

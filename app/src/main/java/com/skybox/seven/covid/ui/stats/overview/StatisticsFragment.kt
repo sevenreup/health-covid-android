@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -16,7 +15,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
@@ -50,10 +48,10 @@ class StatisticsFragment : Fragment() {
         viewModel.worldData.observe(viewLifecycleOwner, Observer {
             binding.worldContainer.apply {
                 title = getString(R.string.cases_worldwide)
-                cases = it.cases.toString().formatNumber()
-                active = it.active.toString().formatNumber()
-                deaths = it.deaths.toString().formatNumber()
-                recovered = it.recovered.toString().formatNumber()
+                cases = it.cases.formatNumber()
+                active = it.active.formatNumber()
+                deaths = it.deaths.formatNumber()
+                recovered = it.recovered.formatNumber()
                 problems.visibility = View.VISIBLE
                 share.visibility = View.VISIBLE
                 share.setOnClickListener {
@@ -139,6 +137,8 @@ class StatisticsFragment : Fragment() {
 
             binding.share.visibility = View.VISIBLE
         }
+
+        fun formatNumber(int: Int?) = int.formatNumber()
     }
 
 }
