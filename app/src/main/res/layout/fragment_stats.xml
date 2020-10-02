@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="fragment"
             type="com.skybox.seven.covid.ui.stats.overview.StatisticsFragment" />
+        <import type="android.view.View"/>
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -29,7 +29,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.google.android.material.card.MaterialCardView android:id="@+id/mw_container"
+                <include android:id="@+id/error_holder"
+                    layout="@layout/layout_network_error"
+                    android:visibility="@{fragment.viewModel.networkError ? View.VISIBLE : View.GONE}"
+                    tools:visibility="visible"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/mw_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="@{() -> fragment.toMWStats()}"
@@ -55,8 +61,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:background="@drawable/background_black"
-                            tools:ignore="MissingConstraints"
-                            android:padding="8dp">
+                            android:padding="8dp"
+                            tools:ignore="MissingConstraints">
 
                             <androidx.constraintlayout.helper.widget.Flow
                                 android:layout_width="match_parent"
@@ -77,28 +83,28 @@
                                 android:id="@+id/confirmed_holder"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:background="@drawable/background_purple"
                                 android:orientation="vertical"
-                                android:padding="8dp"
-                                android:background="@drawable/background_purple">
+                                android:padding="8dp">
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:gravity="center"
                                     android:text="@{fragment.Companion.formatNumber(fragment.viewModel.malawiData.cases)}"
-                                    android:textColor="?colorError"
-                                    tools:text="4, 361"
                                     android:textAlignment="center"
-                                    android:gravity="center" />
+                                    android:textColor="?colorError"
+                                    tools:text="4, 361" />
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="8dp"
+                                    android:gravity="center"
                                     android:text="@string/confirmed"
-                                    android:textColor="?colorError"
-                                    android:textSize="12sp"
                                     android:textAlignment="center"
-                                    android:gravity="center" />
+                                    android:textColor="?colorError"
+                                    android:textSize="12sp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -113,22 +119,22 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:gravity="center"
                                     android:text="@{fragment.Companion.formatNumber(fragment.viewModel.malawiData.deaths)}"
+                                    android:textAlignment="center"
                                     android:textColor="@android:color/white"
                                     android:textSize="15sp"
-                                    tools:text="128"
-                                    android:textAlignment="center"
-                                    android:gravity="center"/>
+                                    tools:text="128" />
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="8dp"
+                                    android:gravity="center"
                                     android:text="@string/deaths"
-                                    android:textColor="@android:color/white"
-                                    android:textSize="12sp"
                                     android:textAlignment="center"
-                                    android:gravity="center"/>
+                                    android:textColor="@android:color/white"
+                                    android:textSize="12sp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -143,22 +149,22 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:gravity="center"
                                     android:text="@{fragment.Companion.formatNumber(fragment.viewModel.malawiData.recovered)}"
+                                    android:textAlignment="center"
                                     android:textColor="?badgeTextColor"
                                     android:textSize="15sp"
-                                    tools:text="4, 361"
-                                    android:textAlignment="center"
-                                    android:gravity="center"/>
+                                    tools:text="4, 361" />
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="8dp"
+                                    android:gravity="center"
                                     android:text="@string/recovered"
-                                    android:textColor="?badgeTextColor"
-                                    android:textSize="12sp"
                                     android:textAlignment="center"
-                                    android:gravity="center"/>
+                                    android:textColor="?badgeTextColor"
+                                    android:textSize="12sp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -173,22 +179,22 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:gravity="center"
                                     android:text="@{fragment.Companion.formatNumber(fragment.viewModel.malawiData.active)}"
+                                    android:textAlignment="center"
                                     android:textColor="?colorSecondary"
                                     android:textSize="15sp"
-                                    tools:text="4, 361"
-                                    android:textAlignment="center"
-                                    android:gravity="center"/>
+                                    tools:text="4, 361" />
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="8dp"
+                                    android:gravity="center"
                                     android:text="@string/active"
-                                    android:textColor="?colorSecondary"
-                                    android:textSize="12sp"
                                     android:textAlignment="center"
-                                    android:gravity="center"/>
+                                    android:textColor="?colorSecondary"
+                                    android:textSize="12sp" />
                             </LinearLayout>
 
 

@@ -17,6 +17,7 @@ private const val TAG = "StatsViewModel"
 class StatsViewModel @ViewModelInject constructor(private val statsService: StatsService, private val compositeDisposable: CompositeDisposable) : ViewModel() {
     val malawiData = MutableLiveData<CountryStat>()
     val worldData = MutableLiveData<WorldStats>()
+    val networkError = MutableLiveData<Boolean>(false)
 
     fun getMalawiData() {
         compositeDisposable.add(
@@ -25,9 +26,11 @@ class StatsViewModel @ViewModelInject constructor(private val statsService: Stat
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({
                             Log.e(TAG, "getMalawiData: her")
+                            networkError.value = false
                             malawiData.value = it
                         }, {
                             // todo: handle errors
+                            networkError.value = true
                             it.printStackTrace()
                         })
         )
@@ -40,8 +43,10 @@ class StatsViewModel @ViewModelInject constructor(private val statsService: Stat
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({
                             worldData.value = it
+                            networkError.value = false
                         }, {
                             // todo: handle errors
+                            networkError.value = true
                             it.printStackTrace()
                         })
         )

@@ -8,7 +8,6 @@ object TextFormatter {
         return try {
             NumberFormat.getNumberInstance(Locale.US).format(this)
         } catch (ex: IllegalArgumentException) {
-            ex.printStackTrace()
             this?.toString()
         }
     }

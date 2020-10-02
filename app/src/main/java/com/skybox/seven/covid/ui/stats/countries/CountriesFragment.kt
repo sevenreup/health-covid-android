@@ -45,6 +45,15 @@ class CountriesFragment : Fragment(), CountryCallbacks {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = FragmentCountriesBinding.inflate(inflater, container, false)
+
+        binding.fragment = this
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        binding.errorHolder.onclick = View.OnClickListener {
+            binding.refresh.isRefreshing = true
+            viewModel.getAllCountries()
+        }
+
         binding.countriesRecycler.apply {
             setController(controller)
             addItemDecoration(SpaceItemDecorator(resources.getDimensionPixelSize(R.dimen.card_seperator_margin), true, true))
@@ -74,6 +83,11 @@ class CountriesFragment : Fragment(), CountryCallbacks {
             binding.refresh.isRefreshing = false
         })
 
+        viewModel.networkError.observe(viewLifecycleOwner, Observer {
+            if (it){
+                binding.refresh.isRefreshing = false
+            }
+        })
         binding.refresh.setOnRefreshListener {
             viewModel.getAllCountries()
         }

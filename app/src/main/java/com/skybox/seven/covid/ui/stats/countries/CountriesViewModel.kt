@@ -16,6 +16,8 @@ class CountriesViewModel @ViewModelInject constructor(private val statsService: 
     val rebuild = MutableLiveData<Boolean>()
     val filteredList = MutableLiveData<List<CountryStat>>()
 
+    val networkError = MutableLiveData<Boolean>(false)
+
     fun getAllCountries() {
         compositeDisposable.add(
                 statsService.getAllCountries()
@@ -23,8 +25,10 @@ class CountriesViewModel @ViewModelInject constructor(private val statsService: 
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({
                             allCountriesData.value = it
+                            networkError.value = false
                         }, {
                             it.printStackTrace()
+                            networkError.value = true
                         })
         )
     }

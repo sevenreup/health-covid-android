@@ -50,6 +50,17 @@ class CountryStatsChatFragment : Fragment() {
         binding = FragmentStatsBarChatBinding.inflate(inflater, container, false)
         binding.fragment = this
         binding.lifecycleOwner = viewLifecycleOwner
+
+        binding.errorHolder.onclick = View.OnClickListener {
+            binding.refresh.isRefreshing = false
+            when(active) {
+                ALL -> viewModel.getYearData(args.country.country)
+                WEEK -> viewModel.getWeekData(args.country.country)
+                else -> viewModel.getMothData(args.country.country)
+            }
+        }
+
+
         binding.chartType.addOnButtonCheckedListener { _, _, isChecked ->
             if (isChecked) {
                 graphLoad()
@@ -81,21 +92,25 @@ class CountryStatsChatFragment : Fragment() {
 
         }
         viewModel.allStats.observe(viewLifecycleOwner, Observer {
-            binding.refresh.isRefreshing = false
-
             when (it.dataState) {
                 DataState.SUCCESS -> {
-                    if (binding.chartType.checkedButtonId == R.id.bar) showBar(it.data!!) else showLine(it.data!!)
+                    binding.refresh.isRefreshing = false
+                    viewModel.networkError.value = false
+                    if (binding.chartType.checkedButtonId == R.id.bar) showBar(it.data) else showLine(it.data)
                 }
 
                 DataState.LOADING -> {
                     //todo: show loading
                 }
                 else -> {
-                    // todo: show error
+                    binding.refresh.isRefreshing = false
+                    viewModel.networkError.value = true
+
+                    if (binding.chartType.checkedButtonId == R.id.bar) showBar(it.data) else showLine(it.data)
                 }
             }
         })
+
         initBar()
         initLine()
 
@@ -103,7 +118,7 @@ class CountryStatsChatFragment : Fragment() {
             when(active) {
                 ALL -> viewModel.getYearData(args.country.country)
                 WEEK -> viewModel.getWeekData(args.country.country)
-                else -> viewModel.getWeekData(args.country.country)
+                else -> viewModel.getMothData(args.country.country)
             }
         }
         return binding.root
@@ -134,69 +149,81 @@ class CountryStatsChatFragment : Fragment() {
         }
     }
 
-    private fun showBar(data: HistoricalResult) {
+    private fun showBar(data: HistoricalResult?) {
+        var barData: BarData? = null
         moveBar()
-        val recoveredValues: ArrayList<BarEntry> = ArrayList()
-        val criticalValues: ArrayList<BarEntry> = ArrayList()
-        val activeValues: ArrayList<BarEntry> = ArrayList()
 
-        data.cases.forEachIndexed { index, timeLineResult ->
-            activeValues.add(BarEntry(index.toFloat(), timeLineResult.cases.toFloat()))
-            criticalValues.add(BarEntry(index.toFloat(), timeLineResult.deaths.toFloat()))
-            recoveredValues.add(BarEntry(index.toFloat(), timeLineResult.recovered.toFloat()))
+        if (data != null) {
+            val recoveredValues: ArrayList<BarEntry> = ArrayList()
+            val criticalValues: ArrayList<BarEntry> = ArrayList()
+            val activeValues: ArrayList<BarEntry> = ArrayList()
+
+            data.cases.forEachIndexed { index, timeLineResult ->
+                activeValues.add(BarEntry(index.toFloat(), timeLineResult.cases.toFloat()))
+                criticalValues.add(BarEntry(index.toFloat(), timeLineResult.deaths.toFloat()))
+                recoveredValues.add(BarEntry(index.toFloat(), timeLineResult.recovered.toFloat()))
+            }
+
+            val activeSet = BarDataSet(activeValues, getString(R.string.active))
+                    .apply {
+                        setDrawValues(false)
+                        color = ContextCompat.getColor(requireContext(), R.color.active)
+                    }
+
+            val recSet = BarDataSet(recoveredValues, getString(R.string.recovered))
+                    .apply {
+                        setDrawValues(false)
+                        color = ContextCompat.getColor(requireContext(), R.color.recovered)
+                    }
+            val crSet = BarDataSet(criticalValues, getString(R.string.deaths))
+                    .apply {
+                        setDrawValues(false)
+                        color = ContextCompat.getColor(requireContext(), R.color.deaths)
+                    }
+            barData = BarData(activeSet, recSet, crSet)
         }
 
-        val activeSet = BarDataSet(activeValues, getString(R.string.active))
-                .apply {
-                    setDrawValues(false)
-                    color = ContextCompat.getColor(requireContext(), R.color.active)
-                }
-
-        val recSet = BarDataSet(recoveredValues, getString(R.string.recovered))
-                .apply {
-                    setDrawValues(false)
-                    color = ContextCompat.getColor(requireContext(), R.color.recovered)
-                }
-        val crSet = BarDataSet(criticalValues, getString(R.string.deaths))
-                .apply {
-                    setDrawValues(false)
-                    color = ContextCompat.getColor(requireContext(), R.color.deaths)
-                }
-        binding.barChart.data = BarData(activeSet, recSet, crSet)
+        binding.barChart.data = barData
         binding.barChart.invalidate()
     }
 
-    private fun showLine(data: HistoricalResult) {
+    private fun showLine(data: HistoricalResult?) {
         moveLine()
-        val recoveredValues: ArrayList<Entry> = ArrayList()
-        val criticalValues: ArrayList<Entry> = ArrayList()
-        val activeValues: ArrayList<Entry> = ArrayList()
+        var lineData: LineData? = null
 
-        data.cases.forEachIndexed { index, timeLineResult ->
-            activeValues.add(Entry(index.toFloat(), timeLineResult.cases.toFloat()))
-            criticalValues.add(Entry(index.toFloat(), timeLineResult.deaths.toFloat()))
-            recoveredValues.add(Entry(index.toFloat(), timeLineResult.recovered.toFloat()))
+        if (data != null) {
+            val recoveredValues: ArrayList<Entry> = ArrayList()
+            val criticalValues: ArrayList<Entry> = ArrayList()
+            val activeValues: ArrayList<Entry> = ArrayList()
+
+            data.cases.forEachIndexed { index, timeLineResult ->
+                activeValues.add(Entry(index.toFloat(), timeLineResult.cases.toFloat()))
+                criticalValues.add(Entry(index.toFloat(), timeLineResult.deaths.toFloat()))
+                recoveredValues.add(Entry(index.toFloat(), timeLineResult.recovered.toFloat()))
+            }
+            val recoveredSet = LineDataSet(recoveredValues, getString(R.string.recovered))
+                    .apply {
+                        color = ContextCompat.getColor(requireContext(), R.color.recovered)
+                        setDrawValues(false)
+                    }
+
+            val criticalSet = LineDataSet(criticalValues, getString(R.string.deaths))
+                    .apply {
+                        color = ContextCompat.getColor(requireContext(), R.color.deaths)
+                        setDrawValues(false)
+                    }
+
+            val activeSet = LineDataSet(activeValues, getString(R.string.active))
+                    .apply {
+                        color = ContextCompat.getColor(requireContext(), R.color.active)
+                        setDrawValues(false)
+                    }
+            lineData = LineData(activeSet, recoveredSet, criticalSet)
         }
 
-        val recoveredSet = LineDataSet(recoveredValues, getString(R.string.recovered))
-                .apply {
-                    color = ContextCompat.getColor(requireContext(), R.color.recovered)
-                    setDrawValues(false)
-                }
 
-        val criticalSet = LineDataSet(criticalValues, getString(R.string.deaths))
-                .apply {
-                    color = ContextCompat.getColor(requireContext(), R.color.deaths)
-                    setDrawValues(false)
-                }
 
-        val activeSet = LineDataSet(activeValues, getString(R.string.active))
-                .apply {
-                    color = ContextCompat.getColor(requireContext(), R.color.active)
-                    setDrawValues(false)
-                }
-
-        binding.lineChat.data = LineData(activeSet, recoveredSet, criticalSet)
+        binding.lineChat.data = lineData
         binding.lineChat.invalidate()
     }
 
@@ -266,7 +293,7 @@ class CountryStatsChatFragment : Fragment() {
 
     }
 
-    fun countryChat(countryStat: CountryStat) {
+    private fun countryChat(countryStat: CountryStat) {
         val barDataSet = PieDataSet(
                 listOf(
                         PieEntry(countryStat.deaths.toFloat(), requireContext().getString(R.string.deaths)),
@@ -284,9 +311,9 @@ class CountryStatsChatFragment : Fragment() {
 
     companion object {
         private const val DATE_FORMAT = "dd/MM"
-        private const val WEEK = 0
-        private val ALL = 1
-        private val MONTH = 2
+        const val WEEK = 0
+        const val ALL = 1
+        const val MONTH = 2
     }
 }
 

@@ -45,6 +45,12 @@ class StatisticsFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.fragment = this
 
+        binding.errorHolder.onclick = View.OnClickListener {
+            binding.refresh.isRefreshing = true
+            viewModel.getWorldData()
+            viewModel.getMalawiData()
+        }
+
         viewModel.worldData.observe(viewLifecycleOwner, Observer {
             binding.worldContainer.apply {
                 title = getString(R.string.cases_worldwide)
@@ -67,6 +73,11 @@ class StatisticsFragment : Fragment() {
             viewModel.getWorldData()
         }
 
+        viewModel.networkError.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                binding.refresh.isRefreshing = false
+            }
+        })
         return binding.root
     }
 
