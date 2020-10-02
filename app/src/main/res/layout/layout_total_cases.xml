@@ -101,9 +101,9 @@
                         android:id="@+id/confirmed_cases"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
                         android:text="@{cases}"
                         android:textAlignment="center"
+                        android:gravity="center"
                         android:textColor="@android:color/white"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -114,14 +114,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:gravity="center_horizontal"
                         android:text="@string/cases_confirmed"
-                        android:textAlignment="center"
                         android:textColor="@android:color/white"
                         android:visibility="gone"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:visibility="visible" />
+                        tools:visibility="visible"
+                        android:textAlignment="center"
+                        android:gravity="center"/>
 
                 </LinearLayout>
 
@@ -147,22 +147,22 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
                             android:layout_marginTop="5dp"
                             android:text="@string/total_active"
-                            android:textAlignment="center"
                             android:textColor="?colorError"
-                            android:textSize="13sp" />
+                            android:textSize="13sp"
+                            android:textAlignment="center"
+                            android:gravity="center"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
                             android:layout_margin="5dp"
                             android:text="@{active}"
-                            android:textAlignment="center"
                             android:textColor="?colorOnPrimary"
-                            tools:text="3, 473" />
+                            tools:text="3, 473"
+                            android:textAlignment="center"
+                            android:gravity="center"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -175,22 +175,20 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
                             android:text="@string/total_recovered"
-                            android:textAlignment="center"
                             android:textColor="?colorSecondary"
-                            android:textSize="13sp" />
+                            android:textSize="13sp"
+                            android:textAlignment="center"
+                            android:gravity="center"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_margin="5dp"
                             android:text="@{recovered}"
-                            android:textAlignment="center"
                             android:textColor="?colorOnPrimary"
-                            tools:text="3, 473" />
+                            tools:text="3, 473"
+                            android:textAlignment="center"
+                            android:gravity="center"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -203,22 +201,22 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
                             android:layout_marginTop="5dp"
                             android:text="@string/total_deaths"
-                            android:textAlignment="center"
                             android:textColor="?badgeTextColor"
-                            android:textSize="13sp" />
+                            android:textSize="13sp"
+                            android:textAlignment="center"
+                            android:gravity="center"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
                             android:layout_margin="5dp"
                             android:text="@{deaths}"
-                            android:textAlignment="center"
                             android:textColor="?colorOnPrimary"
-                            tools:text="3, 473" />
+                            tools:text="3, 473"
+                            android:textAlignment="center"
+                            android:gravity="center"/>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
