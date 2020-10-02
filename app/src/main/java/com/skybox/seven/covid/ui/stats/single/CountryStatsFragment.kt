@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.ValueFormatter
@@ -27,6 +28,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.math.roundToInt
 
 
 private const val TAG = "StatsBarchartFragment"
@@ -53,7 +55,7 @@ class CountryStatsChatFragment : Fragment() {
 
         binding.errorHolder.onclick = View.OnClickListener {
             binding.refresh.isRefreshing = false
-            when(active) {
+            when (active) {
                 ALL -> viewModel.getYearData(args.country.country)
                 WEEK -> viewModel.getWeekData(args.country.country)
                 else -> viewModel.getMothData(args.country.country)
@@ -115,7 +117,7 @@ class CountryStatsChatFragment : Fragment() {
         initLine()
 
         binding.refresh.setOnRefreshListener {
-            when(active) {
+            when (active) {
                 ALL -> viewModel.getYearData(args.country.country)
                 WEEK -> viewModel.getWeekData(args.country.country)
                 else -> viewModel.getMothData(args.country.country)
@@ -205,18 +207,21 @@ class CountryStatsChatFragment : Fragment() {
                     .apply {
                         color = ContextCompat.getColor(requireContext(), R.color.recovered)
                         setDrawValues(false)
+                        lineStyle(this, ContextCompat.getColor(requireContext(), R.color.recovered))
                     }
 
             val criticalSet = LineDataSet(criticalValues, getString(R.string.deaths))
                     .apply {
                         color = ContextCompat.getColor(requireContext(), R.color.deaths)
                         setDrawValues(false)
+                        lineStyle(this, ContextCompat.getColor(requireContext(), R.color.deaths))
                     }
 
             val activeSet = LineDataSet(activeValues, getString(R.string.active))
                     .apply {
                         color = ContextCompat.getColor(requireContext(), R.color.active)
                         setDrawValues(false)
+                        lineStyle(this, ContextCompat.getColor(requireContext(), R.color.active))
                     }
             lineData = LineData(activeSet, recoveredSet, criticalSet)
         }
@@ -259,11 +264,6 @@ class CountryStatsChatFragment : Fragment() {
             isDragDecelerationEnabled = false
             setTouchEnabled(false)
 
-            xAxis.axisMinimum = 0f
-            xAxis.setDrawGridLines(false)
-            xAxis.position = XAxis.XAxisPosition.BOTTOM
-            xAxis.setLabelCount(2, true)
-
             axisLeft.axisMinimum = 0f
             axisLeft.setDrawAxisLine(false)
             axisLeft.setLabelCount(5, true)
@@ -275,14 +275,29 @@ class CountryStatsChatFragment : Fragment() {
                     return if (value <= 0) "" else value.toLong().shortValue()
                 }
             }
+            with(xAxis){
+                axisMinimum = 0f
+                setDrawGridLines(false)
+                position = XAxis.XAxisPosition.BOTTOM
+                setLabelCount(2, true)
 
-            xAxis.valueFormatter = object : ValueFormatter() {
-                override fun getFormattedValue(value: Float): String {
-                    val parse = SimpleDateFormat(DATE_FORMAT, Locale.getDefault())
-                    return if (value <= 0) {
-                        parse.format(Calendar.getInstance().takeLast(7))
-                    } else {
-                        parse.format(Date())
+                valueFormatter = object : ValueFormatter() {
+                    override fun getFormattedValue(value: Float): String  {
+                        val pos = value.roundToInt()
+                        val dateHolder = viewModel.allStats.value?.data?.cases?.get(pos)
+                        return if (dateHolder != null) {
+                            val parse = SimpleDateFormat(DATE_FORMAT, Locale.getDefault())
+                            var string: String = ""
+                            try {
+                                val long = dateHolder.date?.toLong()
+                                string = parse.format(long?.let { Date(it) })
+                            } catch (ex: NumberFormatException) {
+                                ex.printStackTrace()
+                            }
+                            string
+                        } else {
+                            ""
+                        }
                     }
                 }
             }
@@ -290,7 +305,30 @@ class CountryStatsChatFragment : Fragment() {
     }
 
     private fun initLine() {
+        with(binding.lineChat) {
+            setTouchEnabled(true)
+            isDragEnabled = true
+            setScaleEnabled(true)
+            setPinchZoom(true)
 
+            description.isEnabled = false
+
+            axisRight.isEnabled = false
+            xAxis.run {
+                position = XAxis.XAxisPosition.BOTTOM
+
+                valueFormatter = object : ValueFormatter() {
+                    override fun getFormattedValue(value: Float): String {
+                        val parse = SimpleDateFormat(DATE_FORMAT, Locale.getDefault())
+                        return if (value <= 0) {
+                            parse.format(Calendar.getInstance().takeLast(7))
+                        } else {
+                            parse.format(Date())
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun countryChat(countryStat: CountryStat) {
@@ -314,6 +352,19 @@ class CountryStatsChatFragment : Fragment() {
         const val WEEK = 0
         const val ALL = 1
         const val MONTH = 2
+
+        fun lineStyle(data: LineDataSet, color: Int) {
+            with(data) {
+                mode = LineDataSet.Mode.CUBIC_BEZIER
+                setDrawCircles(false)
+                setDrawFilled(true)
+
+                fillColor = color
+                fillAlpha = 150
+
+                lineWidth = 2f
+            }
+        }
     }
 }
 
