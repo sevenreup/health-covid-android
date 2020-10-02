@@ -283,21 +283,7 @@ class CountryStatsChatFragment : Fragment() {
 
                 valueFormatter = object : ValueFormatter() {
                     override fun getFormattedValue(value: Float): String  {
-                        val pos = value.roundToInt()
-                        val dateHolder = viewModel.allStats.value?.data?.cases?.get(pos)
-                        return if (dateHolder != null) {
-                            val parse = SimpleDateFormat(DATE_FORMAT, Locale.getDefault())
-                            var string: String = ""
-                            try {
-                                val long = dateHolder.date?.toLong()
-                                string = parse.format(long?.let { Date(it) })
-                            } catch (ex: NumberFormatException) {
-                                ex.printStackTrace()
-                            }
-                            string
-                        } else {
-                            ""
-                        }
+                        return ""
                     }
                 }
             }
