@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="TextAppearance.Covid.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="fontFamily">@font/work_sans_light</item>
@@ -78,4 +78,16 @@
         <item name="android:textSize">12sp</item>
         <item name="textAllCaps">true</item>
     </style>
+
+    <style name="TextAppearance.Covid.Stats.Title" parent="TextAppearance.Covid.Caption">
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">center</item>
+        <item name="android:textColor">?colorOnPrimary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Covid.Stats.Number" parent="TextAppearance.Covid.Stats.Title">
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

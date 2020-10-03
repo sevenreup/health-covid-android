@@ -56,7 +56,7 @@ class CountriesFragment : Fragment(), CountryCallbacks {
 
         binding.countriesRecycler.apply {
             setController(controller)
-            addItemDecoration(SpaceItemDecorator(resources.getDimensionPixelSize(R.dimen.card_seperator_margin), true, true))
+            addItemDecoration(SpaceItemDecorator(resources.getDimensionPixelSize(R.dimen.card_seperator_margin_medium), true, true))
             addGlidePreloader(
                     GlideApp.with(this),
                     preloader = glidePreloader { requestManager: RequestManager, model: CountryModel_, _->

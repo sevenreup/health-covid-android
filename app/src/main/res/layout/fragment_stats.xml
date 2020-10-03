@@ -90,21 +90,17 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:gravity="center"
                                     android:text="@{fragment.Companion.formatNumber(fragment.viewModel.malawiData.cases)}"
-                                    android:textAlignment="center"
-                                    android:textColor="?colorError"
+                                    android:textColor="?colorOnPrimary"
+                                    style="@style/TextAppearance.Covid.Stats.Number"
                                     tools:text="4, 361" />
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="8dp"
-                                    android:gravity="center"
                                     android:text="@string/confirmed"
-                                    android:textAlignment="center"
-                                    android:textColor="?colorError"
-                                    android:textSize="12sp" />
+                                    style="@style/TextAppearance.Covid.Stats.Title" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -119,22 +115,18 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:gravity="center"
                                     android:text="@{fragment.Companion.formatNumber(fragment.viewModel.malawiData.deaths)}"
-                                    android:textAlignment="center"
-                                    android:textColor="@android:color/white"
-                                    android:textSize="15sp"
+                                    android:textColor="?colorOnPrimary"
+                                    style="@style/TextAppearance.Covid.Stats.Number"
                                     tools:text="128" />
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="8dp"
-                                    android:gravity="center"
                                     android:text="@string/deaths"
-                                    android:textAlignment="center"
-                                    android:textColor="@android:color/white"
-                                    android:textSize="12sp" />
+                                    style="@style/TextAppearance.Covid.Stats.Title"
+                                    android:textColor="@color/deaths" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -149,22 +141,18 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:gravity="center"
                                     android:text="@{fragment.Companion.formatNumber(fragment.viewModel.malawiData.recovered)}"
-                                    android:textAlignment="center"
-                                    android:textColor="?badgeTextColor"
-                                    android:textSize="15sp"
+                                    android:textColor="?colorOnPrimary"
+                                    style="@style/TextAppearance.Covid.Stats.Number"
                                     tools:text="4, 361" />
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="8dp"
-                                    android:gravity="center"
                                     android:text="@string/recovered"
-                                    android:textAlignment="center"
-                                    android:textColor="?badgeTextColor"
-                                    android:textSize="12sp" />
+                                    style="@style/TextAppearance.Covid.Stats.Title"
+                                    android:textColor="@color/recovered"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -179,22 +167,18 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:gravity="center"
                                     android:text="@{fragment.Companion.formatNumber(fragment.viewModel.malawiData.active)}"
-                                    android:textAlignment="center"
-                                    android:textColor="?colorSecondary"
-                                    android:textSize="15sp"
+                                    android:textColor="?colorOnPrimary"
+                                    style="@style/TextAppearance.Covid.Stats.Number"
                                     tools:text="4, 361" />
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="8dp"
-                                    android:gravity="center"
                                     android:text="@string/active"
-                                    android:textAlignment="center"
-                                    android:textColor="?colorSecondary"
-                                    android:textSize="12sp" />
+                                    android:textColor="@color/active"
+                                    style="@style/TextAppearance.Covid.Stats.Title"/>
                             </LinearLayout>
 
 
@@ -248,6 +232,7 @@
                             android:layout_marginTop="8dp"
                             android:text="@string/stats_info_content"
                             android:textColor="?colorOnPrimary"
+                            android:textAppearance="?textAppearanceBody2"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@id/info_image"

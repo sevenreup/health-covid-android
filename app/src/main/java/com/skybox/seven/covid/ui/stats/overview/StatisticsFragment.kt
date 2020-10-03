@@ -107,9 +107,9 @@ class StatisticsFragment : Fragment() {
 
         fun setUpBar(barDataSet: PieDataSet, context: Context, pieChart: PieChart): PieData {
             barDataSet.colors = arrayListOf(
-                    ContextCompat.getColor(context, R.color.reply_orange_400),
-                    ContextCompat.getColor(context, R.color.reply_green_100),
-                    ContextCompat.getColor(context, R.color.reply_red_400)
+                    ContextCompat.getColor(context, R.color.deaths),
+                    ContextCompat.getColor(context, R.color.active),
+                    ContextCompat.getColor(context, R.color.recovered)
             )
             barDataSet.valueTextColor = Color.WHITE
             barDataSet.valueTextSize = 16F
