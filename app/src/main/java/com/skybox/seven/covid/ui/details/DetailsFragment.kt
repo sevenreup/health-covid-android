@@ -33,19 +33,9 @@ class DetailsFragment : Fragment() {
         binding =  FragmentDetailsBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.fragment = this
+        clickListeners()
         return binding.root
 
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        super.onCreate(savedInstanceState)
-
-        val data = getDetailsData()
-        bindEpoxyRecycler(data as MutableList<DetailsPhoneNumbers>)
-
-        clickListeners()
     }
 
     private fun clickListeners(){
@@ -68,20 +58,6 @@ class DetailsFragment : Fragment() {
 
         binding.nationalHelpline.setOnClickListener {
             callNumber(binding.nationalHelpline.text.toString())
-        }
-
-    }
-
-    private fun bindEpoxyRecycler(data: MutableList<DetailsPhoneNumbers>){
-
-        val recycler = binding.detailsRecycler
-        val controller = DetailsController()
-
-        controller.setData(false, data)
-
-        recycler.apply {
-
-            setController(controller)
         }
 
     }
@@ -148,7 +124,7 @@ class DetailsFragment : Fragment() {
         }
     }
 
-    fun toHomePage(view: View){
+    fun toHomePage(){
         findNavController().navigateUp()
     }
 

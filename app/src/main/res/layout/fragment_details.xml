@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="fragment"
             type="com.skybox.seven.covid.ui.details.DetailsFragment" />
@@ -14,103 +14,126 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:applyMotionScene="true"
-        tools:context=".ui.details.DetailsFragment"
-        >
+        tools:context=".ui.details.DetailsFragment">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/detailsToHome"
             style="@style/Covid.Icon.Button"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:onClick="@{fragment::toHomePage}"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:onClick="@{() -> fragment.toHomePage()}"
             app:icon="@drawable/ic_arrow_back_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <RelativeLayout
-            android:id="@+id/titleContainer"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="30dp"
+            android:text="@string/contact_services"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_margin="20dp"
-                android:text="@string/contact_services"
-                android:textSize="20sp" />
-
-        </RelativeLayout>
-
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/titleContainer">
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_seperator_margin"
+                tools:ignore="MissingConstraints">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/helplineCard"
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:layout_margin="@dimen/menu_card_margin"
-                app:cardCornerRadius="@dimen/menu_card_radius"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <LinearLayout
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:id="@+id/main"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="helplineCard, platformsTitle, chatbotContainer"
+                    app:flow_firstHorizontalStyle="spread"
+                    app:flow_horizontalGap="3dp"
+                    app:flow_maxElementsWrap="2"
+                    app:flow_verticalGap="3dp"
+                    app:flow_wrapMode="chain"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <RelativeLayout
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="airtel, tnm"
+                    app:flow_firstHorizontalStyle="spread"
+                    app:flow_horizontalGap="3dp"
+                    app:flow_maxElementsWrap="2"
+                    app:flow_verticalGap="3dp"
+                    app:flow_wrapMode="chain"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/main" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/helplineCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="4dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:text="@string/national_helpline"
+                                tools:ignore="RelativeOverlap" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_margin="10dp"
+                                app:srcCompat="@drawable/ic_whatsapp_brown" />
+                        </RelativeLayout>
 
                         <TextView
+                            android:id="@+id/nationalHelpline"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:text="@string/national_helpline"
-                            tools:ignore="RelativeOverlap" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_margin="10dp"
-                            app:srcCompat="@drawable/ic_whatsapp_brown" />
-                    </RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/nationalHelpline"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:text="@string/_54747"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/_54747"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
                 <RelativeLayout
                     android:id="@+id/platformsTitle"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_margin="@dimen/menu_card_margin"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:background="?colorOnPrimary"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/helplineCard">
+                    android:padding="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -122,17 +145,16 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/chatbotContainer"
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
-                    android:layout_margin="@dimen/menu_card_margin"
-                    app:cardCornerRadius="@dimen/menu_card_radius"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/platformsTitle">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:cardElevation="4dp"
+                    app:cardUseCompatPadding="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="8dp">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -156,193 +178,150 @@
                         </RelativeLayout>
 
                         <TextView
+                            android:id="@+id/WhatsAppNumber"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginLeft="10dp"
-                            android:id="@+id/WhatsAppNumber"
                             android:text="@string/chatbot"
                             android:textSize="14sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <LinearLayout
-                    android:id="@+id/linearLayout"
-                    android:layout_width="match_parent"
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/tnm"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chatbotContainer">
+                    android:layout_weight="1"
+                    app:cardElevation="4dp"
+                    app:cardUseCompatPadding="true">
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/menu_card_margin"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="@dimen/menu_card_radius">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="8dp">
 
-                        <LinearLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
+                            android:layout_height="wrap_content">
 
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="10dp"
-                                    android:text="@string/tnm"
-                                    tools:ignore="RelativeOverlap" />
-
-                                <RelativeLayout
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_margin="10dp"
-                                    android:background="@drawable/circle_navy_blue">
-
-                                    <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerInParent="true"
-                                        app:srcCompat="@drawable/ic_google_mobile" />
-                                </RelativeLayout>
-                            </RelativeLayout>
-
-                            <RelativeLayout
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="10dp">
-
-                                <TextView
-                                    android:id="@+id/tnmUSSDone"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentLeft="true"
-                                    android:layout_alignParentTop="true"
-                                    android:text="@string/_352"
-                                    android:textSize="14sp"
-                                    android:layout_alignParentStart="true" />
-
-                                <TextView
-                                    android:id="@+id/tnmUSSDtwo"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentTop="true"
-                                    android:layout_alignParentRight="true"
-                                    android:text="@string/_929"
-                                    android:textSize="14sp"
-                                    android:layout_alignParentEnd="true" />
-                            </RelativeLayout>
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/menu_card_margin"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="@dimen/menu_card_radius">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
+                                android:layout_margin="10dp"
+                                android:text="@string/tnm"
+                                tools:ignore="RelativeOverlap" />
 
                             <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/circle_navy_blue">
 
-                                <TextView
+                                <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_margin="10dp"
-                                    android:text="@string/airtel"
-                                    tools:ignore="RelativeOverlap" />
-
-                                <RelativeLayout
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_margin="10dp"
-                                    android:background="@drawable/circle_navy_blue">
-
-                                    <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerInParent="true"
-                                        app:srcCompat="@drawable/ic_google_mobile" />
-                                </RelativeLayout>
+                                    android:layout_centerInParent="true"
+                                    app:srcCompat="@drawable/ic_google_mobile" />
                             </RelativeLayout>
+                        </RelativeLayout>
 
-                            <RelativeLayout
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+
+                            <TextView
+                                android:id="@+id/tnmUSSDone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="10dp">
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentTop="true"
+                                android:text="@string/_352"
+                                android:textSize="14sp" />
 
-                                <TextView
-                                    android:id="@+id/airtelUSSDone"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentLeft="true"
-                                    android:layout_alignParentTop="true"
-                                    android:text="@string/_321"
-                                    android:textSize="14sp"
-                                    android:layout_alignParentStart="true" />
+                            <TextView
+                                android:id="@+id/tnmUSSDtwo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:text="@string/_929"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-                                <TextView
-                                    android:id="@+id/airtelUSSDtwo"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentTop="true"
-                                    android:layout_alignParentRight="true"
-                                    android:text="@string/_929"
-                                    android:textSize="14sp"
-                                    android:layout_alignParentEnd="true" />
-                            </RelativeLayout>
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/airtel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:cardElevation="4dp"
+                    app:cardUseCompatPadding="true">
 
-                </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="8dp">
 
-                <RelativeLayout
-                    android:id="@+id/responseContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_margin="@dimen/menu_card_margin"
-                    android:background="?colorOnPrimary"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="@string/response_teams" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:layout_alignParentStart="true"
+                                android:text="@string/airtel"
+                                android:layout_alignParentLeft="true" />
 
-                </RelativeLayout>
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:padding="4dp"
+                                app:srcCompat="@drawable/ic_google_mobile"
+                                android:layout_alignParentRight="true" />
+                        </RelativeLayout>
 
-                <com.airbnb.epoxy.EpoxyRecyclerView
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
 
-                    android:id="@+id/detailsRecycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_margin="@dimen/menu_card_margin"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/responseContainer" />
+                            <TextView
+                                android:id="@+id/airtelUSSDone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentTop="true"
+                                android:text="@string/_54747"
+                                android:textSize="14sp" />
 
-
+                            <TextView
+                                android:id="@+id/airtelUSSDtwo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:text="@string/_929"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
