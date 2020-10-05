@@ -18,6 +18,7 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.FragmentStatsBarChatBinding
 import com.skybox.seven.covid.helpers.DataState
+import com.skybox.seven.covid.helpers.DateHelper
 import com.skybox.seven.covid.helpers.TextFormatter.formatNumber
 import com.skybox.seven.covid.model.CountryStat
 import com.skybox.seven.covid.model.HistoricalResult
@@ -76,6 +77,7 @@ class CountryStatsChatFragment : Fragment() {
                 active = it.active.formatNumber()
                 deaths = it.deaths.formatNumber()
                 recovered = it.recovered.formatNumber()
+                date = DateHelper.formatDate(it.updated.toString())
                 problems.visibility = View.VISIBLE
                 share.visibility = View.VISIBLE
                 share.setOnClickListener {

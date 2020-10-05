@@ -61,6 +61,7 @@ class StatisticsFragment : Fragment() {
                 active = it.active.formatNumber()
                 deaths = it.deaths.formatNumber()
                 recovered = it.recovered.formatNumber()
+                date = DateHelper.formatDate(it.updated.toString())
                 problems.visibility = View.VISIBLE
                 share.visibility = View.VISIBLE
                 share.setOnClickListener {
@@ -155,14 +156,7 @@ class StatisticsFragment : Fragment() {
 
         fun formatNumber(int: Int?) = int.formatNumber()
 
-        fun formatDate(string: String?): String {
-            return if (string != null) {
-                val date = Date(string.toLong())
-                DateHelper.convertToRelative(date)
-            } else {
-                ""
-            }
-        }
+        fun formatDate(string: String?) = DateHelper.formatDate(string)
     }
 
 }

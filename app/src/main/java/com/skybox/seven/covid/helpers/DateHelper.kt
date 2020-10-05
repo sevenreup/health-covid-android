@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 object DateHelper {
-    fun convertToRelative(dateTime: Date): String {
+    private fun convertToRelative(dateTime: Date): String {
         val calendar: Calendar = Calendar.getInstance()
         calendar.time = dateTime
         val today: Calendar = Calendar.getInstance()
@@ -23,6 +23,15 @@ object DateHelper {
             "Yesterday"
         } else {
             SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH).format(dateTime)
+        }
+    }
+
+    fun formatDate(string: String?): String {
+        return if (string != null) {
+            val date = Date(string.toLong())
+            DateHelper.convertToRelative(date)
+        } else {
+            ""
         }
     }
 }
