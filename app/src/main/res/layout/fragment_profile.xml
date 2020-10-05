@@ -15,7 +15,9 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="16dp"
+        android:paddingStart="@dimen/menu_card_margin"
+        android:paddingEnd="@dimen/menu_card_margin"
+        android:paddingTop="@dimen/menu_card_margin"
         tools:context=".ui.profile.ProfileFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout

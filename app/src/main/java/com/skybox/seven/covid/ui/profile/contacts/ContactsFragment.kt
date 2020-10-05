@@ -25,7 +25,7 @@ class ContactsFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         binding = FragmentContactsBinding.inflate(inflater, container, false)
 
-        viewModel.networkLoading.observe(this, Observer { aBoolean: Boolean ->
+        viewModel.networkLoading.observe(viewLifecycleOwner, Observer { aBoolean: Boolean ->
             if (aBoolean) {
                 binding.errorHolder.visibility = View.VISIBLE
             } else {
