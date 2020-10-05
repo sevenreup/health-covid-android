@@ -19,7 +19,11 @@ class StatsViewModel @ViewModelInject constructor(private val statsService: Stat
     val worldData = MutableLiveData<WorldStats>()
     val networkError = MutableLiveData<Boolean>(false)
 
+    val malawiLoading = MutableLiveData<Boolean>()
+    val worldLoading = MutableLiveData<Boolean>()
+
     fun getMalawiData() {
+        malawiLoading.value  = true
         compositeDisposable.add(
                 statsService.getSingleCountry(Constants.MW_ISO_3)
                         .subscribeOn(Schedulers.io())
@@ -27,16 +31,19 @@ class StatsViewModel @ViewModelInject constructor(private val statsService: Stat
                         .subscribe({
                             Log.e(TAG, "getMalawiData: her")
                             networkError.value = false
+                            malawiLoading.value  = false
                             malawiData.value = it
                         }, {
                             // todo: handle errors
                             networkError.value = true
+                            malawiLoading.value  = false
                             it.printStackTrace()
                         })
         )
     }
 
     fun getWorldData() {
+        worldLoading.value  = true
         compositeDisposable.add(
                 statsService.getWorldStats()
                         .subscribeOn(Schedulers.io())
@@ -44,9 +51,11 @@ class StatsViewModel @ViewModelInject constructor(private val statsService: Stat
                         .subscribe({
                             worldData.value = it
                             networkError.value = false
+                            worldLoading.value  = false
                         }, {
                             // todo: handle errors
                             networkError.value = true
+                            worldLoading.value  = false
                             it.printStackTrace()
                         })
         )

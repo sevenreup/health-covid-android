@@ -78,6 +78,7 @@ class CountryStatsChatFragment : Fragment() {
                 deaths = it.deaths.formatNumber()
                 recovered = it.recovered.formatNumber()
                 date = DateHelper.formatDate(it.updated.toString())
+                loading = false
                 problems.visibility = View.VISIBLE
                 share.visibility = View.VISIBLE
                 share.setOnClickListener {

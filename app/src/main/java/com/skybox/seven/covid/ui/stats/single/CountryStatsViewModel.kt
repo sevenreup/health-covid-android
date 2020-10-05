@@ -20,6 +20,8 @@ class CountryStatsViewModel @ViewModelInject constructor(private val statsServic
 
     val networkError = MutableLiveData<Boolean>(false)
 
+    val loading = MutableLiveData<Boolean>()
+
     fun getWeekData(country: String) {
         compositeDisposable.add(
                 statsService.getHistoricalData(country, "7")
