@@ -22,6 +22,9 @@ class StatsViewModel @ViewModelInject constructor(private val statsService: Stat
     val malawiLoading = MutableLiveData<Boolean>()
     val worldLoading = MutableLiveData<Boolean>()
 
+    val malawiError = MutableLiveData<Boolean>(false)
+    val worldError = MutableLiveData<Boolean>(false)
+
     fun getMalawiData() {
         malawiLoading.value  = true
         compositeDisposable.add(
@@ -30,13 +33,19 @@ class StatsViewModel @ViewModelInject constructor(private val statsService: Stat
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({
                             Log.e(TAG, "getMalawiData: her")
+
                             networkError.value = false
                             malawiLoading.value  = false
+                            malawiError.value = false
+
                             malawiData.value = it
                         }, {
                             // todo: handle errors
                             networkError.value = true
                             malawiLoading.value  = false
+
+                            if (malawiData.value == null) malawiError.value = true
+
                             it.printStackTrace()
                         })
         )
@@ -50,12 +59,18 @@ class StatsViewModel @ViewModelInject constructor(private val statsService: Stat
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({
                             worldData.value = it
+
                             networkError.value = false
                             worldLoading.value  = false
+                            worldError.value = false
+
                         }, {
                             // todo: handle errors
                             networkError.value = true
                             worldLoading.value  = false
+
+                            if (worldData.value == null) worldError.value = true
+
                             it.printStackTrace()
                         })
         )

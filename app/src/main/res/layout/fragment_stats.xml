@@ -212,6 +212,7 @@
                     </LinearLayout>
 
                     <include layout="@layout/layout_loading_data"
+                        app:error="@{fragment.viewModel.malawiError}"
                         app:loading="@{fragment.viewModel.malawiLoading}"/>
 
                 </com.google.android.material.card.MaterialCardView>
@@ -279,6 +280,7 @@
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/background_purple"
                     android:orientation="vertical"
+                    app:error="@{fragment.viewModel.worldError}"
                     app:loading="@{fragment.viewModel.worldLoading}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

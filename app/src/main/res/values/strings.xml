@@ -259,4 +259,5 @@ when an infected person coughs or sneezes"
     <string name="self_test_failded_fetch">Failed to fetch questions.</string>
     <string name="last_update">Last Update:</string>
     <string name="network_problems">Seems like you are having problems with your network connection. Click to retry or pull to refresh.</string>
+    <string name="no_country_data">No Country Data Loaded</string>
 </resources>

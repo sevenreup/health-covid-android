@@ -24,11 +24,17 @@
         <variable
             name="title"
             type="String" />
+
         <variable
             name="date"
             type="String" />
+
         <variable
             name="loading"
+            type="boolean" />
+
+        <variable
+            name="error"
             type="boolean" />
     </data>
 
@@ -251,6 +257,7 @@
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
         <include layout="@layout/layout_loading_data"
+            app:error="@{error}"
             app:loading="@{loading}"/>
     </com.google.android.material.card.MaterialCardView>
 </layout>
