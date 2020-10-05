@@ -142,17 +142,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/background_black"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="8dp">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:text="@string/total_active"
-                            android:textColor="?colorError"
-                            android:textSize="13sp"
-                            android:textAlignment="center"
-                            android:gravity="center"/>
+                            android:textColor="@color/active"
+                            style="@style/TextAppearance.Covid.Stats.Title"/>
 
                         <TextView
                             android:layout_width="match_parent"
@@ -161,8 +160,7 @@
                             android:text="@{active}"
                             android:textColor="?colorOnPrimary"
                             tools:text="3, 473"
-                            android:textAlignment="center"
-                            android:gravity="center"/>
+                            style="@style/TextAppearance.Covid.Stats.Number"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -170,16 +168,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:background="@drawable/background_black"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="8dp">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/total_recovered"
-                            android:textColor="?colorSecondary"
-                            android:textSize="13sp"
-                            android:textAlignment="center"
-                            android:gravity="center"/>
+                            android:textColor="@color/recovered"
+                            style="@style/TextAppearance.Covid.Stats.Title"/>
 
                         <TextView
                             android:layout_width="match_parent"
@@ -187,14 +184,15 @@
                             android:text="@{recovered}"
                             android:textColor="?colorOnPrimary"
                             tools:text="3, 473"
-                            android:textAlignment="center"
-                            android:gravity="center"/>
+                            android:layout_margin="5dp"
+                            style="@style/TextAppearance.Covid.Stats.Number"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:padding="8dp"
                         android:background="@drawable/background_black"
                         android:orientation="vertical">
 
@@ -203,10 +201,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:text="@string/total_deaths"
-                            android:textColor="?badgeTextColor"
-                            android:textSize="13sp"
-                            android:textAlignment="center"
-                            android:gravity="center"/>
+                            android:textColor="@color/deaths"
+                            style="@style/TextAppearance.Covid.Stats.Title"/>
 
                         <TextView
                             android:layout_width="match_parent"
@@ -215,8 +211,7 @@
                             android:text="@{deaths}"
                             android:textColor="?colorOnPrimary"
                             tools:text="3, 473"
-                            android:textAlignment="center"
-                            android:gravity="center"/>
+                            style="@style/TextAppearance.Covid.Stats.Number"/>
                     </LinearLayout>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
