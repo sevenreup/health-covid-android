@@ -22,11 +22,14 @@ import com.skybox.seven.covid.R
 import com.skybox.seven.covid.StatsDirections
 import com.skybox.seven.covid.databinding.FragmentStatsBinding
 import com.skybox.seven.covid.databinding.LayoutTotalCasesBinding
+import com.skybox.seven.covid.helpers.DateHelper
 import com.skybox.seven.covid.helpers.TextFormatter.formatNumber
 import com.skybox.seven.covid.model.WorldStats
 import com.skybox.seven.covid.util.getLocalBitmapUri
 import com.skybox.seven.covid.util.toImage
 import dagger.hilt.android.AndroidEntryPoint
+import org.ocpsoft.prettytime.PrettyTime
+import java.util.*
 
 @AndroidEntryPoint
 class StatisticsFragment : Fragment() {
@@ -101,6 +104,7 @@ class StatisticsFragment : Fragment() {
         setUpBar(barDataSet, requireContext(), binding.worldContainer.worldChat)
     }
 
+
     companion object {
         private const val PIE_ANIMATION_DURATION = 1500
         private const val PIE_RADIUS = 40f
@@ -150,6 +154,15 @@ class StatisticsFragment : Fragment() {
         }
 
         fun formatNumber(int: Int?) = int.formatNumber()
+
+        fun formatDate(string: String?): String {
+            return if (string != null) {
+                val date = Date(string.toLong())
+                DateHelper.convertToRelative(date)
+            } else {
+                ""
+            }
+        }
     }
 
 }
