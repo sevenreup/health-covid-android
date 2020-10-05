@@ -49,7 +49,6 @@ class CountriesFragment : Fragment(), CountryCallbacks {
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.errorHolder.onclick = View.OnClickListener {
-            binding.refresh.isRefreshing = true
             viewModel.getAllCountries()
         }
 
@@ -78,18 +77,15 @@ class CountriesFragment : Fragment(), CountryCallbacks {
         })
 
         viewModel.filteredList.observe(viewLifecycleOwner, Observer {
-            controller.setData(false, it)
-            binding.refresh.isRefreshing = false
+            controller.setData(it)
         })
 
-        viewModel.networkError.observe(viewLifecycleOwner, Observer {
-            if (it){
-                binding.refresh.isRefreshing = false
-            }
-        })
         binding.refresh.setOnRefreshListener {
             viewModel.getAllCountries()
         }
+        viewModel.loading.observe(viewLifecycleOwner, Observer {
+            binding.refresh.isRefreshing = it
+        })
         return binding.root
     }
 
