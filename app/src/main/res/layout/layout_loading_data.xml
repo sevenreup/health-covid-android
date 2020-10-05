@@ -14,7 +14,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorAccent"
+            android:background="@color/black_weak"
             android:padding="8dp"
             android:visibility="@{loading ? View.VISIBLE : View.GONE}">
 
