@@ -1,5 +1,6 @@
 package com.skybox.seven.covid.helpers
 
+import android.net.Uri
 import java.text.NumberFormat
 import java.util.*
 
@@ -10,5 +11,14 @@ object TextFormatter {
         } catch (ex: IllegalArgumentException) {
             this?.toString()
         }
+    }
+
+    fun ussdToCallableUri(ussd: String): Uri? {
+        var uriString: String? = ""
+        if (!ussd.startsWith("tel:")) uriString += "tel:"
+        for (c in ussd.toCharArray()) {
+            if (c == '#') uriString += Uri.encode("#") else uriString += c
+        }
+        return Uri.parse(uriString)
     }
 }

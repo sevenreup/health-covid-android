@@ -54,6 +54,7 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         private fun restart() {
+            // todo: fix not attach to context problem
             val i = Intent(requireContext(), HomeActivity::class.java)
             startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
         }
