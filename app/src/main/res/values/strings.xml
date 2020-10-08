@@ -259,4 +259,6 @@ when an infected person coughs or sneezes"
     <string name="last_update">Last Update:</string>
     <string name="network_problems">Seems like you are having problems with your network connection. Click to retry or pull to refresh.</string>
     <string name="no_country_data">No Country Data Loaded</string>
+    <string name="health_web_url">https://www.health.gov.mw</string>
+    <string name="website">Website</string>
 </resources>

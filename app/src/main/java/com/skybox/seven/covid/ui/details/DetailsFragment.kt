@@ -1,5 +1,6 @@
 package com.skybox.seven.covid.ui.details
 
+import android.content.ClipData
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -16,6 +17,8 @@ import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.FragmentDetailsBinding
 import com.skybox.seven.covid.helpers.TextFormatter
 import com.skybox.seven.covid.helpers.UIHelpers
+import com.skybox.seven.covid.util.getLocalBitmapUri
+import com.skybox.seven.covid.util.toImage
 
 class DetailsFragment : Fragment() {
 
@@ -41,6 +44,18 @@ class DetailsFragment : Fragment() {
     }
 
     private fun shareDetails() {
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "image/jpeg"
+            val image = binding.sharable.toImage()
+            putExtra(Intent.EXTRA_TITLE, "details")
+            if (image != null) {
+                val uri =  image.getLocalBitmapUri(requireContext())
+                putExtra(Intent.EXTRA_STREAM, uri)
+                clipData = ClipData.newUri(context?.contentResolver, context?.getString(R.string.app_name), uri)
+            }
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+        context?.startActivity(Intent.createChooser(intent, null))
     }
 
     fun whatsApp() {
@@ -98,7 +113,7 @@ class DetailsFragment : Fragment() {
     }
 
     fun website() {
-        val url = "https://www.health.gov.mw/"
+        val url = "https://www.health.gov.mw"
         startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
     }
 
