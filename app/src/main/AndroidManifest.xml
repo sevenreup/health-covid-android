@@ -22,11 +22,7 @@ package="com.skybox.seven.covid">
     <activity
         android:name=".ui.SettingsActivity"
         android:label="@string/title_activity_settings"
-        android:theme="@style/Theme.Covid.Toolbar">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".ui.HomeActivity" />
-    </activity>
+        android:theme="@style/Theme.Covid.Toolbar"/>
 
     <receiver android:name=".widget.MWCovidWidget">
         <intent-filter>

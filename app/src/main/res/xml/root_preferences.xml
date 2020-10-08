@@ -1,4 +1,5 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory app:title="@string/general_header">
         <ListPreference
@@ -10,7 +11,7 @@
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
     <PreferenceCategory app:title="About">
-        <Preference app:title="About Us" app:fragment="com.skybox.seven.covid.ui.settings.AboutUsFragment"/>
-        <Preference app:title="Open Source Licences"/>
+        <Preference app:title="About Us" app:fragment="com.skybox.seven.covid.ui.AboutUsFragment"/>
+        <Preference app:title="Open Source Licences" app:key="license"/>
     </PreferenceCategory>
 </PreferenceScreen>
