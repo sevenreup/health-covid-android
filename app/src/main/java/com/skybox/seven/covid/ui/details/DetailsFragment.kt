@@ -94,10 +94,11 @@ class DetailsFragment : Fragment() {
         } else {
             val number1 = getString(R.string._54747)
             val number2 = getString(R.string._929)
+            val number3 = "321"
 
             createCallDialog(
-                    arrayOf(Uri.parse("tel:${number1}").toString(), TextFormatter.ussdToCallableUri(number2).toString()),
-                    arrayOf(number1, number2)
+                    arrayOf(Uri.parse("tel:${number1}").toString(), TextFormatter.ussdToCallableUri(number2).toString(), Uri.parse("tel:$number3").toString()),
+                    arrayOf(number1, number2, number3)
             )
         }
     }

@@ -127,7 +127,7 @@
                     android:id="@+id/tnm"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:onClick="@{() -> fragment.callProvider(false)}"
+                    android:onClick="@{() -> fragment.callProvider(true)}"
                     app:cardElevation="4dp"
                     app:cardUseCompatPadding="true">
 
@@ -196,7 +196,7 @@
                     android:id="@+id/airtel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:onClick="@{() -> fragment.callProvider(true)}"
+                    android:onClick="@{() -> fragment.callProvider(false)}"
                     app:cardElevation="4dp"
                     app:cardUseCompatPadding="true">
 
