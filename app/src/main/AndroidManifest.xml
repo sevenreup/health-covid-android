@@ -1,80 +1,84 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.skybox.seven.covid">
-    <!--
+<?xml version="1.0" encoding="utf-8"?><manifest xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+package="com.skybox.seven.covid">
+<!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality.
     -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.INTERNET" />
 
-    <application
-        android:name=".Covid"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.Covid.DayNight"
-        android:usesCleartextTraffic="true">
+<application
+    android:name=".Covid"
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:theme="@style/Theme.Covid.DayNight"
+    android:usesCleartextTraffic="true">
 
-        <activity
-            android:name=".ui.SettingsActivity"
-            android:label="@string/title_activity_settings"/>
+    <activity
+        android:name=".ui.SettingsActivity"
+        android:label="@string/title_activity_settings"
+        android:theme="@style/Theme.Covid.Toolbar">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".ui.HomeActivity" />
+    </activity>
 
-        <receiver android:name=".widget.MWCovidWidget">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/m_w_covid_widget_info" />
-        </receiver>
+    <receiver android:name=".widget.MWCovidWidget">
+        <intent-filter>
+            <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+        </intent-filter>
 
         <meta-data
-            android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_launcher_foreground" />
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/colorAccent" />
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="@string/default_notification_channel_name" />
+            android:name="android.appwidget.provider"
+            android:resource="@xml/m_w_covid_widget_info" />
+    </receiver>
 
-        <service
-            android:name=".firebase.HealthFireMessagingService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
+    <meta-data
+        android:name="com.google.firebase.messaging.default_notification_icon"
+        android:resource="@drawable/ic_launcher_foreground" />
+    <meta-data
+        android:name="com.google.firebase.messaging.default_notification_color"
+        android:resource="@color/colorAccent" />
+    <meta-data
+        android:name="com.google.firebase.messaging.default_notification_channel_id"
+        android:value="@string/default_notification_channel_name" />
 
-        <activity android:name=".ui.onboarding.OnBoardingActivity" />
-        <activity
-            android:name=".ui.SplashScreenActivity"
-            android:theme="@style/AppTheme.SplashScreenTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+    <service
+        android:name=".firebase.HealthFireMessagingService"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        </intent-filter>
+    </service>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+    <activity android:name=".ui.onboarding.OnBoardingActivity" />
+    <activity
+        android:name=".ui.SplashScreenActivity"
+        android:theme="@style/AppTheme.SplashScreenTheme">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-        <receiver
-            android:name=".location.LocationReceiver"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="io.radar.sdk.RECEIVED" />
-            </intent-filter>
-        </receiver>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
 
-        <activity android:name=".ui.common.RadarTestActivity" />
-        <activity android:name=".ui.AuthActivity" />
-        <!--
+    <receiver
+        android:name=".location.LocationReceiver"
+        android:enabled="true"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="io.radar.sdk.RECEIVED" />
+        </intent-filter>
+    </receiver>
+
+    <activity android:name=".ui.common.RadarTestActivity" />
+    <activity android:name=".ui.AuthActivity" />
+    <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
              Note that the API key is linked to the encryption key used to sign the APK.
@@ -82,43 +86,44 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="@string/google_maps_key" />
+    <meta-data
+        android:name="preloaded_fonts"
+        android:resource="@array/preloaded_fonts" />
+
+    <activity android:name=".ui.HomeActivity">
+        <nav-graph android:value="@navigation/profile" />
+    </activity>
+    <activity
+        android:name=".ui.common.LocationActivity"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+    <activity android:name=".ui.survey.SelfTestQuestionnaireActivity" />
+
+    <provider
+        android:name="androidx.core.content.FileProvider"
+        android:authorities="${applicationId}.fileprovider"
+        android:exported="false"
+        android:grantUriPermissions="true">
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-
-        <activity android:name=".ui.HomeActivity">
-            <nav-graph android:value="@navigation/profile" />
-        </activity>
-        <activity
-            android:name=".ui.common.LocationActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".ui.survey.SelfTestQuestionnaireActivity" />
-
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths" />
-        </provider>
-        <provider
-            android:name="androidx.work.impl.WorkManagerInitializer"
-            android:authorities="${applicationId}.workmanager-init"
-            tools:node="remove" />
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/provider_paths" />
+    </provider>
+    <provider
+        android:name="androidx.work.impl.WorkManagerInitializer"
+        android:authorities="${applicationId}.workmanager-init"
+        tools:node="remove" />
 
 
-        <receiver android:name=".receivers.NotificationReceiver"/>
-        <receiver android:name=".receivers.BootReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-            </intent-filter>
-        </receiver>
-        <service android:name=".widget.MWCovidService"/>
-    </application>
+    <receiver android:name=".receivers.NotificationReceiver" />
+    <receiver android:name=".receivers.BootReceiver">
+        <intent-filter>
+            <action android:name="android.intent.action.BOOT_COMPLETED" />
+        </intent-filter>
+    </receiver>
+
+    <service android:name=".widget.MWCovidService" />
+</application>
 
 </manifest>

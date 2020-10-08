@@ -9,4 +9,8 @@
             app:title="@string/language_header"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
+    <PreferenceCategory app:title="About">
+        <Preference app:title="About Us" app:fragment="com.skybox.seven.covid.ui.settings.AboutUsFragment"/>
+        <Preference app:title="Open Source Licences"/>
+    </PreferenceCategory>
 </PreferenceScreen>
