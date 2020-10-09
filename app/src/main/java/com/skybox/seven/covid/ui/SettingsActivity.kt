@@ -1,5 +1,6 @@
 package com.skybox.seven.covid.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
+import com.skybox.seven.covid.BuildConfig
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.util.Constants
 import com.yariksoffice.lingver.Lingver
@@ -88,11 +90,15 @@ class SettingsActivity : AppCompatActivity() {
 }
 
 class AboutUsFragment : Fragment() {
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_about_us, container, false)
         view.findViewById<TextView>(R.id.freepik).text = Html.fromHtml("Icons made by <a href=\"https://www.flaticon.com/authors/freepik\" title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a>")
         view.findViewById<TextView>(R.id.flaticon).text = Html.fromHtml("Vector from <a href=\"https://www.freepik.com/vectors/typography\">Freepik</a>")
+
+        val version = BuildConfig.VERSION_NAME
+        view.findViewById<TextView>(R.id.version).text = "Version $version"
         return view
     }
 }
