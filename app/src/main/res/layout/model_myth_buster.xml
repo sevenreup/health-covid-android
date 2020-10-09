@@ -33,7 +33,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/mask" />
+            app:srcCompat="@drawable/ic_prevention" />
 
         <TextView
             android:id="@+id/mythRVCardDescription"
@@ -66,7 +66,7 @@
             android:layout_height="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/virus" />
+            app:srcCompat="@drawable/ic_virus" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
