@@ -34,7 +34,7 @@ public class MythBusterEpoxyModel extends EpoxyModelWithHolder<MythBusterEpoxyMo
     @Override
     protected int getDefaultLayout() { return R.layout.model_myth_buster; }
 
-    static class MythBusterEpoxyViewHolder extends EpoxyHolder {
+    public static class MythBusterEpoxyViewHolder extends EpoxyHolder {
         public View card;
         public TextView mythRVCardTitle;
         public TextView mythRVCardDescription;

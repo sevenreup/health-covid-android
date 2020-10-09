@@ -23,15 +23,13 @@
             android:textColor="@color/reply_blue_800"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toEndOf="@+id/card_icon"
             android:layout_marginLeft="5dp" />
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/card_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_prevention" />
@@ -40,27 +38,24 @@
             android:id="@+id/preventionRVCardDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
             android:maxLines="2"
             android:ellipsize="end"
-            android:text="Again i have to type some fake description just to see how this looks. im making a mistake by hardcoding though. well that was stupid."
+            tools:text="Again i have to type some fake description just to see how this looks. im making a mistake by hardcoding though. well that was stupid."
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/preventionRVCardTitle"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/preventionRVCardTitle" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:text="@string/more"
             android:textColor="@color/lime"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintEnd_toStartOf="@id/imageView4"
             app:layout_constraintTop_toBottomOf="@id/preventionRVCardDescription" />
 
         <ImageView
