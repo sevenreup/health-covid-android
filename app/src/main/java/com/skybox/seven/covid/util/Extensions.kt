@@ -86,7 +86,7 @@ fun MaterialCardView.obtainStyledAttributes(attrsSet: AttributeSet?, attrsId: In
 fun View.toImage(): Bitmap? {
     val returnedBitmap = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888);
     val canvas = Canvas(returnedBitmap)
-    val drawable = this.background;
+    val drawable = this.background
     if (drawable != null)  drawable.draw(canvas)
     else canvas.drawColor(Color.WHITE)
     this.draw(canvas)

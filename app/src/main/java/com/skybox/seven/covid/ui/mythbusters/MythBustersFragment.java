@@ -1,28 +1,28 @@
 package com.skybox.seven.covid.ui.mythbusters;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-
 import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.data.entities.Myth;
 import com.skybox.seven.covid.epoxy.mythbuster.MythBusterController;
-import com.skybox.seven.covid.ui.common.ShareDialogDialog;
+import com.skybox.seven.covid.ui.share.ShareDialogViewModel;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
 
 public class MythBustersFragment extends Fragment implements MythBusterController.MythCallbacks, View.OnClickListener {
 
     private MythBusterController controller;
     private MythViewModel viewModel;
+    private ShareDialogViewModel dialogViewModel;
 
     public MythBustersFragment() {
         // Required empty public constructor
@@ -32,6 +32,7 @@ public class MythBustersFragment extends Fragment implements MythBusterControlle
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(MythViewModel.class);
+        dialogViewModel = new ViewModelProvider(requireActivity()).get(ShareDialogViewModel.class);
         controller = new MythBusterController(this);
         viewModel.mythsList.observe(this, mythbusterModel -> controller.setData(false,mythbusterModel));
         viewModel.getAllMyths();
@@ -53,7 +54,10 @@ public class MythBustersFragment extends Fragment implements MythBusterControlle
 
     @Override
     public void onMythClicked(Myth myth) {
-        ShareDialogDialog.newInstance(myth).show(getChildFragmentManager(), myth.getTitle());
+        dialogViewModel.getType().setValue(1);
+        dialogViewModel.getMyth().setValue(myth);
+
+        dialogViewModel.getOpen().setValue(true);
     }
 
     public void onClick(View view){

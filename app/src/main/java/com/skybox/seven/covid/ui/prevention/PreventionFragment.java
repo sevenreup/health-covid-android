@@ -15,7 +15,7 @@ import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.skybox.seven.covid.R;
 import com.skybox.seven.covid.data.entities.Advice;
 import com.skybox.seven.covid.epoxy.prevention.PreventionController;
-import com.skybox.seven.covid.ui.common.ShareDialogDialog;
+import com.skybox.seven.covid.ui.share.ShareDialogViewModel;
 import com.skybox.seven.covid.util.SpaceItemDecorator;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -26,6 +26,7 @@ public class PreventionFragment extends Fragment implements PreventionController
 
     private PreventionController controller;
     private PreventionViewModel viewModel;
+    private ShareDialogViewModel dialogViewModel;
 
     public PreventionFragment() { }
 
@@ -33,6 +34,7 @@ public class PreventionFragment extends Fragment implements PreventionController
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(PreventionViewModel.class);
+        dialogViewModel = new ViewModelProvider(requireActivity()).get(ShareDialogViewModel.class);
         controller = new PreventionController(this);
 
         viewModel.adviceList.observe(this, preventionModel -> controller.setData(false,preventionModel));
@@ -58,7 +60,10 @@ public class PreventionFragment extends Fragment implements PreventionController
 
     @Override
     public void preventionClick(Advice advice) {
-        ShareDialogDialog.newInstance(advice).show(getChildFragmentManager(), advice.getTitle());
+        dialogViewModel.getType().setValue(0);
+        dialogViewModel.getAdvice().setValue(advice);
+
+        dialogViewModel.getOpen().setValue(true);
     }
 
     public void onClick(View view){
