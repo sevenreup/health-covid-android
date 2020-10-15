@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -34,9 +35,66 @@ class ShareFragment : Fragment() {
     private lateinit var binding: DialogPreventionViewBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DialogPreventionViewBinding.inflate(inflater, container, false)
+        binding = DialogPreventionViewBinding.inflate(inflater, container, false).apply {
+            val behavior = BottomSheetBehavior.from(sheet)
 
-        setUpBottomSheet()
+            close.setOnClickListener { behavior.state = BottomSheetBehavior.STATE_COLLAPSED }
+
+            val backCallback =
+                    requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, false) {
+                        behavior.state = BottomSheetBehavior.STATE_COLLAPSED
+                    }
+
+            val sheetStartColor = ContextCompat.getColor(sheet.context, R.color.color_primary_variant)
+            val sheetEndColor = ContextCompat.getColor(sheet.context, R.color.color_primary)
+
+            val sheetBackground = MaterialShapeDrawable(
+                    ShapeAppearanceModel.builder(
+                            sheet.context,
+                            R.style.ShapeAppearance_Covid_MinimizedSheet,
+                            0
+                    ).build()
+            ).apply {
+                fillColor = ColorStateList.valueOf(sheetStartColor)
+            }
+            sheet.background = sheetBackground
+            sheet.doOnLayout {
+                val peek = behavior.peekHeight
+                val maxTranslationX = (it.width - peek).toFloat()
+                sheet.translationX = (sheet.width - peek).toFloat()
+
+                behavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+                    override fun onStateChanged(bottomSheet: View, newState: Int) {
+                        backCallback.isEnabled = newState == BottomSheetBehavior.STATE_EXPANDED
+                    }
+
+                    override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                        sheet.translationX =
+                                lerp(maxTranslationX, 0f, 0f, 0.15f, slideOffset)
+
+                        sheetBackground.interpolation = lerp(1f, 0f, 0f, 0.15f, slideOffset)
+                        sheetBackground.fillColor = ColorStateList.valueOf(
+                                lerpArgb(
+                                        sheetStartColor,
+                                        sheetEndColor,
+                                        0f,
+                                        0.3f,
+                                        slideOffset
+                                )
+                        )
+
+                        close.alpha = lerp(0f, 1f, 0.2f, 0.8f, slideOffset)
+                        share.alpha = lerp(0f, 1f, 0.2f, 0.8f, slideOffset)
+                        sharable.alpha = lerp(0f, 1f, 0.2f, 0.8f, slideOffset)
+                    }
+                })
+            }
+
+            viewModel.open.observe(viewLifecycleOwner, Observer {
+                if (it)  behavior.state = BottomSheetBehavior.STATE_EXPANDED
+            })
+            share.setOnClickListener { shareAdvice() }
+        }
 
         viewModel.myth.observe(viewLifecycleOwner, Observer {
             binding.preventionRVCardTitle.text = it.title
@@ -52,7 +110,7 @@ class ShareFragment : Fragment() {
             binding.cardIcon.setImageResource(R.drawable.ic_prevention)
         })
 
-        binding.share.setOnClickListener { shareAdvice() }
+
 
         return binding.root
     }
@@ -70,97 +128,5 @@ class ShareFragment : Fragment() {
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
         context?.startActivity(Intent.createChooser(intent, null))
-    }
-
-    private fun setUpBottomSheet() {
-        val behavior = BottomSheetBehavior.from(binding.sheet)
-
-        binding.close.setOnClickListener { behavior.state = BottomSheetBehavior.STATE_COLLAPSED }
-
-        val backCallback =
-                requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, false) {
-                    behavior.state = BottomSheetBehavior.STATE_COLLAPSED
-                }
-
-        val sheetStartColor = ContextCompat.getColor(binding.sheet.context, R.color.color_primary_variant)
-        val sheetEndColor =  ContextCompat.getColor(binding.sheet.context, R.color.color_primary)
-
-        val sheetBackground = MaterialShapeDrawable(
-                ShapeAppearanceModel.builder(
-                        binding.sheet.context,
-                        R.style.ShapeAppearance_Covid_MinimizedSheet,
-                        0
-                ).build()
-        ).apply {
-            fillColor = ColorStateList.valueOf(sheetStartColor)
-        }
-        binding.sheet.background = sheetBackground
-        binding.sheet.doOnLayout {
-            val peek = behavior.peekHeight
-            val maxTranslationX = (it.width - peek).toFloat()
-            binding.sheet.translationX = (binding.sheet.width - peek).toFloat()
-
-            behavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback() {
-                override fun onStateChanged(bottomSheet: View, newState: Int) {
-                    backCallback.isEnabled = newState == BottomSheetBehavior.STATE_EXPANDED
-                }
-
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                    binding.sheet.translationX =
-                            lerp(maxTranslationX, 0f, 0f, 0.15f, slideOffset)
-
-                    sheetBackground.interpolation = lerp(1f, 0f, 0f, 0.15f, slideOffset)
-                    sheetBackground.fillColor = ColorStateList.valueOf(
-                            lerpArgb(
-                                    sheetStartColor,
-                                    sheetEndColor,
-                                    0f,
-                                    0.3f,
-                                    slideOffset
-                            )
-                    )
-
-                    binding.close.alpha = lerp(0f, 1f, 0.2f, 0.8f, slideOffset)
-                    binding.share.alpha = lerp(0f, 1f, 0.2f, 0.8f, slideOffset)
-                    binding.sharable.alpha = lerp(0f, 1f, 0.2f, 0.8f, slideOffset)
-                }
-            })
-        }
-
-        viewModel.open.observe(viewLifecycleOwner, Observer {
-            if (it) behavior.state = BottomSheetBehavior.STATE_EXPANDED
-        })
-    }
-
-    fun open(myth: Myth?, advice: Advice?) {
-        if (myth != null) viewModel.myth.value = myth
-        else viewModel.advice.value = advice
-        viewModel.open.value = true
-    }
-
-    companion object {
-        const val ADVICE = "ADVICE"
-        private const val MYTH = "MYTH"
-        private const val TYPE = "TYPE"
-
-        @JvmStatic
-        fun newInstance(advice: Advice?): ShareFragment {
-            val dialog = ShareFragment()
-            val args = Bundle()
-            args.putSerializable(ADVICE, advice)
-            args.putInt(TYPE, 0)
-            dialog.arguments = args
-            return dialog
-        }
-
-        @JvmStatic
-        fun newInstance(myth: Myth): ShareFragment {
-            val dialog = ShareFragment()
-            val args = Bundle()
-            args.putSerializable(MYTH, myth)
-            args.putInt(TYPE, 1)
-            dialog.arguments = args
-            return dialog
-        }
     }
 }
