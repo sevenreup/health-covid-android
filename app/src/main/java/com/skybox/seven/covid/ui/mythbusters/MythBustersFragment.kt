@@ -14,6 +14,7 @@ import com.skybox.seven.covid.data.entities.Myth
 import com.skybox.seven.covid.databinding.FragmentMythBustersBinding
 import com.skybox.seven.covid.epoxy.mythbuster.MythBusterController
 import com.skybox.seven.covid.epoxy.mythbuster.MythBusterController.MythCallbacks
+import com.skybox.seven.covid.ui.MainViewModel
 import com.skybox.seven.covid.ui.share.ShareDialogViewModel
 import com.skybox.seven.covid.util.SpaceItemDecorator
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,7 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MythBustersFragment : Fragment(), MythCallbacks, View.OnClickListener {
     private var controller: MythBusterController = MythBusterController(this)
     private val viewModel: MythViewModel by viewModels()
-    private val shareViewModel: ShareDialogViewModel by activityViewModels()
+    private val shareViewModel: MainViewModel by activityViewModels()
     private lateinit var binding: FragmentMythBustersBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

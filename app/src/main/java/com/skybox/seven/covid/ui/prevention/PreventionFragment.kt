@@ -15,6 +15,7 @@ import com.skybox.seven.covid.data.entities.Advice
 import com.skybox.seven.covid.databinding.FragmentPreventionBinding
 import com.skybox.seven.covid.epoxy.prevention.PreventionController
 import com.skybox.seven.covid.epoxy.prevention.PreventionController.PreventionCallback
+import com.skybox.seven.covid.ui.MainViewModel
 import com.skybox.seven.covid.ui.share.ShareDialogViewModel
 import com.skybox.seven.covid.util.SpaceItemDecorator
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,7 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class PreventionFragment : Fragment(), PreventionCallback, View.OnClickListener {
     private var controller: PreventionController = PreventionController(this)
     private val viewModel: PreventionViewModel by viewModels()
-    private val shareViewModel: ShareDialogViewModel by activityViewModels()
+    private val shareViewModel: MainViewModel by activityViewModels()
 
     private lateinit var binding: FragmentPreventionBinding
 

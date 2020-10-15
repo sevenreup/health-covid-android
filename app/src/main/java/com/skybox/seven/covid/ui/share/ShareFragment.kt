@@ -4,13 +4,11 @@ import android.content.ClipData
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -19,10 +17,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.skybox.seven.covid.R
-import com.skybox.seven.covid.data.entities.Advice
-import com.skybox.seven.covid.data.entities.Myth
 import com.skybox.seven.covid.databinding.DialogPreventionViewBinding
-import com.skybox.seven.covid.helpers.VisibilityListener
+import com.skybox.seven.covid.ui.MainViewModel
 import com.skybox.seven.covid.util.getLocalBitmapUri
 import com.skybox.seven.covid.util.lerp
 import com.skybox.seven.covid.util.lerpArgb
@@ -30,7 +26,7 @@ import com.skybox.seven.covid.util.toImage
 
 
 class ShareFragment : Fragment() {
-    private val viewModel: ShareDialogViewModel by activityViewModels()
+    private val viewModel: MainViewModel by activityViewModels()
 
     private lateinit var binding: DialogPreventionViewBinding
 
@@ -92,6 +88,7 @@ class ShareFragment : Fragment() {
 
             viewModel.open.observe(viewLifecycleOwner, Observer {
                 if (it)  behavior.state = BottomSheetBehavior.STATE_EXPANDED
+                viewModel.hideBottom.value = it
             })
             share.setOnClickListener { shareAdvice() }
         }
