@@ -122,7 +122,7 @@ class ShareFragment : Fragment() {
 
                     binding.close.alpha = lerp(0f, 1f, 0.2f, 0.8f, slideOffset)
                     binding.share.alpha = lerp(0f, 1f, 0.2f, 0.8f, slideOffset)
-                    binding.infoCard.alpha = lerp(0f, 1f, 0.2f, 0.8f, slideOffset)
+                    binding.sharable.alpha = lerp(0f, 1f, 0.2f, 0.8f, slideOffset)
                 }
             })
         }
