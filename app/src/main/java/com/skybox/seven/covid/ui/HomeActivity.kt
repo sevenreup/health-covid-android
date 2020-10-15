@@ -47,7 +47,7 @@ class HomeActivity : AppCompatActivity() {
 
         viewModel.hideBottom.observe(this, Observer {
             if (it) {
-                binding.layout.transitionToState(R.id.hide)
+                binding.layout.transitionToState(R.id.end)
             } else {
                 binding.layout.transitionToState(R.id.start)
             }

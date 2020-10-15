@@ -62,6 +62,8 @@ class ShareFragment : Fragment() {
                 behavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
                     override fun onStateChanged(bottomSheet: View, newState: Int) {
                         backCallback.isEnabled = newState == BottomSheetBehavior.STATE_EXPANDED
+
+                        if (newState == BottomSheetBehavior.STATE_COLLAPSED) viewModel.hideBottom.value = false
                     }
 
                     override fun onSlide(bottomSheet: View, slideOffset: Float) {
@@ -87,8 +89,8 @@ class ShareFragment : Fragment() {
             }
 
             viewModel.open.observe(viewLifecycleOwner, Observer {
-                if (it)  behavior.state = BottomSheetBehavior.STATE_EXPANDED
                 viewModel.hideBottom.value = it
+                if (it)  behavior.state = BottomSheetBehavior.STATE_EXPANDED
             })
             share.setOnClickListener { shareAdvice() }
         }
@@ -110,6 +112,11 @@ class ShareFragment : Fragment() {
 
 
         return binding.root
+    }
+
+    override fun onDestroy() {
+        viewModel.hideBottom.value = false
+        super.onDestroy()
     }
 
     private fun shareAdvice() {

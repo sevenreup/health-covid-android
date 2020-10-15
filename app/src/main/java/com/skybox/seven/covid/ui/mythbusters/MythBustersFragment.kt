@@ -15,7 +15,6 @@ import com.skybox.seven.covid.databinding.FragmentMythBustersBinding
 import com.skybox.seven.covid.epoxy.mythbuster.MythBusterController
 import com.skybox.seven.covid.epoxy.mythbuster.MythBusterController.MythCallbacks
 import com.skybox.seven.covid.ui.MainViewModel
-import com.skybox.seven.covid.ui.share.ShareDialogViewModel
 import com.skybox.seven.covid.util.SpaceItemDecorator
 import dagger.hilt.android.AndroidEntryPoint
 

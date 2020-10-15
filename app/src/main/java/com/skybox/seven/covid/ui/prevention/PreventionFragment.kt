@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.entities.Advice
@@ -16,7 +15,6 @@ import com.skybox.seven.covid.databinding.FragmentPreventionBinding
 import com.skybox.seven.covid.epoxy.prevention.PreventionController
 import com.skybox.seven.covid.epoxy.prevention.PreventionController.PreventionCallback
 import com.skybox.seven.covid.ui.MainViewModel
-import com.skybox.seven.covid.ui.share.ShareDialogViewModel
 import com.skybox.seven.covid.util.SpaceItemDecorator
 import dagger.hilt.android.AndroidEntryPoint
 
