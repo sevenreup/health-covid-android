@@ -166,7 +166,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/mask" />
+                        app:srcCompat="@drawable/ic_prevention" />
 
                     <TextView
                         android:id="@+id/preventionTitle"
@@ -185,7 +185,7 @@
                         android:layout_margin="@dimen/margin_small"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:srcCompat="@drawable/virus" />
+                        app:srcCompat="@drawable/ic_virus" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -212,7 +212,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/mask" />
+                        app:srcCompat="@drawable/ic_symptoms" />
 
                     <TextView
                         android:id="@+id/symptomTitle"
@@ -231,7 +231,7 @@
                         android:layout_margin="@dimen/margin_small"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:srcCompat="@drawable/virus" />
+                        app:srcCompat="@drawable/ic_virus" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -258,7 +258,7 @@
                         android:layout_margin="20dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/mask" />
+                        app:srcCompat="@drawable/ic_myth" />
 
                     <TextView
                         android:id="@+id/mythTitle"
@@ -279,7 +279,7 @@
                         android:layout_margin="@dimen/margin_small"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:srcCompat="@drawable/virus" />
+                        app:srcCompat="@drawable/ic_virus" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -294,36 +294,39 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
 
                     <ImageView
                         android:id="@+id/qnaImage"
-                        android:layout_width="50dp"
-                        android:layout_height="60dp"
-                        android:layout_margin="20dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/mask" />
+                        app:srcCompat="@drawable/ic_q_n_a" />
 
                     <TextView
                         android:id="@+id/qnaTitle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
                         android:text="@string/title_qna"
-                        app:layout_constraintStart_toEndOf="@+id/qnaImage"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/qnaImage"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toTopOf="@id/qnaThumb"/>
+                        app:layout_constraintStart_toEndOf="@id/qnaImage"
+                        app:layout_constraintTop_toTopOf="@id/qnaImage" />
 
                     <ImageView
                         android:id="@+id/qnaThumb"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:layout_margin="@dimen/margin_small"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:srcCompat="@drawable/virus" />
+                        app:srcCompat="@drawable/ic_virus" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

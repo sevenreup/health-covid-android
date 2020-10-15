@@ -11,6 +11,7 @@ import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.google.android.material.card.MaterialCardView
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.data.entities.Qna
+import com.skybox.seven.covid.helpers.KotlinEpoxyHolder
 
 @EpoxyModelClass(layout = R.layout.model_qna)
 abstract class QnaEpoxyModel : EpoxyModelWithHolder<QnaEpoxyModel.QnaEpoxyViewHolder>() {
@@ -26,34 +27,20 @@ abstract class QnaEpoxyModel : EpoxyModelWithHolder<QnaEpoxyModel.QnaEpoxyViewHo
 
     override fun bind(holder: QnaEpoxyViewHolder) {
         super.bind(holder)
-        holder.question!!.text = questions!!.question
-        holder.answer!!.text = questions!!.answer
+        holder.question.text = questions!!.question
+        holder.answer.text = questions!!.answer
 
-        holder.card?.setOnClickListener(expandListener)
-
-
+        holder.getView().setOnClickListener(expandListener)
     }
 
     override fun getDefaultLayout(): Int {
         return R.layout.model_qna
     }
 
-    class QnaEpoxyViewHolder : EpoxyHolder() {
-
-        var question: TextView? = null
-        var answer: TextView? = null
-        var card: MaterialCardView? = null
-        var arrow: ImageView? = null
-        var answerLayout: ConstraintLayout? = null
-
-
-        override fun bindView(itemView: View) {
-            question = itemView.findViewById(R.id.qnaQuestion)
-            answer = itemView.findViewById(R.id.qnaAnswer)
-            card = itemView.findViewById(R.id.qnaModel)
-            arrow = itemView.findViewById(R.id.qnaArrow)
-            answerLayout = itemView.findViewById(R.id.answerLayout)
-        }
-
+    class QnaEpoxyViewHolder : KotlinEpoxyHolder() {
+        val question by bind<TextView>(R.id.qnaQuestion)
+        val answer by bind<TextView>(R.id.qnaAnswer)
+        val arrow by bind<ImageView>(R.id.qnaArrow)
+        val layout by bind<ConstraintLayout>(R.id.answerLayout)
     }
 }
