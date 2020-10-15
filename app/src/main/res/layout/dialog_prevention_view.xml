@@ -3,13 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="8dp">
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/sheet"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sheet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="16dp"
         app:behavior_peekHeight="0dp"
+        tools:behavior_peekHeight="1000dp"
         app:layout_behavior=".helpers.ShareDialogBehaviour">
 
         <ImageView
@@ -18,7 +20,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_close" />
+            app:srcCompat="@drawable/ic_close"
+            app:tint="@android:color/white" />
 
         <ImageView
             android:id="@+id/share"
@@ -26,101 +29,108 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_share" />
+            app:srcCompat="@drawable/ic_share"
+            app:tint="@android:color/white" />
 
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/sharable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:orientation="vertical"
+            app:cardUseCompatPadding="true"
             app:layout_constraintTop_toBottomOf="@id/share"
-            tools:layout_editor_absoluteX="8dp">
+            tools:layout_editor_absoluteX="16dp">
 
-
-            <com.skybox.seven.covid.helpers.CustomConstraintLayout
-                android:id="@+id/header"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:visibility="gone"
-                tools:visibility="visible">
+                android:orientation="vertical"
+                android:padding="8dp">
 
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?textAppearanceHeadline6"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Prevention" />
-
-            </com.skybox.seven.covid.helpers.CustomConstraintLayout>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                app:cardElevation="@dimen/card_elevation_small"
-                app:cardUseCompatPadding="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/header">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <com.skybox.seven.covid.helpers.CustomConstraintLayout
+                    android:id="@+id/header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="12dp">
+                    android:padding="8dp">
 
                     <TextView
-                        android:id="@+id/preventionRVCardTitle"
+                        android:id="@+id/title"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:padding="4dp"
                         android:textAppearance="?textAppearanceHeadline6"
-                        android:textColor="@color/reply_blue_800"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:text="Sneezing" />
+                        tools:text="Prevention" />
 
-                    <TextView
-                        android:id="@+id/preventionRVCardDescription"
-                        android:layout_width="0dp"
+                </com.skybox.seven.covid.helpers.CustomConstraintLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/info_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    app:cardElevation="@dimen/card_elevation_small"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/header">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:padding="4dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/preventionRVCardTitle"
-                        tools:text="Again i have to type some fake description just to see how this looks. im making a mistake by hardcoding though. well that was stupid." />
+                        android:padding="12dp">
 
-                    <ImageView
-                        android:id="@+id/card_icon"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        app:layout_constraintBottom_toBottomOf="@id/imageView4"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/imageView4"
-                        app:srcCompat="@drawable/ic_prevention" />
+                        <TextView
+                            android:id="@+id/preventionRVCardTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:padding="4dp"
+                            android:textAppearance="?textAppearanceHeadline6"
+                            android:textColor="@color/reply_blue_800"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="Sneezing" />
 
-                    <ImageView
-                        android:id="@+id/imageView4"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/preventionRVCardDescription"
-                        app:srcCompat="@drawable/ic_virus" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/preventionRVCardDescription"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:padding="4dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/preventionRVCardTitle"
+                            tools:text="Again i have to type some fake description just to see how this looks. im making a mistake by hardcoding though. well that was stupid." />
 
-            </com.google.android.material.card.MaterialCardView>
+                        <ImageView
+                            android:id="@+id/card_icon"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:layout_constraintBottom_toBottomOf="@id/imageView4"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/imageView4"
+                            app:srcCompat="@drawable/ic_prevention" />
 
-        </LinearLayout>
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/preventionRVCardDescription"
+                            app:srcCompat="@drawable/ic_virus" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

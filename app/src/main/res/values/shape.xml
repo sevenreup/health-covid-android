@@ -18,4 +18,10 @@
         <item name="cornerSize">0dp</item>
     </style>
 
+    <style name="ShapeAppearance.Covid.MinimizedSheet" parent="ShapeAppearance.Covid.MediumComponent">
+        <item name="cornerSizeTopLeft">@dimen/minimized_sheet_top_left_radius</item>
+    </style>
+
+    <dimen name="minimized_sheet_top_left_radius">48dp</dimen>
+
 </resources>

@@ -54,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/dialog_prevention_view"
-        android:name="com.skybox.seven.covid.ui.share.ShareDialogDialog"
+        android:name="com.skybox.seven.covid.ui.share.ShareFragment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
