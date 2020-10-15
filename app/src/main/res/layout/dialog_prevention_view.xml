@@ -128,6 +128,8 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
+                <include layout="@layout/layout_propaganda_card" />
+
             </LinearLayout>
 
 
