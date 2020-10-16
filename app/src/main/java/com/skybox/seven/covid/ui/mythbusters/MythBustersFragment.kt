@@ -27,7 +27,7 @@ class MythBustersFragment : Fragment(), MythCallbacks, View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.mythsList.observe(this, Observer { mythbusterModel: List<Myth?> -> controller!!.setData(false, mythbusterModel) })
+        viewModel.mythsList.observe(this, Observer { mythbusterModel: List<Myth?> -> controller.setData(false, mythbusterModel) })
         viewModel.getAllMyths()
     }
 

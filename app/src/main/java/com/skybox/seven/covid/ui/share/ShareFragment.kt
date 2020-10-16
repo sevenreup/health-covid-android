@@ -116,6 +116,7 @@ class ShareFragment : Fragment() {
 
     override fun onDestroy() {
         viewModel.hideBottom.value = false
+        viewModel.open.value = false
         super.onDestroy()
     }
 
