@@ -4,6 +4,7 @@ import android.content.ClipData
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,7 +55,7 @@ class ShareFragment : Fragment() {
                 fillColor = ColorStateList.valueOf(sheetStartColor)
             }
             sheet.background = sheetBackground
-            sheet.doOnLayout {
+            sheet.also {
                 val peek = behavior.peekHeight
                 val maxTranslationX = (it.width - peek).toFloat()
                 sheet.translationX = (sheet.width - peek).toFloat()
@@ -63,7 +64,13 @@ class ShareFragment : Fragment() {
                     override fun onStateChanged(bottomSheet: View, newState: Int) {
                         backCallback.isEnabled = newState == BottomSheetBehavior.STATE_EXPANDED
 
-                        if (newState == BottomSheetBehavior.STATE_COLLAPSED) viewModel.hideBottom.value = false
+                        if (newState == BottomSheetBehavior.STATE_COLLAPSED)
+                            viewModel.hideBottom.value = false
+                        else if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+                            viewModel.open.value = false
+                            viewModel.hideBottom.value = true
+                        }
+
                     }
 
                     override fun onSlide(bottomSheet: View, slideOffset: Float) {
@@ -89,8 +96,7 @@ class ShareFragment : Fragment() {
             }
 
             viewModel.open.observe(viewLifecycleOwner, Observer {
-                viewModel.hideBottom.value = it
-                if (it)  behavior.state = BottomSheetBehavior.STATE_EXPANDED
+                if (it) behavior.state = BottomSheetBehavior.STATE_EXPANDED
             })
             share.setOnClickListener { shareAdvice() }
         }

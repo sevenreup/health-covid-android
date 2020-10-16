@@ -22,6 +22,6 @@
         <item name="cornerSizeTopLeft">@dimen/minimized_sheet_top_left_radius</item>
     </style>
 
-    <dimen name="minimized_sheet_top_left_radius">48dp</dimen>
+    <dimen name="minimized_sheet_top_left_radius">2dp</dimen>
 
 </resources>

@@ -50,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <fragment android:id="@+id/share_dialog"
+    <androidx.fragment.app.FragmentContainerView android:id="@+id/share_dialog"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/dialog_prevention_view"
