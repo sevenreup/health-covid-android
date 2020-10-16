@@ -98,7 +98,7 @@ public class OnBoardingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-    public class OnBoardLanguageViewHolder extends RecyclerView.ViewHolder {
+    public static class OnBoardLanguageViewHolder extends RecyclerView.ViewHolder {
         public TextView title, body;
         MaterialButton save;
         ChipGroup languageGroup;
@@ -112,7 +112,7 @@ public class OnBoardingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-    public class OnBoardEndViewHolder extends RecyclerView.ViewHolder {
+    public static class OnBoardEndViewHolder extends RecyclerView.ViewHolder {
         public TextView title, body;
         MaterialButton login, register, skip;
 
