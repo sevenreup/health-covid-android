@@ -1,5 +1,6 @@
 package com.skybox.seven.covid.network;
 
+import com.skybox.seven.covid.data.entities.SelfTestAnswer;
 import com.skybox.seven.covid.network.responses.AccessToken;
 import com.skybox.seven.covid.network.responses.ContactRequest;
 import com.skybox.seven.covid.network.responses.GenericResponse;
@@ -58,8 +59,6 @@ public interface HealthService {
     Call<SelfTestResponse> getSelfTests(@Header("Authorization") String Authtoken);
 
     @Headers({"Accept: application/json"})
-    @FormUrlEncoded
     @POST("selftest/answers")
-    Call<GenericResponse> insertSelfTestAnswer(@Header("Authorization") String Authtoken, @Field("question_id") int id, @Field("answer_array") List<Integer> array,
-                                                 @Field("answer_boolean") Boolean answerBoolean, @Field("long_answer") String longAnswer);
+    Call<GenericResponse> insertSelfTestAnswer(@Header("Authorization") String Authtoken, @Body List<SelfTestAnswer> answers);
 }

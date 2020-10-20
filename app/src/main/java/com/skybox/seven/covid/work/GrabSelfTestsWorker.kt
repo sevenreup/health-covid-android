@@ -43,12 +43,19 @@ class GrabSelfTestsWorker @WorkerInject constructor(@Assisted private val contex
                 questions.add(questionNy)
             }
             Log.e(TAG, "doWork: ${questions.size}")
+            db.selfTestQuestionDAO().deleteAll()
             db.selfTestQuestionDAO().insertAll(questions)
+            preferenceRepository.testsLoaded = true
             return Result.success()
         } else {
-            return Result.failure()
+            preferenceRepository.testsLoaded = false
+            return Result.retry()
         }
 
+    }
+
+    companion object {
+        const val TAG = "SELFT_TEST_GRABBER"
     }
 
 }

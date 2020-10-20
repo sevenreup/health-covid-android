@@ -15,9 +15,9 @@ import com.skybox.seven.covid.util.loadImage
 @EpoxyModelClass(layout = R.layout.model_countries)
 abstract class CountryModel: EpoxyModelWithHolder<CountryHolder>() {
     
-    @EpoxyAttribute lateinit var deaths: String
-    @EpoxyAttribute lateinit var active: String
-    @EpoxyAttribute lateinit var recovered: String
+    @EpoxyAttribute var deaths: String? = null
+    @EpoxyAttribute  var active: String? = null
+    @EpoxyAttribute var recovered: String? = null
     @EpoxyAttribute lateinit var name: String
     @EpoxyAttribute var listener: View.OnClickListener? = null
     @EpoxyAttribute lateinit var flag: String

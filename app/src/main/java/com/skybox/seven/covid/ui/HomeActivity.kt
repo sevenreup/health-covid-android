@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.ActivityHomeBinding
@@ -43,6 +44,15 @@ class HomeActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             setUpBottomNavigation()
         }
+
+        viewModel.hideBottom.observe(this, Observer {
+            if (it) {
+                binding.layout.transitionToState(R.id.end)
+            } else {
+                binding.layout.transitionToState(R.id.start)
+            }
+        })
+
         viewModel.setUpWorker(this)
     }
 

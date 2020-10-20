@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -23,10 +22,14 @@ import com.skybox.seven.covid.R
 import com.skybox.seven.covid.StatsDirections
 import com.skybox.seven.covid.databinding.FragmentStatsBinding
 import com.skybox.seven.covid.databinding.LayoutTotalCasesBinding
+import com.skybox.seven.covid.helpers.DateHelper
+import com.skybox.seven.covid.helpers.TextFormatter.formatNumber
 import com.skybox.seven.covid.model.WorldStats
 import com.skybox.seven.covid.util.getLocalBitmapUri
 import com.skybox.seven.covid.util.toImage
 import dagger.hilt.android.AndroidEntryPoint
+import org.ocpsoft.prettytime.PrettyTime
+import java.util.*
 
 @AndroidEntryPoint
 class StatisticsFragment : Fragment() {
@@ -45,13 +48,20 @@ class StatisticsFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.fragment = this
 
+        binding.errorHolder.onclick = View.OnClickListener {
+            binding.refresh.isRefreshing = true
+            viewModel.getWorldData()
+            viewModel.getMalawiData()
+        }
+
         viewModel.worldData.observe(viewLifecycleOwner, Observer {
             binding.worldContainer.apply {
                 title = getString(R.string.cases_worldwide)
-                cases = it.cases.toString()
-                active = it.active.toString()
-                deaths = it.deaths.toString()
-                recovered = it.recovered.toString()
+                cases = it.cases.formatNumber()
+                active = it.active.formatNumber()
+                deaths = it.deaths.formatNumber()
+                recovered = it.recovered.formatNumber()
+                date = DateHelper.formatDate(it.updated.toString())
                 problems.visibility = View.VISIBLE
                 share.visibility = View.VISIBLE
                 share.setOnClickListener {
@@ -67,6 +77,11 @@ class StatisticsFragment : Fragment() {
             viewModel.getWorldData()
         }
 
+        viewModel.networkError.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                binding.refresh.isRefreshing = false
+            }
+        })
         return binding.root
     }
 
@@ -90,15 +105,16 @@ class StatisticsFragment : Fragment() {
         setUpBar(barDataSet, requireContext(), binding.worldContainer.worldChat)
     }
 
+
     companion object {
         private const val PIE_ANIMATION_DURATION = 1500
-        private const val PIE_RADIUS = 75f
+        private const val PIE_RADIUS = 40f
 
         fun setUpBar(barDataSet: PieDataSet, context: Context, pieChart: PieChart): PieData {
             barDataSet.colors = arrayListOf(
-                    ContextCompat.getColor(context, R.color.reply_orange_400),
-                    ContextCompat.getColor(context, R.color.reply_green_100),
-                    ContextCompat.getColor(context, R.color.reply_red_400)
+                    ContextCompat.getColor(context, R.color.deaths),
+                    ContextCompat.getColor(context, R.color.active),
+                    ContextCompat.getColor(context, R.color.recovered)
             )
             barDataSet.valueTextColor = Color.WHITE
             barDataSet.valueTextSize = 16F
@@ -112,7 +128,7 @@ class StatisticsFragment : Fragment() {
                 description = null
                 holeRadius = PIE_RADIUS
                 setDrawEntryLabels(false)
-                setHoleColor(ContextCompat.getColor(context, R.color.background_purple))
+                setHoleColor(ContextCompat.getColor(context, R.color.color_background))
                 animateY(PIE_ANIMATION_DURATION, Easing.EaseInOutQuart)
                 invalidate()
             }
@@ -137,6 +153,10 @@ class StatisticsFragment : Fragment() {
 
             binding.share.visibility = View.VISIBLE
         }
+
+        fun formatNumber(int: Int?) = int.formatNumber()
+
+        fun formatDate(string: String?) = DateHelper.formatDate(string)
     }
 
 }

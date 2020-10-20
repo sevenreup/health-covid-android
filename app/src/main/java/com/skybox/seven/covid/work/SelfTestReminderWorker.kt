@@ -57,7 +57,8 @@ class SelfTestReminderWorker @WorkerInject constructor(@Assisted private val con
 
         val notification = NotificationCompat.Builder(applicationContext, context.getString(R.string.default_notification_channel_name))
 //                .setLargeIcon(bitmap)
-                .setSmallIcon(R.drawable.virus)
+                // fix this
+                .setSmallIcon(R.drawable.sore)
                 .setContentTitle(titleNotification).setContentText(subtitleNotification)
                 .setDefaults(DEFAULT_ALL)
                 .setContentIntent(pendingIntent)

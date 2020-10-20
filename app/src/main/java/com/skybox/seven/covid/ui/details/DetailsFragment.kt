@@ -1,6 +1,6 @@
 package com.skybox.seven.covid.ui.details
 
-import android.Manifest
+import android.content.ClipData
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -9,147 +9,123 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.skybox.seven.covid.data.entities.DetailsPhoneNumbers
-import com.skybox.seven.covid.data.entities.getDetailsData
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.skybox.seven.covid.R
 import com.skybox.seven.covid.databinding.FragmentDetailsBinding
-import com.skybox.seven.covid.epoxy.details.DetailsController
-import kotlin.properties.Delegates
-
-const val REQUEST_CALL = 1
-
+import com.skybox.seven.covid.helpers.TextFormatter
+import com.skybox.seven.covid.helpers.UIHelpers
+import com.skybox.seven.covid.util.getLocalBitmapUri
+import com.skybox.seven.covid.util.toImage
 
 class DetailsFragment : Fragment() {
-
-    private var installed by Delegates.notNull<Boolean>()
 
     private lateinit var binding: FragmentDetailsBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        binding =  FragmentDetailsBinding.inflate(inflater, container, false)
+        binding = FragmentDetailsBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.fragment = this
+
+        UIHelpers.setUpToolbar(binding.toolbarLayout.toolbar, findNavController(), R.menu.share_menu, Toolbar.OnMenuItemClickListener {
+            if (it != null) {
+                if (it.itemId == R.id.share)
+                    shareDetails()
+            }
+            true
+        })
+
         return binding.root
 
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        super.onCreate(savedInstanceState)
-
-        val data = getDetailsData()
-        bindEpoxyRecycler(data as MutableList<DetailsPhoneNumbers>)
-
-        clickListeners()
-    }
-
-    private fun clickListeners(){
-
-        binding.chatbotContainer.setOnClickListener {
-            openWhatsApp(binding.WhatsAppNumber.text as String)
-        }
-        binding.tnmUSSDone.setOnClickListener {
-            callUSSD(binding.tnmUSSDone.text.toString())
-        }
-        binding.tnmUSSDtwo.setOnClickListener {
-            callUSSD(binding.tnmUSSDtwo.text.toString())
-        }
-        binding.airtelUSSDone.setOnClickListener {
-            callUSSD(binding.airtelUSSDone.text.toString())
-        }
-        binding.airtelUSSDtwo.setOnClickListener {
-            callUSSD(binding.airtelUSSDtwo.text.toString())
-        }
-
-        binding.nationalHelpline.setOnClickListener {
-            callNumber(binding.nationalHelpline.text.toString())
-        }
-
-    }
-
-    private fun bindEpoxyRecycler(data: MutableList<DetailsPhoneNumbers>){
-
-        val recycler = binding.detailsRecycler
-        val controller = DetailsController()
-
-        controller.setData(false, data)
-
-        recycler.apply {
-
-            setController(controller)
-        }
-
-    }
-
-    private fun callNumber(number: String){
-        val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$number"))
-        startActivity(intent)
-    }
-
-    private fun callUSSD(code: String){
-
-
-        if (ActivityCompat.checkSelfPermission(this.requireContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.CALL_PHONE, Manifest.permission.CALL_PHONE), REQUEST_CALL)
-        }else{
-
-            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:*$code"+Uri.encode("#")))
-            startActivity(intent)
-        }
-
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-        if (requestCode == REQUEST_CALL){
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED ){
-                callUSSD("*352")
-            }else{
-                Toast.makeText(requireContext(), "Permission DENIED", Toast.LENGTH_SHORT)
-                        .show()
+    private fun shareDetails() {
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "image/jpeg"
+            val image = binding.sharable.toImage()
+            putExtra(Intent.EXTRA_TITLE, "details")
+            if (image != null) {
+                val uri =  image.getLocalBitmapUri(requireContext())
+                putExtra(Intent.EXTRA_STREAM, uri)
+                clipData = ClipData.newUri(context?.contentResolver, context?.getString(R.string.app_name), uri)
             }
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
+        context?.startActivity(Intent.createChooser(intent, null))
     }
 
-    private fun openWhatsApp(number: String){
+    fun whatsApp() {
+        val pkg = activity?.packageManager
+        val appInstalled: Boolean
 
-        val installed: Boolean = check("com.whatsapp")
-        val startText = "hello"
-
-        if (installed){
-
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone$number&text=$startText"))
-            startActivity(intent)
-        }else{
-
-            Toast.makeText(requireContext(), "WhatsApp not installed in this device", Toast.LENGTH_SHORT)
-                    .show()
-        }
-
-    }
-
-    private fun check(uri: String):Boolean{
-        val packageManager: PackageManager = requireActivity().packageManager
-
-        return try {
-
-            packageManager.getPackageInfo(uri, PackageManager.GET_ACTIVITIES)
-            installed = true
-            true
-        }catch (e: PackageManager.NameNotFoundException){
-            installed = false
+        appInstalled = try {
+            if (pkg != null) {
+                pkg.getPackageInfo("com.whatsapp", PackageManager.GET_ACTIVITIES)
+                true
+            } else {
+                false
+            }
+        } catch (e: PackageManager.NameNotFoundException) {
             false
         }
+
+        if (appInstalled) {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + getString(R.string.chatbot)
+                    + "&text="))
+            startActivity(intent)
+        } else {
+            Toast.makeText(context, "WhatsApp not installed on your Device", Toast.LENGTH_SHORT).show()
+        }
     }
 
-    fun toHomePage(view: View){
-        findNavController().navigateUp()
+    fun callProvider(tnm: Boolean) {
+        if (tnm) {
+            val number1 = getString(R.string._352)
+            val number2 = getString(R.string._929)
+
+            createCallDialog(
+                    arrayOf(Uri.parse("tel:${number1}").toString(), TextFormatter.ussdToCallableUri(number2).toString()),
+                    arrayOf(number1, number2)
+            )
+        } else {
+            val number1 = getString(R.string._54747)
+            val number2 = getString(R.string._929)
+            val number3 = "321"
+
+            createCallDialog(
+                    arrayOf(Uri.parse("tel:${number1}").toString(), TextFormatter.ussdToCallableUri(number2).toString(), Uri.parse("tel:$number3").toString()),
+                    arrayOf(number1, number2, number3)
+            )
+        }
     }
 
+    fun facebook() {
+        val url = "https://web.facebook.com/malawimoh"
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+    }
+
+    fun twitter() {
+        val url = "https://twitter.com/health_malawi"
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+    }
+
+    fun website() {
+        val url = "https://www.health.gov.mw"
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+    }
+
+    private fun createCallDialog(values: Array<String>, headers: Array<String>) {
+        MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Choose Number")
+                .setItems(headers) { _, which ->
+                    val intent = Intent(Intent.ACTION_DIAL)
+                    intent.data = Uri.parse(values[which])
+                    startActivity(intent)
+                }
+                .show()
+    }
 }

@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">Covid</string>
+    <string name="app_name">Malawi Health</string>
 
     <string name="shared_preference_key">com.skybox.seven.covid.shared.preference.random</string>
 
@@ -209,7 +209,7 @@ when an infected person coughs or sneezes"
 
     </string>
     <string name="backpressed">backPressed</string>
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_settings">Settings</string>
 
     <!-- Preference Titles -->
     <string name="general_header">General</string>
@@ -226,16 +226,15 @@ when an infected person coughs or sneezes"
     <string name="lilongwe">Lilongwe</string>
     <string name="mw">MW</string>
     <string name="call">call</string>
-    <string name="ussd_no">352</string>
+    <string name="ussd_no">321</string>
     <string name="ussd">USSD</string>
-    <string name="chatbot">+265996659999</string>
+    <string name="chatbot">+265990800000</string>
     <string name="good_morning">Good Morning</string>
     <string name="good_afternoon">Good Afternoon</string>
     <string name="good_evening">Good Evening</string>
     <string name="good_night">Good Night</string>
-    <string name="_352">352</string>
-    <string name="_929">929</string>
-    <string name="_321">321</string>
+    <string name="_352">929</string>
+    <string name="_929">*929#</string>
     <string name="_54747">54747</string>
     <string name="no_available_phone_numbers">No available phone numbers</string>
     <string name="don_t_have_and_account">Don\'t have and account?</string>
@@ -254,4 +253,12 @@ when an infected person coughs or sneezes"
     <string name="no_self_assess">No Self assessments available</string>
     <string name="self_notification_title">Take your daily self test</string>
     <string name="self_notification_body">Take your daily self test. This helps to keep track of your health.</string>
+    <string name="self_test_not_loaded">It is seems the self test questions did not download. Please connect to the internet and press retry.</string>
+    <string name="retry">Retry</string>
+    <string name="self_test_failded_fetch">Failed to fetch questions.</string>
+    <string name="last_update">Last Update:</string>
+    <string name="network_problems">Seems like you are having problems with your network connection. Click to retry or pull to refresh.</string>
+    <string name="no_country_data">No Country Data Loaded</string>
+    <string name="health_web_url">https://www.health.gov.mw</string>
+    <string name="website">Website</string>
 </resources>

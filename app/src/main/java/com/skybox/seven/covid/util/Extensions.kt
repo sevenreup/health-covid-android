@@ -18,8 +18,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.signature.ObjectKey
 import com.google.android.material.card.MaterialCardView
+import org.ocpsoft.prettytime.PrettyTime
 import java.io.File
 import java.io.FileOutputStream
+import java.lang.NumberFormatException
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.text.NumberFormat
@@ -84,7 +86,7 @@ fun MaterialCardView.obtainStyledAttributes(attrsSet: AttributeSet?, attrsId: In
 fun View.toImage(): Bitmap? {
     val returnedBitmap = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888);
     val canvas = Canvas(returnedBitmap)
-    val drawable = this.background;
+    val drawable = this.background
     if (drawable != null)  drawable.draw(canvas)
     else canvas.drawColor(Color.WHITE)
     this.draw(canvas)
@@ -98,8 +100,8 @@ fun Bitmap.getLocalBitmapUri(context: Context): Uri {
     this.compress(Bitmap.CompressFormat.PNG, 90, out)
     out.close()
 
-    bitURI = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-        FileProvider.getUriForFile(context, context.applicationContext.opPackageName + ".provider", file)
+    bitURI = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+        FileProvider.getUriForFile(context, "com.skybox.seven.covid.fileprovider", file)
     } else {
         Uri.fromFile(file);
     }
@@ -113,4 +115,14 @@ fun Context.vectorToBitmap(drawableID: Int): Bitmap? {
     drawable.setBounds(0, 0, canvas.width, canvas.height)
     drawable.draw(canvas)
     return bitmap
+}
+
+fun String.toDate():String {
+    return try {
+        val number = this.toLong()
+        val date = Date(number)
+        PrettyTime().format(date)
+    } catch (e: NumberFormatException) {
+        "Unknown"
+    }
 }

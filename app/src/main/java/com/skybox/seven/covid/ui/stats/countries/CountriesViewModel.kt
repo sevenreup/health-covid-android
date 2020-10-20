@@ -10,21 +10,30 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class CountriesViewModel @ViewModelInject constructor(private val statsService: StatsService, private val compositeDisposable: CompositeDisposable) : ViewModel() {
-    val allCountriesData = MutableLiveData<List<CountryStat>>()
+    val allCountriesData = MutableLiveData<List<CountryStat>>(ArrayList())
     val close = MutableLiveData<Boolean>()
     val searchText = MutableLiveData<String>()
     val rebuild = MutableLiveData<Boolean>()
     val filteredList = MutableLiveData<List<CountryStat>>()
 
+    val loading = MutableLiveData<Boolean>()
+
+    val networkError = MutableLiveData<Boolean>(false)
+
     fun getAllCountries() {
+        loading.value = true
         compositeDisposable.add(
                 statsService.getAllCountries()
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({
+                            loading.value = false
                             allCountriesData.value = it
+                            networkError.value = false
                         }, {
+                            loading.value = false
                             it.printStackTrace()
+                            networkError.value = true
                         })
         )
     }

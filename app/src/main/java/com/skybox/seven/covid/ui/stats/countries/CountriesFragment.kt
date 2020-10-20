@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.airbnb.epoxy.addGlidePreloader
@@ -45,9 +44,17 @@ class CountriesFragment : Fragment(), CountryCallbacks {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = FragmentCountriesBinding.inflate(inflater, container, false)
+
+        binding.fragment = this
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        binding.errorHolder.onclick = View.OnClickListener {
+            viewModel.getAllCountries()
+        }
+
         binding.countriesRecycler.apply {
             setController(controller)
-            addItemDecoration(SpaceItemDecorator(resources.getDimensionPixelSize(R.dimen.card_seperator_margin), true, true))
+            addItemDecoration(SpaceItemDecorator(resources.getDimensionPixelSize(R.dimen.card_seperator_margin_medium), true, true))
             addGlidePreloader(
                     GlideApp.with(this),
                     preloader = glidePreloader { requestManager: RequestManager, model: CountryModel_, _->
@@ -70,13 +77,15 @@ class CountriesFragment : Fragment(), CountryCallbacks {
         })
 
         viewModel.filteredList.observe(viewLifecycleOwner, Observer {
-            controller.setData(false, it)
-            binding.refresh.isRefreshing = false
+            controller.setData(it)
         })
 
         binding.refresh.setOnRefreshListener {
             viewModel.getAllCountries()
         }
+        viewModel.loading.observe(viewLifecycleOwner, Observer {
+            binding.refresh.isRefreshing = it
+        })
         return binding.root
     }
 

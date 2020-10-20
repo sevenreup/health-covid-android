@@ -18,6 +18,10 @@ class CountryStatsViewModel @ViewModelInject constructor(private val statsServic
     val countryStats = MutableLiveData<CountryStat>()
     val allStats = MutableLiveData<DataSource<HistoricalResult>>()
 
+    val networkError = MutableLiveData<Boolean>(false)
+
+    val loading = MutableLiveData<Boolean>()
+
     fun getWeekData(country: String) {
         compositeDisposable.add(
                 statsService.getHistoricalData(country, "7")
@@ -26,7 +30,7 @@ class CountryStatsViewModel @ViewModelInject constructor(private val statsServic
                         .doOnSubscribe {
                         }
                         .subscribe({
-                            allStats.postValue(DataSource(DataState.SUCCESS, createResults(it)))
+                            allStats.postValue(DataSource(DataState.SUCCESS, createResults(it), CountryStatsChatFragment.WEEK))
                         }, {
                             allStats.postValue(DataSource(DataState.ERROR, throwable = it))
                         })
@@ -41,7 +45,7 @@ class CountryStatsViewModel @ViewModelInject constructor(private val statsServic
                         .doOnSubscribe {
                         }
                         .subscribe({
-                            allStats.postValue(DataSource(DataState.SUCCESS, createResults(it)))
+                            allStats.postValue(DataSource(DataState.SUCCESS, createResults(it), CountryStatsChatFragment.MONTH))
                         }, {
                             allStats.postValue(DataSource(DataState.ERROR, throwable = it))
                         })
@@ -56,7 +60,7 @@ class CountryStatsViewModel @ViewModelInject constructor(private val statsServic
                         .doOnSubscribe {
                         }
                         .subscribe({
-                            allStats.postValue(DataSource(DataState.SUCCESS, createResults(it)))
+                            allStats.postValue(DataSource(DataState.SUCCESS, createResults(it), CountryStatsChatFragment.ALL))
                         }, {
                             allStats.postValue(DataSource(DataState.ERROR, throwable = it))
                         })

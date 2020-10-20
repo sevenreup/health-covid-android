@@ -10,7 +10,7 @@ import com.skybox.seven.covid.network.responses.AccessToken;
 import com.skybox.seven.covid.util.Constants;
 
 public class SharedPreferenceRepository {
-    public static String TOKEN = "token", FIREBASE_MESSAGING = "firebase_message", ONBOARDING = "onboarding_status", LANGUAGE_INT = "language_int";
+    public static String TOKEN = "token", FIREBASE_MESSAGING = "firebase_message", ONBOARDING = "onboarding_status", LANGUAGE_INT = "language_int", SELF_TEST = "self_test_inserted";
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
@@ -71,5 +71,13 @@ public class SharedPreferenceRepository {
 
     public int getActiveLanguage() {
         return Integer.parseInt(sharedPreferences.getString(LANGUAGE_INT, Integer.toString(Constants.ENGLISH)));
+    }
+
+    public void setTestsLoaded(boolean value) {
+        editor.putBoolean(SELF_TEST, value).commit();
+    }
+
+    public boolean getTestsLoaded() {
+        return sharedPreferences.getBoolean(SELF_TEST, false);
     }
 }
