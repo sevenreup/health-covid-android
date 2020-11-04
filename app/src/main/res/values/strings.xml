@@ -261,4 +261,10 @@ when an infected person coughs or sneezes"
     <string name="no_country_data">No Country Data Loaded</string>
     <string name="health_web_url">https://www.health.gov.mw</string>
     <string name="website">Website</string>
+    <string name="about_app_info">This app is intended to help the general public and the ministry of health in combating covid19</string>
+    <string name="app_version">Version 1.0</string>
+    <string name="about_app_banner">Developed by the Malawi University of Science and Technology in joint association with:</string>
+    <string name="angle_dimensions">angle dimensions</string>
+    <string name="undp_nris">UNDP NRIS</string>
+    <string name="moh">Ministry of health</string>
 </resources>

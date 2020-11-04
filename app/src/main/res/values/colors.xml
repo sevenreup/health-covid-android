@@ -9,6 +9,8 @@
     <color name="color_secondary">#f9aa33</color>
     <color name="color_secondary_variant">#f9be64</color>
 
+    <color name="gray">#ECECEC</color>
+
 
     <color name="color_surface">#ffffff</color>
     <color name="color_background">#f8f9fb</color>

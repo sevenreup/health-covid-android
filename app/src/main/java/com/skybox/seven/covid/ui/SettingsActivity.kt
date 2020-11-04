@@ -94,8 +94,6 @@ class AboutUsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_about_us, container, false)
-        view.findViewById<TextView>(R.id.freepik).text = Html.fromHtml("Icons made by <a href=\"https://www.flaticon.com/authors/freepik\" title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a>")
-        view.findViewById<TextView>(R.id.flaticon).text = Html.fromHtml("Vector from <a href=\"https://www.freepik.com/vectors/typography\">Freepik</a>")
 
         val version = BuildConfig.VERSION_NAME
         view.findViewById<TextView>(R.id.version).text = "Version $version"
