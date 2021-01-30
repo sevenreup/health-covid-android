@@ -208,7 +208,8 @@
                         app:layout_constraintBottom_toBottomOf="@id/steps_body"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@id/steps_body"
-                        app:srcCompat="@drawable/ic_list_bulleted" />
+                        app:srcCompat="@drawable/ic_list_bulleted"
+                        tools:ignore="UnusedAttribute" />
 
                     <TextView
                         android:id="@+id/steps_body"

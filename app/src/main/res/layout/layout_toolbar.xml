@@ -18,7 +18,8 @@
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_arrow_back_24"
             app:title="@{title}"
-            tools:title="Page title" />
+            tools:title="Page title"
+            style="@style/Covid.ToolbarStyle"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 </layout>

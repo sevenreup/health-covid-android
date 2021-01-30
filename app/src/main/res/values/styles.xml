@@ -20,7 +20,7 @@
     </style>
 
 
-    <style name="Widget.Covid.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox"></style>
+    <style name="Widget.Covid.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
 
     <style name="Widget.Covid.Button.OutlinedButton.IconOnly" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="iconPadding">0dp</item>
