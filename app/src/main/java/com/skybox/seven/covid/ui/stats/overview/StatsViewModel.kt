@@ -25,7 +25,7 @@ class StatsViewModel @ViewModelInject constructor(private val statsService: Stat
     val malawiError = MutableLiveData<Boolean>(false)
     val worldError = MutableLiveData<Boolean>(false)
 
-    fun getMalawiData() {
+    fun getMainMalawiData() {
         malawiLoading.value  = true
         compositeDisposable.add(
                 statsService.getSingleCountry(Constants.MW_ISO_3)

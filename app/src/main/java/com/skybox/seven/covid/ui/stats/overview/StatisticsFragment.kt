@@ -28,8 +28,6 @@ import com.skybox.seven.covid.model.WorldStats
 import com.skybox.seven.covid.util.getLocalBitmapUri
 import com.skybox.seven.covid.util.toImage
 import dagger.hilt.android.AndroidEntryPoint
-import org.ocpsoft.prettytime.PrettyTime
-import java.util.*
 
 @AndroidEntryPoint
 class StatisticsFragment : Fragment() {
@@ -38,7 +36,7 @@ class StatisticsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getMalawiData()
+        viewModel.getMainMalawiData()
         viewModel.getWorldData()
     }
 
@@ -51,7 +49,7 @@ class StatisticsFragment : Fragment() {
         binding.errorHolder.onclick = View.OnClickListener {
             binding.refresh.isRefreshing = true
             viewModel.getWorldData()
-            viewModel.getMalawiData()
+            viewModel.getMainMalawiData()
         }
 
         viewModel.worldData.observe(viewLifecycleOwner, Observer {
@@ -73,7 +71,7 @@ class StatisticsFragment : Fragment() {
         })
 
         binding.refresh.setOnRefreshListener {
-            viewModel.getMalawiData()
+            viewModel.getMainMalawiData()
             viewModel.getWorldData()
         }
 
